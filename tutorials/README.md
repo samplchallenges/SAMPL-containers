@@ -246,11 +246,11 @@ In this section, we will build a base container that has all necessary packages 
         '''
     )
     ```
-2. Modify the "py_modules" list, by adding the two modules with our docking code from the previous subsection ([2.2](https://github.com/samplchallenges/SAMPL-league/tree/containers/examples#22-add-the-docking-code)): "autodock" and "run_autodock"
+2. Modify the "py_modules" list, by adding the two modules (autodock.py and main.py) with our docking code from the previous subsection ([2.2](https://github.com/samplchallenges/SAMPL-league/tree/containers/examples#22-add-the-docking-code)): "autodock" and "main"
     ```
     py_modules=[
         autodock,
-        run_autodock,
+        main,
     ]
     ```
 3. Modify the "install_requires" list, adding "Click" a pip installable package we did not add to the previous base build
