@@ -352,7 +352,7 @@ In this section, we will build a base container that has all necessary packages 
    ```
 
 ## Section 3: Test/Run your container
-In this section, we will use the wrapper ever_given to run the docking container. ever_given mimics the infrastructure we will use to run your container on the SAMPL-league website, making it a great way to test that you container will run properly ahead of uploading to the website.
+In this section, we will use the wrapper `ever_given` to run the docking container. `ever_given` mimics the infrastructure we will use to run your container on the SAMPL-league website, making it a great way to test that you container will run properly ahead of uploading to the [website](https://app.samplchallenges.org/).
 1. Change directories into "examples":
    * command: `cd examples`
 2. Run the container
