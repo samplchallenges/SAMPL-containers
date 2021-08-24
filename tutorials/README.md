@@ -117,7 +117,7 @@ In this section, we will build a base container that has all necessary packages 
 
 ### 1.3: Install conda environment (from [Section 1.2](https://github.com/samplchallenges/SAMPL-containers/tree/tutorial/tutorials#12-starting-a-pre-made-docker-container-and-creating-a-conda-environment)) into your container  
 
-> We will begin creating a Dockerfile which contains the instructions required to build the base container. In 1.3, we will only add the necessary commands for installing the conda environment from Section 1.2 to the Dockerfile. We will then test to ensure the build with the conda environment installed succeeds. For more information on how to visit a Dockerfile, please see the [official Docker documentation](https://docs.docker.com/get-started/02_our_app/#build-the-apps-container-image).
+> We will begin creating a Dockerfile which contains the instructions required to build the base container. In 1.3, we will only add the necessary commands for installing the conda environment from Section 1.2 to the Dockerfile. We will then test to ensure the build with the conda environment installed succeeds. For more information on how to write a Dockerfile, please see the [official Docker documentation](https://docs.docker.com/get-started/02_our_app/#build-the-apps-container-image).
 1. Create and open a file called "Dockerfile"
 2. Copy the following lines into Dockerfile. The following commands contain the instructions to install the conda environment when your container is built. 
    ```
