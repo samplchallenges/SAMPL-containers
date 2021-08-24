@@ -157,32 +157,36 @@ In this section, we will build a base container that has all necessary packages 
    └── environment.yml
    ```
 2. Download Autodock Tools linux x86 "autodock_vina_1_1_2_linux_x86.tgz" from http://vina.scripps.edu/download.html
-3. Untar "autodock_vina_1_1_2_linux_x86.tgz"
-   * command: `tar -xvf dependencies/autodock_vina_1_1_2_linux_x86.tgz`
-4. Delete the .tgz file:
+3. Move "autodock_vina_1_1_2_linux_x86.tgz" into "adv-tutorial-base/dependencies"
+   * command: `mv autodock_vina_1_1_2_linux_x86.tgz adv-tutorial-base/dependencies`
+5. Untar "autodock_vina_1_1_2_linux_x86.tgz"
+   * command: `tar -xvf autodock_vina_1_1_2_linux_x86.tgz`
+6. Delete the .tgz file:
    * command: `rm autodock_vina_1_1_2_linux_x86.tgz`
-5. Rename "autodock_vina_1_1_2_linux_x86/" to "adv/"
+7. Rename "autodock_vina_1_1_2_linux_x86" to "adv"
    * command: `mv autodock_vina_1_1_2_linux_x86 adv`
-6. Move the "adv" directory inside the "dependencies" directory
-   * command `mv adv dependencies`
-7. Download MGL Tools linux x86 `mgltools_x86_64Linux2_1.5.6.tar.gz` from http://mgltools.scripps.edu/downloads
-8. Untar "mgltools_x86_64Linux2_1.5.6.tar.gz"
+8. Move "adv/" to inside "dependencies/"
+   * command: `mv adv dependencies`
+9. Download MGL Tools linux x86 `mgltools_x86_64Linux2_1.5.6.tar.gz` from http://mgltools.scripps.edu/downloads
+10. Move "mgltools_x86_64Linux2_1.5.6.tar.gz" into "adv-tutorial-base"
+   * command: `mv mgltools_x86_64Linux2_1.5.6.tar.gz adv-tutorial-base`
+11. Untar "mgltools_x86_64Linux2_1.5.6.tar.gz"
    * command `tar -xvf mgltools_x86_64Linux2_1.5.6.tar.gz`
-9. Delete the .tgz file:
+12. Delete the .tgz file:
    * command: `rm mgltools_x86_64Linux2_1.5.6.tar.gz`
-10. Rename "mgltools_x86_64Linux2_1.5.6.tar.gz" to "mgl"
-      * command: `mv mgltools_x86_64Linux2_1.5.6.tar.gz mgl`
-11. Move "mgl" directory inside the "dependencies" directory:
-      * command: `mv mgl dependencies/`
-12. Open "dependencies/mgl/install.sh"
-13. Change line 6 from `TarDir=""` to `TarDir="/opt/app/dependencies/mgl/"`
-14. Change line 7 from `export MGL_ROOT=""` to `export MGL_ROOT="/opt/app/dependencies/mgl/"`
-15. Close and save "dependencies/mgl/install.sh"
+13. Rename "mgltools_x86_64Linux2_1.5.6" to "mgl"
+      * command: `mv mgltools_x86_64Linux2_1.5.6 mgl`
+14. Move "mgl" directory inside the "dependencies" directory:
+      * command: `mv mgl dependencies`
+15. Open "dependencies/mgl/install.sh"
+16. Change line 6 from `TarDir='pwd'` to `TarDir="/opt/app/dependencies/mgl/"`
+17. Change line 7 from `export MGL_ROOT=""` to `export MGL_ROOT="/opt/app/dependencies/mgl/"`
+18. Close and save "dependencies/mgl/install.sh"
 
 
 ### 1.5: Update the Dockerfile to include Autodock Vina and MGL Tools installation steps
 > In 1.6, we will add in the installation commands for Autodock Vina and MGL Tools to the Dockerfile. When building your own container, this is where you would add in any command line program installation steps.
-1. Open the Dockerfile and paste the following lines
+1. Re-open the Dockerfile from [Section 1.3](https://github.com/samplchallenges/SAMPL-containers/tree/tutorial/tutorials#13-create-a-dockerfile) and append the following lines to the end of the file
    ```
    RUN /opt/app/dependencies/mgl/install.sh
 
