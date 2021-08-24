@@ -207,7 +207,7 @@ In this section, we will build a base container that has all necessary packages 
 
 ## Section 2: Build the container with Autodock Vina Docking methods
 
-> In this section, we will build our docking container with runnable docking code.
+> Previously, we built the adv-tutorial-base container which contains all the environment and software installations necessary to write code to run AutoDock Vina. We have separated these two builds to illustrate container inheritance and improve build time. In Section 2, we will inherit from the [Section 1](https://github.com/samplchallenges/SAMPL-containers/tree/tutorial/tutorials#section-1-build-the-autodock-vina-base-container) base container to write and build our run-able docking code. This inheritance scheme is also good practice because it improves build time. When you are writing, modifying, and testing your own docking container, each time you build your container to test it, you will only need to build the new code you have written rather than the new code AND the environment/software installations. This can be analogized to pre-compiling C header files to improve build time later. 
 
 ### 2.1: Setup
 
