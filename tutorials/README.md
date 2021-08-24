@@ -140,7 +140,32 @@ In this section, we will build a base container that has all necessary packages 
 3. Save the changes to Dockerfile and exit
 4. Build your container to ensure there are no build issues, so far. 
    * command: `docker build -t adv-tutorial-base-test .`
-5. If your build from the previous step (step 4) completed without issue, please move on to Section 1.4, otherwise some troubleshooting may be necessary.
+5. If your build from the previous step (step 4) completed without issue, please move on to Section 1.4, otherwise some troubleshooting may be necessary. A successful build looks something like the code block below.
+   ```
+   (base) megosato@Admins-MacBook-Pro adv-tutorial-base % docker build -t adv-tutorial-base-test .
+   [+] Building 2.0s (13/13) FINISHED                                                                                                         
+    => [internal] load build definition from Dockerfile                                                                                  0.0s
+    => => transferring dockerfile: 402B                                                                                                  0.0s
+    => [internal] load .dockerignore                                                                                                     0.0s
+    => => transferring context: 2B                                                                                                       0.0s
+    => [internal] load metadata for docker.io/continuumio/miniconda3:4.9.2-alpine                                                        1.1s
+    => [auth] continuumio/miniconda3:pull token for registry-1.docker.io                                                                 0.0s
+    => [internal] load build context                                                                                                     0.8s
+    => => transferring context: 74.91MB                                                                                                  0.8s
+    => [1/7] FROM docker.io/continuumio/miniconda3:4.9.2-alpine@sha256:82bd96b0e95188e152d137f6c9834ea731bfc78e5c5f27b3c90f2be31e9e61d8  0.0s
+    => CACHED [2/7] WORKDIR /opt/app/                                                                                                    0.0s
+    => CACHED [3/7] COPY . ./                                                                                                            0.0s
+    => CACHED [4/7] RUN conda env update -f environment.yml &&     conda clean --all --yes                                               0.0s
+    => CACHED [5/7] RUN pip install .                                                                                                    0.0s
+    => CACHED [6/7] RUN /opt/app/dependencies/mgl/install.sh                                                                             0.0s
+    => CACHED [7/7] RUN /opt/app/dependencies/adv/bin/vina --help                                                                        0.0s
+    => exporting to image                                                                                                                0.0s
+    => => exporting layers                                                                                                               0.0s
+    => => writing image sha256:0bbc54e5f8a5fbc5274a29fb7e20326309eb01aa2ece18bea1d7406a6fcbecea                                          0.0s
+    => => naming to docker.io/library/adv-tutorial-base-test                                                                             0.0s
+
+   Use 'docker scan' to run Snyk tests against images to find vulnerabilities and learn how to fix them
+   ```
 
 
 ### 1.4: Add the Autodock Vina and MGL Tools executables
@@ -300,9 +325,31 @@ In this section, we will build a base container that has all necessary packages 
 ### 2.5: Build the docking container
 
 > In 2.5, we will build a docker image that will execute our docking program when run. For more information about the `docker build`, please see the [official Docker documentation](https://docs.docker.com/engine/reference/commandline/build/).
-1. Build the container
+1. Build the container. A successful build should look similar to the code block below.
    * command: `docker build -t adv-tutorial .`
+   ```
+   (base) megosato@Admins-MacBook-Pro adv-tutorial % docker build -t adv-tutorial .
+   [+] Building 1.6s (10/10) FINISHED                                                                                                         
+    => [internal] load build definition from Dockerfile                                                                                  0.0s
+    => => transferring dockerfile: 227B                                                                                                  0.0s
+    => [internal] load .dockerignore                                                                                                     0.0s
+    => => transferring context: 2B                                                                                                       0.0s
+    => [internal] load metadata for docker.io/osatom/adv-rdkit-base:latest                                                               1.5s
+    => [auth] osatom/adv-rdkit-base:pull token for registry-1.docker.io                                                                  0.0s
+    => [1/4] FROM docker.io/osatom/adv-rdkit-base:latest@sha256:2845b4f7491dc5df3777c70a4ac2643a093b49b424c7c9f3748b1b85e17bfa72         0.0s
+    => => resolve docker.io/osatom/adv-rdkit-base:latest@sha256:2845b4f7491dc5df3777c70a4ac2643a093b49b424c7c9f3748b1b85e17bfa72         0.0s
+    => [internal] load build context                                                                                                     0.0s
+    => => transferring context: 11.98kB                                                                                                  0.0s
+    => CACHED [2/4] WORKDIR /opt/app/                                                                                                    0.0s
+    => CACHED [3/4] COPY setup.py autodock.py run_autodock.py ./                                                                         0.0s
+    => CACHED [4/4] RUN pip install .                                                                                                    0.0s
+    => exporting to image                                                                                                                0.0s
+    => => exporting layers                                                                                                               0.0s
+    => => writing image sha256:6d41aab6331068fd765f47ef1d48467567f62595e52c629a4caeadb57aa7740c                                          0.0s
+    => => naming to docker.io/library/adv-tutorial                                                                                       0.0s
 
+   Use 'docker scan' to run Snyk tests against images to find vulnerabilities and learn how to fix them
+   ```
 
 ## Section 3: Test/Run your container
 In this section, we will use the wrapper ever_given to run the docking container. ever_given mimics the infrastructure we will use to run your container on the SAMPL-league website, making it a great way to test that you container will run properly ahead of uploading to the website.
