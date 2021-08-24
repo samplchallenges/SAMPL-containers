@@ -115,23 +115,27 @@ In this section, we will build a base container that has all necessary packages 
 14. Save the changes to environment.yml and exit
 
 
-### 1.3: Install conda environment (from [Section 1.2](https://github.com/samplchallenges/SAMPL-containers/tree/tutorial/tutorials#12-starting-a-pre-made-docker-container-and-creating-a-conda-environment) into your container  
+### 1.3: Install conda environment (from [Section 1.2])(https://github.com/samplchallenges/SAMPL-containers/tree/tutorial/tutorials#12-starting-a-pre-made-docker-container-and-creating-a-conda-environment) into your container  
 
-> In 1.3, we will begin creating a Dockerfile which contains the instructions required to build the base container. For more information on how to visit a Dockerfile, please see the [official Docker documentation](https://docs.docker.com/get-started/02_our_app/#build-the-apps-container-image).
+> We will begin creating a Dockerfile which contains the instructions required to build the base container. In 1.3, we will only add the necessary commands for installing the conda environment from Section 1.2 to the Dockerfile. We will then test to ensure the build with the conda environment installed succeeds. For more information on how to visit a Dockerfile, please see the [official Docker documentation](https://docs.docker.com/get-started/02_our_app/#build-the-apps-container-image).
 1. Create and open a file called "Dockerfile"
-2. Copy the following lines into Dockerfile
+2. Copy the following lines into Dockerfile. The following commands contain the instructions to install the conda environment when your container is built. 
    ```
    FROM continuumio/miniconda3:4.9.2-alpine  
    # tells the container to inherit from a miniconda container
 
-   WORKDIR /opt/app/   # set the work directory
+   WORKDIR /opt/app/   
+   # set the work directory
 
-   COPY . ./    #  copy all the files and directories into the container
+   COPY . ./    
+   #  copy all the files and directories into the container
 
    RUN conda env update -f environment.yml && \
-       conda clean --all --yes      # install the packages in environment.yml into containers
+       conda clean --all --yes      
+   # install the packages in environment.yml into containers
 
-   ENV PATH="/root/.local/bin:$PATH"      # set the path
+   ENV PATH="/root/.local/bin:$PATH"      
+   # set the path
    ```
 3. Save the changes to Dockerfile and exit
 4. Build your container to ensure there are no build issues, so far. 
