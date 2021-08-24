@@ -44,8 +44,12 @@ A working version of the Autodock Vina container we will build in this tutorial 
 
 
 # Tutorial: Build an AutoDock Vina Containerized Method
+> In this tutorial we will build an adv-tutorial-base container which contains all the environment and software installations necessary to run AutoDock Vina from a python script. We have separated the environment build from the implementation build to illustrate container inheritance and improve time required to build the container. In Section 2, we will inherit from the Section 1 adv-tutorial-base container to write and build our run-able docking code in the adv-tutorial container. This inheritance scheme is also a good practice to improve time required to build the container. When you are writing, modifying, and testing your own docking container, each time you build your container to test it, you will only need to build the new code you have written rather than the new code AND the environment/software installations. For example, for the AutoDock Vina Tutorial container building the just the new code takes under 15 seconds, but building the new code plus the environment and software installations takes upwards of 115 seconds. This can be analogized to pre-compiling C header files to improve build time later.
+
 
 ## Outline:
+
+
 * [Section 1: Build the Autodock Vina base container](https://github.com/samplchallenges/SAMPL-league/blob/containers/examples/README.md#section-1-build-the-autodock-vina-base-container)
    * [1.1 Setup](https://github.com/samplchallenges/SAMPL-league/tree/containers/examples#11-setup)
    * [1.2 Starting a docker file and creating a conda environment](https://github.com/samplchallenges/SAMPL-league/tree/containers/examples#12-create-a-conda-environment)
@@ -61,8 +65,9 @@ A working version of the Autodock Vina container we will build in this tutorial 
    * [2.5 Build the docking container](https://github.com/samplchallenges/SAMPL-league/tree/containers/examples#24-create-a-dockerfile)
  * [Section 3: Test/Run your container](https://github.com/samplchallenges/SAMPL-league/tree/containers/examples#section-3-testrun-your-container)
 
+
 ## Section 1: Build the Autodock Vina base container
-In this section, we will build a base container that has all necessary packages and programs installed. This way, as we write our docking code it will build quickly since only the docking code will need to be built.
+> In this section, we will build a base container that has all necessary packages and programs installed. This way, as we write our docking code it will build quickly since only the docking code will need to be built.
 
 
 ### 1.1: Setup
@@ -232,7 +237,7 @@ In this section, we will build a base container that has all necessary packages 
 
 ## Section 2: Build the container with Autodock Vina Docking methods
 
-> Previously, we built the adv-tutorial-base container which contains all the environment and software installations necessary to run AutoDock Vina from a python script. We have separated these two builds to illustrate container inheritance and improve build time. In Section 2, we will inherit from the [Section 1](https://github.com/samplchallenges/SAMPL-containers/tree/tutorial/tutorials#section-1-build-the-autodock-vina-base-container) base container to write and build our run-able docking code. This inheritance scheme is also good practice because it improves build time. When you are writing, modifying, and testing your own docking container, each time you build your container to test it, you will only need to build the new code you have written rather than the new code AND the environment/software installations. This can be analogized to pre-compiling C header files to improve build time later. 
+> Previously, we built the adv-tutorial-base container which contains all the environment and software installations necessary to run AutoDock Vina from a python script.In Section 2, we will inherit from the [Section 1](https://github.com/samplchallenges/SAMPL-containers/tree/tutorial/tutorials#section-1-build-the-autodock-vina-base-container) base container to write and build our run-able docking code. 
 
 ### 2.1: Setup
 
