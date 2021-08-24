@@ -57,7 +57,7 @@ A working version of the Autodock Vina container we will build in this tutorial 
    * [2.1 Setup](https://github.com/samplchallenges/SAMPL-league/tree/containers/examples#21-setup)
    * [2.2 Add the docking code](https://github.com/samplchallenges/SAMPL-league/tree/containers/examples#22-add-the-docking-code)
    * [2.3 Create a setup.py file](https://github.com/samplchallenges/SAMPL-league/tree/containers/examples#23-create-a-setuppy-file)
-   * [2.4 Write a Dockerfile with instructions to build your container.](https://github.com/samplchallenges/SAMPL-league/tree/containers/examples#24-create-a-dockerfile)
+   * [2.4 Write a Dockerfile with instructions to build your container.](https://github.com/samplchallenges/SAMPL-containers/blob/tutorial/tutorials/README.md#24-write-a-dockerfile-with-instructions-to-build-your-container)
    * [2.5 Build the docking container](https://github.com/samplchallenges/SAMPL-league/tree/containers/examples#24-create-a-dockerfile)
  * [Section 3: Test/Run your container](https://github.com/samplchallenges/SAMPL-league/tree/containers/examples#section-3-testrun-your-container)
 
