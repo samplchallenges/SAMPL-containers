@@ -341,7 +341,7 @@ In this section, we will build a base container that has all necessary packages 
     => [internal] load build context                                                                                                     0.0s
     => => transferring context: 11.98kB                                                                                                  0.0s
     => CACHED [2/4] WORKDIR /opt/app/                                                                                                    0.0s
-    => CACHED [3/4] COPY setup.py autodock.py run_autodock.py ./                                                                         0.0s
+    => CACHED [3/4] COPY setup.py autodock.py main.py ./                                                                                 0.0s
     => CACHED [4/4] RUN pip install .                                                                                                    0.0s
     => exporting to image                                                                                                                0.0s
     => => exporting layers                                                                                                               0.0s
