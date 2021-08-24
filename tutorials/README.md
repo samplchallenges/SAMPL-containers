@@ -74,7 +74,7 @@ In this section, we will build a base container that has all necessary packages 
 
 ### 1.2: Starting a pre-made docker container and creating a conda environment
 
-> In 1.2, we will run the pre-made minconda container, "continuumio/miniconda3", to interactively create the conda environment we will use inside the container. Even if you have a conda environment installed locally, you will need to complete this step. The container is an isolated virtual machine, so it will not have access to your local conda environment. 
+> In 1.2, we will start the pre-made minconda container, "continuumio/miniconda3", which contains a pre-installed version of miniconda. This will allow us to interactively create the conda environment we will use inside the container. Even if you have a conda environment installed locally, you will need to complete this step. The container is an isolated virtual machine, so it will not have access to your local conda environment. 
 > 
 > Because our container will inherit from the miniconda container, any environment we create while interatively using the miniconda container should install without additional issues. Building a conda environment outside the miniconda container often results in multiple rounds of trial and error and incompatible packages. For more detailed/generalized instructions please see [CondaEnvInstructions.pdf](https://github.com/samplchallenges/SAMPL-league/blob/containers/examples/CondaEnvInstructions.pdf)
 1. Start up Docker Desktop, which will start the Docker daemon. 
