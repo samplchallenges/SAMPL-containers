@@ -293,7 +293,7 @@ In this section, we will build a base container that has all necessary packages 
     ```
 5. Save and close setup.py
 
-### 2.4: Create a Dockerfile
+### 2.4: Write a Dockerfile with instructions to build your container. 
 
 > In 2.4, we will create a Dockerfile which contains the instructions required to build the docking container, as well as the entry_point (see [2.3](https://github.com/samplchallenges/SAMPL-league/blob/containers/examples/README.md#23-create-a-setuppy-file)) which tells the container which file and function to run. For more information on how to visit a Dockerfile, please see the [official Docker documentation](https://docs.docker.com/get-started/02_our_app/#build-the-apps-container-image).
 1. Create and open a file called "Dockerfile"
