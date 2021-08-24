@@ -79,7 +79,7 @@ In this section, we will build a base container that has all necessary packages 
 > Because our container will inherit from the miniconda container, any environment we create while interatively using the miniconda container should install without additional issues. Building a conda environment outside the miniconda container often results in multiple rounds of trial and error and incompatible packages. For more detailed/generalized instructions please see [CondaEnvInstructions.pdf](https://github.com/samplchallenges/SAMPL-league/blob/containers/examples/CondaEnvInstructions.pdf)
 1. Start up Docker Desktop, which will start the Docker daemon. If this is your first time starting Docker Desktop, the application may need to complete some additional installation steps or updates. 
 2. Open a terminal
-3. Start the container. Upon running this command your command line prompt should change. This means you are now inside the container interacting with its operating system and contents. 
+3. Start the container. Upon running this command your command line prompt should change. This means you are now inside the container interacting with it command line and contents. 
    * command: `docker run -it --rm continuumio/miniconda3`
    ```
    megosato@Admins-MacBook-Pro ~ % docker run -it --rm continuumio/miniconda3
