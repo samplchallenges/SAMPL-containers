@@ -48,7 +48,7 @@ A working version of the Autodock Vina container we will build in this tutorial 
 ## Outline:
 * [Section 1: Build the Autodock Vina base container](https://github.com/samplchallenges/SAMPL-league/blob/containers/examples/README.md#section-1-build-the-autodock-vina-base-container)
    * [1.1 Setup](https://github.com/samplchallenges/SAMPL-league/tree/containers/examples#11-setup)
-   * [1.2 Create a conda environment](https://github.com/samplchallenges/SAMPL-league/tree/containers/examples#12-create-a-conda-environment)
+   * [1.2 Starting a docker file and creating a conda environment](https://github.com/samplchallenges/SAMPL-league/tree/containers/examples#12-create-a-conda-environment)
    * [1.3 Create a Dockerfile](https://github.com/samplchallenges/SAMPL-league/tree/containers/examples#13-create-a-dockerfile)
    * [1.4 Add the Autodock Vina and MGL Tools executables](https://github.com/samplchallenges/SAMPL-league/tree/containers/examples#14-add-the-autodock-vina-and-mgl-tools-executables)
    * [1.5 Update the Dockerfile to include Autodock Vina and MGL Tools installation steps](https://github.com/samplchallenges/SAMPL-league/tree/containers/examples#15-update-the-dockerfile-to-include-autodock-vina-and-mgl-tools-installations)
@@ -72,28 +72,45 @@ In this section, we will build a base container that has all necessary packages 
    * command: `cd adv-tutorial-base`
 
 
-### 1.2: Create a conda environment
+### 1.2: Starting a pre-made docker container and creating a conda environment
 
-> In 1.2, we will run the "continuumio/miniconda3" container to dynamically create the conda environment we need. For more detailed instructions please see [CondaEnvInstructions.pdf](https://github.com/samplchallenges/SAMPL-league/blob/containers/examples/CondaEnvInstructions.pdf)
-1. Open a terminal
-2. Start the container and upon running this command, your command line prompt should change
+> In 1.2, we will run the pre-made minconda container, "continuumio/miniconda3", to interactively create the conda environment we will use inside the container. Even if you have a conda environment installed locally, you will need to complete this step. The container is an isolated virtual machine, so it will not have access to your local conda environment. Because our container will inherit from the miniconda container, any environment we build while interatively using the miniconda container should install without additional issues. Building a conda environment outside the miniconda container often results in multiple rounds of trial and error and incompatible packages. For more detailed/generalized instructions please see [CondaEnvInstructions.pdf](https://github.com/samplchallenges/SAMPL-league/blob/containers/examples/CondaEnvInstructions.pdf)
+1. Start up Docker Desktop, which will start the Docker daemon. 
+2. Open a terminal
+3. Start the container. Upon running this command your command line prompt should change. This means you are now inside the container interacting with its operating system and contents. 
    * command: `docker run -it --rm continuumio/miniconda3`
-3. Create a conda env called "advenv"
+   ```
+   megosato@Admins-MacBook-Pro ~ % docker run -it --rm continuumio/miniconda3
+   root@7f02be71557e:/# 
+   ```
+4. Create a conda env called "advenv"
    * command: `conda create --name advenv`
-4. Activate advenv: `conda activate advenv`
-5. Install rdkit
+5. Activate advenv: `conda activate advenv`
+6. Install rdkit
    * command: `conda install -c conda-forge rdkit`
-6. Install mdtraj
+7. Install mdtraj
    * command: `conda install -c conda-forge mdtraj`
-7. Export the environment
+8. Export the environment. Upon running this command, an organized list of the environment packages will be printed out to your console (something like the code block below).
    * command: `conda env export -n advenv`
-8. Copy the output from the export command in step 7 to be pasted into a file in step 11.
-9. Exit the container
+   ```
+   (advenv) root@7f02be71557e:/# conda env export -n advenv
+   name: advenv
+   channels:
+     - conda-forge
+     - defaults
+   dependencies:
+     - _libgcc_mutex=0.1=conda_forge
+     ...
+     - zstd=1.5.0=ha95c52a_0
+   prefix: /opt/conda/envs/advenv
+   ```
+9. Copy the output from the export command in step 7 to be pasted into a file in step 11.
+10. Exit the container
    * command: `exit`
-10. Create and open a file called "environment.yml" and paste the output you previously copied at step 8
-11. Change the first line of the file `name: advenv` to `name: base`
-12. Delete the last line of the file: `prefix: /opt/conda/envs/advenv`
-13. Save the changes to environment.yml and exit
+11. Create and open a file called "environment.yml" and paste the output you previously copied at step 8
+12. Change the first line of the file `name: advenv` to `name: base`
+13. Delete the last line of the file: `prefix: /opt/conda/envs/advenv`
+14. Save the changes to environment.yml and exit
 
 
 ### 1.3: Create a Dockerfile
