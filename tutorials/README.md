@@ -69,7 +69,8 @@ A working version of the Autodock Vina container we will build in this tutorial 
 
 
 ### 1.1: Setup
-1. Create a directory called "adv-tutorial-base" in the examples directory
+1. Open a terminal and navigate to a directory of your choice to complete this tutorial.
+2. Create a directory called "adv-tutorial-base" in the examples directory
    * command: `mkdir adv-tutorial-base`
 2. Change directories to "adv-tutorial-base"
    * command: `cd adv-tutorial-base`
