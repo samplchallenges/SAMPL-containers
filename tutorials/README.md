@@ -120,8 +120,20 @@ A working version of the Autodock Vina container we will build in this tutorial 
       ```
       >>> quit()
       ```
-13. Run openbabel with the help flag to ensure openbabel has installed properly
-   * command: `obabel -H`
+13. Run openbabel with the help flag to ensure openbabel has installed properly. If properly installed the output should look similar to the code block below
+      * command: `obabel -H`
+      ```
+      /opt/app # obabel -H
+      Open Babel converts chemical structures from one file format to another
+
+      Usage: 
+      obabel[-i<input-type>] <infilename> [-o<output-type>] -O<outfilename> [Options]
+      The extension of a file decides the format, unless it is overridden
+       by -i or -o options, e.g. -icml, or -o smi
+      See below for available format-types, which are the same as the 
+      file extensions and are case independent.
+      If no input or output file is given stdin or stdout are used instead.
+      ```
 14. Export the environment. Upon running this command, an organized list of the environment packages will be printed out to your console (something like the code block below).
       * command: `conda env export -n advenv`
       ```
