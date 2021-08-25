@@ -81,21 +81,20 @@ A working version of the Autodock Vina container we will build in this tutorial 
 > 
 > Because our container will inherit from the miniconda container, any environment we create while interatively using the miniconda container should install without additional issues. Building a conda environment outside the miniconda container often results in multiple rounds of trial and error and incompatible packages. For more detailed/generalized instructions please see [CondaEnvInstructions.pdf](https://github.com/samplchallenges/SAMPL-league/blob/containers/examples/CondaEnvInstructions.pdf)
 1. Start up Docker Desktop, which will start the Docker daemon. If this is your first time starting Docker Desktop, the application may need to complete some additional installation steps or updates. 
-2. Open a terminal
-3. Start the container. Upon running this command your command line prompt should change. This means you are now inside the container interacting with it command line and contents. 
+2. Start the container. Upon running this command your command line prompt should change. This means you are now inside the container interacting with it command line and contents. 
    * command: `docker run -it --rm continuumio/miniconda3`
    ```
    megosato@Admins-MacBook-Pro ~ % docker run -it --rm continuumio/miniconda3
    root@7f02be71557e:/# 
    ```
-4. Create a conda env called "advenv"
+3. Create a conda env called "advenv"
    * command: `conda create --name advenv`
-5. Activate advenv: `conda activate advenv`
-6. Install rdkit
+4. Activate advenv: `conda activate advenv`
+5. Install rdkit
    * command: `conda install -c conda-forge rdkit`
-7. Install mdtraj
+6. Install mdtraj
    * command: `conda install -c conda-forge mdtraj`
-8. Export the environment. Upon running this command, an organized list of the environment packages will be printed out to your console (something like the code block below).
+7. Export the environment. Upon running this command, an organized list of the environment packages will be printed out to your console (something like the code block below).
    * command: `conda env export -n advenv`
    ```
    (advenv) root@7f02be71557e:/# conda env export -n advenv
@@ -109,13 +108,13 @@ A working version of the Autodock Vina container we will build in this tutorial 
      - zstd=1.5.0=ha95c52a_0
    prefix: /opt/conda/envs/advenv
    ```
-9. Copy the output from the export command in step 7 to be pasted into a file in step 11.
-10. Exit the container
+8. Copy the output from the export command in step 7 to be pasted into a file in step 11.
+9. Exit the container
    * command: `exit`
-11. Create and open a file called "environment.yml" and paste the output you previously copied at step 8
-12. Change the first line of the file `name: advenv` to `name: base`
-13. Delete the last line of the file: `prefix: /opt/conda/envs/advenv`
-14. Save the changes to environment.yml and exit
+10. Create and open a file called "environment.yml" and paste the output you previously copied at step 8
+11. Change the first line of the file `name: advenv` to `name: base`
+12. Delete the last line of the file: `prefix: /opt/conda/envs/advenv`
+13. Save the changes to environment.yml and exit
 
 
 ### 1.3: Install conda environment (from [Section 1.2](https://github.com/samplchallenges/SAMPL-containers/tree/tutorial/tutorials#12-starting-a-pre-made-docker-container-and-creating-a-conda-environment)) into your container  
