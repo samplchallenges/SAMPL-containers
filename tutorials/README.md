@@ -90,12 +90,13 @@ A working version of the Autodock Vina container we will build in this tutorial 
    ```
 3. Create a conda env called "advenv", if prompted "Proceed ([y]/n)?" please type "y"
    * command: `conda create --name advenv`
-4. Activate advenv: `conda activate advenv`
-5. Install rdkit
+4. Activate advenv: 
+   * command: `conda activate advenv`
+6. Install rdkit, if prompted "Proceed ([y]/n)?" please type "y"
    * command: `conda install -c conda-forge rdkit`
-6. Install mdtraj
+7. Install mdtraj, if prompted "Proceed ([y]/n)?" please type "y"
    * command: `conda install -c conda-forge mdtraj`
-7. Export the environment. Upon running this command, an organized list of the environment packages will be printed out to your console (something like the code block below).
+8. Export the environment. Upon running this command, an organized list of the environment packages will be printed out to your console (something like the code block below).
    * command: `conda env export -n advenv`
    ```
    (advenv) root@7f02be71557e:/# conda env export -n advenv
