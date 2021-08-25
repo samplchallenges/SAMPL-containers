@@ -89,14 +89,40 @@ A working version of the Autodock Vina container we will build in this tutorial 
    root@7f02be71557e:/# 
    ```
 3. Create a conda env called "advenv", if prompted "Proceed ([y]/n)?" please type "y"
-   * command: `conda create --name advenv`
+   * command: `conda create --name advenv python=3.6`
 4. Activate advenv: 
    * command: `conda activate advenv`
-6. Install rdkit, if prompted "Proceed ([y]/n)?" please type "y"
+6. Install rdkit, if prompted "Proceed ([y]/n)?" type "y"
    * command: `conda install -c conda-forge rdkit`
-7. Install mdtraj, if prompted "Proceed ([y]/n)?" please type "y"
+7. Install mdtraj, if prompted "Proceed ([y]/n)?" type "y"
    * command: `conda install -c conda-forge mdtraj`
-8. Export the environment. Upon running this command, an organized list of the environment packages will be printed out to your console (something like the code block below).
+8. Install openbabel, if prompted "Proceed ([y]/n)?" type "y"
+   * comand: `conda install -c openbabel openbabel`
+9. Start up the Python interpreter and ensure your version is `3.6.*`. The Python version is 3.6.13 in the code block below.
+   * command: `python`
+   ```
+   Python 3.6.13 |Anaconda, Inc.| (default, Jun  4 2021, 14:25:59) 
+   [GCC 7.5.0] on linux
+   Type "help", "copyright", "credits" or "license" for more information.
+   >>> 
+   ```
+10. In the Python interpreter, import rdkit, ensure there are no errors.
+   ```
+   >>> import rdkit
+   >>>
+   ```
+11. In the Python interpreter, import mdtraj, ensure there are no errors.
+   ```
+   >>> import mdtraj
+   >>>
+   ```
+12. Quit the Python interpeter
+   ```
+   >>> quit()
+   ```
+13. Run openbabel with the help flag to ensure openbabel has installed properly
+   * command: `obabel -H`
+14. Export the environment. Upon running this command, an organized list of the environment packages will be printed out to your console (something like the code block below).
    * command: `conda env export -n advenv`
    ```
    (advenv) root@7f02be71557e:/# conda env export -n advenv
@@ -110,13 +136,13 @@ A working version of the Autodock Vina container we will build in this tutorial 
      - zstd=1.5.0=ha95c52a_0
    prefix: /opt/conda/envs/advenv
    ```
-8. Copy the output from the export command in step 7 to be pasted into a file in step 11.
-9. Exit the container. Upon running this command, you will exit the interactive version of the container and should return to your normal command prompt.
+15. Copy the output from the export command in step 7 to be pasted into a file in step 11.
+16. Exit the container. Upon running this command, you will exit the interactive version of the container and should return to your normal command prompt.
    * command: `exit`
-10. Create and open a file called "environment.yml" and paste the output you previously copied at step 8
-11. Change the first line of the file `name: advenv` to `name: base`
-12. Delete the last line of the file: `prefix: /opt/conda/envs/advenv`
-13. Save the changes to environment.yml and exit
+17. Create and open a file called "environment.yml" and paste the output you previously copied at step 8
+18. Change the first line of the file `name: advenv` to `name: base`
+19. Delete the last line of the file: `prefix: /opt/conda/envs/advenv`
+20. Save the changes to environment.yml and exit
 
 
 ### 1.3: Install conda environment (from [Section 1.2](https://github.com/samplchallenges/SAMPL-containers/tree/tutorial/tutorials#12-starting-a-pre-made-docker-container-and-creating-a-conda-environment)) into your container  
