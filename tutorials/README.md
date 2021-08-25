@@ -314,14 +314,14 @@ A working version of the Autodock Vina container we will build in this tutorial 
 2. Modify the "py_modules" list, by adding the two modules (autodock.py and main.py) with our docking code from the previous subsection ([2.2](https://github.com/samplchallenges/SAMPL-league/tree/containers/examples#22-add-the-docking-code)): "autodock" and "main"
     ```
     py_modules=[
-        autodock,
-        main,
+        'autodock',
+        'main',
     ]
     ```
 3. Modify the "install_requires" list, adding "Click" a pip installable package we did not add to the previous base build
     ```
     install_requires=[
-        Click,
+        'Click',
     ]
     ```
 4. Modify the "entry_points" section, by adding an entry point in the format `{command-to-call-in-Dockerfile}={py_module_with_main}:{function_to_run}`. The python module "main.py" contains the main function "main_function".
