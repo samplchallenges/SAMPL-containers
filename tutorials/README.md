@@ -111,7 +111,7 @@ A working version of the Autodock Vina container we will build in this tutorial 
    prefix: /opt/conda/envs/advenv
    ```
 8. Copy the output from the export command in step 7 to be pasted into a file in step 11.
-9. Exit the container
+9. Exit the container. Upon running this command, you will exit the interactive version of the container and should return to your normal command prompt.
    * command: `exit`
 10. Create and open a file called "environment.yml" and paste the output you previously copied at step 8
 11. Change the first line of the file `name: advenv` to `name: base`
