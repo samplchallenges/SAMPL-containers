@@ -218,10 +218,13 @@ A working version of the Autodock Vina container we will build in this tutorial 
 1. Re-open the Dockerfile from [Section 1.3](https://github.com/samplchallenges/SAMPL-containers/tree/tutorial/tutorials#13-create-a-dockerfile) and append the following lines to the end of the file
    ```
    RUN /opt/app/dependencies/mgl/install.sh
+   # command to install MGL Tools
 
    ENV PATH="/opt/app/dependencies/:/opt/app/dependencies/mgl/:$PATH"
+   # add MGL Tools and Autodock Vina to your path
 
    RUN /opt/app/dependencies/adv/bin/vina --help
+   # Run autodock vina to ensure its properly installed
    ```
 2. Save the changes to the `Dockerfile` and exit
 
