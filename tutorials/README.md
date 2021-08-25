@@ -186,7 +186,7 @@ A working version of the Autodock Vina container we will build in this tutorial 
    └── environment.yml
    ```
 2. Download Autodock Tools linux x86 "autodock_vina_1_1_2_linux_x86.tgz" from http://vina.scripps.edu/download.html
-3. Move "autodock_vina_1_1_2_linux_x86.tgz" into "adv-tutorial-base/dependencies"
+3. Move "autodock_vina_1_1_2_linux_x86.tgz" into "adv-tutorial-base"
    * command: `mv autodock_vina_1_1_2_linux_x86.tgz adv-tutorial-base`
 5. Untar "autodock_vina_1_1_2_linux_x86.tgz"
    * command: `tar -xvf autodock_vina_1_1_2_linux_x86.tgz`
