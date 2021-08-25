@@ -380,10 +380,12 @@ A working version of the Autodock Vina container we will build in this tutorial 
     FROM
 
     WORKDIR /opt/app/
+    # set the work directory
 
     COPY
 
     RUN pip install .
+    # install setup.py
 
     ENV PATH="/root/.local/bin:$PATH"
 
@@ -392,7 +394,7 @@ A working version of the Autodock Vina container we will build in this tutorial 
     ENTRYPOINT []
     ```
 
-2. Next to "FROM" add the name of the base build from Section 1
+2. Next to "FROM" add the name of the base build from Section 1. This is where we specify that our container will inherit from the base we built in [Section 1](https://github.com/samplchallenges/SAMPL-containers/tree/tutorial/tutorials#section-1-build-the-autodock-vina-base-container)
    * `FROM adv-tutorial-base`
 3. Next to "COPY" add the names of all files necessary to run our docking program, including "setup.py", "autodock.py", and "main.py" as well as the container directory to copy them into "/opt/app" or "./"
    * `COPY setup.py autodock.py main.py ./`
