@@ -270,7 +270,7 @@ A working version of the Autodock Vina container we will build in this tutorial 
 
 ## Section 2: Build the container with Autodock Vina Docking methods
 
-> Previously, we built the adv-tutorial-base container which contains all the environment and software installations necessary to run AutoDock Vina from a python script.In Section 2, we will inherit from the [Section 1](https://github.com/samplchallenges/SAMPL-containers/tree/tutorial/tutorials#section-1-build-the-autodock-vina-base-container) base container to write and build our run-able docking code. 
+> Previously, we built the adv-tutorial-base container which contains all the environment and software installations necessary to run AutoDock Vina from a python script. Please see [Tutorial: Build an AutoDock Vina Containerized Method](https://github.com/samplchallenges/SAMPL-containers/tree/tutorial/tutorials#tutorial-build-an-autodock-vina-containerized-method) for a more detailed explanation as to why we use 2 separate builds. In Section 2, we will inherit from the [Section 1](https://github.com/samplchallenges/SAMPL-containers/tree/tutorial/tutorials#section-1-build-the-autodock-vina-base-container) base container to write and build our run-able docking code. 
 
 ### 2.1: Setup
 
