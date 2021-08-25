@@ -396,10 +396,11 @@ A working version of the Autodock Vina container we will build in this tutorial 
 
 2. Next to "FROM" add the name of the base build from Section 1. This is where we specify that our container will inherit from the base we built in [Section 1](https://github.com/samplchallenges/SAMPL-containers/tree/tutorial/tutorials#section-1-build-the-autodock-vina-base-container)
    * `FROM adv-tutorial-base`
-3. Next to "COPY" add the names of all files necessary to run our docking program, including "setup.py", "autodock.py", and "main.py" as well as the container directory to copy them into "/opt/app" or "./"
+3. Next to "COPY" add the names of all files necessary to run our docking program, including "setup.py", "autodock.py", and "main.py" into the container directory  "./" or "/opt/app". This is where you would specify the files you have wirtten for your docking program in place of "autodock.py" and "main.py"
    * `COPY setup.py autodock.py main.py ./`
 4. Next to "ENTRYPOINT", add the "entry_point" you declared in step 4 of the previous subsection ([2.3](https://github.com/samplchallenges/SAMPL-league/blob/containers/examples/README.md#23-create-a-setuppy-file)) inside the brackets, in quotations.
    * `ENTRYPOINT ["run-autodock"]`
+5. Save and close Dockerfile
 
 
 ### 2.5: Build the docking container
