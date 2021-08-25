@@ -88,7 +88,7 @@ A working version of the Autodock Vina container we will build in this tutorial 
    megosato@Admins-MacBook-Pro ~ % docker run -it --rm continuumio/miniconda3
    root@7f02be71557e:/# 
    ```
-3. Create a conda env called "advenv"
+3. Create a conda env called "advenv", if prompted "Proceed ([y]/n)?" please type "y"
    * command: `conda create --name advenv`
 4. Activate advenv: `conda activate advenv`
 5. Install rdkit
