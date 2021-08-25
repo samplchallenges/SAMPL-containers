@@ -302,7 +302,7 @@ A working version of the Autodock Vina container we will build in this tutorial 
         version='0.1',
         py_modules=[
             ,
-    	  ],
+        ],
         install_requires=[
             ,
         ],
