@@ -242,6 +242,30 @@ A working version of the Autodock Vina container we will build in this tutorial 
 
 1. Build the base container
    * command: `docker build -t adv-tutorial-base .`
+2. Ensure your build was successful. A successful build will look something like the code block below.
+   ```
+   (base) megosato@Admins-MacBook-Pro adv-tutorial-base % docker build -t adv-tutorial-base .
+   [+] Building 117.9s (11/11) FINISHED                                                                            
+    => [internal] load build definition from Dockerfile                                                       0.0s
+    => => transferring dockerfile: 37B                                                                        0.0s
+    => [internal] load .dockerignore                                                                          0.0s
+    => => transferring context: 2B                                                                            0.0s
+    => [internal] load metadata for docker.io/continuumio/miniconda3:4.9.2-alpine                             0.5s
+    => [1/6] FROM docker.io/continuumio/miniconda3:4.9.2-alpine@sha256:82bd96b0e95188e152d137f6c9834ea731bfc  0.0s
+    => [internal] load build context                                                                          0.0s
+    => => transferring context: 2.62kB                                                                        0.0s
+    => CACHED [2/6] WORKDIR /opt/app/                                                                         0.0s
+    => CACHED [3/6] COPY . ./                                                                                 0.0s
+    => [4/6] RUN conda env update -f environment.yml &&     conda clean --all --yes                         103.0s
+    => [5/6] RUN /opt/app/dependencies/mgl/install.sh                                                         3.2s 
+    => [6/6] RUN /opt/app/dependencies/adv/bin/vina --help                                                    0.2s 
+    => exporting to image                                                                                    10.8s 
+    => => exporting layers                                                                                   10.8s 
+    => => writing image sha256:594ea10a0d26b3467246416fb1ce93e9c4b4cbb765038038e2020c828fb6c210               0.0s 
+    => => naming to docker.io/library/adv-tutorial-base                                                       0.0s 
+
+   Use 'docker scan' to run Snyk tests against images to find vulnerabilities and learn how to fix them 
+   ```
 
 
 ## Section 2: Build the container with Autodock Vina Docking methods
