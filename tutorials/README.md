@@ -123,22 +123,22 @@ A working version of the Autodock Vina container we will build in this tutorial 
 13. Run openbabel with the help flag to ensure openbabel has installed properly
    * command: `obabel -H`
 14. Export the environment. Upon running this command, an organized list of the environment packages will be printed out to your console (something like the code block below).
-   * command: `conda env export -n advenv`
-   ```
-   (advenv) root@7f02be71557e:/# conda env export -n advenv
-   name: advenv
-   channels:
-     - conda-forge
-     - defaults
-   dependencies:
-     - _libgcc_mutex=0.1=conda_forge
-     ...
-     - zstd=1.5.0=ha95c52a_0
-   prefix: /opt/conda/envs/advenv
-   ```
+      * command: `conda env export -n advenv`
+      ```
+      (advenv) root@7f02be71557e:/# conda env export -n advenv
+      name: advenv
+      channels:
+        - conda-forge
+        - defaults
+      dependencies:
+        - _libgcc_mutex=0.1=conda_forge
+        ...
+        - zstd=1.5.0=ha95c52a_0
+      prefix: /opt/conda/envs/advenv
+      ```
 15. Copy the output from the export command in step 7 to be pasted into a file in step 11.
 16. Exit the container. Upon running this command, you will exit the interactive version of the container and should return to your normal command prompt.
-   * command: `exit`
+      * command: `exit`
 17. Create and open a file called "environment.yml" and paste the output you previously copied at step 8
 18. Change the first line of the file `name: advenv` to `name: base`
 19. Delete the last line of the file: `prefix: /opt/conda/envs/advenv`
