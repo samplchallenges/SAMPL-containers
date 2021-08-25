@@ -187,7 +187,7 @@ A working version of the Autodock Vina container we will build in this tutorial 
    ```
 2. Download Autodock Tools linux x86 "autodock_vina_1_1_2_linux_x86.tgz" from http://vina.scripps.edu/download.html
 3. Move "autodock_vina_1_1_2_linux_x86.tgz" into "adv-tutorial-base"
-   * command: `mv autodock_vina_1_1_2_linux_x86.tgz adv-tutorial-base`
+   * command: `mv {path_to_download}/autodock_vina_1_1_2_linux_x86.tgz .`
 5. Untar "autodock_vina_1_1_2_linux_x86.tgz"
    * command: `tar -xvf autodock_vina_1_1_2_linux_x86.tgz`
 6. Delete the .tgz file:
@@ -198,7 +198,7 @@ A working version of the Autodock Vina container we will build in this tutorial 
    * command: `mv adv dependencies`
 9. Download MGL Tools linux x86 `mgltools_x86_64Linux2_1.5.6.tar.gz` from http://mgltools.scripps.edu/downloads
 10. Move "mgltools_x86_64Linux2_1.5.6.tar.gz" into "adv-tutorial-base"
-      * command: `mv mgltools_x86_64Linux2_1.5.6.tar.gz adv-tutorial-base`
+      * command: `mv {path_to_download}/mgltools_x86_64Linux2_1.5.6.tar.gz .`
 11. Untar "mgltools_x86_64Linux2_1.5.6.tar.gz"
       * command `tar -xvf mgltools_x86_64Linux2_1.5.6.tar.gz`
 12. Delete the .tgz file:
