@@ -107,19 +107,19 @@ A working version of the Autodock Vina container we will build in this tutorial 
    >>> 
    ```
 10. In the Python interpreter, import rdkit, ensure there are no errors.
-   ```
-   >>> import rdkit
-   >>>
-   ```
+      ```
+      >>> import rdkit
+      >>>
+      ```
 11. In the Python interpreter, import mdtraj, ensure there are no errors.
-   ```
-   >>> import mdtraj
-   >>>
-   ```
+      ```
+      >>> import mdtraj
+      >>>
+      ```
 12. Quit the Python interpeter
-   ```
-   >>> quit()
-   ```
+      ```
+      >>> quit()
+      ```
 13. Run openbabel with the help flag to ensure openbabel has installed properly
    * command: `obabel -H`
 14. Export the environment. Upon running this command, an organized list of the environment packages will be printed out to your console (something like the code block below).
