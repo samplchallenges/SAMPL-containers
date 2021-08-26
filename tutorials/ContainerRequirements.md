@@ -24,10 +24,10 @@
 
 
 **Printed Outputs**: Print the following to to `stdout`
-```
-docked_ligand {path_to_docked_ligand_file}
-receptor {path_to_receptor_file}
-```
+  ```
+  docked_ligand {path_to_docked_ligand_file}
+  receptor {path_to_receptor_file}
+  ```
 * Your container should output above in the format `key value` where the keys are `docked_ligand`/`receptor` and the values are file paths. The key and value should be separated by a single space
 * These are the only two outputs that should be printed to stdout. Please print any extraneous error messages to stderr so output parsing is not compromised
 * If you are purposely avoiding outputtting a prediction for a compound, please replace `{path_to_docked_ligand_file}` and `{path_to_receptor_file}` with `no_prediction` (see example below)
