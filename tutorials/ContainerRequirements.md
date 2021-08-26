@@ -1,4 +1,5 @@
 # Docking Container Requirements
+> This document details the input and output requirements for building and running a docking container for SAMPL-challenges. For python template files that fit this information, please see [SAMPL-containers/tutorials/template](https://github.com/samplchallenges/SAMPL-containers/tree/tutorial/tutorials/template).
 
 ## Input Requirements
 * `--receptor`: receptor `.pdb` file to dock the ligand into
