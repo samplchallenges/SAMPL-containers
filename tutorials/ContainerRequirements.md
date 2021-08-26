@@ -24,6 +24,7 @@
 
 
 **Printed Outputs**: Print the following to to `stdout`
+
   ```
   docked_ligand {path_to_docked_ligand_file}
   receptor {path_to_receptor_file}
