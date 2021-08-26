@@ -80,9 +80,9 @@ A working version of the Autodock Vina container we will build in this tutorial 
 
 > In 1.2, we will start the pre-made minconda container, "continuumio/miniconda3", which contains a pre-installed version of miniconda. This will allow us to interactively create the conda environment we will use inside the container. Even if you have a conda environment installed locally, you will need to complete this step. The container is an isolated virtual machine, so it will not have access to your local conda environment. 
 > 
-> Because our container will inherit from the miniconda container, any environment we create while interatively using the miniconda container should install without additional issues. Building a conda environment outside the miniconda container often results in multiple rounds of trial and error and incompatible packages. For more detailed/generalized instructions please see [CondaEnvInstructions.pdf](https://github.com/samplchallenges/SAMPL-league/blob/containers/examples/CondaEnvInstructions.pdf)
+> Because our container will inherit from the miniconda container, any environment we create while interatively using the miniconda container should install intou our container without additional issues. Building a conda environment outside the miniconda container often results in multiple rounds of trial and error and incompatible packages. For more detailed/generalized instructions please see [CondaEnvInstructions.pdf](https://github.com/samplchallenges/SAMPL-league/blob/containers/examples/CondaEnvInstructions.pdf)
 1. Start up Docker Desktop, which will start the Docker daemon. If this is your first time starting Docker Desktop, the application may need to complete some additional installation steps or updates. 
-2. Start the container. Upon running this command your command line prompt should change. This means you are now inside the container interacting with it command line and contents. 
+2. Start the container. Upon running this command your command line prompt should change. This means you are now inside the container interacting with it's command line and contents. 
    * command: `docker run -it --rm continuumio/miniconda3`
    ```
    megosato@Admins-MacBook-Pro ~ % docker run -it --rm continuumio/miniconda3
