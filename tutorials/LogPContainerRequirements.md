@@ -7,6 +7,10 @@
 * `--solventb`: SMILES string representing solvent B which forms part of the partition
 * `--output-dir`: output directory path for any output files, this parameter will not be used for the LogD challenge
 
+## Output Requirements
+
+
+## Example LogD Main Function
 ```
 import click
 
