@@ -25,25 +25,22 @@ def docking_main(receptor, smiles,  hint, hint_molinfo, hint_radius, output_dir)
                        writes file(s)   receptor prepped and used by program in docking as .pdb
         '''
         
-
-
-        # YOUR CODE GOES HERE        
-    
-    
         # set the output file names / paths
         docked_ligand_file_name = ""
         receptor_file_name = ".pdb"
         path_to_docked_ligand_file = os.path.join(output_dir, docked_ligand_file_name)
-        path_to_docked_ligand_file = os.path.join(output_dir, receptor_file_name)
+        path_to_receptor_file = os.path.join(output_dir, receptor_file_name)
         
+	
+	
+	# YOUR CODE GOES HERE 
         
+	
         
         # write out the docked ligand file to path_to_docked_ligand_file
         # write out the receptor file to path_to_receptor_file
-        
-        
        
-        
+
         # print out the key value pairs 
         #    * where the keys are docked_ligand and receptor
         #    * where the values are the file paths of the docked_ligand and receptor
