@@ -435,8 +435,19 @@ A working version of the Autodock Vina container we will build in this tutorial 
 In this section, we will use the wrapper `ever_given` to run the docking container. `ever_given` mimics the infrastructure we will use to run your container on the SAMPL-league website, making it a great way to test that you container will run properly ahead of uploading to the [SAMPL challenges website](https://app.samplchallenges.org/).
 1. Change directories into "tutorials" one directory above:
    * command: `cd ..`
-2. Run the container
+2. Run the container. A successful run should look like the code block below.
    * command: `python ever_given/run.py adv-tutorial --file-receptor data/receptor.pdb --file-hint data/hint.pdb --hint_radius 6 --hint_molinfo "E51" --smiles "CCCCNc1cc(cc(n1)OC)C(=O)N[C@@H](Cc2ccccc2)[C@H](C[C@@H](C)C(=O)NCCCC)O" --output-keys docked_ligand,receptor`
+   ```
+   (base) megosato@Admins-MacBook-Pro tutorials % python ever_given/run.py adv-tutorial --file-receptor data/receptor.pdb --file-hint data/hint.pdb --hint_radius 6 
+   --hint_molinfo "E51" --smiles "CCCCNc1cc(cc(n1)OC)C(=O)N[C@@H](Cc2ccccc2)[C@H](C[C@@H](C)C(=O)NCCCC)O" --output-keys docked_ligand,receptor
+   command? 
+   file kwargs {'receptor': 'data/receptor.pdb', 'hint': 'data/hint.pdb'}
+   kwargs {'hint_radius': '6', 'hint_molinfo': 'E51', 'smiles': 'CCCCNc1cc(cc(n1)OC)C(=O)N[C@@H](Cc2ccccc2)[C@H](C[C@@H](C)C(=O)NCCCC)O'}
+   Putting output into evergiven_output
+   evergiven_output docked_ligand /mnt/outputs/best_dock.pdb
+   evergiven_output receptor /mnt/outputs/rec-dock.pdb
+   Results: {'docked_ligand': 'evergiven_output/best_dock.pdb', 'receptor': 'evergiven_output/rec-dock.pdb'}
+   ```
 3. Examine your container outputs in the directory "tutorials/evergiven_output"
 
 
