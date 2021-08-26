@@ -438,7 +438,7 @@ In this section, we will use the wrapper `ever_given` to run the docking contain
    * command: `cd ..`
 2. Run the container
    * command: `python ever_given/run.py adv-tutorial --file-receptor data/receptor.pdb --file-hint data/hint.pdb --hint_radius 6 --hint_molinfo "E51" --smiles "CCCCNc1cc(cc(n1)OC)C(=O)N[C@@H](Cc2ccccc2)[C@H](C[C@@H](C)C(=O)NCCCC)O" --output-keys docked_ligand,receptor`
-3. Examine your container outputs in the directory "examples/evergiven_output"
+3. Examine your container outputs in the directory "tutorials/evergiven_output"
 
 
 # Building Your Own Docking Container
