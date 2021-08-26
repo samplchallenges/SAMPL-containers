@@ -452,9 +452,9 @@ In this section, we will use the wrapper `ever_given` to run the docking contain
 
 
 # Building Your Own Docking Container
-* For more detailed information about container requirements, please see [ContainerRequirements.md](https://github.com/samplchallenges/SAMPL-containers/blob/tutorial/tutorials/ContainerRequirements.md)
-* For an example template of a container directory, please see [SAMPL-containers/tutorial/template/](https://github.com/samplchallenges/SAMPL-containers/tree/tutorial/tutorials/template)
-* For more information on how to build your own conda environment inside a container, please see [CondaEnvInstructions.pdf](https://github.com/samplchallenges/SAMPL-containers/blob/tutorial/tutorials/CondaEnvInstructions.pdf)
+* For more detailed information about container requirements, please see [ContainerRequirements.md](https://github.com/samplchallenges/SAMPL-containers/blob/tutorial/tutorials/ContainerRequirements.md).
+* For an example template of a container directory, please see [SAMPL-containers/tutorial/template/](https://github.com/samplchallenges/SAMPL-containers/tree/tutorial/tutorials/template).
+* For more information on how to build your own conda environment inside a container, please see [CondaEnvInstructions.pdf](https://github.com/samplchallenges/SAMPL-containers/blob/tutorial/tutorials/CondaEnvInstructions.pdf).
 
 
 # Other Important Information
