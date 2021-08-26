@@ -27,8 +27,14 @@ This terminology is unfortunately not something we can change.
 
 ## Getting started
 
-### Pre-Built Autodock Vina Container
+### Brief Docker Usage Tips
+* A Docker image contains the instructions to execute your code inside a docker container. Docker images will store the information necessary to run your containerized methods
+* To use an image, we must first build it. Ensure you are in the directory with your Dockerfile and container code, then run docker build -t <name>:<tag/version> .
+Examples: docker build -t adv:0.1 . or docker build -t adv:latest .
+* Use the command docker images to list out your built images
+* To delete Docker images, use docker images to list your current images and their IMAGE IDs, then run the command docker image rm <IMAGE IDs>
 
+### Pre-Built Autodock Vina Container
 A working version of the Autodock Vina container we will build in this tutorial can be found at [Docker Hub under osatom/adv-tutorial](https://hub.docker.com/repository/docker/osatom/adv-tutorial). To play with this container, please use the following steps:
 1. Pull the "adv-tutorial" docker container: `docker pull osatom/adv-tutorial:latest`
 2. Change directories into the "examples" directory: `cd examples`
@@ -438,14 +444,6 @@ In this section, we will use the wrapper `ever_given` to run the docking contain
 * For more detailed information about container requirements, please see [ContainerRequirements.md](https://github.com/samplchallenges/SAMPL-containers/blob/tutorial/tutorials/ContainerRequirements.md)
 * For an example template of a container directory, please see [SAMPL-containers/tutorial/template/](https://github.com/samplchallenges/SAMPL-containers/tree/tutorial/tutorials/template)
 * For more information on how to build your own conda environment inside a container, please see [CondaEnvInstructions.pdf](https://github.com/samplchallenges/SAMPL-containers/blob/tutorial/tutorials/CondaEnvInstructions.pdf)
-
-
-# Brief Docker Usage Tips
-* To build an image, ensure you are in the directory with your Dockerfile and container code, then run `docker build -t <name>:<tag/version> .`
-  * Examples: `docker build -t adv:0.1 .` or `docker build -t adv:latest .`
-* Use the command `docker images` to list out your built images
-* To delete Docker images, use `docker images` to list your current images and their IMAGE IDs, then run the command `docker image rm <IMAGE IDs>`
-
 
 
 # Other Important Information
