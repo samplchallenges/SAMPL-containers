@@ -39,6 +39,7 @@ receptor {path_to_receptor_file}
 ## Example Python Main Function Definition
 ```
 import click
+import os.path
 
 @click.command()
 @click.option("--receptor", required=True, type=click.Path(exists=True), help="path of receptor PDB to dock the ligand into")
@@ -61,8 +62,36 @@ def docking_main(receptor, smiles, smiles_argument, hint, hint_molinfo, hint_rad
                        hint_radius:     float   radius around the hint ligand to consider in docking
                        output_dir:      str     output director for receptor and docked_ligand
             OUTPUTS:   prints           docked_ligand {path_to_docked_ligand_file}
-                       prints           receptor no_prediction
+                       prints           receptor {path_to_receptor_file}
                        writes file(s)   docked ligand file as a .pdb .mol2 or .sdf
                        writes file(s)   receptor prepped and used by program in docking as .pdb
         '''
+        
+        # YOUR CODE GOES HERE
+        
+        
+
+    
+    
+    
+        # set the output file names / paths
+        docked_ligand_file_name = ""
+        receptor_file_name = ""
+        path_to_docked_ligand_file = os.path.join(output_dir, docked_ligand_file_name)
+        path_to_docked_ligand_file = os.path.join(output_dir, receptor_file_name)
+        
+        
+        
+        # write out the docked ligand file to path_to_docked_ligand_file
+        # write out the receptor file to path_to_receptor_file
+        
+        
+       
+        
+        # print out the key value pairs 
+        #    * where the keys are docked_ligand and receptor
+        #    * where the values are the file paths of the docked_ligand and receptor
+        
+        print(f"docked_ligand {path_to_docked_ligand_file}")
+        print(f"receptor {path_to_receptor_file}")
 ```
