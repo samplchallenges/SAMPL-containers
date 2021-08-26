@@ -434,8 +434,8 @@ A working version of the Autodock Vina container we will build in this tutorial 
 
 ## Section 3: Test/Run your container
 In this section, we will use the wrapper `ever_given` to run the docking container. `ever_given` mimics the infrastructure we will use to run your container on the SAMPL-league website, making it a great way to test that you container will run properly ahead of uploading to the [SAMPL challenges website](https://app.samplchallenges.org/).
-1. Change directories into "examples":
-   * command: `cd examples`
+1. Change directories into "tutorials" one directory above:
+   * command: `cd ..`
 2. Run the container
    * command: `python ever_given/run.py adv-tutorial --file-receptor data/receptor.pdb --file-hint data/hint.pdb --hint_radius 6 --hint_molinfo "E51" --smiles "CCCCNc1cc(cc(n1)OC)C(=O)N[C@@H](Cc2ccccc2)[C@H](C[C@@H](C)C(=O)NCCCC)O" --output-keys docked_ligand,receptor`
 3. Examine your container outputs in the directory "examples/evergiven_output"
