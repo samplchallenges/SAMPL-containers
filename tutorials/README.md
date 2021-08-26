@@ -362,7 +362,7 @@ A working version of the Autodock Vina container we will build in this tutorial 
         'Click',
     ]
     ```
-4. Modify the "entry_points" section, by adding an entry point in the format `{command-to-call-in-Dockerfile}={py_module_with_main}:{function_to_run}`. The python module "main.py" contains the main function "main_function".
+4. Modify the "entry_points" section, by adding an [entry point](https://setuptools.readthedocs.io/en/latest/userguide/entry_point.html#console-scripts) in the format `{command-to-call-in-Dockerfile}={py_module_with_main}:{function_to_run}`. The python module "main.py" contains the main function "main_function".
     ```
     entry_points='''
         [console_scripts]
