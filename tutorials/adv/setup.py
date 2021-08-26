@@ -1,17 +1,17 @@
 from setuptools import setup
 
 setup(
-    name='AutoDock-tutorial',
+    name='AutoDock-rdkit',
     version='0.1',
     py_modules=[
-		'autodock',
-		'main',
-	],
+        'autodock',
+        'main',
+    ],
     install_requires=[
         'Click',
     ],
     entry_points='''
         [console_scripts]
         run-autodock=main:main_function
-    ''',
+    '''
 )

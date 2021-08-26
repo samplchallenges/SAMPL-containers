@@ -8,25 +8,20 @@ import shutil
 
 # python packages
 import click
-from rdkit.Chem.Descriptors import ExactMolWt
 from rdkit import Chem
 from rdkit.Chem import AllChem
 from autodock import Autodock
 
-
 LIGAND_KEY = "docked_ligand"
 RECEPTOR_KEY = "receptor"
-
 
 PYTHON_PATH = "/opt/app/dependencies/mgl/bin/python"
 UTILITIES_PATH = "/opt/app/dependencies/mgl/MGLToolsPckgs/AutoDockTools/Utilities24"
 VINA_PATH = "/opt/app/dependencies/adv/bin/vina"
 
-
 def print_debug(debug: bool, msg:str):
 	print(f"{msg}\n" if debug else "", end="")
 	sys.stdout.flush()
-
 
 # set command line options
 @click.command()
@@ -40,7 +35,7 @@ def print_debug(debug: bool, msg:str):
 @click.option("--output-dir",help="Output directory for receptor and docked_ligand files")
 
 @click.option('--debug', is_flag=True,help="prints debug print statements when --debug flag is used")
-def run_autodock(receptor, smiles, hint, hint_molinfo, hint_radius, output_dir, debug):
+def main_function(receptor, smiles, hint, hint_molinfo, hint_radius, output_dir, debug):
 	''' docks the given smiles string into the receptor within the area specified by hint and hint-radius
             INPUTS:    receptor:     file    receptor PDB path to dock ligand into
                        smiles:       str     SMILES string of ligand to be docked, use quotes 
@@ -80,10 +75,15 @@ def run_autodock(receptor, smiles, hint, hint_molinfo, hint_radius, output_dir, 
 
 	# prepare receptor for docking
 	adv.prep_receptor(receptorprep_pdbqt_path)
+	#assert(os.path.exists(receptorprep_pdbqt_path))
+
 
 	# convert SMILES str to 3D molecule and prep for docking
 	Autodock.charge_ligand(smiles, ligchg_sdf_path)
+	assert(os.path.exists(ligchg_sdf_path))
+
 	Autodock.sdf_to_pdbqt(ligchg_sdf_path, ligchg_pdbqt_path)
+	assert(os.path.exists(ligchg_pdbqt_path))
 	adv.prep_ligand(ligchg_pdbqt_path, ligprep_pdbqt_path)
 
 	# dock the ligand
@@ -100,4 +100,4 @@ def run_autodock(receptor, smiles, hint, hint_molinfo, hint_radius, output_dir, 
 	print(f"{RECEPTOR_KEY} {receptor_pdb_path}")
 
 if __name__ == "__main__":
-	run_autodock()
+	main_function()
