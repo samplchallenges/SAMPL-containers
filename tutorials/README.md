@@ -76,7 +76,7 @@ A working version of the Autodock Vina container we will build in this tutorial 
    * command: `cd adv-tutorial-base`
 
 
-### 1.2: Starting a pre-made docker container and creating a conda environment
+### 1.2: Run a pre-made docker container and create a conda environment
 
 > In 1.2, we will start the pre-made minconda container, "continuumio/miniconda3", which contains a pre-installed version of miniconda. This will allow us to interactively create the conda environment we will use inside the container. Even if you have a conda environment installed locally, you will need to complete this step. The container is an isolated virtual machine, so it will not have access to your local conda environment. 
 > 
@@ -148,20 +148,20 @@ A working version of the Autodock Vina container we will build in this tutorial 
         - zstd=1.5.0=ha95c52a_0
       prefix: /opt/conda/envs/advenv
       ```
-15. Copy the output from the export command in step 7 to be pasted into a file in step 11.
-16. Exit the container. Upon running this command, you will exit the interactive version of the container and should return to your normal command prompt.
+15. Copy the output from the export command in step 14 to be pasted into a file in the next section.
+17. Exit the container. Upon running this command, you will exit the interactive version of the container and should return to your normal command prompt.
       * command: `exit`
-17. Create and open a file called "environment.yml" and paste the output you previously copied at step 8
-18. Change the first line of the file `name: advenv` to `name: base`
-19. Delete the last line of the file: `prefix: /opt/conda/envs/advenv`
-20. Save the changes to environment.yml and exit
 
 
 ### 1.3: Install conda environment (from [Section 1.2](https://github.com/samplchallenges/SAMPL-containers/tree/tutorial/tutorials#12-starting-a-pre-made-docker-container-and-creating-a-conda-environment)) into your container  
 
-> We will begin creating a Dockerfile which contains the instructions required to build the base container. In 1.3, we will only add the necessary commands for installing the conda environment from Section 1.2 to the Dockerfile. We will then test to ensure the build with the conda environment installed succeeds. For more information on how to write a Dockerfile, please see the [official Docker documentation](https://docs.docker.com/get-started/02_our_app/#build-the-apps-container-image).
-1. Create and open a file called "Dockerfile"
-2. Copy the following lines into Dockerfile. The following commands contain the instructions to install the conda environment when your container is built. 
+> We will begin creating an environment.yml file which contains all the information about our conda environment packages, as well as a Dockerfile which contains the instructions required to build the base container. In 1.3, we will only add the necessary commands for installing the conda environment from Section 1.2 to the Dockerfile. We will then test to ensure the build with the conda environment installed succeeds. For more information on how to write a Dockerfile, please see the [official Docker documentation](https://docs.docker.com/get-started/02_our_app/#build-the-apps-container-image).
+1. Create and open a file called "environment.yml" and paste the output you previously copied at Section 1.2 Step 15
+2. Change the first line of the file `name: advenv` to `name: base`
+3. Delete the last line of the file: `prefix: /opt/conda/envs/advenv`
+4. Save the changes to environment.yml and exit
+5. Create and open a file called "Dockerfile"
+6. Copy the following lines into Dockerfile. The following commands contain the instructions to install the conda environment when your container is built. 
    ```
    FROM continuumio/miniconda3:4.9.2-alpine  
    # tells the container to inherit from a miniconda container
