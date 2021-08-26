@@ -349,7 +349,7 @@ A working version of the Autodock Vina container we will build in this tutorial 
         '''
     )
     ```
-2. Modify the "py_modules" list, by adding the two modules (autodock.py and main.py) with our docking code from the previous subsection ([2.2](https://github.com/samplchallenges/SAMPL-league/tree/containers/examples#22-add-the-docking-code)): "autodock" and "main"
+2. Modify the "py_modules" list, by adding the two modules (autodock.py and main.py) with our docking code from the previous subsection ([2.2](https://github.com/samplchallenges/SAMPL-league/tree/containers/examples#22-add-the-docking-code)): "autodock" and "main". This is where you 
     ```
     py_modules=[
         'autodock',
