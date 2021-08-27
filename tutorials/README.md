@@ -50,10 +50,10 @@ A working version of the Autodock Vina container we will build in this tutorial 
 ## Outline:
 * [Section 1: Build the Autodock Vina base container](https://github.com/samplchallenges/SAMPL-league/blob/containers/examples/README.md#section-1-build-the-autodock-vina-base-container)
    * [1.1 Setup](https://github.com/samplchallenges/SAMPL-league/tree/containers/examples#11-setup)
-   * [1.2 Starting a docker file and creating a conda environment](https://github.com/samplchallenges/SAMPL-league/tree/containers/examples#12-create-a-conda-environment)
+   * [1.2 Run a pre-made docker container and create a conda environment](https://github.com/samplchallenges/SAMPL-containers/tree/megosato-patch-1-1/tutorials#12-run-a-pre-made-docker-container-and-create-a-conda-environment)
    * [1.3 Install conda environment (from Section 1.2) into your container](https://github.com/samplchallenges/SAMPL-containers/blob/tutorial/tutorials/README.md#13-install-conda-environment-from-section-12-into-your-container)
-   * [1.4 Install the command line programs: Autodock Vina and MGL Tools executables](https://github.com/samplchallenges/SAMPL-containers/blob/tutorial/tutorials/README.md#14-install-the-command-line-programs-autodock-vina-and-mgl-tools-executables)
-   * [1.5 Update the Dockerfile to include Autodock Vina and MGL Tools installation steps](https://github.com/samplchallenges/SAMPL-league/tree/containers/examples#15-update-the-dockerfile-to-include-autodock-vina-and-mgl-tools-installations)
+   * [1.4 Download and prepare the command line programs Autodock Vina and MGL Tools executables for use in the docking container](https://github.com/samplchallenges/SAMPL-containers/blob/tutorial/tutorials/README.md#14-install-the-command-line-programs-autodock-vina-and-mgl-tools-executables)
+   * [1.5 Installation Autodock Vina and MGL Tools into your container](https://github.com/samplchallenges/SAMPL-league/tree/containers/examples#15-update-the-dockerfile-to-include-autodock-vina-and-mgl-tools-installations)
    * [1.6 Build the base container](https://github.com/samplchallenges/SAMPL-league/tree/containers/examples#16-build-the-base-container)
 * [Section 2: Build the Autodock Vina Docing methods container](https://github.com/samplchallenges/SAMPL-league/tree/containers/examples#section-2-build-the-container-with-autodock-vina-docking-methods)
    * [2.1 Setup](https://github.com/samplchallenges/SAMPL-league/tree/containers/examples#21-setup)
@@ -219,7 +219,7 @@ A working version of the Autodock Vina container we will build in this tutorial 
    * Determine the "IMAGE ID" of "adv-tutorial-base-test", in my case it was:  "5cf75f044da5"
    * Delete the docker image: `docker image rm [IMAGE ID]`
 
-### 1.4: Install the command line programs: Autodock Vina and MGL Tools executables
+### 1.4: Download and prepare the command line programs Autodock Vina and MGL Tools executables for use in the docking container
 
 > In 1.4, we will incorporate the command line tools [Autodock Vina](http://vina.scripps.edu/) and [MGL Tools](http://mgltools.scripps.edu/downloads) into our base container. Please do not change which installers you download based on your native operating system (OS) because the OS used inside docker container, Linux x86, may be different than your native OS. For example, I am currently on a Mac, but the OS inside the docker container is Linux x86, so any installers that work for my native Mac OS would not work inside my docker container. 
 > 
@@ -260,7 +260,7 @@ A working version of the Autodock Vina container we will build in this tutorial 
 18. Close and save "dependencies/mgl/install.sh"
 
 
-### 1.5: Update the Dockerfile to include Autodock Vina and MGL Tools installation steps
+### 1.5: Installation Autodock Vina and MGL Tools into your container
 > In 1.5, we will add in the installation commands for Autodock Vina and MGL Tools to the Dockerfile. 
 > 
 > When building your own container, this is where you would add in any command line program installation steps.
