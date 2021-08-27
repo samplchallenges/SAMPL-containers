@@ -99,10 +99,10 @@ If you modularize your code and include your own python modules, you will need t
 2. Copy them into your Docking container using the `COPY` command in your Dockerfile
   * `COPY main.py setup.py <your_python_module>.py ./`
 3. Include your docking modules in the `py_modules` section of `setup.py`
-  ```
-  py_modules=[
-     'main',
-     '{your_py_module}',
-  ]
-  ```
+    ```
+    py_modules=[
+       'main',
+       '{your_py_module}',
+    ]
+    ```
 
