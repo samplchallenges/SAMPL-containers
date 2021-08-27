@@ -91,11 +91,11 @@ A working version of the Autodock Vina container we will build in this tutorial 
    * command: `conda create --name advenv python=3.6`
 4. Activate advenv: 
    * command: `conda activate advenv`
-6. Install rdkit, if prompted "Proceed ([y]/n)?" type "y"
+6. Install [rdkit](https://www.rdkit.org/), if prompted "Proceed ([y]/n)?" type "y"
    * command: `conda install -c conda-forge rdkit`
-7. Install mdtraj, if prompted "Proceed ([y]/n)?" type "y"
+7. Install [mdtraj](https://mdtraj.org/1.9.4/installation.html), if prompted "Proceed ([y]/n)?" type "y"
    * command: `conda install -c conda-forge mdtraj`
-8. Install openbabel, if prompted "Proceed ([y]/n)?" type "y"
+8. Install [openbabel](https://openbabel.org/docs/dev/Installation/install.html), if prompted "Proceed ([y]/n)?" type "y"
    * comand: `conda install -c openbabel openbabel`
 9. Start up the Python interpreter and ensure your version is `3.6.*`. The Python version is 3.6.13 in the code block below.
    * command: `python`
