@@ -21,6 +21,7 @@
 
 
 ## Example LogD Main Function
+> Every LogD container you build for SAMPL challenges should include a main file that looks something code block below. The following docking main template meets all input and output requirements mentioned above.
 ```
 import click
 
