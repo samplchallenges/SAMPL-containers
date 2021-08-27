@@ -44,3 +44,17 @@ def logd_main(solute, solventa, solventb, output_dir):
     print(f"LogD {logD}")
     
 ```
+
+
+## Including your own Python Modules
+If you modularize your code and include your own python modules, you will need to do the following:
+1. Write your own python module(s)
+2. Copy them into your LogP container using the `COPY` command in your Dockerfile
+    * `COPY main.py setup.py <your_python_module>.py ./`
+3. Include your docking modules in the `py_modules` section of `setup.py`
+    ```
+    py_modules=[
+       'main',
+       '{your_python_module}',
+    ]
+    ```
