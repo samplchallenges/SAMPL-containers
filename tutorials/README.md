@@ -439,7 +439,7 @@ A working version of the Autodock Vina container we will build in this tutorial 
    ```
 
 ## Section 3: Test/Run your container
-In this section, we will use the wrapper `ever_given` to run the docking container. `ever_given` mimics the infrastructure we will use to run your container on the SAMPL-league website, making it a great way to test that you container will run properly ahead of uploading to the [SAMPL challenges website](https://app.samplchallenges.org/). `ever_given` also abstracts away [volume mounting](https://docs.docker.com/engine/reference/commandline/run/#mount-volume--v---read-only) to link your local directory with a directory inside the container, making it easier to quickly test your container. 
+In this section, we will use the wrapper `ever_given` to run the docking container. `ever_given` mimics the infrastructure we will use to run your container on the SAMPL-league website, making it a great way to test that you container will run properly ahead of uploading to the [SAMPL challenges website](https://app.samplchallenges.org/). `ever_given` also abstracts away [volume mounting](https://docs.docker.com/engine/reference/commandline/run/#mount-volume--v---read-only) to link your local directory with a directory inside the container, making it easier to quickly test your container. For more information on how to use `ever_given` please see [ever_givenUsage.md](https://github.com/samplchallenges/SAMPL-containers/blob/megosato-patch-1-1/tutorials/ever_givenUsage.md).
 1. Change directories into "tutorials" one directory above:
    * command: `cd ..`
 2. Run the container. A successful run should look like the code block below.
