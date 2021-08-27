@@ -8,6 +8,16 @@
 * `--output-dir`: output directory path for any output files, this parameter will not be used for the LogD challenge
 
 ## Output Requirements
+* **Printed Output**: print the following to `stdout`
+    ```
+    LogD {LogD_float}
+    ```
+    * Your container should output above in the format key value where the keys are docked_ligand/receptor and the values are file paths. The key and value should be separated by a single space
+    * These are the only two outputs that should be printed to stdout. Please print any extraneous error messages to stderr so output parsing is not compromised
+    * If you are purposely avoiding outputtting a prediction for a compound, please replace {LogD_float} with no_prediction (see example below)
+        ```
+        LogD no_prediction
+        ```
 
 
 ## Example LogD Main Function
@@ -25,12 +35,12 @@ def logd_main(solute, solventa, solventb, output_dir):
                    solventb    str   SMILES string representing Solvent 
                    output-dir  str   Directory to output files to (should not be used in this challenge)
     '''
-    logP = None
+    logD = None
     
     
     # YOUR LOGP CALCULATION CODE HERE
     
 
-    print(f"LogD {logP}")
+    print(f"LogD {logD}")
     
 ```
