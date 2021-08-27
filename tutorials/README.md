@@ -32,8 +32,8 @@ This terminology is unfortunately not something we can change.
 * The instructions to prepare/build a Docker image are contained in a file called "Dockerfile".
 * To use a Docker image, we must first build it with the [`docker build`](https://docs.docker.com/engine/reference/commandline/build/) command. Ensure you are in the proper directory with your Dockerfile and code, then run `docker build -t <name>:<tag/version> .`
    * Examples: `docker build -t adv:0.1 .` or `docker build -t adv:latest .`
-* Use the command `docker images` to list out your images
-* To delete Docker images, use `docker images` to list your current images and their IMAGE IDs, then run the command `docker image rm <IMAGE IDs>`
+* Use the command [`docker images`](https://docs.docker.com/engine/reference/commandline/images/) to list out your images
+* To delete Docker images, use `docker images` to list your current images and their IMAGE IDs, then run the command [`docker image rm <IMAGE IDs>`](https://docs.docker.com/engine/reference/commandline/image/).
 
 ### Pre-Built Autodock Vina Container
 A working version of the Autodock Vina container we will build in this tutorial can be found at [Docker Hub under osatom/adv-tutorial](https://hub.docker.com/repository/docker/osatom/adv-tutorial). To play with this container, please use the following steps:
