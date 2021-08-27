@@ -1,5 +1,5 @@
 # LogD Container Requirements
-> This document details the input and output requirements for building and running a LogD container for SAMPL-challenges.
+> This document details the input and output requirements for building and running a LogD container for SAMPL-challenges. 
 
 ## Input Requirements
 * `--solute`: SMILES string representing the solute
@@ -12,7 +12,7 @@
     ```
     LogD {LogD_float}
     ```
-    * Your container should output above in the format key value where the keys are docked_ligand/receptor and the values are file paths. The key and value should be separated by a single space
+    * Your container should output above in the format key value where the key is `LogD` and the value is the caluclated LogD value as a float. The key and value should be separated by a single space
     * These are the only two outputs that should be printed to `stdout`. Please print any extraneous error messages to stderr so output parsing is not compromised
     * If you are purposely avoiding outputtting a prediction for a compound, please replace `{LogD_float}` with `no_prediction` (see example below)
         ```
