@@ -136,7 +136,7 @@ A working version of the Autodock Vina container we will build in this tutorial 
       file extensions and are case independent.
       If no input or output file is given stdin or stdout are used instead.
       ```
-14. Export the environment. Upon running this command, an organized list of the environment packages will be printed out to your console (something like the code block below).
+14. Export the environment. Upon running this command, an organized list of the packages we installed into advenv will be printed out to your console. The output will look similar to the code block below.
       * command: `conda env export -n advenv`
       ```
       (advenv) root@7f02be71557e:/# conda env export -n advenv
