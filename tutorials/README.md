@@ -80,6 +80,8 @@ A working version of the Autodock Vina container we will build in this tutorial 
 > In 1.2, we will run the pre-made [miniconda](https://docs.conda.io/en/latest/miniconda.html) container, "continuumio/miniconda3", which contains a pre-installed version of miniconda, in [interactive mode](https://docs.docker.com/engine/reference/run/#foreground). This will allow us to interact with the container's command line and directory contents. We will also be able to dynamically create the conda environment we need on the command line inside the container. Even if you have a conda environment installed locally, you will need to complete this step. The container is an isolated virtual machine, so it will not have access to your local conda environment. 
 > 
 > Because our container will build off of the miniconda container using it as a base, any environment we create while interatively using the miniconda container should install into our container without additional issues. Building a conda environment outside the miniconda container often results in multiple rounds of trial and error and incompatible packages. We've found the following steps to be the fastest procedure. For more detailed/generalized instructions please see [CondaEnvInstructions.pdf](https://github.com/samplchallenges/SAMPL-league/blob/containers/examples/CondaEnvInstructions.pdf)
+>
+> When building your own docker container, this is where you would create your own conda environment with the packages you will need. 
 1. Start up Docker Desktop, which will start the Docker daemon. If this is your first time starting Docker Desktop, the application may need to complete some additional installation steps or updates. 
 2. Start the container. Upon running this command your command line prompt should change. This means you are now inside the container interacting with it's command line and contents. 
    * command: `docker run -it --rm continuumio/miniconda3`
@@ -218,7 +220,7 @@ A working version of the Autodock Vina container we will build in this tutorial 
 
 ### 1.4: Install the command line programs: Autodock Vina and MGL Tools executables
 
-> In 1.4, we will incorporate the command line tools Autodock Vina and MGL Tools into our base container. Please do not change which installers you download based on your native operating system (OS) because the OS used inside docker container, Linux x86, may be different than your native OS. For example, I am currently on a Mac, but the OS inside the docker container is Linux x86, so any installers that work for my native Mac OS would not work inside my docker container. 
+> In 1.4, we will incorporate the command line tools [Autodock Vina](http://vina.scripps.edu/) and [MGL Tools](http://mgltools.scripps.edu/downloads) into our base container. Please do not change which installers you download based on your native operating system (OS) because the OS used inside docker container, Linux x86, may be different than your native OS. For example, I am currently on a Mac, but the OS inside the docker container is Linux x86, so any installers that work for my native Mac OS would not work inside my docker container. 
 > 
 > When building your own container, this is where you would add in any command line program files.
 1. Create a directory called "dependencies". Upon creating the dependencies directory, your directory structure should look like the code block below.
@@ -258,7 +260,9 @@ A working version of the Autodock Vina container we will build in this tutorial 
 
 
 ### 1.5: Update the Dockerfile to include Autodock Vina and MGL Tools installation steps
-> In 1.5, we will add in the installation commands for Autodock Vina and MGL Tools to the Dockerfile. When building your own container, this is where you would add in any command line program installation steps.
+> In 1.5, we will add in the installation commands for Autodock Vina and MGL Tools to the Dockerfile. 
+> 
+> When building your own container, this is where you would add in any command line program installation steps.
 1. Re-open the Dockerfile from [Section 1.3](https://github.com/samplchallenges/SAMPL-containers/tree/tutorial/tutorials#13-create-a-dockerfile) and append the following lines to the end of the file
    ```
    RUN /opt/app/dependencies/mgl/install.sh
@@ -320,7 +324,9 @@ A working version of the Autodock Vina container we will build in this tutorial 
 
 ### 2.2: Add the docking code
 
-> In 2.2, we will incorporate the docking code into our container directory. When building your own container, this is where you would add in your methods. However, for the sake of simplicity, we will be using pre-written docking code. Please see [examples/ContainerRequirements.md](https://github.com/samplchallenges/SAMPL-league/blob/containers/examples/ContainerRequirements.md) for more information on the inputs and kwargs required of each main function.
+> In 2.2, we will incorporate the docking code into our container directory. Please see [examples/ContainerRequirements.md](https://github.com/samplchallenges/SAMPL-league/blob/containers/examples/ContainerRequirements.md) for more information on the inputs and kwargs required of each main function.
+> 
+> When building your own container, this is where you would add in your methods. However, for the sake of simplicity, we will be using pre-written docking code.
 1. Copy the AutoDock class file from "examples/adv/autodock.py" to "adv-tutorial"
    * command: `cp ../adv/autodock.py .`
 2. Copy the AutoDock main file from "examples/adv/main.py" to "adv-tutorial"
