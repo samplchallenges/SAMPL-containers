@@ -102,7 +102,7 @@ If you modularize your code and include your own python modules, you will need t
     ```
     py_modules=[
        'main',
-       '{your_py_module}',
+       '{your_python_module}',
     ]
     ```
 
