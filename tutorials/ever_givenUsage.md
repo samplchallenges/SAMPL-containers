@@ -9,7 +9,7 @@
     * `--output-keys {keys}` are any output keys as a comma separated list from required the print output statements that contain file paths. `ever_given` automatically handles the file path mounting and unmounting, and will update the file path for us
 
 ## Example: Running AutoDock Vina Tutorial Docking Container with `ever_given`
-For reference, below is the `--help` info for the Autodock Vina container used in the tutorial
+Here, we will detail how to run the Autodock Vina container from the [Docking Tutorial](https://github.com/samplchallenges/SAMPL-containers/tree/megosato-patch-1-1/tutorials#introduction-to-sampl-containerized-methods) using `ever_given`. For reference, below is the `--help` info for the Docking Tutorial container, detailing the necessary keyword options. 
 ```
 Options:
   --receptor PATH      path of receptor PDB to dock the ligand into
