@@ -37,7 +37,7 @@ This terminology is unfortunately not something we can change.
 
 ### Pre-Built Autodock Vina Container
 A working version of the Autodock Vina container we will build in this tutorial can be found at [Docker Hub under osatom/adv-tutorial](https://hub.docker.com/repository/docker/osatom/adv-tutorial). To play with this container, please use the following steps:
-1. Pull the "adv-tutorial" docker container: `docker pull osatom/adv-tutorial:latest`
+1. Use the [`docker pull`](https://docs.docker.com/engine/reference/commandline/pull/) command to download the "adv-tutorial" docker container: `docker pull osatom/adv-tutorial:latest`
 2. Change directories into the "examples" directory: `cd examples`
 3. Run the command: `python ever_given/run.py osatom/adv-tutorial:latest --file-receptor data/receptor.pdb --file-hint data/hint.pdb --hint_radius 6 --hint_molinfo "E51" --smiles "CCCCNc1cc(cc(n1)OC)C(=O)N[C@@H](Cc2ccccc2)[C@H](C[C@@H](C)C(=O)NCCCC)O" --output-keys docked_ligand,receptor`
 4. The results will be stored in the directory "examples/evergiven_output"
