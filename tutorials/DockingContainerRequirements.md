@@ -32,7 +32,7 @@
   ```
 * Your container should output above in the format `key value` where the keys are `docked_ligand`/`receptor` and the values are file paths. The key and value should be separated by a single space
 * These are the only two outputs that should be printed to `stdout`. Please print any extraneous error messages to `stderr` so output parsing is not compromised
-* If you are purposely avoiding outputtting a prediction for a compound, please replace `{path_to_docked_ligand_file}` and `{path_to_receptor_file}` with `no_prediction` (see example below)
+* If you are purposely avoiding outputting a prediction for a compound, please replace `{path_to_docked_ligand_file}` and `{path_to_receptor_file}` with `no_prediction` (see example below)
    ```
    docked_ligand no_prediction
    receptor no_prediction
