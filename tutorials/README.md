@@ -29,7 +29,7 @@ This terminology is unfortunately not something we can change.
 
 ### Brief Docker Usage Tips
 * A [Docker image](https://www.docker.com/resources/what-container) contains the instructions to execute your code inside a docker container. Docker images will store the information necessary to run your containerized methods
-* The instructions to prepare/build a Docker image are contained in a file called ["Dockerfile"](https://docs.docker.com/get-started/02_our_app/#build-the-apps-container-image).
+* The instructions to prepare/build a Docker image are contained in a file called "[Dockerfile](https://docs.docker.com/get-started/02_our_app/#build-the-apps-container-image)".
 * To use a Docker image, we must first build it with the [`docker build`](https://docs.docker.com/engine/reference/commandline/build/) command. Ensure you are in the proper directory with your Dockerfile and code, then run `docker build -t <name>:<tag/version> .`
    * Examples: `docker build -t adv:0.1 .` or `docker build -t adv:latest .`
 * Use the command [`docker images`](https://docs.docker.com/engine/reference/commandline/images/) to list out your images
