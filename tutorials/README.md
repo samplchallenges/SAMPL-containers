@@ -324,9 +324,9 @@ A working version of the Autodock Vina container we will build in this tutorial 
 
 ### 2.2: Add the docking code
 
-> In 2.2, we will incorporate the docking code into our container directory. Please see [examples/ContainerRequirements.md](https://github.com/samplchallenges/SAMPL-league/blob/containers/examples/ContainerRequirements.md) for more information on the inputs and kwargs required of each main function.
+> In 2.2, we will incorporate the docking code into our container directory. For the sake of simplicity, we will be using pre-written docking code. Please see [examples/ContainerRequirements.md](https://github.com/samplchallenges/SAMPL-league/blob/containers/examples/ContainerRequirements.md) for more information on the inputs and kwargs required of each main function.
 > 
-> When building your own container, this is where you would add in your methods. However, for the sake of simplicity, we will be using pre-written docking code.
+> When building your own container, this is where you would add in your methods.
 1. Copy the AutoDock class file from "examples/adv/autodock.py" to "adv-tutorial"
    * command: `cp ../adv/autodock.py .`
 2. Copy the AutoDock main file from "examples/adv/main.py" to "adv-tutorial"
