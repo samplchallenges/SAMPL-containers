@@ -1,5 +1,5 @@
 # Docking Container Requirements
-> This document details the input and output requirements for building and running a docking container for SAMPL-challenges. For python template files that fit this information, please see [SAMPL-containers/tutorials/template](https://github.com/samplchallenges/SAMPL-containers/tree/tutorial/tutorials/template).
+> This document details the input and output requirements for building and running a docking container for SAMPL-challenges. For python template files that follow this guide, please see [SAMPL-containers/tutorials/template](https://github.com/samplchallenges/SAMPL-containers/tree/tutorial/tutorials/template). For a full example of a docking main file, please see [SAMPL-containers/adv/main.py](https://github.com/samplchallenges/SAMPL-containers/blob/tutorial/tutorials/adv/main.py).
 
 ## Input Requirements
 * `--receptor`: receptor `.pdb` file to dock the ligand into
@@ -31,7 +31,7 @@
   receptor {path_to_receptor_file}
   ```
 * Your container should output above in the format `key value` where the keys are `docked_ligand`/`receptor` and the values are file paths. The key and value should be separated by a single space
-* These are the only two outputs that should be printed to stdout. Please print any extraneous error messages to stderr so output parsing is not compromised
+* These are the only two outputs that should be printed to `stdout`. Please print any extraneous error messages to `stderr` so output parsing is not compromised
 * If you are purposely avoiding outputtting a prediction for a compound, please replace `{path_to_docked_ligand_file}` and `{path_to_receptor_file}` with `no_prediction` (see example below)
    ```
    docked_ligand no_prediction
