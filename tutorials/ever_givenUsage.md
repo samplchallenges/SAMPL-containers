@@ -28,5 +28,6 @@ To run the Autodock Vina container called `adv-tutorial` with `ever_given`, we w
    * `{file-kwargs}`: `--hint` and `--receptor` expect file paths. When running with `ever_given`, these would become `--file-hint` and `--file-receptor`.
    * `{kwargs}`: `--hint_radius`, `--hint_molinfo`, and `--smiles` expect values other than file paths. These keyword options are all passed to `ever_given` as is with no changes to the keywords.
    * `--output-keys {keys}`: both Docking output keys `docked_ligand` and `receptor` have file paths as their value. When running with `ever_given` we would add `--output_keys docked_ligand,receptor` to our `python run.py` command.
+   * `--output-dir`: we will ignore the output directory option as the `ever_given` wrapper will handle of this input option.
 
 The final command becomes: `python ever_given/run.py adv-tutorial --file-hint {pdb_file} --file-receptor {pdb_file} --hint_radius {float} --hint_molinfo {str} --smiles {str} --output-keys docked_ligand,receptor`
