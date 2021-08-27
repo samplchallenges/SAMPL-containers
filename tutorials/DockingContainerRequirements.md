@@ -97,7 +97,7 @@ def docking_main(receptor, smiles, smiles_argument, hint, hint_molinfo, hint_rad
 If you modularize your code and include your own python modules, you will need to do the following:
 1. Write your own python module(s)
 2. Copy them into your Docking container using the `COPY` command in your Dockerfile
-  * `COPY main.py setup.py <your_python_module>.py ./`
+    * `COPY main.py setup.py <your_python_module>.py ./`
 3. Include your docking modules in the `py_modules` section of `setup.py`
     ```
     py_modules=[
