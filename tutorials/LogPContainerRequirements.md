@@ -13,7 +13,7 @@
     LogD {LogD_float}
     ```
     * Your container should output above in the format key value where the keys are docked_ligand/receptor and the values are file paths. The key and value should be separated by a single space
-    * These are the only two outputs that should be printed to stdout. Please print any extraneous error messages to stderr so output parsing is not compromised
+    * These are the only two outputs that should be printed to `stdout`. Please print any extraneous error messages to stderr so output parsing is not compromised
     * If you are purposely avoiding outputtting a prediction for a compound, please replace `{LogD_float}` with `no_prediction` (see example below)
         ```
         LogD no_prediction
