@@ -84,7 +84,7 @@ A working version of the Autodock Vina container we will build in this tutorial 
 >
 > When building your own docker container, this is where you would create your own conda environment with the packages you will need. 
 1. Start up Docker Desktop, which will start the Docker daemon. If this is your first time starting Docker Desktop, the application may need to complete some additional installation steps or updates. 
-2. Start the container. Upon running this command your command line prompt should change. This means you are now inside the container interacting with it's command line and contents. 
+2. Start the container. Upon running this command your command line prompt should change. This means you are now inside the container interacting with it's command line and contents. The trasnition should look similar to the code block below. 
    * command: `docker run -it --rm continuumio/miniconda3`
    ```
    megosato@Admins-MacBook-Pro ~ % docker run -it --rm continuumio/miniconda3
