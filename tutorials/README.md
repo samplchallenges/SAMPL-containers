@@ -8,7 +8,7 @@ The following tutorial is meant to teach the basics of building a simple contain
 ## Background and Prerequisites
 
 ### Important Note on "Docker" versus "Docking":
-   Please note that "Docker" and "docking" are two separate things.
+Please note that "Docker" and "docking" are two separate things.
 * **"Docker"** is a program that allows you to containerize methods, essentially allowing you to distribute your method or approach in a reusable way where it can be used reproducibly without human intervention
 * **"Docking"** describes predicting the structure of a complex, in this case a protein-ligand complex.
 
@@ -216,7 +216,7 @@ A working version of the Autodock Vina container we will build in this tutorial 
       REPOSITORY                      TAG       IMAGE ID       CREATED          SIZE
       adv-tutorial-base-test          latest    5cf75f044da5   15 minutes ago   1.04GB
       ```
-   * Determine the "IMAGE ID" of "adv-tutorial-base-test", in my case it was:  "5cf75f044da5"
+   * Determine the "IMAGE ID" of "adv-tutorial-base-test", in this case the ID was:  "5cf75f044da5"
    * Delete the docker image: `docker image rm [IMAGE ID]`
 
 ### 1.4: Download and prepare the command line programs Autodock Vina and MGL Tools executables for use in the docking container
