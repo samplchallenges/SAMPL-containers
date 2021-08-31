@@ -210,7 +210,7 @@ A working version of the Autodock Vina container we will build in this tutorial 
 
    Use 'docker scan' to run Snyk tests against images to find vulnerabilities and learn how to fix them
    ```
-10. Delete the docker image previously built in part Step 4. Step 4 was just to ensure nothing has gone wrong in the build so far.
+10. Delete the docker image previously built in part Step 8. Step 8 was just to ensure nothing had gone wrong in the build so far.
     * List the docker images: `docker images`
       ```
       REPOSITORY                      TAG       IMAGE ID       CREATED          SIZE
