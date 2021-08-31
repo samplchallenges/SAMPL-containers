@@ -181,10 +181,10 @@ A working version of the Autodock Vina container we will build in this tutorial 
    ENV PATH="/root/.local/bin:$PATH"      
    # set the path
    ```
-3. Save the changes to Dockerfile and exit
-4. Build your container into a docker image to ensure there are no build issues, so far. 
+7. Save the changes to Dockerfile and exit
+8. Build your container into a docker image to ensure there are no build issues, so far. 
    * command: `docker build -t adv-tutorial-base-test .`
-5. If your build from the previous step (step 4) completed without issue, please move on to the next step, otherwise some troubleshooting may be necessary. A successful build looks something like the code block below.
+9. If your build from the previous step (step 8) completed without issue, please move on to the next step, otherwise some troubleshooting may be necessary. A successful build looks something like the code block below.
    ```
    (base) megosato@Admins-MacBook-Pro adv-tutorial-base % docker build -t adv-tutorial-base-test .
    [+] Building 2.0s (13/13) FINISHED                                                                                                         
@@ -210,14 +210,14 @@ A working version of the Autodock Vina container we will build in this tutorial 
 
    Use 'docker scan' to run Snyk tests against images to find vulnerabilities and learn how to fix them
    ```
-6. Delete the docker image previously built in part Step 4. Step 4 was just to ensure nothing has gone wrong in the build so far.
-   * List the docker images: `docker images`
+10. Delete the docker image previously built in part Step 4. Step 4 was just to ensure nothing has gone wrong in the build so far.
+    * List the docker images: `docker images`
       ```
       REPOSITORY                      TAG       IMAGE ID       CREATED          SIZE
       adv-tutorial-base-test          latest    5cf75f044da5   15 minutes ago   1.04GB
       ```
-   * Determine the "IMAGE ID" of "adv-tutorial-base-test", in this case the ID was:  "5cf75f044da5"
-   * Delete the docker image: `docker image rm [IMAGE ID]`
+    * Determine the "IMAGE ID" of "adv-tutorial-base-test", in this case the ID was:  "5cf75f044da5"
+    * Delete the docker image: `docker image rm [IMAGE ID]`
 
 ### 1.4: Download and prepare the command line programs Autodock Vina and MGL Tools executables for use in the docking container
 
