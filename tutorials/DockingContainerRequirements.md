@@ -39,7 +39,7 @@
 
 ## Program Logs
 * Any output to `stdout` or `stderr` will be logged with timestamps associated with each output. These logs will be made accessible to you.
-* Feel free to print to `stdout` as needed, but as stated in [OutputRequirements](), the last two lines of output must be your two `key value` pairs. 
+* Feel free to print to `stdout` as needed, but as stated in [OutputRequirements](https://github.com/samplchallenges/SAMPL-containers/blob/tutorial/tutorials/DockingContainerRequirements.md#output-requirements), the last two lines of output must be your two `key value` pairs. 
 
 ## Example Python Main Function Definition
 > Every docking container you build for SAMPL challenges should include a main file that looks something code block below. The following docking main template meets all input and output requirements mentioned above. 
