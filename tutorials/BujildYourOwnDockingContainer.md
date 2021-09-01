@@ -1,7 +1,8 @@
-# Docking Container Requirements
-> This document details the input and output requirements for building and running a docking container for SAMPL-challenges. For python template files that follow this guide, please see [SAMPL-containers/tutorials/template](https://github.com/samplchallenges/SAMPL-containers/tree/tutorial/tutorials/template). For a full example of a docking main file, please see [SAMPL-containers/adv/main.py](https://github.com/samplchallenges/SAMPL-containers/blob/tutorial/tutorials/adv/main.py).
+# Building Your Own Docking Containter
+> This document details the requirements for building and running a docking container for SAMPL-challenges. For python template files that follow this guide, please see [SAMPL-containers/tutorials/template](https://github.com/samplchallenges/SAMPL-containers/tree/tutorial/tutorials/template). For a full example of a docking main file, please see [SAMPL-containers/adv/main.py](https://github.com/samplchallenges/SAMPL-containers/blob/tutorial/tutorials/adv/main.py).
 
 ## Input Requirements
+> Every container must be able to handle the following input flags. These are the only flags your container will be expected to handle. We typically use [`click`](https://click.palletsprojects.com/en/8.0.x/) to handle command line argument parsing, but feel free to use or build your own parser. 
 * `--receptor`: receptor `.pdb` file to dock the ligand into
   * Example: `--receptor data/receptor.pdb`
 * `--smiles`: quoted SMILES string representing the ligand to dock (i.e. "CCC")
@@ -40,6 +41,7 @@
 ## Program Logs
 * Any output to `stdout` or `stderr` will be logged with timestamps associated with each output. These logs will be made accessible to you.
 * Feel free to print to `stdout` as needed, but as stated in [OutputRequirements](https://github.com/samplchallenges/SAMPL-containers/blob/tutorial/tutorials/DockingContainerRequirements.md#output-requirements), the last two lines of output must be your two `key value` pairs. 
+
 
 ## Example Python Main Function Definition
 > Every docking container you build for SAMPL challenges should include a main file that looks something code block below. The following docking main template meets all input and output requirements mentioned above. 
