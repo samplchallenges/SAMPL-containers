@@ -14,15 +14,15 @@
 * `--hint_molinfo`: resname of the hint ligand used in the hint `.pdb` file
   * Example: `--hint_molinfo "E51"`
 * `--output-dir`: directory to save final docking files (docked ligand and receptor files)
-  * You will not need to handle determining the output directory input as the [`ever_given`](https://github.com/samplchallenges/SAMPL-containers/blob/megosato-patch-1-1/tutorials/ever_givenUsage.md#ever_given-usage-notes) wrapper handles this for you. Please ensure that the required output files are saved to the output-dir directory
+  * You will not need to handle determining the output directory input as the [`ever_given`](https://github.com/samplchallenges/SAMPL-containers/blob/megosato-patch-1-1/tutorials/ever_givenUsage.md#ever_given-usage-notes) wrapper handles this for you. Please ensure that the required output files are saved to the `output-dir` directory
 
 ## Output Requirements
 
 **File Outputs**: Output the following files into the `output-dir`
 * **docked ligand file**: a `.mol2`, `.pdb` or `.sdf` of the docked ligand
-  * path_to_docked_ligand_file = `{output-dir}/{docked_ligand_file}`
+  * path_to_docked_ligand_file = `{output_dir}/{docked_ligand_file}`
 * **receptor file**: a `.pdb` file of the receptor used or modified by your docking program, this is important for rmsd scoring purposes in case your complex changes frame of reference
-  * path_to_receptor_file = `{output-dir}/{receptor_file}`
+  * path_to_receptor_file = `{output_dir}/{receptor_file}`
 
 
 **Printed Outputs**: Print the following to to `stdout`
