@@ -49,7 +49,7 @@ A working version of the Autodock Vina container we will build in this tutorial 
 > 
 > We have separated the base virtual environment build (conda environment and command line programs) from the implementation build (docking) to illustrate container inheritance and to improve the time required to build the container. In Section 1, we will build an adv-tutorial-base container which includes all the environment and software installations necessary to run AutoDock Vina from a python script. In Section 2, we will inherit the environment from the Section 1 adv-tutorial-base container, to write and build our run-able docking code in the adv-tutorial container. 
 >
-> This inheritance scheme is also a good practice to improve time required to build the docking container. When you are writing, modifying, and testing your own docking container, each time you build your container to test it, most of the time, you will only make changes to the docking new code you have written and thus only need to re-build the new docking code, rather than re-build the new code AND the environment/software installations. By separating the docking container build from the environment container build, we can build just the docking container each time we change the docking code, improving build time. For example, for the AutoDock Vina Tutorial container building just the new code (adv-tutorial) typically takes under 5 seconds, but building the new code plus the environment and software installations (adv-tutorial plus adv-tutorial-base) takes upwards of 115 seconds. This can be analogized to independently compiling parts of a program to improve compile time as a whole later
+> This inheritance scheme is also a good practice to improve time required to build the docking container. When you are writing, modifying, and testing your own docking container, each time you build your container to test it, most of the time, you will only make changes to the docking new code you have written and thus only need to re-build the new docking code, rather than re-build the new code AND the environment/software installations. By separating the docking container build from the environment container build, we can build just the docking container each time we change the docking code, improving build time. For example, for the AutoDock Vina Tutorial container building just the new code (adv-tutorial) typically takes under 5 seconds, but building the new code plus the environment and software installations (adv-tutorial plus adv-tutorial-base) takes upwards of 115 seconds. This can be analogized to independently compiling parts of a program to improve compile time as a whole later.
 
 
 
@@ -96,7 +96,7 @@ A working version of the Autodock Vina container we will build in this tutorial 
    megosato@Admins-MacBook-Pro ~ % docker run -it --rm continuumio/miniconda3
    root@7f02be71557e:/# 
    ```
-3. Create a conda env called "advenv", if prompted "Proceed ([y]/n)?" please type "y"
+3. Create a conda env called "advenv", if prompted "Proceed ([y]/n)?" type "y"
    * command: `conda create --name advenv python=3.6`
 4. Activate advenv: 
    * command: `conda activate advenv`
@@ -163,7 +163,9 @@ A working version of the Autodock Vina container we will build in this tutorial 
 
 ### 1.3: Install conda environment (from [Section 1.2](https://github.com/samplchallenges/SAMPL-containers/tree/tutorial/tutorials#12-starting-a-pre-made-docker-container-and-creating-a-conda-environment)) into your container  
 
-> We will begin creating an environment.yml file which contains all the information about our conda environment packages, as well as a Dockerfile which contains the instructions required to build the base container. In 1.3, we will only add the necessary commands for installing the conda environment from Section 1.2 to the Dockerfile. We will then test to ensure the build with the conda environment installed succeeds. For more information on how to write a Dockerfile, please see the [official Docker documentation](https://docs.docker.com/get-started/02_our_app/#build-the-apps-container-image).
+> We will begin creating an environment.yml file which contains all the information about our conda environment packages, as well as a Dockerfile which contains the instructions required to build the base container. In 1.3, we will only add the necessary commands for installing the conda environment from Section 1.2 to the Dockerfile. We will then test to ensure the container build succeeds at installing the conda environment. 
+> 
+> For more information on how to write a Dockerfile, please see the [official Docker documentation](https://docs.docker.com/get-started/02_our_app/#build-the-apps-container-image).
 1. Create and open a file called "environment.yml" and paste the output you previously copied at Section 1.2 Step 15
 2. Change the first line of the file `name: advenv` to `name: base`
 3. Delete the last line of the file: `prefix: /opt/conda/envs/advenv`
