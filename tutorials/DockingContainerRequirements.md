@@ -25,18 +25,21 @@
 
 
 **Printed Outputs**: Print the following to to `stdout`
-
-  ```
-  docked_ligand {path_to_docked_ligand_file}
-  receptor {path_to_receptor_file}
-  ```
-* Your container should output above in the format `key value` where the keys are `docked_ligand`/`receptor` and the values are file paths. The key and value should be separated by a single space
+* The LAST lines your container should output are below in the format `key value` where the keys are `docked_ligand`/`receptor` and the values are file paths. The key and value should be separated by a single space. You may print other outputs throughout your program, but these two lines must be the LAST lines printed by your program.
+ ```
+ docked_ligand {path_to_docked_ligand_file}
+ receptor {path_to_receptor_file}
+ ```
 * These are the only two outputs that should be printed to `stdout`. Please print any extraneous error messages to `stderr` so output parsing is not compromised
 * If you are purposely avoiding outputting a prediction for a compound, please replace `{path_to_docked_ligand_file}` and `{path_to_receptor_file}` with `no_prediction` (see example below)
    ```
    docked_ligand no_prediction
    receptor no_prediction
    ```
+
+## Program Logs
+* Any output to `stdout` or `stderr` will be logged with timestamps associated with each output. These logs will be made accessible to you.
+* Feel free to print to `stdout` as needed, but as stated in [OutputRequirements](), the last two lines of output must be your two `key value` pairs. 
 
 ## Example Python Main Function Definition
 > Every docking container you build for SAMPL challenges should include a main file that looks something code block below. The following docking main template meets all input and output requirements mentioned above. 
@@ -71,6 +74,7 @@ def docking_main(receptor, smiles, smiles_argument, hint, hint_molinfo, hint_rad
         
     
         # set the output file names / paths
+        print("setting filenames and paths")
         docked_ligand_file_name = ""
         receptor_file_name = ""
         path_to_docked_ligand_file = os.path.join(output_dir, docked_ligand_file_name)
@@ -81,9 +85,11 @@ def docking_main(receptor, smiles, smiles_argument, hint, hint_molinfo, hint_rad
         # YOUR DOCKING CODE GOES HERE
         
         
-        
         # write out the docked ligand file to path_to_docked_ligand_file
+        print("writing docked ligand")
+        
         # write out the receptor file to path_to_receptor_file
+        print("writing prepared receptor file")
         
         
         # print out the key value pairs 
