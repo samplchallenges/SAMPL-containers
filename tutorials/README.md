@@ -28,9 +28,10 @@ This terminology is unfortunately not something we can change.
 ## Getting started
 
 ### Brief Docker Usage Tips
-* A [Docker image](https://www.docker.com/resources/what-container) contains the instructions to execute your code inside a docker container. Docker images store the information necessary to run your containerized methods
+* Docker containers isolate their internal software from the environment (i.e. someone's operating system or virtual environment) and ensure that the container software works consistently across platforms despite differences in development and staging.
+* A [Docker (container) image](https://www.docker.com/resources/what-container) is the blueprints of a Docker container that is not currently running. Docker images contain the instructions to execute your code as a docker container. 
 * The instructions to prepare/build a Docker image are contained in a file called "[Dockerfile](https://docs.docker.com/get-started/02_our_app/#build-the-apps-container-image)".
-* To use a Docker image, we must first build the image with the [`docker build`](https://docs.docker.com/engine/reference/commandline/build/) command. Ensure you are in the proper directory with your Dockerfile and code, then run `docker build -t <name>:<tag/version> .`
+* To use a Docker image, we must first build the image with the [`docker build`](https://docs.docker.com/engine/reference/commandline/build/) command and the instructions outlined in Dockerfile. Ensure you are in the proper directory with your Dockerfile and code, then run `docker build -t <name>:<tag/version> .`
    * Examples: `docker build -t adv:0.1 .` or `docker build -t adv:latest .`
 * Use the command [`docker images`](https://docs.docker.com/engine/reference/commandline/images/) to list out images you have built or downloaded.
 * To delete Docker images, use `docker images` to list your current images and their IMAGE IDs, then run the command [`docker image rm <IMAGE IDs>`](https://docs.docker.com/engine/reference/commandline/image/).
@@ -65,7 +66,7 @@ A working version of the Autodock Vina container we will build in this tutorial 
 
 
 ## Section 1: Build the Autodock Vina base container
-> In this section, we will build a base container that has all necessary packages and programs installed. This way, as we write our docking code it will build quickly since only the docking code will need to be built (for more information please see [Tutorial: Build an AutoDock Vina Containerized Method](https://github.com/samplchallenges/SAMPL-containers/blob/megosato-patch-1-1/tutorials/README.md#tutorial-build-an-autodock-vina-containerized-method)).
+> In this section, we will build a base container that has all necessary packages and programs installed. This base container will serve as a foundation for our docking container to build from. This way, as we write our docking code it will build quickly since only the docking code will need to be built (for more information please see [Tutorial: Build an AutoDock Vina Containerized Method](https://github.com/samplchallenges/SAMPL-containers/blob/megosato-patch-1-1/tutorials/README.md#tutorial-build-an-autodock-vina-containerized-method)).
 
 
 ### 1.1: Setup
