@@ -44,7 +44,7 @@
 
 
 ## Example Python Main Function Definition
-> Every docking container you build for SAMPL challenges should include a main file that looks something code block below. The following docking main template meets all input and output requirements mentioned above. 
+> Every docking container you build for SAMPL challenges should include a main file with a main function that looks similar to the code block below. The following docking main template meets all input and output requirements mentioned above. 
 ```
 import click
 import os.path
