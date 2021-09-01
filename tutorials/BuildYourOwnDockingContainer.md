@@ -114,6 +114,28 @@ If you modularize your code and include your own python modules, you will need t
     ]
     ```
     
+## Including your main function as the ENTRYPOINT
+If you use different naming conventions than used in the template files for your main file and main function, you will need to follow the steps below.
+1. Write your own main py module and main function using your own naming conventions
+2. Include your docking main in the `py_modules` section of `setup.py` 
+    ```
+    py_modules=[
+       '{your_py_main}',
+    ]
+    ```
+3. Alter the `entry_point` in `setup.py` to match you naming convention
+    ```
+    entry_points='''
+    [console_scripts]
+    {your_entrypoint_name}={your_py_main}:{your_main_function}
+    '''
+    ```
+4. Copy the file into your Docking container using the `COPY` command in your Dockrfile
+   * `COPY {your_py_main} ./`
+5. Add your `entry_point` from step 3 in your Dockerfile
+   * `ENTRYPOINT ['{your_entrypoint_name}']
+
+
 ## Tips for integrating command line programs
 * Some common command line programs (such as AutoDock Vina) already have docker containers made by other people or organizations. It may be worth it to search for pre-made docker containers to inherit from or build off of. (see [AutoDock Vina Docker](https://hub.docker.com/r/taccsciapps/autodock-vina))
 * Some common command line programs may also have Python API's (see [AutoDock Vina API](https://pypi.org/project/vina/)) 
