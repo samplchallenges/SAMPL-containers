@@ -32,7 +32,7 @@
    receptor {path_to_receptor_file}
    ```
 * These are the only two outputs that should be printed to `stdout`. Please print any extraneous error messages to `stderr` so output parsing is not compromised
-* If you are purposely avoiding outputting a prediction for a compound, please replace `{path_to_docked_ligand_file}` and `{path_to_receptor_file}` with `no_prediction` (see example below)
+* If you are intentionally avoiding outputting a prediction for a compound, please replace `{path_to_docked_ligand_file}` and `{path_to_receptor_file}` with `no_prediction` (see example below)
    ```
    docked_ligand no_prediction
    receptor no_prediction
