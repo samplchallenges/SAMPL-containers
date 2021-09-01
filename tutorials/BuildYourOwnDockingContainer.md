@@ -133,7 +133,7 @@ If you use different naming conventions than used in the template files for your
 4. Copy the file into your Docking container using the `COPY` command in your Dockrfile
    * `COPY {your_py_main} ./`
 5. Add your `entry_point` from step 3 in your Dockerfile
-   * `ENTRYPOINT ['{your_entrypoint_name}']
+   * `ENTRYPOINT ['{your_entrypoint_name}']`
 
 
 ## Tips for integrating command line programs
