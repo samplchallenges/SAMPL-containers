@@ -51,7 +51,7 @@ import os.path
 
 @click.command()
 @click.option("--receptor", required=True, type=click.Path(exists=True), help="path of receptor PDB to dock the ligand into")
-@click.option("--smiles", required=False, type=click.Path(exists=True), help="file with SMILES strings of ligands to be docked")
+@click.option("--smiles", required=False, help="file with SMILES strings of ligands to be docked")
 @click.option("--smiles_arg", required=False, help="SMILES string of a ligand within quotes to avoid command line parsing errors (i.e. \"CCC\")")
 
 @click.option("--hint",required=True,type=click.Path(exists=True),help="path of hint ligand complex for docking region hint")
