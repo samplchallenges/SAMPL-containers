@@ -9,7 +9,7 @@
   * Example: `--smiles "CCCCNc1cc(cc(n1)OC)C(=O)N[C@@H](Cc2ccccc2)[C@H](C[C@@H](C)C(=O)NCCCC)O"`
 * `--hint`: `.pdb` file with a hint ligand to denote the docking region
   * Example: `--hint data/hint.pdb`
-* `--hint_radius`: numeric Angstrom distance from the hint ligand (see above) to consider as the docking region
+* `--hint_radius`: numeric (float) Angstrom distance from the hint ligand (see above) to consider as the docking region
   * Example: `--hint_radius 6.0`
 * `--hint_molinfo`: resname of the hint ligand used in the hint `.pdb` file
   * Example: `--hint_molinfo "E51"`
