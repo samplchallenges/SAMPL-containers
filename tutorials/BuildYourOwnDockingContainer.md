@@ -75,7 +75,8 @@ def docking_main(receptor, smiles, hint, hint_molinfo, hint_radius, output_dir):
         
     
         # set the output file names / paths
-        print("setting filenames and paths")
+        print("logging: setting filenames and paths")
+        
         docked_ligand_file_name = ""
         receptor_file_name = ""
         path_to_docked_ligand_file = os.path.join(output_dir, docked_ligand_file_name)
