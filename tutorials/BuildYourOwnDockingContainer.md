@@ -87,10 +87,10 @@ def docking_main(receptor, smiles, hint, hint_molinfo, hint_radius, output_dir):
         
         
         # write out the docked ligand file to path_to_docked_ligand_file
-        print("writing docked ligand")
+        print("logging: writing docked ligand")
         
         # write out the receptor file to path_to_receptor_file
-        print("writing prepared receptor file")
+        print("logging: writing prepared receptor file")
         
         
         # print out the key value pairs 
