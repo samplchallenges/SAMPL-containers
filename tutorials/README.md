@@ -79,13 +79,13 @@ A working version of the Autodock Vina container we will build in this tutorial 
 
 ### 1.2: Run a pre-made docker container and create a conda environment
 
-> In 1.2, we will run the pre-made [miniconda](https://docs.conda.io/en/latest/miniconda.html) container, "continuumio/miniconda3", which contains a pre-installed version of miniconda, in [interactive mode](https://docs.docker.com/engine/reference/run/#foreground). This will allow us to interact with the container's command line and directory contents. We will also be able to dynamically create the conda environment we need on the command line inside the container. Even if you have a conda environment installed locally, you will need to complete this step. The container is an isolated virtual machine, so it will not have access to your local conda environment. 
+> In 1.2, we will run the pre-made [miniconda](https://docs.conda.io/en/latest/miniconda.html) container, [`continuumio/miniconda3`](https://hub.docker.com/r/continuumio/miniconda3), which contains a pre-installed version of miniconda, in [interactive mode](https://docs.docker.com/engine/reference/run/#foreground). This will allow us to interact with the container's command line and directory contents. We will also be able to dynamically create the conda environment we need on the command line inside the container. Even if you have a conda environment installed locally, you will need to complete this step. The container is isolated from your local environment, so it will not have access to your local conda environment. 
 > 
 > Because our container will build off of the miniconda container using it as a base, any environment we create while interatively using the miniconda container should install into our container without additional issues. Building a conda environment outside the miniconda container often results in multiple rounds of trial and error and incompatible packages. We've found the following steps to be the fastest procedure. For more detailed/generalized instructions please see [CondaEnvInstructions.pdf](https://github.com/samplchallenges/SAMPL-league/blob/containers/examples/CondaEnvInstructions.pdf)
 >
 > When building your own docker container, this is where you would create your own conda environment with the packages you will need. 
 1. Start up Docker Desktop, which will start the Docker daemon. If this is your first time starting Docker Desktop, the application may need to complete some additional installation steps or updates. 
-2. Start the container. Upon running this command your command line prompt should change. This means you are now inside the container interacting with it's command line and contents. The trasnition should look similar to the code block below. 
+2. Start the container. Upon running this command your command line prompt should change. This means you are now inside the container interacting with it's command line and contents. The change in command prompts should look similar to the code block below. 
    * command: `docker run -it --rm continuumio/miniconda3`
    ```
    megosato@Admins-MacBook-Pro ~ % docker run -it --rm continuumio/miniconda3
