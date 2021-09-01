@@ -27,10 +27,10 @@
 
 **Printed Outputs**: Print the following to to `stdout`
 * The LAST lines your container should output are below in the format `key value` where the keys are `docked_ligand`/`receptor` and the values are file paths. The key and value should be separated by a single space. You may print other outputs throughout your program, but these two lines must be the LAST lines printed by your program.
- ```
- docked_ligand {path_to_docked_ligand_file}
- receptor {path_to_receptor_file}
- ```
+   ```
+   docked_ligand {path_to_docked_ligand_file}
+   receptor {path_to_receptor_file}
+   ```
 * These are the only two outputs that should be printed to `stdout`. Please print any extraneous error messages to `stderr` so output parsing is not compromised
 * If you are purposely avoiding outputting a prediction for a compound, please replace `{path_to_docked_ligand_file}` and `{path_to_receptor_file}` with `no_prediction` (see example below)
    ```
