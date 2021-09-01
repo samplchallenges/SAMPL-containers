@@ -1,5 +1,5 @@
 # Building Your Own Docking Containter
-> This document details the requirements for building and running a docking container for SAMPL-challenges. For python template files that follow this guide, please see [SAMPL-containers/tutorials/template](https://github.com/samplchallenges/SAMPL-containers/tree/tutorial/tutorials/template). For a full example of a docking main file, please see [SAMPL-containers/adv/main.py](https://github.com/samplchallenges/SAMPL-containers/blob/tutorial/tutorials/adv/main.py).
+> This document details the requirements for writing a docking container for SAMPL-challenges. For python template files that follow this guide, please see [SAMPL-containers/tutorials/template](https://github.com/samplchallenges/SAMPL-containers/tree/tutorial/tutorials/template). For a full example of a docking main file, please see [SAMPL-containers/adv/main.py](https://github.com/samplchallenges/SAMPL-containers/blob/tutorial/tutorials/adv/main.py).
 
 ## Input Requirements
 > Every container must be able to handle the following input flags. These are the only flags your container will be expected to handle. We typically use [`click`](https://click.palletsprojects.com/en/8.0.x/) to handle command line argument parsing, but feel free to use or build your own parser. 
