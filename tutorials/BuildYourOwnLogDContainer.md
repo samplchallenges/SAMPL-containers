@@ -76,7 +76,7 @@ If you use different naming conventions than those used in the template files fo
         {your_entrypoint_name}={your_py_main}:{your_main_function}
     '''
     ```
-4. Copy the file into your Docking container using the `COPY` command in your Dockrfile
+4. Copy the file into your Docking container using the `COPY` command in your Dockerfile
    * `COPY {your_py_main} ./`
 5. Add your `entry_point` from step 3 in your Dockerfile
    * `ENTRYPOINT ['{your_entrypoint_name}']`
