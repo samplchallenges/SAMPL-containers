@@ -47,3 +47,36 @@ def logd_main(solute, solventa, solventb):
         # print out the key value LogD pair. Please note that this is the last thing the program outputs
         print(f"logd {LogD}")
 ```
+## Including your own Python Modules
+If you modularize your code and include your own python modules, you will need to follow the steps below. For an example with using extra python modules beyond just main.py, please see [SAMPL-containers/adv](https://github.com/samplchallenges/SAMPL-containers/blob/tutorial/tutorials/adv).
+1. Write your own python module(s)
+2. Copy them into your Docking container using the `COPY` command in your Dockerfile
+    * `COPY main.py setup.py <your_python_module>.py ./`
+3. Include your docking modules in the `py_modules` section of `setup.py`
+    ```
+    py_modules=[
+       'main',
+       '{your_python_module}',
+    ]
+    ```
+    
+## Including your main function as the ENTRYPOINT
+If you use different naming conventions than those used in the template files for your main py file and main function, you will need to follow the steps below.
+1. Write your own main py module and main function using your own naming conventions
+2. Include your docking main in the `py_modules` section of `setup.py` 
+    ```
+    py_modules=[
+       '{your_py_main}',
+    ]
+    ```
+3. Alter the `entry_point` in `setup.py` to match you naming convention
+    ```
+    entry_points='''
+        [console_scripts]
+        {your_entrypoint_name}={your_py_main}:{your_main_function}
+    '''
+    ```
+4. Copy the file into your Docking container using the `COPY` command in your Dockrfile
+   * `COPY {your_py_main} ./`
+5. Add your `entry_point` from step 3 in your Dockerfile
+   * `ENTRYPOINT ['{your_entrypoint_name}']`
