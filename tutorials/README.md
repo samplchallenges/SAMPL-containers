@@ -192,7 +192,7 @@ A working version of the Autodock Vina container we will build in this tutorial 
 7. Save the changes to Dockerfile and exit
 8. Build your container into a docker image to ensure there are no build issues, so far. 
    * command: `docker build -t adv-tutorial-base-test .`
-9. If your build from the previous step (step 8) completed without issue, please move on to the next step, otherwise some troubleshooting may be necessary. A successful build looks something like the code block below.
+9. If your build from the previous step (step 8) completed without issue, please move on to the next step, otherwise some troubleshooting of the previous steps may be necessary. A successful build looks something like the code block below.
    ```
    (base) megosato@Admins-MacBook-Pro adv-tutorial-base % docker build -t adv-tutorial-base-test .
    [+] Building 2.0s (13/13) FINISHED                                                                                                         
