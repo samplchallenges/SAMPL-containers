@@ -127,8 +127,8 @@ If you use different naming conventions than used in the template files for your
 3. Alter the `entry_point` in `setup.py` to match you naming convention
     ```
     entry_points='''
-    [console_scripts]
-    {your_entrypoint_name}={your_py_main}:{your_main_function}
+        [console_scripts]
+        {your_entrypoint_name}={your_py_main}:{your_main_function}
     '''
     ```
 4. Copy the file into your Docking container using the `COPY` command in your Dockrfile
