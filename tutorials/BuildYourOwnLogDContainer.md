@@ -8,11 +8,13 @@ Every container must be able to handle the following input flags. These are the 
 * `--solventb`: smiles string representing solvent B
 
 ## Output Requirements
-**Printed Outputs**: Print the following to to `stdout`
-The LAST line your container should output is below in the format key value where the key is logd and the value is the float LogD value. The key and value should be separated by a single space. You may print other outputs throughout your program, but this line must be the LAST line printed by your program.
-```
-logd {logd_float_value}
-```
+**Printed Outputs**: 
+* Print the following to to `stdout`
+    ```
+    logd {logd_float_value}
+    ```
+* The LAST line your container should output is below in the format key value where the key is logd and the value is the float LogD value. The key and value should be separated by a single space. You may print other outputs throughout your program, but this line must be the LAST line printed by your program.
+
 
 ## Program Logs
 * Any output to `stdout` or `stderr` will be logged with timestamps associated with each output. These logs will be made accessible to you.
