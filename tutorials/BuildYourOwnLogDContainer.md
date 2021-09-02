@@ -44,5 +44,6 @@ def logd_main(solute, solventa, solventb):
         
         print("logging: finished calculating LogD")
         
+        # print out the key value LogD pair. Please note that this is the last thing the program outputs
         print(f"logd {LogD}")
 ```
