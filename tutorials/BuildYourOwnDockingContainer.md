@@ -1,8 +1,8 @@
 # Building Your Own Docking Containter
-> This document details the requirements for writing a docking container for SAMPL-challenges. For python template files that follow this guide, please see [SAMPL-containers/tutorials/template](https://github.com/samplchallenges/SAMPL-containers/tree/tutorial/tutorials/template). For a full example of a docking main file, please see [SAMPL-containers/adv/main.py](https://github.com/samplchallenges/SAMPL-containers/blob/tutorial/tutorials/adv/main.py).
+> This document details the requirements for writing a docking container for SAMPL-challenges. For Python template files that follow this guide, please see [SAMPL-containers/tutorials/template](https://github.com/samplchallenges/SAMPL-containers/tree/tutorial/tutorials/template). For an example of a run-able docking main file, please see [SAMPL-containers/adv/main.py](https://github.com/samplchallenges/SAMPL-containers/blob/tutorial/tutorials/adv/main.py).
 
 ## Input Requirements
-> Every container must be able to handle the following input flags. These are the only flags your container will be expected to handle. We typically use [`click`](https://click.palletsprojects.com/en/8.0.x/) to handle command line argument parsing, but feel free to use or build your own parser. 
+> Every container must be able to handle the following input flags. These are the only flags your container will be expected to handle. We typically use [`click`](https://click.palletsprojects.com/en/8.0.x/) to handle command line argument parsing, but feel free to use your preferred parser. 
 * `--receptor`: receptor `.pdb` file to dock the ligand into
   * Example: `--receptor data/receptor.pdb`
 * `--smiles`: quoted SMILES string representing the ligand to dock (i.e. "CCC")
@@ -31,7 +31,6 @@
    docked_ligand {path_to_docked_ligand_file}
    receptor {path_to_receptor_file}
    ```
-* These are the only two outputs that should be printed to `stdout`. Please print any extraneous error messages to `stderr` so output parsing is not compromised
 * If you are intentionally avoiding outputting a prediction for a compound, please replace `{path_to_docked_ligand_file}` and `{path_to_receptor_file}` with `no_prediction` (see example below)
    ```
    docked_ligand no_prediction
@@ -40,6 +39,7 @@
 
 ## Program Logs
 * Any output to `stdout` or `stderr` will be logged with timestamps associated with each output. These logs will be made accessible to you.
+* Please print general logging info to `stdout` and error messages to `stderr` as is convention.
 * Feel free to print to `stdout` as needed, but as stated in [OutputRequirements](https://github.com/samplchallenges/SAMPL-containers/blob/tutorial/tutorials/DockingContainerRequirements.md#output-requirements), the last two lines of output must be your two `key value` pairs. 
 
 
@@ -116,7 +116,7 @@ If you modularize your code and include your own python modules, you will need t
     ```
     
 ## Including your main function as the ENTRYPOINT
-If you use different naming conventions than used in the template files for your main file and main function, you will need to follow the steps below.
+If you use different naming conventions than those used in the template files for your main py file and main function, you will need to follow the steps below.
 1. Write your own main py module and main function using your own naming conventions
 2. Include your docking main in the `py_modules` section of `setup.py` 
     ```
