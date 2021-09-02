@@ -103,7 +103,7 @@ def docking_main(receptor, smiles, hint, hint_molinfo, hint_radius, output_dir):
 ```
 
 ## Including your own Python Modules
-If you modularize your code and include your own python modules, you will need to follow the steps below. For an example with using extra python modules beyond just main.py, please see [SAMPL-containers/adv](https://github.com/samplchallenges/SAMPL-containers/blob/tutorial/tutorials/adv).
+If you modularize your code and include your own python modules, you will need to follow the steps below. For an example that uses extra python modules beyond just main.py, please see [SAMPL-containers/adv](https://github.com/samplchallenges/SAMPL-containers/blob/tutorial/tutorials/adv).
 1. Write your own python module(s)
 2. Copy them into your Docking container using the `COPY` command in your Dockerfile
     * `COPY main.py setup.py <your_python_module>.py ./`
