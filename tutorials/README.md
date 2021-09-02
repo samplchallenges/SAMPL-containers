@@ -9,14 +9,14 @@ The following tutorial is meant to teach the basics of building a simple contain
 
 ### Important Note on "Docker" versus "Docking":
 Please note that "Docker" and "docking" are two separate things.
-* **"Docker"** is a program that allows you to containerize methods, essentially allowing you to distribute your method or approach in a reusable way where it can be used reproducibly without human intervention
+* **"Docker"** is a program that allows you to containerize methods, essentially allowing you to distribute your method or approach in a reusable way where it can be used reproducibly without human intervention.
 * **"Docking"** describes predicting the structure of a complex, in this case a protein-ligand complex.
 
 This terminology is unfortunately not something we can change.
 
 ### Expected Background Knowledge
-* Basic knowledge of Python
-* Basic knowledge of Linux/UNIX command line
+* Basic knowledge of [Python](https://www.python.org/)
+* Basic knowledge of [Linux/UNIX command line](https://ubuntu.com/tutorials/command-line-for-beginners#1-overview)
 
 
 ### Software Requirements
@@ -45,11 +45,11 @@ A working version of the Autodock Vina container we will build in this tutorial 
 
 
 # Tutorial: Build an AutoDock Vina Containerized Method
-> This tutorial is separated into 3 parts: (1) the virtual environment and dependency container build, (2) the docking container build, and (3) docking using the Docker container. 
+> This tutorial is separated into three parts: (1) the virtual environment and dependency container build, (2) the docking container build, and (3) docking using the Docker container. 
 > 
-> We have separated the base virtual environment build (conda environment and command line programs) from the implementation build (docking) to illustrate container inheritance and to improve the time required to build the container. In Section 1, we will build an adv-tutorial-base container which includes all the environment and software installations necessary to run AutoDock Vina from a python script. In Section 2, we will inherit the environment from the Section 1 adv-tutorial-base container, to write and build our run-able docking code in the adv-tutorial container. 
+> We have separated the base virtual environment build (conda environment and command-line programs) from the implementation build (docking) to illustrate container inheritance and to improve the time required to build the container. In Section 1, we will build an adv-tutorial-base container that includes all the environment and software installations necessary to run AutoDock Vina from a python script. In Section 2, we will inherit the environment from the Section 1 adv-tutorial-base container to write and build our run-able docking code in the adv-tutorial container. 
 >
-> This inheritance scheme is also a good practice to improve time required to build the docking container. When you are writing, modifying, and testing your own docking container, each time you build your container to test it, most of the time, you will only make changes to the docking new code you have written and thus only need to re-build the new docking code, rather than re-build the new code AND the environment/software installations. By separating the docking container build from the environment container build, we can build just the docking container each time we change the docking code, improving build time. For example, for the AutoDock Vina Tutorial container building just the new code (adv-tutorial) typically takes under 5 seconds, but building the new code plus the environment and software installations (adv-tutorial plus adv-tutorial-base) takes upwards of 115 seconds. This can be analogized to independently compiling parts of a program to improve compile time as a whole later.
+> This inheritance scheme is also a good practice to improve the time required to build the docking container. When you are writing your docking container, most of the time, you will only make changes to the new docking code you have written and thus only need to re-build the new docking code, rather than re-build the new code AND the environment/software installations. By separating the docking container build from the environment container build, we can build just the docking container each time we change the docking code, improving build time. For example, building only new code (adv-tutorial) typically takes under 5 seconds, but building new code plus environment and software installations (adv-tutorial plus adv-tutorial-base) takes upwards of 115 seconds. This can be analogized to independently compiling parts of a program to improve compile time as a whole later.
 
 
 
@@ -71,7 +71,7 @@ A working version of the Autodock Vina container we will build in this tutorial 
 
 
 ## Section 1: Build the Autodock Vina base container
-> In this section, we will build a base container that has all necessary packages and programs installed. This base container will serve as a foundation for our docking container to build from. This way, as we write our docking code it will build quickly since only the docking code will need to be built (for more information please see [Tutorial: Build an AutoDock Vina Containerized Method](https://github.com/samplchallenges/SAMPL-containers/blob/megosato-patch-1-1/tutorials/README.md#tutorial-build-an-autodock-vina-containerized-method)).
+> In Section 1, we will build a base container with all necessary packages and programs installed. This base container will serve as a starting point for our docking container. This way, as we write our docking code, it will build quickly since only the docking code will need to be built (for more information, please see [Tutorial: Build an AutoDock Vina Containerized Method](https://github.com/samplchallenges/SAMPL-containers/blob/megosato-patch-1-1/tutorials/README.md#tutorial-build-an-autodock-vina-containerized-method)).
 
 
 ### 1.1: Setup
@@ -109,6 +109,7 @@ A working version of the Autodock Vina container we will build in this tutorial 
 9. Start up the Python interpreter and ensure your version is `3.6.*`. The Python version is 3.6.13 in the code block below.
    * command: `python`
    ```
+   root@7f02be71557e:/# python
    Python 3.6.13 |Anaconda, Inc.| (default, Jun  4 2021, 14:25:59) 
    [GCC 7.5.0] on linux
    Type "help", "copyright", "credits" or "license" for more information.
@@ -163,7 +164,7 @@ A working version of the Autodock Vina container we will build in this tutorial 
 
 ### 1.3: Install conda environment (from [Section 1.2](https://github.com/samplchallenges/SAMPL-containers/tree/tutorial/tutorials#12-starting-a-pre-made-docker-container-and-creating-a-conda-environment)) into your container  
 
-> We will begin creating an environment.yml file which contains all the information about our conda environment packages, as well as a Dockerfile which contains the instructions required to build the base container. In 1.3, we will only add the necessary commands for installing the conda environment from Section 1.2 to the Dockerfile. We will then test to ensure the container build succeeds at installing the conda environment. 
+> We will begin creating an environment.yml file that contains all the information about our conda environment packages, and a Dockerfile which contains the instructions required to build the base container. In 1.3, we will only add the necessary commands for installing the conda environment from Section 1.2 to the Dockerfile. We will then test to ensure the container build succeeds at creating the conda environment. 
 > 
 > For more information on how to write a Dockerfile, please see the [official Docker documentation](https://docs.docker.com/get-started/02_our_app/#build-the-apps-container-image).
 1. Create and open a file called "environment.yml" and paste the output you previously copied at Section 1.2 Step 15
@@ -229,7 +230,7 @@ A working version of the Autodock Vina container we will build in this tutorial 
 
 ### 1.4: Download and prepare the command line programs Autodock Vina and MGL Tools executables for use in the docking container
 
-> In 1.4, we will incorporate the command line tools [Autodock Vina](http://vina.scripps.edu/) and [MGL Tools](http://mgltools.scripps.edu/downloads) into our base container. Please do not change which installers you download based on your native operating system (OS) because the OS used inside docker container, Linux x86, may be different than your native OS. For example, I am currently on a Mac, but the OS inside the docker container is Linux x86, so any installers that work for my native Mac OS would not work inside my docker container. 
+> In 1.4, we will incorporate the command line tools [Autodock Vina](http://vina.scripps.edu/) and [MGL Tools](http://mgltools.scripps.edu/downloads) into our base container. Please do not change which installers you download based on your native operating system (OS) because the OS used inside Docker container, Linux x86, may differ from your native OS. For example, I am currently on a Mac, but the OS inside the Docker container is Linux x86, so any installers that work for my native Mac OS would not work inside my Docker container. 
 > 
 > When building your own container, this is where you would add in any command line program files.
 1. Create a directory called "dependencies". Upon creating the dependencies directory, your directory structure should look like the code block below.
@@ -288,7 +289,7 @@ A working version of the Autodock Vina container we will build in this tutorial 
 
 ### 1.6: Build the base container
 
-> In 1.6, we will build a docker image using "docker build", which we will inherit from in the Section 2.
+> In 1.6, we will build a docker image using "docker build", which we will inherit from in Section 2.
 
 1. Build the base container
    * command: `docker build -t adv-tutorial-base .`
@@ -320,7 +321,7 @@ A working version of the Autodock Vina container we will build in this tutorial 
 
 ## Section 2: Build the container with Autodock Vina Docking methods
 
-> Previously, we built the adv-tutorial-base container which contains all the environment and software installations necessary to run AutoDock Vina from a python script. Please see [Tutorial: Build an AutoDock Vina Containerized Method](https://github.com/samplchallenges/SAMPL-containers/tree/tutorial/tutorials#tutorial-build-an-autodock-vina-containerized-method) for a more detailed explanation as to why we use 2 separate builds. In Section 2, we will inherit from the [Section 1](https://github.com/samplchallenges/SAMPL-containers/tree/tutorial/tutorials#section-1-build-the-autodock-vina-base-container) base container to write and build our run-able docking code. 
+> Previously, we built the adv-tutorial-base container which contains all the environment and software installations necessary to run AutoDock Vina from a python script. Please see [Tutorial: Build an AutoDock Vina Containerized Method](https://github.com/samplchallenges/SAMPL-containers/tree/tutorial/tutorials#tutorial-build-an-autodock-vina-containerized-method) for a more detailed explanation as to why we are using 2 separate builds. In Section 2, we will inherit from the [Section 1](https://github.com/samplchallenges/SAMPL-containers/tree/tutorial/tutorials#section-1-build-the-autodock-vina-base-container) base container to write and build our run-able docking code. 
 
 ### 2.1: Setup
 
