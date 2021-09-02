@@ -1,5 +1,5 @@
 # Building Your Own Docking Containter
-> This document details the requirements for writing a docking container for SAMPL-challenges. For Python template files that follow this guide, please see [SAMPL-containers/tutorials/template](https://github.com/samplchallenges/SAMPL-containers/tree/tutorial/tutorials/template). For an example of a run-able docking main file, please see [SAMPL-containers/adv/main.py](https://github.com/samplchallenges/SAMPL-containers/blob/tutorial/tutorials/adv/main.py).
+> This document details requirements and tips for writing a docking container for SAMPL-challenges. For Python template files that follow this guide, please see [SAMPL-containers/tutorials/template](https://github.com/samplchallenges/SAMPL-containers/tree/tutorial/tutorials/template). For an example of a run-able docking main file, please see [SAMPL-containers/adv/main.py](https://github.com/samplchallenges/SAMPL-containers/blob/tutorial/tutorials/adv/main.py). This guide is written under the assumption the reader has already gone through the [Docking Tutorial](https://github.com/samplchallenges/SAMPL-containers/blob/megosato-patch-1-1/tutorials/README.md). 
 
 ## Input Requirements
 > Every container must be able to handle the following input flags. These are the only flags your container will be expected to handle. We typically use [`click`](https://click.palletsprojects.com/en/8.0.x/) to handle command line argument parsing, but feel free to use your preferred parser. 
@@ -31,7 +31,7 @@
    docked_ligand {path_to_docked_ligand_file}
    receptor {path_to_receptor_file}
    ```
-* If you are intentionally avoiding outputting a prediction for a compound, please replace `{path_to_docked_ligand_file}` and `{path_to_receptor_file}` with `no_prediction` (see example below)
+* If you are intentionally avoiding a prediction for a compound, please replace `{path_to_docked_ligand_file}` and `{path_to_receptor_file}` with `no_prediction` (see example below)
    ```
    docked_ligand no_prediction
    receptor no_prediction
@@ -139,8 +139,8 @@ If you use different naming conventions than those used in the template files fo
 
 ## Tips for integrating command line programs
 * Some common command line programs (such as AutoDock Vina) already have docker containers made by other people or organizations. It may be worth it to search for pre-made docker containers to inherit from or build off of. (see [AutoDock Vina Docker](https://hub.docker.com/r/taccsciapps/autodock-vina))
-* Some common command line programs may also have Python API's (see [AutoDock Vina API](https://pypi.org/project/vina/)) 
-* If the above bullet doesn't work, you can install the command line program into your container by copying the files into the container and running the installation steps in the Dockerfile
+* Some common command line programs may also have Python APIs (see [AutoDock Vina API](https://pypi.org/project/vina/)) 
+* If the above bullets do not work, you can install the command line program into your container by copying the files into the container and running the installation steps in the Dockerfile
     * Please see [`SAMPL-league/examples/adv-base/Dockerfile`](https://github.com/samplchallenges/SAMPL-league/blob/84ec83f00a637f9c79b6d2e3a1a336ea91837b7a/examples/adv-base/Dockerfile#L14)
 * To run a command line program from within a Python module, consider using [`os.system()`](https://docs.python.org/3/library/os.html?highlight=os%20system#os.system) or similar from the Python3 library
     * Please see [`SAMPL-league/examples/adv/autodock.py`](https://github.com/samplchallenges/SAMPL-league/blob/84ec83f00a637f9c79b6d2e3a1a336ea91837b7a/examples/adv/autodock.py#L166)
