@@ -273,7 +273,7 @@ A working version of the Autodock Vina container we will build in this tutorial 
 > In 1.5, we will add in the installation commands for Autodock Vina and MGL Tools to the Dockerfile. 
 > 
 > When building your own container, this is where you would add in any command line program installation steps.
-1. Re-open the Dockerfile from [Section 1.3](https://github.com/samplchallenges/SAMPL-containers/tree/tutorial/tutorials#13-create-a-dockerfile) and append the following lines to the end of the file
+1. Re-open the Dockerfile from [Section 1.3](https://github.com/samplchallenges/SAMPL-containers/blob/tutorial/tutorials/README.md#13-install-conda-environment-from-section-12-into-your-container) and append the following lines to the end of the file
    ```
    RUN /opt/app/dependencies/mgl/install.sh
    # command to install MGL Tools
