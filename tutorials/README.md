@@ -468,8 +468,10 @@ In this section, we will use the wrapper `ever_given` to run the docking contain
 
 
 # Building Your Own Docking Container
-* For more detailed information about container requirements, please see [ContainerRequirements.md](https://github.com/samplchallenges/SAMPL-containers/blob/tutorial/tutorials/ContainerRequirements.md)
-* For an example template of a container directory, please see [SAMPL-containers/tutorial/template/](https://github.com/samplchallenges/SAMPL-containers/tree/tutorial/tutorials/template)
+* For more detailed information about docking container requirements and how to modify this tutorial to suit your needs, please see [BuildYourOwnDockingContainer.md](https://github.com/samplchallenges/SAMPL-containers/blob/tutorial/tutorials/BuildYourOwnDockingContainer.md)
+* For an example template of a docking container directory, please see [SAMPL-containers/tutorial/templates/docking](https://github.com/samplchallenges/SAMPL-containers/tree/tutorial/tutorials/templates/docking)
+* For more detailed information about LogD container requirements and how to modify this tutorial to suit your needs [BuildYourOwnLogDContainer.md](https://github.com/samplchallenges/SAMPL-containers/blob/tutorial/tutorials/BuildYourOwnLogDContainer.md)
+* For an example template of a LogD container directory, please see [SAMPL-containers/tutorial/templates/logd](https://github.com/samplchallenges/SAMPL-containers/tree/tutorial/tutorials/templates/logd)
 * For more information on how to build your own conda environment inside a container, please see [CondaEnvInstructions.pdf](https://github.com/samplchallenges/SAMPL-containers/blob/tutorial/tutorials/CondaEnvInstructions.pdf)
 
 
