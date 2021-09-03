@@ -75,10 +75,12 @@ A working version of the Autodock Vina container we will build in this tutorial 
 
 
 ### 1.1: Setup
-1. Open a terminal and navigate to the "SAMPL-containers/tutorial" directory.
-2. Create a directory called "adv-tutorial-base" 
+1. Clone the SAMPL-containers repository
+    * command: `git clone git@github.com:samplchallenges/SAMPL-containers.git`
+3. Open a terminal and navigate to the "SAMPL-containers/tutorial" directory.
+4. Create a directory called "adv-tutorial-base" 
    * command: `mkdir adv-tutorial-base`
-2. Change directories to "adv-tutorial-base"
+5. Change directories to "adv-tutorial-base"
    * command: `cd adv-tutorial-base`
 
 
