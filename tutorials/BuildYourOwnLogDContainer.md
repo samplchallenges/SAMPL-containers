@@ -1,5 +1,5 @@
 # Building Your Own LogD Container
-> This document details requirements and tips for writing a LogD container for SAMPL-challenges.
+> This document details requirements and tips for writing a LogD container for SAMPL-challenges. This guide is written under the assumption the reader has already gone through the [Docking Tutorial](https://github.com/samplchallenges/SAMPL-containers/blob/megosato-patch-1-1/tutorials/README.md). 
 
 ## Input Requirements
 Every container must be able to handle the following input flags. These are the only flags your container will be expected to handle. We typically use [`click`](https://click.palletsprojects.com/en/8.0.x/) to handle command line argument parsing, but feel free to use your preferred parser.
