@@ -31,6 +31,7 @@
    docked_ligand {path_to_docked_ligand_file}
    receptor {path_to_receptor_file}
    ```
+
 * If you are intentionally avoiding a prediction for a compound, please replace `{path_to_docked_ligand_file}` and `{path_to_receptor_file}` with `no_prediction` (see example below)
    ```
    docked_ligand no_prediction
@@ -41,6 +42,7 @@
 * Any output to `stdout` or `stderr` will be logged with timestamps associated with each output. These logs will be made accessible to you.
 * Please print general logging info to `stdout` and error messages to `stderr` as is convention.
 * Feel free to print to `stdout` as needed, but as stated in [OutputRequirements](https://github.com/samplchallenges/SAMPL-containers/blob/megosato-patch-1-1/tutorials/BuildYourOwnDockingContainer.md#output-requirements), the last two lines of output must be your two `key value` pairs. 
+
 
 
 ## Example Python Main Function Definition
