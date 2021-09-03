@@ -1,8 +1,8 @@
-# Building Your Own Docking Containter
-> This document details the requirements for writing a docking container for SAMPL-challenges. For python template files that follow this guide, please see [SAMPL-containers/tutorials/template](https://github.com/samplchallenges/SAMPL-containers/tree/tutorial/tutorials/template). For a full example of a docking main file, please see [SAMPL-containers/adv/main.py](https://github.com/samplchallenges/SAMPL-containers/blob/tutorial/tutorials/adv/main.py).
+# Building Your Own Docking Container
+> This document details requirements and tips for writing a docking container for SAMPL-challenges. For Python template files that follow this guide, please see [SAMPL-containers/tutorials/template](https://github.com/samplchallenges/SAMPL-containers/tree/tutorial/tutorials/template). For an example of a run-able docking main file, please see [SAMPL-containers/adv/main.py](https://github.com/samplchallenges/SAMPL-containers/blob/tutorial/tutorials/adv/main.py). This guide is written under the assumption the reader has already gone through the [Docking Tutorial](https://github.com/samplchallenges/SAMPL-containers/blob/megosato-patch-1-1/tutorials/README.md). 
 
 ## Input Requirements
-> Every container must be able to handle the following input flags. These are the only flags your container will be expected to handle. We typically use [`click`](https://click.palletsprojects.com/en/8.0.x/) to handle command line argument parsing, but feel free to use or build your own parser. 
+> Every container must be able to handle the following input flags. These are the only flags your container will be expected to handle. We typically use [`click`](https://click.palletsprojects.com/en/8.0.x/) to handle command line argument parsing, but feel free to use your preferred parser. 
 * `--receptor`: receptor `.pdb` file to dock the ligand into
   * Example: `--receptor data/receptor.pdb`
 * `--smiles`: quoted SMILES string representing the ligand to dock (i.e. "CCC")
@@ -31,8 +31,8 @@
    docked_ligand {path_to_docked_ligand_file}
    receptor {path_to_receptor_file}
    ```
-* These are the only two outputs that should be printed to `stdout`. Please print any extraneous error messages to `stderr` so output parsing is not compromised
-* If you are intentionally avoiding outputting a prediction for a compound, please replace `{path_to_docked_ligand_file}` and `{path_to_receptor_file}` with `no_prediction` (see example below)
+
+* If you are intentionally avoiding a prediction for a compound, please replace `{path_to_docked_ligand_file}` and `{path_to_receptor_file}` with `no_prediction` (see example below)
    ```
    docked_ligand no_prediction
    receptor no_prediction
@@ -40,7 +40,9 @@
 
 ## Program Logs
 * Any output to `stdout` or `stderr` will be logged with timestamps associated with each output. These logs will be made accessible to you.
-* Feel free to print to `stdout` as needed, but as stated in [OutputRequirements](https://github.com/samplchallenges/SAMPL-containers/blob/tutorial/tutorials/DockingContainerRequirements.md#output-requirements), the last two lines of output must be your two `key value` pairs. 
+* Please print general logging info to `stdout` and error messages to `stderr` as is convention.
+* Feel free to print to `stdout` as needed, but as stated in [OutputRequirements](https://github.com/samplchallenges/SAMPL-containers/blob/megosato-patch-1-1/tutorials/BuildYourOwnDockingContainer.md#output-requirements), the last two lines of output must be your two `key value` pairs. 
+
 
 
 ## Example Python Main Function Definition
@@ -103,7 +105,7 @@ def docking_main(receptor, smiles, hint, hint_molinfo, hint_radius, output_dir):
 ```
 
 ## Including your own Python Modules
-If you modularize your code and include your own python modules, you will need to follow the steps below. For an example that uses extra python modules beyond just main.py, please see [SAMPL-containers/adv](https://github.com/samplchallenges/SAMPL-containers/blob/tutorial/tutorials/adv).
+If you modularize your code and include your own python modules, you will need to follow the steps below. For an example with using extra python modules beyond just main.py, please see [SAMPL-containers/adv](https://github.com/samplchallenges/SAMPL-containers/blob/tutorial/tutorials/adv).
 1. Write your own python module(s)
 2. Copy them into your Docking container using the `COPY` command in your Dockerfile
     * `COPY main.py setup.py <your_python_module>.py ./`
@@ -116,7 +118,7 @@ If you modularize your code and include your own python modules, you will need t
     ```
     
 ## Including your main function as the ENTRYPOINT
-If you use different naming conventions than used in the template files for your main file and main function, you will need to follow the steps below.
+If you use different naming conventions than those used in the template files for your main py file and main function, you will need to follow the steps below.
 1. Write your own main py module and main function using your own naming conventions
 2. Include your docking main in the `py_modules` section of `setup.py` 
     ```
@@ -131,7 +133,7 @@ If you use different naming conventions than used in the template files for your
         {your_entrypoint_name}={your_py_main}:{your_main_function}
     '''
     ```
-4. Copy the file into your Docking container using the `COPY` command in your Dockrfile
+4. Copy the file into your Docking container using the `COPY` command in your Dockerfile
    * `COPY {your_py_main} ./`
 5. Add your `entry_point` from step 3 in your Dockerfile
    * `ENTRYPOINT ['{your_entrypoint_name}']`
@@ -139,8 +141,8 @@ If you use different naming conventions than used in the template files for your
 
 ## Tips for integrating command line programs
 * Some common command line programs (such as AutoDock Vina) already have docker containers made by other people or organizations. It may be worth it to search for pre-made docker containers to inherit from or build off of. (see [AutoDock Vina Docker](https://hub.docker.com/r/taccsciapps/autodock-vina))
-* Some common command line programs may also have Python API's (see [AutoDock Vina API](https://pypi.org/project/vina/)) 
-* If the above bullet doesn't work, you can install the command line program into your container by copying the files into the container and running the installation steps in the Dockerfile
+* Some common command line programs may also have Python APIs (see [AutoDock Vina API](https://pypi.org/project/vina/)) 
+* If the above bullets do not work, you can install the command line program into your container by copying the files into the container and running the installation steps in the Dockerfile
     * Please see [`SAMPL-league/examples/adv-base/Dockerfile`](https://github.com/samplchallenges/SAMPL-league/blob/84ec83f00a637f9c79b6d2e3a1a336ea91837b7a/examples/adv-base/Dockerfile#L14)
 * To run a command line program from within a Python module, consider using [`os.system()`](https://docs.python.org/3/library/os.html?highlight=os%20system#os.system) or similar from the Python3 library
     * Please see [`SAMPL-league/examples/adv/autodock.py`](https://github.com/samplchallenges/SAMPL-league/blob/84ec83f00a637f9c79b6d2e3a1a336ea91837b7a/examples/adv/autodock.py#L166)
