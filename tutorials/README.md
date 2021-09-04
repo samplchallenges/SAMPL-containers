@@ -56,10 +56,10 @@ A working version of the Autodock Vina container we will build in this tutorial 
 ## Outline:
 * [Section 1: Build the Autodock Vina base container](https://github.com/samplchallenges/SAMPL-league/blob/containers/examples/README.md#section-1-build-the-autodock-vina-base-container)
    * [1.1 Setup](https://github.com/samplchallenges/SAMPL-league/tree/containers/examples#11-setup)
-   * [1.2 Run a pre-made docker container and create a conda environment](https://github.com/samplchallenges/SAMPL-containers/tree/megosato-patch-1-1/tutorials#12-run-a-pre-made-docker-container-and-create-a-conda-environment)
+   * [1.2 Run a pre-made docker container and create a conda environment](https://github.com/samplchallenges/SAMPL-containers/tree/tutorial/tutorials#12-run-a-pre-made-docker-container-and-create-a-conda-environment)
    * [1.3 Install conda environment (from Section 1.2) into your container](https://github.com/samplchallenges/SAMPL-containers/blob/tutorial/tutorials/README.md#13-install-conda-environment-from-section-12-into-your-container)
-   * [1.4 Download and prepare the command line programs Autodock Vina and MGL Tools executables for use in the docking container](https://github.com/samplchallenges/SAMPL-containers/tree/megosato-patch-1-1/tutorials#14-download-and-prepare-the-command-line-programs-autodock-vina-and-mgl-tools-executables-for-use-in-the-docking-container)
-   * [1.5 Install Autodock Vina and MGL Tools into your container](https://github.com/samplchallenges/SAMPL-containers/tree/megosato-patch-1-1/tutorials#15-installation-autodock-vina-and-mgl-tools-into-your-container)
+   * [1.4 Download and prepare the command line programs Autodock Vina and MGL Tools executables for use in the docking container](https://github.com/samplchallenges/SAMPL-containers/tree/tutorial/tutorials#14-download-and-prepare-the-command-line-programs-autodock-vina-and-mgl-tools-executables-for-use-in-the-docking-container)
+   * [1.5 Install Autodock Vina and MGL Tools into your container](https://github.com/samplchallenges/SAMPL-containers/tree/tutorial/tutorials#15-installation-autodock-vina-and-mgl-tools-into-your-container)
    * [1.6 Build the base container](https://github.com/samplchallenges/SAMPL-league/tree/containers/examples#16-build-the-base-container)
 * [Section 2: Build the Autodock Vina Docking methods container](https://github.com/samplchallenges/SAMPL-league/tree/containers/examples#section-2-build-the-container-with-autodock-vina-docking-methods)
    * [2.1 Setup](https://github.com/samplchallenges/SAMPL-league/tree/containers/examples#21-setup)
@@ -71,7 +71,7 @@ A working version of the Autodock Vina container we will build in this tutorial 
 
 
 ## Section 1: Build the Autodock Vina base container
-> In Section 1, we will build a base container with all necessary packages and programs installed. This base container will serve as a starting point for our docking container. This way, as we write our docking code, it will build quickly since only the docking code will need to be built (for more information, please see [Tutorial: Build an AutoDock Vina Containerized Method](https://github.com/samplchallenges/SAMPL-containers/blob/megosato-patch-1-1/tutorials/README.md#tutorial-build-an-autodock-vina-containerized-method)).
+> In Section 1, we will build a base container with all necessary packages and programs installed. This base container will serve as a starting point for our docking container. This way, as we write our docking code, it will build quickly since only the docking code will need to be built (for more information, please see [Tutorial: Build an AutoDock Vina Containerized Method](https://github.com/samplchallenges/SAMPL-containers/blob/tutorial/tutorials/README.md#tutorial-build-an-autodock-vina-containerized-method)).
 
 
 ### 1.1: Setup
@@ -336,7 +336,7 @@ A working version of the Autodock Vina container we will build in this tutorial 
 
 ### 2.2: Add the docking code
 
-> In 2.2, we will incorporate the docking code into our container directory. For the sake of simplicity, we will be using pre-written docking code. Please see [examples/BuildYourOwnDockingContainer.md](https://github.com/samplchallenges/SAMPL-containers/blob/megosato-patch-1-1/tutorials/BuildYourOwnDockingContainer.md) for more information on the inputs and kwargs required of each main function.
+> In 2.2, we will incorporate the docking code into our container directory. For the sake of simplicity, we will be using pre-written docking code. Please see [examples/BuildYourOwnDockingContainer.md](https://github.com/samplchallenges/SAMPL-containers/blob/tutorial/tutorials/BuildYourOwnDockingContainer.md) for more information on the inputs and kwargs required of each main function.
 > 
 > When building your own container, this is where you would add in your methods.
 1. Copy the AutoDock class file from "examples/adv/autodock.py" to "adv-tutorial"
