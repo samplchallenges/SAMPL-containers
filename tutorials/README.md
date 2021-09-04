@@ -54,20 +54,22 @@ A working version of the Autodock Vina container we will build in this tutorial 
 
 
 ## Outline:
-* [Section 1: Build the Autodock Vina base container](https://github.com/samplchallenges/SAMPL-league/blob/containers/examples/README.md#section-1-build-the-autodock-vina-base-container)
+* [Section 1: Build the Autodock Vina base container](https://github.com/samplchallenges/SAMPL-containers/blob/tutorial/tutorials/README.md#section-1-build-the-autodock-vina-base-container)
    * [1.1 Setup](https://github.com/samplchallenges/SAMPL-containers/blob/tutorial/tutorials/README.md#11-setup)
-   * [1.2 Run a pre-made docker container and create a conda environment](https://github.com/samplchallenges/SAMPL-containers/tree/tutorial/tutorials#12-run-a-pre-made-docker-container-and-create-a-conda-environment)
+   * [1.2 Run a pre-made docker container and create a conda environment](https://github.com/samplchallenges/SAMPL-containers/blob/tutorial/tutorials/README.md#12-run-a-pre-made-docker-container-and-create-a-conda-environment)
    * [1.3 Install conda environment (from Section 1.2) into your container](https://github.com/samplchallenges/SAMPL-containers/blob/tutorial/tutorials/README.md#13-install-conda-environment-from-section-12-into-your-container)
-   * [1.4 Download and prepare the command line programs Autodock Vina and MGL Tools executables for use in the docking container](https://github.com/samplchallenges/SAMPL-containers/tree/tutorial/tutorials#14-download-and-prepare-the-command-line-programs-autodock-vina-and-mgl-tools-executables-for-use-in-the-docking-container)
-   * [1.5 Install Autodock Vina and MGL Tools into your container](https://github.com/samplchallenges/SAMPL-containers/tree/tutorial/tutorials#15-installation-autodock-vina-and-mgl-tools-into-your-container)
-   * [1.6 Build the base container](https://github.com/samplchallenges/SAMPL-league/tree/containers/examples#16-build-the-base-container)
-* [Section 2: Build the Autodock Vina Docking methods container](https://github.com/samplchallenges/SAMPL-league/tree/containers/examples#section-2-build-the-container-with-autodock-vina-docking-methods)
-   * [2.1 Setup](https://github.com/samplchallenges/SAMPL-league/tree/containers/examples#21-setup)
-   * [2.2 Add the docking code](https://github.com/samplchallenges/SAMPL-league/tree/containers/examples#22-add-the-docking-code)
-   * [2.3 Create a setup.py file](https://github.com/samplchallenges/SAMPL-league/tree/containers/examples#23-create-a-setuppy-file)
+   * [1.4 Download and prepare the command line programs Autodock Vina and MGL Tools executables for use in the docking container](https://github.com/samplchallenges/SAMPL-containers/blob/tutorial/tutorials/README.md#14-download-and-prepare-the-command-line-programs-autodock-vina-and-mgl-tools-executables-for-use-in-the-docking-container)
+   * [1.5 Install Autodock Vina and MGL Tools into your container](1.5: https://github.com/samplchallenges/SAMPL-containers/blob/tutorial/tutorials/README.md#15-install-autodock-vina-and-mgl-tools-into-your-container)
+   * [1.6 Build the base container](https://github.com/samplchallenges/SAMPL-containers/blob/tutorial/tutorials/README.md#16-build-the-base-container)
+* [Section 2: Build the Autodock Vina Docking methods container](https://github.com/samplchallenges/SAMPL-containers/blob/tutorial/tutorials/README.md#section-2-build-the-container-with-autodock-vina-docking-methods)
+   * [2.1 Setup](https://github.com/samplchallenges/SAMPL-containers/blob/tutorial/tutorials/README.md#21-setup)
+   * [2.2 Add the docking code](https://github.com/samplchallenges/SAMPL-containers/blob/tutorial/tutorials/README.md#22-add-the-docking-code)
+   * [2.3 Create a setup.py file](https://github.com/samplchallenges/SAMPL-containers/blob/tutorial/tutorials/README.md#23-create-a-setuppy-file)
    * [2.4 Write a Dockerfile with instructions to build your container.](https://github.com/samplchallenges/SAMPL-containers/blob/tutorial/tutorials/README.md#24-write-a-dockerfile-with-instructions-to-build-your-container)
-   * [2.5 Build the docking container](https://github.com/samplchallenges/SAMPL-league/tree/containers/examples#24-create-a-dockerfile)
- * [Section 3: Test/Run your container](https://github.com/samplchallenges/SAMPL-league/tree/containers/examples#section-3-testrun-your-container)
+   * [2.5 Build the docking container](https://github.com/samplchallenges/SAMPL-containers/blob/tutorial/tutorials/README.md#25-build-the-docking-container)
+ * [Section 3: Test/Run your container](https://github.com/samplchallenges/SAMPL-containers/blob/tutorial/tutorials/README.md#section-3-testrun-your-container)
+ * [Section 4: Building Your Own Docking Container](https://github.com/samplchallenges/SAMPL-containers/blob/tutorial/tutorials/README.md#section-4-building-your-own-docking-container)
+ * [Section 5: Other Important Information](https://github.com/samplchallenges/SAMPL-containers/blob/tutorial/tutorials/README.md#section-5-other-important-information)
 
 
 ## Section 1: Build the Autodock Vina base container
