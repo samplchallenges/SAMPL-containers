@@ -469,7 +469,7 @@ In this section, we will use the wrapper `ever_given` to run the docking contain
 3. Examine your container outputs in the directory "tutorials/evergiven_output"
 
 
-# Building Your Own Docking Container
+## Section 4: Building Your Own Docking Container
 * For more detailed information about docking container requirements and how to modify this tutorial to suit your needs, please see [BuildYourOwnDockingContainer.md](https://github.com/samplchallenges/SAMPL-containers/blob/tutorial/tutorials/BuildYourOwnDockingContainer.md)
 * For an example template of a docking container directory, please see [SAMPL-containers/tutorial/templates/docking](https://github.com/samplchallenges/SAMPL-containers/tree/tutorial/tutorials/templates/docking)
 * For more detailed information about LogD container requirements and how to modify this tutorial to suit your needs [BuildYourOwnLogDContainer.md](https://github.com/samplchallenges/SAMPL-containers/blob/tutorial/tutorials/BuildYourOwnLogDContainer.md)
@@ -477,7 +477,7 @@ In this section, we will use the wrapper `ever_given` to run the docking contain
 * For more information on how to build your own conda environment inside a container, please see [CondaEnvInstructions.pdf](https://github.com/samplchallenges/SAMPL-containers/blob/tutorial/tutorials/CondaEnvInstructions.pdf)
 
 
-# Other Important Information
+## Section 5: Other Important Information
 * For more detailed tutorials on how to use docker please see the following resources:
   * [Official Docker Documentation](https://docs.docker.com/get-started/)
   * [Brief Docker Tutorial (12m)](https://www.youtube.com/watch?v=YFl2mCHdv24)
