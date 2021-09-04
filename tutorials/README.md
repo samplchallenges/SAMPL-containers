@@ -340,9 +340,9 @@ A working version of the Autodock Vina container we will build in this tutorial 
 > 
 > When building your own container, this is where you would add in your methods.
 1. Copy the AutoDock class file from "examples/adv/autodock.py" to "adv-tutorial"
-   * command: `cp ../docking/examples/adv/autodock.py .`
+   * command: `cp ../../docking/examples/adv/autodock.py .`
 2. Copy the AutoDock main file from "examples/adv/main.py" to "adv-tutorial"
-   * command: `cp ../docking/examples/adv/main.py .`
+   * command: `cp ../../docking/examples/adv/main.py .`
 
 ### 2.3: Create a setup.py file
 
