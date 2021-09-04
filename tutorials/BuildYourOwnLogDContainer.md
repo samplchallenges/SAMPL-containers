@@ -6,6 +6,7 @@ Every container must be able to handle the following input flags. These are the 
 * `--solute`: smiles string representing the solute
 * `--solventa`: smiles string representing solvent A 
 * `--solventb`: smiles string representing solvent B
+* `--output-dir`: output directory path for any output files, this parameter will not be used for the LogD challenge, but is required
 
 ## Output Requirements
 **Printed Outputs**: 
@@ -29,12 +30,13 @@ import click
 @click.option("--solute", help="smiles string representing the solute")
 @click.option("--solventa", help="smiles string representing solvent A")
 @click.option("--solventb", help="smiles string representing solvent B")
-
-def logd_main(solute, solventa, solventb):
+@click.option("--output-dir", help="directory to output final versions of files to, will not be used for LogD")
+def logd_main(solute, solventa, solventb, output_dir):
         ''' calculates LogD the given smiles strings for solute, solvent a and solvent b
             INPUTS:    solute           str    smiles string representing the solute
                        solventa         str    smiles string representing solvent A 
                        solventb         str    smiles string representing solvent B
+                       output-dir       str    directory to output final versions of files to, will not be used for LogD
             OUTPUTS:   prints           logd {logd_float_value}
         '''
         LogD = None
