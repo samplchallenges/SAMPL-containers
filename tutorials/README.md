@@ -270,7 +270,7 @@ A working version of the Autodock Vina container we will build in this tutorial 
 15. Open "dependencies/mgl/install.sh"
 16. Change line 6 from `TarDir='pwd'` to `TarDir="/opt/app/dependencies/mgl/"`
 17. Change line 7 from `export MGL_ROOT=""` to `export MGL_ROOT="/opt/app/dependencies/mgl/"`
-18. Close and save "dependencies/mgl/install.sh"
+18. Save and close "dependencies/mgl/install.sh"
 
 
 ### 1.5: Install Autodock Vina and MGL Tools into your container
