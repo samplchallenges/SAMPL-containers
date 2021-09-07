@@ -4,7 +4,7 @@ import click
 @click.option("--solute", help="smiles string representing the solute")
 @click.option("--solventa", help="smiles string representing solvent A")
 @click.option("--solventb", help="smiles string representing solvent B")
-@click.option("--output-dir",help="disregard for this container")
+@click.option("--output-dir", help="disregard for this container")
 
 def logd_main(solute, solventa, solventb, output_dir):
         ''' calculates LogD the given smiles strings for solute, solvent a and solvent b
