@@ -369,7 +369,7 @@ A working version of the Autodock Vina container we will build in this tutorial 
         '''
     )
     ```
-2. Modify the "py_modules" list, by adding the two modules (autodock.py and main.py) with our docking code from the previous subsection ([2.2](https://github.com/samplchallenges/SAMPL-containers/blob/main/tutorials/README.md#22-add-the-docking-code)): "autodock" and "main". This is where you 
+2. Modify the "py_modules" list, by adding the two modules ([autodock.py](https://github.com/samplchallenges/SAMPL-containers/blob/main/docking/examples/adv-tutorial/autodock.py) and [main.py](https://github.com/samplchallenges/SAMPL-containers/blob/main/docking/examples/adv-tutorial/main.py)) with our docking code from the previous subsection ([2.2](https://github.com/samplchallenges/SAMPL-containers/blob/main/tutorials/README.md#22-add-the-docking-code)): "autodock" and "main". This is where you 
     ```
     py_modules=[
         'autodock',
@@ -425,7 +425,7 @@ A working version of the Autodock Vina container we will build in this tutorial 
 
 ### 2.5: Build the docking container
 
-> In 2.5, we will build a docker image that will execute our docking program when run. For more information about the `docker build`, please see the [official Docker documentation](https://docs.docker.com/engine/reference/commandline/build/).
+> In 2.5, we will build a docker image that will execute our docking program when run. For more information about the `docker build` command, please see the [official Docker documentation](https://docs.docker.com/engine/reference/commandline/build/).
 1. Build the container. A successful build should look similar to the code block below.
    * command: `docker build -t adv-tutorial .`
    ```
