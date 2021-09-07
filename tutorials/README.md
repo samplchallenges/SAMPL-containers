@@ -175,7 +175,7 @@ A working version of the Autodock Vina container we will build in this tutorial 
 1. Create and open a file called "environment.yml" and paste the output you previously copied at Section 1.2, Step 14
 2. Change the first line of the file `name: advenv` to `name: base`
 3. Delete the last line of the file: `prefix: /opt/conda/envs/advenv`
-4. Save the changes to environment.yml and exit
+4. Save the changes to environment.yml and close the file
 5. Create and open a file called "Dockerfile"
 6. Copy the following lines into Dockerfile. The following commands contain the instructions to install the conda environment when your container is built. 
    ```
@@ -195,7 +195,7 @@ A working version of the Autodock Vina container we will build in this tutorial 
    ENV PATH="/root/.local/bin:$PATH"      
    # set the path
    ```
-7. Save the changes to Dockerfile and exit
+7. Save the changes to Dockerfile and close the file
 8. Build your container into a Docker image to ensure there are no build issues, so far. 
    * command: `docker build -t adv-tutorial-base-test .`
 9. If your build from the previous step (step 8) completed without issue, please move on to the next step, otherwise some troubleshooting of the previous steps may be necessary. A successful build looks something like the code block below.
@@ -289,7 +289,7 @@ A working version of the Autodock Vina container we will build in this tutorial 
    RUN /opt/app/dependencies/adv/bin/vina --help
    # Run autodock vina to ensure its properly installed
    ```
-2. Save the changes to the `Dockerfile` and exit
+2. Save the changes to the `Dockerfile` and close the file
 
 
 ### 1.6: Build the base container
