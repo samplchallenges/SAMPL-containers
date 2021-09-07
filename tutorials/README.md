@@ -45,7 +45,7 @@ A working version of the Autodock Vina container we will build in this tutorial 
 
 
 # Tutorial: Build an AutoDock Vina Containerized Method
-> This tutorial is separated into three parts: (1) the virtual environment and dependency container build, (2) the docking container build, and (3) docking using the Docker container. 
+> This tutorial is separated into five parts: (1) the virtual environment and dependency container build, (2) the docking container build, (3) docking using the Docker container, (4) building your own docking container, and (5) extra important information. 
 > 
 > We have separated the base virtual environment build (conda environment and command-line programs) from the implementation build (docking) to illustrate container inheritance and to improve the time required to build the container. In Section 1, we will build an adv-tutorial-base container that includes all the environment and software installations necessary to run AutoDock Vina from a python script. In Section 2, we will inherit the environment from the Section 1 adv-tutorial-base container to write and build our run-able docking code in the adv-tutorial container. 
 >
