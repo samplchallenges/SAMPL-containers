@@ -54,26 +54,26 @@ A working version of the Autodock Vina container we will build in this tutorial 
 
 
 ## Outline:
-* [Section 1: Build the Autodock Vina base container](https://github.com/samplchallenges/SAMPL-containers/blob/tutorial/tutorials/README.md#section-1-build-the-autodock-vina-base-container)
-   * [1.1 Setup](https://github.com/samplchallenges/SAMPL-containers/blob/tutorial/tutorials/README.md#11-setup)
-   * [1.2 Run a pre-made docker container and create a conda environment](https://github.com/samplchallenges/SAMPL-containers/blob/tutorial/tutorials/README.md#12-run-a-pre-made-docker-container-and-create-a-conda-environment)
-   * [1.3 Install conda environment (from Section 1.2) into your container](https://github.com/samplchallenges/SAMPL-containers/blob/tutorial/tutorials/README.md#13-install-conda-environment-from-section-12-into-your-container)
-   * [1.4 Download and prepare the command line programs Autodock Vina and MGL Tools executables for use in the docking container](https://github.com/samplchallenges/SAMPL-containers/blob/tutorial/tutorials/README.md#14-download-and-prepare-the-command-line-programs-autodock-vina-and-mgl-tools-executables-for-use-in-the-docking-container)
-   * [1.5 Install Autodock Vina and MGL Tools into your container](https://github.com/samplchallenges/SAMPL-containers/blob/tutorial/tutorials/README.md#15-install-autodock-vina-and-mgl-tools-into-your-container)
-   * [1.6 Build the base container](https://github.com/samplchallenges/SAMPL-containers/blob/tutorial/tutorials/README.md#16-build-the-base-container)
-* [Section 2: Build the Autodock Vina Docking methods container](https://github.com/samplchallenges/SAMPL-containers/blob/tutorial/tutorials/README.md#section-2-build-the-container-with-autodock-vina-docking-methods)
-   * [2.1 Setup](https://github.com/samplchallenges/SAMPL-containers/blob/tutorial/tutorials/README.md#21-setup)
-   * [2.2 Add the docking code](https://github.com/samplchallenges/SAMPL-containers/blob/tutorial/tutorials/README.md#22-add-the-docking-code)
-   * [2.3 Create a setup.py file](https://github.com/samplchallenges/SAMPL-containers/blob/tutorial/tutorials/README.md#23-create-a-setuppy-file)
-   * [2.4 Write a Dockerfile with instructions to build your container.](https://github.com/samplchallenges/SAMPL-containers/blob/tutorial/tutorials/README.md#24-write-a-dockerfile-with-instructions-to-build-your-container)
-   * [2.5 Build the docking container](https://github.com/samplchallenges/SAMPL-containers/blob/tutorial/tutorials/README.md#25-build-the-docking-container)
- * [Section 3: Test/Run your container](https://github.com/samplchallenges/SAMPL-containers/blob/tutorial/tutorials/README.md#section-3-testrun-your-container)
- * [Section 4: Building Your Own Docking Container](https://github.com/samplchallenges/SAMPL-containers/blob/tutorial/tutorials/README.md#section-4-building-your-own-docking-container)
- * [Section 5: Other Important Information](https://github.com/samplchallenges/SAMPL-containers/blob/tutorial/tutorials/README.md#section-5-other-important-information)
+* [Section 1: Build the Autodock Vina base container](https://github.com/samplchallenges/SAMPL-containers/blob/main/tutorials/README.md#section-1-build-the-autodock-vina-base-container)
+   * [1.1 Setup](https://github.com/samplchallenges/SAMPL-containers/blob/main/tutorials/README.md#11-setup)
+   * [1.2 Run a pre-made docker container and create a conda environment](https://github.com/samplchallenges/SAMPL-containers/blob/main/tutorials/README.md#12-run-a-pre-made-docker-container-and-create-a-conda-environment)
+   * [1.3 Install conda environment (from Section 1.2) into your container](https://github.com/samplchallenges/SAMPL-containers/blob/main/tutorials/README.md#13-install-conda-environment-from-section-12-into-your-container)
+   * [1.4 Download and prepare the command line programs Autodock Vina and MGL Tools executables for use in the docking container](https://github.com/samplchallenges/SAMPL-containers/blob/main/tutorials/README.md#14-download-and-prepare-the-command-line-programs-autodock-vina-and-mgl-tools-executables-for-use-in-the-docking-container)
+   * [1.5 Install Autodock Vina and MGL Tools into your container](https://github.com/samplchallenges/SAMPL-containers/blob/main/tutorials/README.md#15-install-autodock-vina-and-mgl-tools-into-your-container)
+   * [1.6 Build the base container](https://github.com/samplchallenges/SAMPL-containers/blob/main/tutorials/README.md#16-build-the-base-container)
+* [Section 2: Build the Autodock Vina Docking methods container](https://github.com/samplchallenges/SAMPL-containers/blob/main/tutorials/README.md#section-2-build-the-container-with-autodock-vina-docking-methods)
+   * [2.1 Setup](https://github.com/samplchallenges/SAMPL-containers/blob/main/tutorials/README.md#21-setup)
+   * [2.2 Add the docking code](https://github.com/samplchallenges/SAMPL-containers/blob/main/tutorials/README.md#22-add-the-docking-code)
+   * [2.3 Create a setup.py file](https://github.com/samplchallenges/SAMPL-containers/blob/main/tutorials/README.md#23-create-a-setuppy-file)
+   * [2.4 Write a Dockerfile with instructions to build your container.](https://github.com/samplchallenges/SAMPL-containers/blob/main/tutorials/README.md#24-write-a-dockerfile-with-instructions-to-build-your-container)
+   * [2.5 Build the docking container](https://github.com/samplchallenges/SAMPL-containers/blob/main/tutorials/README.md#25-build-the-docking-container)
+ * [Section 3: Test/Run your container](https://github.com/samplchallenges/SAMPL-containers/blob/main/tutorials/README.md#section-3-testrun-your-container)
+ * [Section 4: Building Your Own Docking Container](https://github.com/samplchallenges/SAMPL-containers/blob/main/tutorials/README.md#section-4-building-your-own-docking-container)
+ * [Section 5: Other Important Information](https://github.com/samplchallenges/SAMPL-containers/blob/main/tutorials/README.md#section-5-other-important-information)
 
 
 ## Section 1: Build the Autodock Vina base container
-> In Section 1, we will build a base container with all necessary packages and programs installed. This base container will serve as a starting point for our docking container. This way, as we write our docking code, it will build quickly since only the docking code will need to be built (for more information, please see [Tutorial: Build an AutoDock Vina Containerized Method](https://github.com/samplchallenges/SAMPL-containers/blob/tutorial/tutorials/README.md#tutorial-build-an-autodock-vina-containerized-method)).
+> In Section 1, we will build a base container with all necessary packages and programs installed. This base container will serve as a starting point for our docking container. This way, as we write our docking code, it will build quickly since only the docking code will need to be built (for more information, please see [Tutorial: Build an AutoDock Vina Containerized Method](https://github.com/samplchallenges/SAMPL-containers/blob/main/tutorials/README.md#tutorial-build-an-autodock-vina-containerized-method)).
 
 
 ### 1.1: Setup
@@ -91,7 +91,7 @@ A working version of the Autodock Vina container we will build in this tutorial 
 
 > In 1.2, we will run the pre-made [miniconda](https://docs.conda.io/en/latest/miniconda.html) container, [`continuumio/miniconda3`](https://hub.docker.com/r/continuumio/miniconda3), which contains a pre-installed version of miniconda, in [interactive mode](https://docs.docker.com/engine/reference/run/#foreground). This will allow us to interact with the container's command line and directory contents. We will also be able to dynamically create the conda environment we need on the command line inside the container. Even if you have a conda environment installed locally, you will need to complete this step. The container is isolated from your local environment, so it will not have access to your local conda environment. 
 > 
-> Because our container will build off of the miniconda container using it as a base, any environment we create while interatively using the miniconda container should install into our container without additional issues. Building a conda environment outside the miniconda container often results in multiple rounds of trial and error and incompatible packages. We've found the following steps to be the fastest procedure. For more detailed/generalized instructions please see [CondaEnvInstructions.pdf](https://github.com/samplchallenges/SAMPL-containers/blob/tutorial/tutorials/CondaEnvInstructions.pdf)
+> Because our container will build off of the miniconda container using it as a base, any environment we create while interatively using the miniconda container should install into our container without additional issues. Building a conda environment outside the miniconda container often results in multiple rounds of trial and error and incompatible packages. We've found the following steps to be the fastest procedure. For more detailed/generalized instructions please see [CondaEnvInstructions.pdf](https://github.com/samplchallenges/SAMPL-containers/blob/main/tutorials/CondaEnvInstructions.pdf)
 >
 > When building your own docker container, this is where you would create your own conda environment with the packages you will need. 
 1. Start up Docker Desktop, which will start the Docker daemon. If this is your first time starting Docker Desktop, the application may need to complete some additional installation steps or updates. 
@@ -148,7 +148,7 @@ A working version of the Autodock Vina container we will build in this tutorial 
       file extensions and are case independent.
       If no input or output file is given stdin or stdout are used instead.
       ```
-14. Export the environment. Upon running this command, an organized list of the packages installed into advenv will be printed out to your console. The output will look similar to the code block below.
+14. Export the environment. Upon running this command, an organized list of the packages installed into advenv will be printed out to your console. The output will look similar to the condensed output in code block below.
       * command: `conda env export -n advenv`
       ```
       (advenv) root@7f02be71557e:/# conda env export -n advenv
@@ -167,7 +167,7 @@ A working version of the Autodock Vina container we will build in this tutorial 
       * command: `exit`
 
 
-### 1.3: Install conda environment (from [Section 1.2](https://github.com/samplchallenges/SAMPL-containers/tree/tutorial/tutorials#12-starting-a-pre-made-docker-container-and-creating-a-conda-environment)) into your container  
+### 1.3: Install conda environment (from [Section 1.2](https://github.com/samplchallenges/SAMPL-containers/tree/main/tutorials#12-starting-a-pre-made-docker-container-and-creating-a-conda-environment)) into your container  
 
 > We will begin creating an environment.yml file that contains all the information about our conda environment packages, and a Dockerfile which contains the instructions required to build the base container. In 1.3, we will only add the necessary commands for installing the conda environment from Section 1.2 to the Dockerfile. We will then test to ensure the container build succeeds at creating the conda environment. 
 > 
@@ -278,7 +278,7 @@ A working version of the Autodock Vina container we will build in this tutorial 
 > In 1.5, we will add in the installation commands for Autodock Vina and MGL Tools to the Dockerfile. 
 > 
 > When building your own container, this is where you would add in any command line program installation steps.
-1. Re-open the Dockerfile from [Section 1.3](https://github.com/samplchallenges/SAMPL-containers/blob/tutorial/tutorials/README.md#13-install-conda-environment-from-section-12-into-your-container) and append the following lines to the end of the file
+1. Re-open the Dockerfile from [Section 1.3](https://github.com/samplchallenges/SAMPL-containers/blob/main/tutorials/README.md#13-install-conda-environment-from-section-12-into-your-container) and append the following lines to the end of the file
    ```
    RUN /opt/app/dependencies/mgl/install.sh
    # command to install MGL Tools
@@ -326,7 +326,7 @@ A working version of the Autodock Vina container we will build in this tutorial 
 
 ## Section 2: Build the container with Autodock Vina Docking methods
 
-> Previously, we built the adv-tutorial-base container which contains all the environment and software installations necessary to run AutoDock Vina from a python script. Please see [Tutorial: Build an AutoDock Vina Containerized Method](https://github.com/samplchallenges/SAMPL-containers/tree/tutorial/tutorials#tutorial-build-an-autodock-vina-containerized-method) for a more detailed explanation as to why we are using 2 separate builds. In Section 2, we will inherit from the [Section 1](https://github.com/samplchallenges/SAMPL-containers/tree/tutorial/tutorials#section-1-build-the-autodock-vina-base-container) base container to write and build our run-able docking code. 
+> Previously, we built the adv-tutorial-base container which contains all the environment and software installations necessary to run AutoDock Vina from a Python script. Please see [Tutorial: Build an AutoDock Vina Containerized Method](https://github.com/samplchallenges/SAMPL-containers/tree/tutorial/tutorials#tutorial-build-an-autodock-vina-containerized-method) for a more detailed explanation as to why we are using 2 separate builds. In Section 2, we will inherit from the [Section 1](https://github.com/samplchallenges/SAMPL-containers/tree/main/tutorials#section-1-build-the-autodock-vina-base-container) base container to write and build our run-able docking code. 
 
 ### 2.1: Setup
 
@@ -339,7 +339,7 @@ A working version of the Autodock Vina container we will build in this tutorial 
 
 ### 2.2: Add the docking code
 
-> In 2.2, we will incorporate the docking code into our container directory. For the sake of simplicity, we will be using pre-written docking code. Please see [tutorials/BuildYourOwnDockingContainer.md](https://github.com/samplchallenges/SAMPL-containers/blob/tutorial/tutorials/BuildYourOwnDockingContainer.md) for more information on the inputs and kwargs required of each main function.
+> In 2.2, we will incorporate the docking code into our container directory. For the sake of simplicity, we will be using pre-written docking code. Please see [tutorials/BuildYourOwnDockingContainer.md](https://github.com/samplchallenges/SAMPL-containers/blob/main/tutorials/BuildYourOwnDockingContainer.md) for more information on the inputs and kwargs required of each main function.
 > 
 > When building your own container, this is where you would add in your methods.
 1. Copy the AutoDock class file from "SAMPL-containers/docking/examples/adv/autodock.py" to "adv-tutorial"
@@ -369,7 +369,7 @@ A working version of the Autodock Vina container we will build in this tutorial 
         '''
     )
     ```
-2. Modify the "py_modules" list, by adding the two modules (autodock.py and main.py) with our docking code from the previous subsection ([2.2](https://github.com/samplchallenges/SAMPL-containers/blob/tutorial/tutorials/README.md#22-add-the-docking-code)): "autodock" and "main". This is where you 
+2. Modify the "py_modules" list, by adding the two modules (autodock.py and main.py) with our docking code from the previous subsection ([2.2](https://github.com/samplchallenges/SAMPL-containers/blob/main/tutorials/README.md#22-add-the-docking-code)): "autodock" and "main". This is where you 
     ```
     py_modules=[
         'autodock',
@@ -393,7 +393,7 @@ A working version of the Autodock Vina container we will build in this tutorial 
 
 ### 2.4: Write a Dockerfile with instructions to build your container
 
-> In 2.4, we will create a Dockerfile which contains the instructions required to build the docking container, as well as the [ENTRYPOINT](https://docs.docker.com/engine/reference/builder/#entrypoint) (see [2.3](https://github.com/samplchallenges/SAMPL-containers/blob/tutorial/tutorials/README.md#23-create-a-setuppy-file)) which tells the container which file and function to run. For more information on how to write a Dockerfile, please see the [official Docker documentation](https://docs.docker.com/get-started/02_our_app/#build-the-apps-container-image). 
+> In 2.4, we will create a Dockerfile which contains the instructions required to build the docking container, as well as the [ENTRYPOINT](https://docs.docker.com/engine/reference/builder/#entrypoint) (see [2.3](https://github.com/samplchallenges/SAMPL-containers/blob/main/tutorials/README.md#23-create-a-setuppy-file)) which tells the container which file and function to run. For more information on how to write a Dockerfile, please see the [official Docker documentation](https://docs.docker.com/get-started/02_our_app/#build-the-apps-container-image). 
 1. Create and open a file called "Dockerfile"
 2. Copy and paste the following into Dockerfile
     ```
@@ -414,11 +414,11 @@ A working version of the Autodock Vina container we will build in this tutorial 
     ENTRYPOINT []
     ```
 
-2. Next to "FROM" add the name of the base build from Section 1. This is where we specify that our container will inherit from the base we built in [Section 1](https://github.com/samplchallenges/SAMPL-containers/tree/tutorial/tutorials#section-1-build-the-autodock-vina-base-container)
+2. Next to "FROM" add the name of the base build from Section 1. This is where we specify that our container will inherit from the base we built in [Section 1](https://github.com/samplchallenges/SAMPL-containers/tree/main/tutorials#section-1-build-the-autodock-vina-base-container)
    * `FROM adv-tutorial-base`
 3. Next to "COPY" add the names of all files necessary to run our docking program, including "setup.py", "autodock.py", and "main.py" into the container directory  "./" or "/opt/app". This is where you would specify the files you have wirtten for your docking program in place of "autodock.py" and "main.py"
    * `COPY setup.py autodock.py main.py ./`
-4. Next to "ENTRYPOINT", add the "entry_point" you declared in step 4 of the previous subsection ([2.3](https://github.com/samplchallenges/SAMPL-containers/blob/tutorial/tutorials/README.md#23-create-a-setuppy-file)) inside the brackets, in quotations.
+4. Next to "ENTRYPOINT", add the "entry_point" you declared in step 4 of the previous subsection ([2.3](https://github.com/samplchallenges/SAMPL-containers/blob/main/tutorials/README.md#23-create-a-setuppy-file)) inside the brackets, in quotations.
    * `ENTRYPOINT ["run-autodock"]`
 5. Save and close Dockerfile
 
@@ -453,7 +453,7 @@ A working version of the Autodock Vina container we will build in this tutorial 
    ```
 
 ## Section 3: Test/Run your container
-In this section, we will use the wrapper `ever_given` to run the docking container. `ever_given` mimics the infrastructure we will use to run your container on the SAMPL-league website, making it a great way to test that you container will run properly ahead of uploading to the [SAMPL challenges website](https://app.samplchallenges.org/). `ever_given` also abstracts away [volume mounting](https://docs.docker.com/engine/reference/commandline/run/#mount-volume--v---read-only) to link your local directory with a directory inside the container, making it easier to quickly test your container. For more information on how to use `ever_given` please see [ever_givenUsage.md](https://github.com/samplchallenges/SAMPL-containers/blob/tutorial/tutorials/ever_givenUsage.md).
+In this section, we will use the wrapper `ever_given` to run the docking container. `ever_given` mimics the infrastructure we will use to run your container on the SAMPL-league website, making it a great way to test that you container will run properly ahead of uploading to the [SAMPL challenges website](https://app.samplchallenges.org/). `ever_given` also abstracts away [volume mounting](https://docs.docker.com/engine/reference/commandline/run/#mount-volume--v---read-only) to link your local directory with a directory inside the container, making it easier to quickly test your container. For more information on how to use `ever_given` please see [ever_givenUsage.md](https://github.com/samplchallenges/SAMPL-containers/blob/main/tutorials/ever_givenUsage.md).
 1. Change directories into "tutorials" one directory above:
    * command: `cd ..`
 2. Run the container. A successful run should look like the code block below.
@@ -473,11 +473,11 @@ In this section, we will use the wrapper `ever_given` to run the docking contain
 
 
 ## Section 4: Building Your Own Docking Container
-* For more detailed information about docking container requirements and how to modify this tutorial to suit your needs, please see [BuildYourOwnDockingContainer.md](https://github.com/samplchallenges/SAMPL-containers/blob/tutorial/tutorials/BuildYourOwnDockingContainer.md)
-* For an example template of a docking container directory, please see [SAMPL-containers/tutorial/templates/docking](https://github.com/samplchallenges/SAMPL-containers/tree/tutorial/tutorials/templates/docking)
-* For more detailed information about LogD container requirements and how to modify this tutorial to suit your needs [BuildYourOwnLogDContainer.md](https://github.com/samplchallenges/SAMPL-containers/blob/tutorial/tutorials/BuildYourOwnLogDContainer.md)
-* For an example template of a LogD container directory, please see [SAMPL-containers/tutorial/templates/logd](https://github.com/samplchallenges/SAMPL-containers/tree/tutorial/tutorials/templates/logd)
-* For more information on how to build your own conda environment inside a container, please see [CondaEnvInstructions.pdf](https://github.com/samplchallenges/SAMPL-containers/blob/tutorial/tutorials/CondaEnvInstructions.pdf)
+* For more detailed information about docking container requirements and how to modify this tutorial to suit your needs, please see [BuildYourOwnDockingContainer.md](https://github.com/samplchallenges/SAMPL-containers/blob/main/tutorials/BuildYourOwnDockingContainer.md)
+* For an example template of a docking container directory, please see [SAMPL-containers/tutorial/templates/docking](https://github.com/samplchallenges/SAMPL-containers/tree/main/tutorials/templates/docking)
+* For more detailed information about LogD container requirements and how to modify this tutorial to suit your needs [BuildYourOwnLogDContainer.md](https://github.com/samplchallenges/SAMPL-containers/blob/main/tutorials/BuildYourOwnLogDContainer.md)
+* For an example template of a LogD container directory, please see [SAMPL-containers/tutorial/templates/logd](https://github.com/samplchallenges/SAMPL-containers/tree/main/tutorials/templates/logd)
+* For more information on how to build your own conda environment inside a container, please see [CondaEnvInstructions.pdf](https://github.com/samplchallenges/SAMPL-containers/blob/main/tutorials/CondaEnvInstructions.pdf)
 
 
 ## Section 5: Other Important Information
@@ -490,5 +490,5 @@ In this section, we will use the wrapper `ever_given` to run the docking contain
 * To upload your own container to docker.io create a [Docker Hub account](https://hub.docker.com/signup)
   * Please note that free Docker Hub accounts only receive 1 private repository.
   * If you have sensitive information inside your containers, please ensure you are using a private repository.
-* Eventually, upon building enough Docker images, you may begin to run out of memory. Please remember to regularly delete any Docker images you no longer need. (See [Brief Docker Usage Tips](https://github.com/samplchallenges/SAMPL-containers/blob/tutorial/tutorials/README.md#brief-docker-background): last bullet point)
+* Eventually, upon building enough Docker images, you may begin to run out of memory. Please remember to regularly delete any Docker images you no longer need. (See [Brief Docker Usage Tips](https://github.com/samplchallenges/SAMPL-containers/blob/main/tutorials/README.md#brief-docker-background): last bullet point)
 * If you get an error similar to `Error response from daemon: Bad response from Docker engine` when using a docker command, make sure your Docker daemon is running by starting Docker Desktop. 
