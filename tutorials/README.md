@@ -73,7 +73,9 @@ A working version of the Autodock Vina container we will build in this tutorial 
 
 
 ## Section 1: Build the Autodock Vina base container
-> In Section 1, we will build a base container with all necessary packages and programs installed. This base container will serve as a starting point for our docking container. This way, as we write our docking code, it will build quickly since only the docking code will need to be built (for more information, please see [Tutorial: Build an AutoDock Vina Containerized Method](https://github.com/samplchallenges/SAMPL-containers/blob/main/tutorials/README.md#tutorial-build-an-autodock-vina-containerized-method)).
+> In Section 1, we will build a base container with all necessary packages and programs installed. This base container will serve as a starting point for our docking container. This way, as we write our docking code, it will build quickly since only the docking code will need to be built. 
+> 
+> For more information, please see [Tutorial: Build an AutoDock Vina Containerized Method](https://github.com/samplchallenges/SAMPL-containers/blob/main/tutorials/README.md#tutorial-build-an-autodock-vina-containerized-method)).
 
 
 ### 1.1: Setup
