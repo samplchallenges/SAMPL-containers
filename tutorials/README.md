@@ -172,7 +172,7 @@ A working version of the Autodock Vina container we will build in this tutorial 
 > We will begin creating an environment.yml file that contains all the information about our conda environment packages, and a Dockerfile which contains the instructions required to build the base container. In 1.3, we will only add the necessary commands for installing the conda environment from Section 1.2 to the Dockerfile. We will then test to ensure the container build succeeds at creating the conda environment. 
 > 
 > For more information on how to write a Dockerfile, please see the [official Docker documentation](https://docs.docker.com/get-started/02_our_app/#build-the-apps-container-image).
-1. Create and open a file called "environment.yml" and paste the output you previously copied at Section 1.2 Step 15
+1. Create and open a file called "environment.yml" and paste the output you previously copied at Section 1.2, Step 14
 2. Change the first line of the file `name: advenv` to `name: base`
 3. Delete the last line of the file: `prefix: /opt/conda/envs/advenv`
 4. Save the changes to environment.yml and exit
