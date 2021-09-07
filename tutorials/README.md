@@ -38,7 +38,7 @@ This terminology is unfortunately not something we can change.
 
 ### Pre-Built Autodock Vina Container
 A working version of the Autodock Vina container we will build in this tutorial can be found at [Docker Hub under osatom/adv-tutorial](https://hub.docker.com/repository/docker/osatom/adv-tutorial). To play with this container, please use the following steps:
-1. Use the [`docker pull`](https://docs.docker.com/engine/reference/commandline/pull/) command to download the "adv-tutorial" docker container: `docker pull osatom/adv-tutorial:latest`
+1. Use the [`docker pull`](https://docs.docker.com/engine/reference/commandline/pull/) command to download the "adv-tutorial" Docker container: `docker pull osatom/adv-tutorial:latest`
 2. Change directories into the "SAMPL-containers/tutorials" directory: `cd SAMPL-containers/tutorials`
 3. Run the command: `python ever_given/run.py osatom/adv-tutorial:latest --file-receptor data/receptor.pdb --file-hint data/hint.pdb --hint_radius 6 --hint_molinfo "E51" --smiles "CCCCNc1cc(cc(n1)OC)C(=O)N[C@@H](Cc2ccccc2)[C@H](C[C@@H](C)C(=O)NCCCC)O" --output-keys docked_ligand,receptor`
 4. The results will be stored in the directory "tutorials/evergiven_output"
@@ -56,7 +56,7 @@ A working version of the Autodock Vina container we will build in this tutorial 
 ## Outline:
 * [Section 1: Build the Autodock Vina base container](https://github.com/samplchallenges/SAMPL-containers/blob/main/tutorials/README.md#section-1-build-the-autodock-vina-base-container)
    * [1.1 Setup](https://github.com/samplchallenges/SAMPL-containers/blob/main/tutorials/README.md#11-setup)
-   * [1.2 Run a pre-made docker container and create a conda environment](https://github.com/samplchallenges/SAMPL-containers/blob/main/tutorials/README.md#12-run-a-pre-made-docker-container-and-create-a-conda-environment)
+   * [1.2 Run a pre-made Docker container and create a conda environment](https://github.com/samplchallenges/SAMPL-containers/blob/main/tutorials/README.md#12-run-a-pre-made-docker-container-and-create-a-conda-environment)
    * [1.3 Install conda environment (from Section 1.2) into your container](https://github.com/samplchallenges/SAMPL-containers/blob/main/tutorials/README.md#13-install-conda-environment-from-section-12-into-your-container)
    * [1.4 Download and prepare the command line programs Autodock Vina and MGL Tools executables for use in the docking container](https://github.com/samplchallenges/SAMPL-containers/blob/main/tutorials/README.md#14-download-and-prepare-the-command-line-programs-autodock-vina-and-mgl-tools-executables-for-use-in-the-docking-container)
    * [1.5 Install Autodock Vina and MGL Tools into your container](https://github.com/samplchallenges/SAMPL-containers/blob/main/tutorials/README.md#15-install-autodock-vina-and-mgl-tools-into-your-container)
@@ -87,7 +87,7 @@ A working version of the Autodock Vina container we will build in this tutorial 
    * command: `cd adv-tutorial-base`
 
 
-### 1.2: Run a pre-made docker container and create a conda environment
+### 1.2: Run a pre-made Docker container and create a conda environment
 
 > In 1.2, we will run the pre-made [miniconda](https://docs.conda.io/en/latest/miniconda.html) container, [`continuumio/miniconda3`](https://hub.docker.com/r/continuumio/miniconda3), which contains a pre-installed version of miniconda, in [interactive mode](https://docs.docker.com/engine/reference/run/#foreground). This will allow us to interact with the container's command line and directory contents. We will also be able to dynamically create the conda environment we need on the command line inside the container. **Even if you have a conda environment installed locally, you will need to complete this step.** The container is isolated from your local environment, so it will not have access to your local conda environment. 
 > 
@@ -196,7 +196,7 @@ A working version of the Autodock Vina container we will build in this tutorial 
    # set the path
    ```
 7. Save the changes to Dockerfile and exit
-8. Build your container into a docker image to ensure there are no build issues, so far. 
+8. Build your container into a Docker image to ensure there are no build issues, so far. 
    * command: `docker build -t adv-tutorial-base-test .`
 9. If your build from the previous step (step 8) completed without issue, please move on to the next step, otherwise some troubleshooting of the previous steps may be necessary. A successful build looks something like the code block below.
    ```
@@ -294,7 +294,7 @@ A working version of the Autodock Vina container we will build in this tutorial 
 
 ### 1.6: Build the base container
 
-> In 1.6, we will build a docker image using "docker build", which we will inherit from in Section 2.
+> In 1.6, we will build a Docker image using "docker build", which we will inherit from in Section 2.
 
 1. Build the base container
    * command: `docker build -t adv-tutorial-base .`
@@ -349,7 +349,7 @@ A working version of the Autodock Vina container we will build in this tutorial 
 
 ### 2.3: Create a setup.py file
 
-> In 2.3, we will customize a setup.py file to to match the python modules we have written.
+> In 2.3, we will customize a setup.py file to to match the Python modules we have written.
 1. Create and open a file called "setup.py"
 2. Copy and paste the following into setup.py
     ```
@@ -382,7 +382,7 @@ A working version of the Autodock Vina container we will build in this tutorial 
         'Click',
     ]
     ```
-4. Modify the "entry_points" section, by adding an [entry point](https://setuptools.readthedocs.io/en/latest/userguide/entry_point.html#console-scripts) in the format `{command-to-call-in-Dockerfile}={py_module_with_main}:{function_to_run}`. The python module "main.py" contains the main function "main_function".
+4. Modify the "entry_points" section, by adding an [entry point](https://setuptools.readthedocs.io/en/latest/userguide/entry_point.html#console-scripts) in the format `{command-to-call-in-Dockerfile}={py_module_with_main}:{function_to_run}`. The Python module "main.py" contains the main function "main_function".
     ```
     entry_points='''
         [console_scripts]
@@ -425,7 +425,7 @@ A working version of the Autodock Vina container we will build in this tutorial 
 
 ### 2.5: Build the docking container
 
-> In 2.5, we will build a docker image that will execute our docking program when run. For more information about the `docker build` command, please see the [official Docker documentation](https://docs.docker.com/engine/reference/commandline/build/).
+> In 2.5, we will build a Docker image that will execute our docking program when run. For more information about the `docker build` command, please see the [official Docker documentation](https://docs.docker.com/engine/reference/commandline/build/).
 1. Build the container. A successful build should look similar to the code block below.
    * command: `docker build -t adv-tutorial .`
    ```
@@ -481,7 +481,7 @@ In this section, we will use the wrapper `ever_given` to run the docking contain
 
 
 ## Section 5: Other Important Information
-* For more detailed tutorials on how to use docker please see the following resources:
+* For more detailed tutorials on how to use Docker please see the following resources:
   * [Official Docker Documentation](https://docs.docker.com/get-started/)
   * [Brief Docker Tutorial (12m)](https://www.youtube.com/watch?v=YFl2mCHdv24)
   * [Docker Beginners Course (2hrs)](https://www.youtube.com/watch?v=fqMOX6JJhGo)
@@ -491,4 +491,4 @@ In this section, we will use the wrapper `ever_given` to run the docking contain
   * Please note that free Docker Hub accounts only receive 1 private repository.
   * If you have sensitive information inside your containers, please ensure you are using a private repository.
 * Eventually, upon building enough Docker images, you may begin to run out of memory. Please remember to regularly delete any Docker images you no longer need. (See [Brief Docker Usage Tips](https://github.com/samplchallenges/SAMPL-containers/blob/main/tutorials/README.md#brief-docker-background): last bullet point)
-* If you get an error similar to `Error response from daemon: Bad response from Docker engine` when using a docker command, make sure your Docker daemon is running by starting Docker Desktop. 
+* If you get an error similar to `Error response from daemon: Bad response from Docker engine` when using a Docker command, make sure your Docker daemon is running by starting Docker Desktop. 
