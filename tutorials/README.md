@@ -95,7 +95,7 @@ A working version of the Autodock Vina container we will build in this tutorial 
 > 
 > Because our container will build off of the miniconda container using it as a base, any environment we create while interatively using the miniconda container should install into our container (which uses miniconda as a base) without additional issues. Building a conda environment outside the miniconda container often results in multiple rounds of trial and error and incompatible packages. We've found the following steps to be the fastest procedure. For more detailed/generalized instructions please see [CondaEnvInstructions.pdf](https://github.com/samplchallenges/SAMPL-containers/blob/main/tutorials/CondaEnvInstructions.pdf).
 >
-> When building your own docker container, this is where you would create your own conda environment with the packages you will need. 
+> When building your own Docker container, this is where you would create your own conda environment with the packages you will need. 
 1. Start up Docker Desktop, which will start the Docker daemon. If this is your first time starting Docker Desktop, the application may need to complete some additional installation steps or updates. 
 2. Start the container. Upon running this command your command line prompt should change. This means you are now inside the container interacting with it's command line and contents. The change in command prompts should look similar to the code block below. 
    * command: `docker run -it --rm continuumio/miniconda3`
@@ -226,14 +226,14 @@ A working version of the Autodock Vina container we will build in this tutorial 
 
    Use 'docker scan' to run Snyk tests against images to find vulnerabilities and learn how to fix them
    ```
-10. Delete the docker image previously built in part Step 8. Step 8 was just to ensure nothing had gone wrong in the build so far.
-    * List the docker images: `docker images`
+10. Delete the Docker image previously built in part Step 8. Step 8 was just to ensure nothing had gone wrong in the build so far.
+    * List the Docker images: `docker images`
       ```
       REPOSITORY                      TAG       IMAGE ID       CREATED          SIZE
       adv-tutorial-base-test          latest    5cf75f044da5   15 minutes ago   1.04GB
       ```
     * Determine the "IMAGE ID" of "adv-tutorial-base-test", in this case the ID was:  "5cf75f044da5"
-    * Delete the docker image: `docker image rm [IMAGE ID]`
+    * Delete the Docker image: `docker image rm [IMAGE ID]`
 
 ### 1.4: Download and prepare the command line programs Autodock Vina and MGL Tools executables for use in the docking container
 
