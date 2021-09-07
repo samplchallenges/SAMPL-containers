@@ -20,7 +20,7 @@ This terminology is unfortunately not something we can change.
 
 
 ### Software Requirements
-* Linux or Mac operating system
+* Linux or UNIX operating system
 * [Docker Desktop](https://www.docker.com/products/docker-desktop)
 * [Docker SDK for Python](https://pypi.org/project/docker/)
 * [Python 3](https://www.python.org/downloads/)
