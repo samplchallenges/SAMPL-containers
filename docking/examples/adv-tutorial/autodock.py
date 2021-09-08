@@ -165,7 +165,7 @@ class Autodock():
 		'''
 		cmd = self._get_utility_cmd("prepare_receptor4.py")
 		self.recprep_pdbqt = recprep_pdbqt
-		os.system(f"{cmd} -r {self.receptor_file_path} -o {recprep_pdbqt}")
+		os.system(f"{cmd} -r {self.receptor_file_path} -o {recprep_pdbqt} > /dev/null")
 
 
 	def dock(self, ligprep_pdbqt: str, ligdock_pdbqt: str, lighighscore_pdbqt: str, lighighscore_pdb: str, exhaustiveness: int, num_modes: int, flex):
