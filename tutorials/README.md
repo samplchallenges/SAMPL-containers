@@ -240,6 +240,8 @@ A working version of the Autodock Vina container we will build in this tutorial 
 > In 1.4, we will incorporate the command line tools [Autodock Vina](http://vina.scripps.edu/) and [MGL Tools](http://mgltools.scripps.edu/downloads) into our base container. Please do not change which installers you download based on your native operating system (OS) because the OS used inside Docker container, Linux x86, may differ from your native OS. For example, I am currently on a Mac, but the OS inside the Docker container is Linux x86, so any installers that work for my native Mac OS would not work inside my Docker container. 
 > 
 > When building your own container, this is where you would add in any command line program files.
+
+* Please note the commands with tarball files may be downloaded as `.tgz`, `.tar`, or `.tar.gz`, please alter the commands according to the name of the file downloaded.
 1. Create a directory called "dependencies". Upon creating the dependencies directory, your directory structure should look like the code block below.
    * command: `mkdir dependencies`
    ```
