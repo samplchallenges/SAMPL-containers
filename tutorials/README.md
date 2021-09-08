@@ -472,6 +472,15 @@ In this section, we will use the wrapper `ever_given` to run the docking contain
    Results: {'docked_ligand': 'evergiven_output/best_dock.pdb', 'receptor': 'evergiven_output/rec-dock.pdb'}
    ```
 3. Examine your container outputs in the directory "tutorials/evergiven_output"
+* Note: If you receive an error similar to the one below, please ensure [Docker SDK](https://pypi.org/project/docker/) is installed. 
+    ```
+    Traceback (most recent call last):
+    File "/Users/noahk/SAMPL-containers/tutorials/ever_given/run.py", line 4, in <module>
+      from ever_given import wrapper
+    File "/Users/noahk/SAMPL-containers/tutorials/ever_given/ever_given/wrapper.py", line 8, in <module>
+      import docker
+    ModuleNotFoundError: No module named 'docker'
+    ```
 
 
 ## Section 4: Building Your Own Docking Container
