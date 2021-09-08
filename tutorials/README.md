@@ -73,7 +73,9 @@ A working version of the Autodock Vina container we will build in this tutorial 
 
 
 ## Section 1: Build the Autodock Vina base container
-> In Section 1, we will build a base container with all necessary packages and programs installed. This base container will serve as a starting point for our docking container. This way, as we write our docking code, it will build quickly since only the docking code will need to be built (for more information, please see [Tutorial: Build an AutoDock Vina Containerized Method](https://github.com/samplchallenges/SAMPL-containers/blob/main/tutorials/README.md#tutorial-build-an-autodock-vina-containerized-method)).
+> In Section 1, we will build a base container with all necessary packages and programs installed. This base container will serve as a starting point for our docking container. This way, as we write our docking code, it will build quickly since only the docking code will need to be built. 
+> 
+> For more information, please see [Tutorial: Build an AutoDock Vina Containerized Method](https://github.com/samplchallenges/SAMPL-containers/blob/main/tutorials/README.md#tutorial-build-an-autodock-vina-containerized-method)).
 
 
 ### 1.1: Setup
@@ -93,7 +95,7 @@ A working version of the Autodock Vina container we will build in this tutorial 
 > 
 > Because our container will build off of the miniconda container using it as a base, any environment we create while interatively using the miniconda container should install into our container (which uses miniconda as a base) without additional issues. Building a conda environment outside the miniconda container often results in multiple rounds of trial and error and incompatible packages. We've found the following steps to be the fastest procedure. For more detailed/generalized instructions please see [CondaEnvInstructions.pdf](https://github.com/samplchallenges/SAMPL-containers/blob/main/tutorials/CondaEnvInstructions.pdf).
 >
-> When building your own docker container, this is where you would create your own conda environment with the packages you will need. 
+> When building your own Docker container, this is where you would create your own conda environment with the packages you will need. 
 1. Start up Docker Desktop, which will start the Docker daemon. If this is your first time starting Docker Desktop, the application may need to complete some additional installation steps or updates. 
 2. Start the container. Upon running this command your command line prompt should change. This means you are now inside the container interacting with it's command line and contents. The change in command prompts should look similar to the code block below. 
    * command: `docker run -it --rm continuumio/miniconda3`
@@ -175,7 +177,7 @@ A working version of the Autodock Vina container we will build in this tutorial 
 1. Create and open a file called "environment.yml" and paste the output you previously copied at Section 1.2, Step 14
 2. Change the first line of the file `name: advenv` to `name: base`
 3. Delete the last line of the file: `prefix: /opt/conda/envs/advenv`
-4. Save the changes to environment.yml and exit
+4. Save the changes to environment.yml and close the file
 5. Create and open a file called "Dockerfile"
 6. Copy the following lines into Dockerfile. The following commands contain the instructions to install the conda environment when your container is built. 
    ```
@@ -195,7 +197,7 @@ A working version of the Autodock Vina container we will build in this tutorial 
    ENV PATH="/root/.local/bin:$PATH"      
    # set the path
    ```
-7. Save the changes to Dockerfile and exit
+7. Save the changes to Dockerfile and close the file
 8. Build your container into a Docker image to ensure there are no build issues, so far. 
    * command: `docker build -t adv-tutorial-base-test .`
 9. If your build from the previous step (step 8) completed without issue, please move on to the next step, otherwise some troubleshooting of the previous steps may be necessary. A successful build looks something like the code block below.
@@ -224,14 +226,14 @@ A working version of the Autodock Vina container we will build in this tutorial 
 
    Use 'docker scan' to run Snyk tests against images to find vulnerabilities and learn how to fix them
    ```
-10. Delete the docker image previously built in part Step 8. Step 8 was just to ensure nothing had gone wrong in the build so far.
-    * List the docker images: `docker images`
+10. Delete the Docker image previously built in part Step 8. Step 8 was just to ensure nothing had gone wrong in the build so far.
+    * List the Docker images: `docker images`
       ```
       REPOSITORY                      TAG       IMAGE ID       CREATED          SIZE
       adv-tutorial-base-test          latest    5cf75f044da5   15 minutes ago   1.04GB
       ```
     * Determine the "IMAGE ID" of "adv-tutorial-base-test", in this case the ID was:  "5cf75f044da5"
-    * Delete the docker image: `docker image rm [IMAGE ID]`
+    * Delete the Docker image: `docker image rm [IMAGE ID]`
 
 ### 1.4: Download and prepare the command line programs Autodock Vina and MGL Tools executables for use in the docking container
 
@@ -289,7 +291,7 @@ A working version of the Autodock Vina container we will build in this tutorial 
    RUN /opt/app/dependencies/adv/bin/vina --help
    # Run autodock vina to ensure its properly installed
    ```
-2. Save the changes to the `Dockerfile` and exit
+2. Save the changes to the `Dockerfile` and close the file
 
 
 ### 1.6: Build the base container
@@ -342,10 +344,10 @@ A working version of the Autodock Vina container we will build in this tutorial 
 > In 2.2, we will incorporate the docking code into our container directory. For the sake of simplicity, we will be using pre-written docking code. Please see [tutorials/BuildYourOwnDockingContainer.md](https://github.com/samplchallenges/SAMPL-containers/blob/main/tutorials/BuildYourOwnDockingContainer.md) for more information on the inputs and kwargs required of each main function.
 > 
 > When building your own container, this is where you would add in your methods.
-1. Copy the AutoDock class file from "SAMPL-containers/docking/examples/adv/autodock.py" to "adv-tutorial"
-   * command: `cp ../../docking/examples/adv/autodock.py .`
-2. Copy the AutoDock main file from "SAMPL-containers/docking/examples/adv/main.py" to "adv-tutorial"
-   * command: `cp ../../docking/examples/adv/main.py .`
+1. Copy the AutoDock class file from "SAMPL-containers/docking/examples/adv-tutorial/autodock.py" to "adv-tutorial"
+   * command: `cp ../../docking/examples/adv-tutorial/autodock.py .`
+2. Copy the AutoDock main file from "SAMPL-containers/docking/examples/adv-tutorial/main.py" to "adv-tutorial"
+   * command: `cp ../../docking/examples/adv-tutorial/main.py .`
 
 ### 2.3: Create a setup.py file
 
