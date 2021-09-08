@@ -241,7 +241,7 @@ A working version of the Autodock Vina container we will build in this tutorial 
 > 
 > When building your own container, this is where you would add in any command line program files.
 
-* Please note the commands with tarball files may be downloaded as `.tgz`, `.tar`, or `.tar.gz`, please alter the commands according to the name of the file downloaded.
+* NOTE: Please note the commands with tarball files may be downloaded as `.tgz`, `.tar`, or `.tar.gz`, please alter the commands according to the name of the file downloaded.
 1. Create a directory called "dependencies". Upon creating the dependencies directory, your directory structure should look like the code block below.
    * command: `mkdir dependencies`
    ```
