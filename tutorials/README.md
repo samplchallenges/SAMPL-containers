@@ -475,9 +475,9 @@ In this section, we will use the wrapper `ever_given` to run the docking contain
 * Note: If you receive an error similar to the one below, please ensure [Docker SDK](https://pypi.org/project/docker/) is installed. 
     ```
     Traceback (most recent call last):
-    File "/Users/noahk/SAMPL-containers/tutorials/ever_given/run.py", line 4, in <module>
+    File "/Users/megosato/SAMPL-containers/tutorials/ever_given/run.py", line 4, in <module>
       from ever_given import wrapper
-    File "/Users/noahk/SAMPL-containers/tutorials/ever_given/ever_given/wrapper.py", line 8, in <module>
+    File "/Users/megosato/SAMPL-containers/tutorials/ever_given/ever_given/wrapper.py", line 8, in <module>
       import docker
     ModuleNotFoundError: No module named 'docker'
     ```
