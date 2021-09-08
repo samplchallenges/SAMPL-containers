@@ -14,7 +14,7 @@ Every container must be able to handle the following input flags. These are the 
     ```
     logd {logd_float_value}
     ```
-* The LAST line your container should output is below in the format key value where the key is logd and the value is the float LogD value. The key and value should be separated by a single space. You may print other outputs throughout your program, but this line must be the LAST line printed by your program.
+* The LAST line your container should output is above in the format `key value` where the key is logd and the value is the float LogD value. The key and value should be separated by a single space. You may print other outputs throughout your program, but this line must be the LAST line printed by your program.
 
 
 ## Program Logs
