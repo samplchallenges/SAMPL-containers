@@ -28,7 +28,7 @@ This terminology is unfortunately not something we can change.
 ## Getting started
 
 ### Brief Docker Background
-* If you have know nothing about Docker, [this video](https://www.youtube.com/watch?v=_dfLOzuIg2o) is a great summary in just 5 minutes.
+* If you know nothing about Docker, [this video](https://www.youtube.com/watch?v=_dfLOzuIg2o) is a great summary in just 5 minutes.
 * Docker containers isolate their internal software from the environment (i.e. someone's operating system or virtual environment) and ensure that the container software works consistently across platforms despite differences in development and staging.
 * A [Docker (container) image](https://www.docker.com/resources/what-container) is the blueprint of a Docker container that is not currently running. Docker images contain the instructions to execute your code as a Docker container. 
 * The instructions to prepare/build a Docker image are contained in a file called "[Dockerfile](https://docs.docker.com/get-started/02_our_app/#build-the-apps-container-image)".
