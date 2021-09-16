@@ -20,7 +20,7 @@ Every container must be able to handle the following input flags. These are the 
 ## Program Logs
 * Any output to `stdout` or `stderr` will be logged with timestamps associated with each output. These logs will be made accessible to you.
 * Please print general logging info to `stdout` and error messages to `stderr` as is convention.
-* Feel free to print to `stdout` as needed, but as stated in [OutputRequirements](https://github.com/samplchallenges/SAMPL-containers/blob/megosato-patch-1-1/tutorials/BuildYourOwnLogDContainer.md#output-requirements), the last line of output must be your `key value` pair. 
+* As stated in [OutputRequirements](https://github.com/samplchallenges/SAMPL-containers/blob/megosato-patch-1-1/tutorials/BuildYourOwnLogDContainer.md#output-requirements), the last line of `stdout` output must be your `key value` pair. 
 
 ## Example Python Main Function Definition
 ```

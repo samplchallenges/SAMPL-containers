@@ -9,8 +9,6 @@
 * `ever_giveUsage.md`: details how to use the pip installable package `ever_given` to run your SAMPL containers.
 
 ## Directories
-* `adv-base`: contains the files to build the AutoDock Vina base container, which has all the necessary environment package and command line program installations.
-* `adv`: contains the files to build a run-able Autodock Vina docking container.
 * `data`: contains sample input files for docking.
 * `ever_given`: contains `ever_given` wrapper files, which will eventually be packaged into a pip installable package
 * `templates`: contains the files to use as starting points to write your own docking container.

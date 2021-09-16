@@ -28,6 +28,7 @@ This terminology is unfortunately not something we can change.
 ## Getting started
 
 ### Brief Docker Background
+* If you know nothing about Docker, [this video](https://www.youtube.com/watch?v=_dfLOzuIg2o) is a great summary in just 5 minutes.
 * Docker containers isolate their internal software from the environment (i.e. someone's operating system or virtual environment) and ensure that the container software works consistently across platforms despite differences in development and staging.
 * A [Docker (container) image](https://www.docker.com/resources/what-container) is the blueprint of a Docker container that is not currently running. Docker images contain the instructions to execute your code as a Docker container. 
 * The instructions to prepare/build a Docker image are contained in a file called "[Dockerfile](https://docs.docker.com/get-started/02_our_app/#build-the-apps-container-image)".
@@ -81,7 +82,7 @@ A working version of the Autodock Vina container we will build in this tutorial 
 ### 1.1: Setup
 1. Open a terminal
 2. Clone the SAMPL-containers repository
-    * command: `git clone git@github.com:samplchallenges/SAMPL-containers.git`
+    * command: `git clone https://github.com/samplchallenges/SAMPL-containers.git`
 3. Navigate to the "SAMPL-containers/tutorials" directory.
 4. Create a directory called "adv-tutorial-base" 
    * command: `mkdir adv-tutorial-base`
@@ -240,6 +241,8 @@ A working version of the Autodock Vina container we will build in this tutorial 
 > In 1.4, we will incorporate the command line tools [Autodock Vina](http://vina.scripps.edu/) and [MGL Tools](http://mgltools.scripps.edu/downloads) into our base container. Please do not change which installers you download based on your native operating system (OS) because the OS used inside Docker container, Linux x86, may differ from your native OS. For example, I am currently on a Mac, but the OS inside the Docker container is Linux x86, so any installers that work for my native Mac OS would not work inside my Docker container. 
 > 
 > When building your own container, this is where you would add in any command line program files.
+
+* NOTE: Please note the commands with tarball files may be downloaded as `.tgz`, `.tar`, or `.tar.gz`, please alter the commands according to the name of the file downloaded.
 1. Create a directory called "dependencies". Upon creating the dependencies directory, your directory structure should look like the code block below.
    * command: `mkdir dependencies`
    ```
@@ -472,6 +475,15 @@ In this section, we will use the wrapper `ever_given` to run the docking contain
    Results: {'docked_ligand': 'evergiven_output/best_dock.pdb', 'receptor': 'evergiven_output/rec-dock.pdb'}
    ```
 3. Examine your container outputs in the directory "tutorials/evergiven_output"
+* Note: If you receive an error similar to the one below, please ensure [Docker SDK](https://pypi.org/project/docker/) is installed. 
+    ```
+    Traceback (most recent call last):
+    File "/Users/megosato/SAMPL-containers/tutorials/ever_given/run.py", line 4, in <module>
+      from ever_given import wrapper
+    File "/Users/megosato/SAMPL-containers/tutorials/ever_given/ever_given/wrapper.py", line 8, in <module>
+      import docker
+    ModuleNotFoundError: No module named 'docker'
+    ```
 
 
 ## Section 4: Building Your Own Docking Container
