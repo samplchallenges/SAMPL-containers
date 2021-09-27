@@ -10,7 +10,7 @@ In order for the [app.samplchallenges.org](https://app.samplchallenges.org/) to 
 2. Upload you container image to OUR PRIVATE container repository on Amazon Web Services. Our private container repository is a push only repository. Participants may only push NOT pull from this repo, meaning only [app.samplchallenges.org](https://app.samplchallenges.org/) website administrators from the Mobley Lab will have access to your container images and code.  
 
 To push to our private container repository on Amazon Web Services please do the following:
-1. Add in steps for 
+1. Add in steps for uploading to repository and discuss private key needed
    * Each time you push to the container repository, please use a UNIQUE tag for clarity. If you push to the container repository twice with the exact same tag, [app.samplchallenges.org](https://app.samplchallenges.org/) will not update your container to the newest version with that tag. You must use a new tag. 
       * For example, let's say I push a new container image as `ghcr.io/osatom/oedock:0.1`, create a submission with this image, and then realize I made a very small mistake and need to upload a modified version. When I push the modified container image, I would push it as `ghcr.io/osatom/oedock:0.1fix1`, rather than `ghcr.io/osatom/oedock:0.1`. 
 
