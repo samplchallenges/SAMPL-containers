@@ -6,7 +6,7 @@ We have included some options for participants who do not want their code and/or
 We realize that SAMPL participants may be concerned about sharing their code and other intellectual property. 
 
 In order for the [app.samplchallenges.org](https://app.samplchallenges.org/) to have access to your containers upon submission we have provided two options:
-* **Option 1:** Upload to your container image YOUR OWN container repository ([ghcr.io](https://github.com/features/packages), [docker.io](https://www.docker.com/), etc.) and mark the image as PUBLIC. With this option, anyone can pull your container image and access any files you copied into the container image at build time.
+* **Option 1:** Upload your container image YOUR OWN container repository ([ghcr.io](https://github.com/features/packages), [docker.io](https://www.docker.com/), etc.) and mark the image as PUBLIC. With this option, anyone can pull your container image and access any files you copied into the container image at build time.
 * **Option 2:** Upload your container image to OUR PRIVATE container repository on Amazon Web Services. Our private container repository is a push only repository. Participants may only push NOT pull from this repo, meaning only [app.samplchallenges.org](https://app.samplchallenges.org/) website administrators from the Mobley Lab will have access to your container images and code.  
 
 To push to our private container repository on Amazon Web Services please do the following:
