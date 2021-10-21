@@ -7,7 +7,10 @@
      * Docker Hub: `docker.io`
      * GitHub Contaienr Repository: `ghcr.io`
    * `tag` Important information
-     * When uploading your container to the repository for use on the [app.samplchallenges.org](https://app.samplchallenges.org/), it is *ESSENTIAL* that you use a unique tag every time you update and push your container.
+     * When uploading your container to the repository for use on the [app.samplchallenges.org](https://app.samplchallenges.org/), it is *ESSENTIAL* that you use a unique tag every time you update and push your container. For example, if I push a container called `docker.io/osatom/docking:0.1`, the next time change and push that container I would push it as one of the following examples:
+        * `docker.io/osatom/docking:0.1revised`
+        * `docker.io/osatom/docking:0.1.1`
+        * `docker.io/osatom/docking:0.2`
 
 ## Section 2: Create a Submission on [app.samplchallenges.org](https://app.samplchallenges.org/)
 1. Navigate to the [app.samplchallenges.org](https://app.samplchallenges.org/) website using a web browser of your choice.
