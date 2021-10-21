@@ -24,9 +24,21 @@
      * Submission Details: Information about your submission such as methods, computing, etc.  
      * Submission Notes: Any annotations/notes-to-self about your submission. This section is for your benefit only. Challenge administrators will disregard any information in this section. This is the only section that can be modified once a challenge has ended.
 7. In the Containers section, enter the information about your pushed container. This information should match the container information in your `docker push` command from Section 1
-8. In the Special Arguments section, enter any extra keywork arguments and upload any corresponding files.
-9. In the Submission Details section, enter the information about your submission, this section may be put in "draft mode" allowing you to come back and modify your submission details at a later time. 
-10. Save your submission. You will be redirected to a page with a summary of your submission.
+   * If I used the command `docker push -t ghcr.io/osatom/docking:0.1revised`to push my container, my Container section fields would look like the following:
+      * **Name**: Docking Container - 0.1revised 
+      * **Registry**: ghcr.io
+      * **Label**: osatom/docking
+      * **Tag**: 0.1revised
+9. In the Special Arguments section, enter any extra keyword arguments and upload any corresponding files that are necessary to run your container
+10. In the Submission Details section, enter the information about your submission, this section may be put in "draft mode" allowing you to leave fields incomplete, to be finished at a later time.
+11. Save your submission. You will be redirected to a page with a summary of your submission.
 
 ## Section 3: Run your submission.
-1. 
+1. If you just finished Section 2, skip to step 5.
+2. If you are returning to the website, ensure you are logged in, otherwise your submissions will not be visible.
+3. Click on the "Submissions" tab at the top of the webpage.
+4. Click on the name of the submission you want to run.
+5. Click the blue "Run Submission" button. 
+6. View the `stdout` or `stderr` output from your container by clicking on any bulleted link in the "Public Run" section to view the output.
+7. Wait for your submission to finish running, this may take a while. Please note, if your container fails on the Public Dataset, the container will not be run with the Private Dataset.
+
