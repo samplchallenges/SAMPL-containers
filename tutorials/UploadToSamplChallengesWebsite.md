@@ -19,10 +19,10 @@
 4. Click the name of the challenge you plan to participate in.
 5. Click the "New Submission" button, which will open a New Submission Form. 
    * The Submission form is split into 4 sections: 
-     * Container: Information about your container image
-     * Special Arguments: Any extra command line keyword argument your container expects and the corresponding file. This section is intended for sensitive files and information, such as proprietary license files. 
-     * Submission Details: Information about your submission such as methods, computing, etc.  
-     * Submission Notes: Any annotations/notes-to-self about your submission. This section is for your benefit only. Challenge administrators will disregard any information in this section. This is the only section that can be modified once a challenge has ended.
+     * **Container**: Information about your container image
+     * **Special Arguments**: Any extra command line keyword argument your container expects and the corresponding file. This section is intended for sensitive files and information, such as proprietary license files. 
+     * **Submission Details**: Information about your submission such as methods, computing, etc.  
+     * **Submission Notes**: Any annotations/notes-to-self about your submission. This section is for your benefit only. Challenge administrators will disregard any information in this section. This is the only section that can be modified once a challenge has ended.
 7. In the Containers section, enter the information about your pushed container. This information should match the container information in your `docker push` command from Section 1
    * If I used the command `docker push -t ghcr.io/osatom/docking:0.1revised`to push my container, the Container section fields of my Submission would look like the following:
       * **Name**: Docking Container - 0.1revised (Please note the container name can be anything you desire)
