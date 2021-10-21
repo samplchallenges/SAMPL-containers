@@ -32,15 +32,16 @@ This terminology is unfortunately not something we can change.
 * A [Docker (container) image](https://www.docker.com/resources/what-container) is the blueprint of a Docker container that is not currently running. Docker images contain the instructions to execute your code as a Docker container. 
 * The instructions to prepare/build a Docker image are contained in a file called "[Dockerfile](https://docs.docker.com/get-started/02_our_app/#build-the-apps-container-image)".
 * To use a Docker image, we must first build the image with the [`docker build`](https://docs.docker.com/engine/reference/commandline/build/) command and the instructions outlined in Dockerfile. Ensure you are in the proper directory with your Dockerfile and code, then run `docker build -t <name>:<tag/version> .`
-   * Examples: `docker build -t adv:0.1 .` or `docker build -t adv:latest .`
+   * Examples: `docker build -t adv:0.1 .`
+   * Note: you may see `latest` used in place of `<tag/version>`(`0.1`). For containers you intend to upload to SAMPL challenges, please use a unique `tag` rather than `latest`. 
 * Use the command [`docker images`](https://docs.docker.com/engine/reference/commandline/images/) to list out images you have built or downloaded.
 * To delete Docker images, use `docker images` to list your current images and their IMAGE IDs, then run the command [`docker image rm <IMAGE IDs>`](https://docs.docker.com/engine/reference/commandline/image/).
 
 ### Pre-Built Autodock Vina Container
 A working version of the Autodock Vina container we will build in this tutorial can be found at [Docker Hub under osatom/adv-tutorial](https://hub.docker.com/repository/docker/osatom/adv-tutorial). To play with this container, please use the following steps:
-1. Use the [`docker pull`](https://docs.docker.com/engine/reference/commandline/pull/) command to download the "adv-tutorial" docker container: `docker pull osatom/adv-tutorial:latest`
+1. Use the [`docker pull`](https://docs.docker.com/engine/reference/commandline/pull/) command to download the "adv-tutorial" docker container: `docker pull osatom/adv-tutorial:0.4-hint`
 2. Change directories into the "SAMPL-containers/tutorials" directory: `cd SAMPL-containers/tutorials`
-3. Run the command: `python ever_given/run.py osatom/adv-tutorial:latest --file-receptor data/receptor.pdb --file-hint data/hint.pdb --hint_radius 6 --hint_molinfo "E51" --smiles "CCCCNc1cc(cc(n1)OC)C(=O)N[C@@H](Cc2ccccc2)[C@H](C[C@@H](C)C(=O)NCCCC)O" --output-keys docked_ligand,receptor`
+3. Run the command: `python ever_given/run.py osatom/adv-tutorial:0.4-hint --file-receptor data/receptor.pdb --file-hint data/hint.pdb --hint_radius 6 --hint_molinfo "E51" --smiles "CCCCNc1cc(cc(n1)OC)C(=O)N[C@@H](Cc2ccccc2)[C@H](C[C@@H](C)C(=O)NCCCC)O" --output-keys docked_ligand,receptor`
 4. The results will be stored in the directory "tutorials/evergiven_output"
 
 
