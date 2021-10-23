@@ -7,7 +7,7 @@
      * Docker Hub: `docker.io`
      * GitHub Contaienr Repository: `ghcr.io`
    * `tag` Important information
-     * When uploading your container to the repository for use on the [app.samplchallenges.org](https://app.samplchallenges.org/), it is *ESSENTIAL* that you use a unique tag every time you update and push your container. For example, if I push a container called `docker.io/osatom/docking:0.1`, the next time change and push that container I would push it as one of the following examples:
+     * When uploading your container to the repository for use on the [app.samplchallenges.org](https://app.samplchallenges.org/), it is *ESSENTIAL* that you use a unique tag every time you update and push your container. For example, if I push a container called `docker.io/osatom/docking:0.1`, the next time I change and push that container I would push it as one of the following examples:
         * `docker.io/osatom/docking:0.1revised`
         * `docker.io/osatom/docking:0.1.1`
         * `docker.io/osatom/docking:0.2`
@@ -30,8 +30,8 @@
       * **Label**: osatom/docking
       * **Tag**: 0.1revised
 9. In the Special Arguments section, enter any extra keyword arguments and upload any corresponding files that are necessary to run your container
-10. In the Submission Details section, enter the information about your submission, this section may be put in "draft mode" allowing you to leave fields incomplete, to be finished at a later time.
-11. Save your submission. You will be redirected to a page with a summary of your submission.
+10. In the Submission Details section, enter the information about your submission, this section may be put in "draft mode" allowing incomplete fields to be saved and finished at a later time. If you are unsure of your submission, please un-check the "Ranked" box. 
+12. Save your submission. You will be redirected to a page with a summary of your submission.
 
 ## Section 3: Run your submission.
 1. If you just finished Section 2, skip to step 5.
@@ -41,4 +41,13 @@
 5. Click the blue "Run Submission" button. 
 6. View the `stdout` or `stderr` output from your container by clicking on any bulleted link in the "Public Run" section to view the output.
 7. Wait for your submission to finish running, this may take a while. Please note, if your container fails on the Public Dataset, the container will not be run with the Private Dataset.
+
+## Section 4: Finalizing your submission
+1. When you are happy with your submission, in the Submission Details section you will need to un-check "Draft mode" on your submission and check the "Ranked" box.
+
+## Section 5: After the Challenge has ended
+1. After the challenge has ended you may log in, and return to your submission details page.
+2. If you'd like to leave notes related to your submission or its performance, click "Update" and type your notes in the "Submission Notes" section. Only this section will be modifiable post-challenge.
+
+
 
