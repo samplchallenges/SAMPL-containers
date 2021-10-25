@@ -238,7 +238,7 @@ A working version of the Autodock Vina container we will build in this tutorial 
 
 ### 1.4: Download and prepare the command line programs Autodock Vina and MGL Tools executables for use in the docking container
 
-> In 1.4, we will incorporate the command line tools [Autodock Vina](http://vina.scripps.edu/) and [MGL Tools](http://mgltools.scripps.edu/downloads) into our base container. Please do not change which installers you download based on your native operating system (OS) because the OS used inside Docker container, Linux x86, may differ from your native OS. For example, I am currently on a Mac, but the OS inside the Docker container is Linux x86, so any installers that work for my native Mac OS would not work inside my Docker container. 
+> In 1.4, we will incorporate the command line tools [Autodock Vina](http://vina.scripps.edu/) and [MGL Tools](https://ccsb.scripps.edu/mgltools/downloads/) into our base container. Please do not change which installers you download based on your native operating system (OS) because the OS used inside Docker container, Linux x86, may differ from your native OS. For example, I am currently on a Mac, but the OS inside the Docker container is Linux x86, so any installers that work for my native Mac OS would not work inside my Docker container. 
 > 
 > When building your own container, this is where you would add in any command line program files.
 
@@ -262,7 +262,7 @@ A working version of the Autodock Vina container we will build in this tutorial 
    * command: `mv autodock_vina_1_1_2_linux_x86 adv`
 8. Move "adv" directory to inside "dependencies" directory
    * command: `mv adv dependencies`
-9. Download MGL Tools linux x86 `mgltools_x86_64Linux2_1.5.6.tar.gz` from http://mgltools.scripps.edu/downloads
+9. Download MGL Tools linux x86 `mgltools_x86_64Linux2_1.5.6.tar.gz` from https://ccsb.scripps.edu/mgltools/downloads/
 10. Move "mgltools_x86_64Linux2_1.5.6.tar.gz" into "adv-tutorial-base"
       * command: `mv {path_to_download}/mgltools_x86_64Linux2_1.5.6.tar.gz .`
 11. Untar "mgltools_x86_64Linux2_1.5.6.tar.gz"
