@@ -12,7 +12,7 @@
 * `--hint_radius`: numeric (float) Angstrom distance from the hint ligand (see above) to consider as the docking region
   * Example: `--hint_radius 6.0`
 * `--hint_molinfo`: resname of the hint ligand used in the hint `.pdb` file
-  * Example: `--hint_molinfo "E51"`
+  * Example: `--hint_molinfo "E4Y"`
 * `--output-dir`: directory to save final docking files (docked ligand and receptor files)
   * You will not need to handle determining the output directory input as the [`ever_given`](https://github.com/samplchallenges/SAMPL-containers/blob/megosato-patch-1-1/tutorials/ever_givenUsage.md#ever_given-usage-notes) wrapper handles this for you. Please ensure that the required output files are saved to the `output-dir` directory
 
