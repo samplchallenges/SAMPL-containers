@@ -3,6 +3,10 @@
 
 ## Input Requirements
 > Every container must be able to handle the following input flags. These are the only flags your container will be expected to handle. We typically use [`click`](https://click.palletsprojects.com/en/8.0.x/) to handle command line argument parsing, but feel free to use your preferred parser. 
+
+### Required Inputs
+* Your container will be run with all the following inputs in the format:
+  * `docker run container_name --receptor [file] --smiles [str] --hint [file] --hint_radius [float] --hint_molinfo [str] --output-dir [path]`
 * `--receptor`: receptor `.pdb` file to dock the ligand into
   * Example: `--receptor data/receptor.pdb`
 * `--smiles`: quoted SMILES string representing the ligand to dock (i.e. "CCC")
@@ -15,6 +19,12 @@
   * Example: `--hint_molinfo "E4Y"`
 * `--output-dir`: directory to save final docking files (docked ligand and receptor files)
   * You will not need to handle determining the output directory input as the [`ever_given`](https://github.com/samplchallenges/SAMPL-containers/blob/main/tutorials/ever_givenUsage.md) wrapper handles this for you. Please ensure that the required output files are saved to the `output-dir` directory
+
+### Optional Inputs
+* The [app.samplchallenges.org](https://app.samplchallenges.org/) Submission Form provides a "Special Arguments" section that allows you to specify command line arguments and a corresponding file to be passed to your container at runtime. 
+* Any optitonal input arguments should be in the form of `--your_argument` with no capital letters and using underscores (`_`) rather than dashes (`-`)
+* Your container will be run with the following inputs in the format:
+  * `docker run container_name --receptor [file] --smiles [str] --hint [file] --hint_radius [float] --hint_molinfo [str] --output-dir [path] --your_argument [file]`
 
 ## Output Requirements
 
