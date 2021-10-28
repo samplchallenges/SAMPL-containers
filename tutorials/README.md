@@ -82,7 +82,7 @@ A working version of the Autodock Vina container we will build in this tutorial 
 
 ### 1.1: Setup
 1. Open a terminal
-2. In a new virtual environment install the `ever-given` package
+2. In a new virtual environment with python 3.7 install the `ever-given` package
     * command: `pip install ever-given`
 3. Clone the SAMPL-containers repository
     * command: `git clone https://github.com/samplchallenges/SAMPL-containers.git`
