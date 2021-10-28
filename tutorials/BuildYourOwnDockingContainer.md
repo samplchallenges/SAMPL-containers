@@ -1,5 +1,5 @@
 # Building Your Own Docking Container
-> This document details requirements and tips for writing a docking container for SAMPL-challenges. For Python template files that follow this guide, please see [SAMPL-containers/tutorials/template](https://github.com/samplchallenges/SAMPL-containers/tree/tutorial/tutorials/template). For an example of a run-able docking main file, please see [SAMPL-containers/adv/main.py](https://github.com/samplchallenges/SAMPL-containers/blob/tutorial/tutorials/adv/main.py). This guide is written under the assumption the reader has already gone through the [Docking Tutorial](https://github.com/samplchallenges/SAMPL-containers/blob/megosato-patch-1-1/tutorials/README.md). 
+> This document details requirements and tips for writing a docking container for SAMPL-challenges. For Python template files that follow this guide, please see [SAMPL-containers/tutorials/templates/docking](https://github.com/samplchallenges/SAMPL-containers/tree/main/tutorials/templates/docking). For an example of a run-able docking main file, please see [SAMPL-containers/adv/main.py](https://github.com/samplchallenges/SAMPL-containers/blob/main/tutorials/adv/main.py). This guide is written under the assumption the reader has already gone through the [Docking Tutorial](https://github.com/samplchallenges/SAMPL-containers/blob/main/tutorials/README.md). 
 
 ## Input Requirements
 > Every container must be able to handle the following input flags. These are the only flags your container will be expected to handle. We typically use [`click`](https://click.palletsprojects.com/en/8.0.x/) to handle command line argument parsing, but feel free to use your preferred parser. 
@@ -14,7 +14,7 @@
 * `--hint_molinfo`: resname of the hint ligand used in the hint `.pdb` file
   * Example: `--hint_molinfo "E4Y"`
 * `--output-dir`: directory to save final docking files (docked ligand and receptor files)
-  * You will not need to handle determining the output directory input as the [`ever_given`](https://github.com/samplchallenges/SAMPL-containers/blob/megosato-patch-1-1/tutorials/ever_givenUsage.md#ever_given-usage-notes) wrapper handles this for you. Please ensure that the required output files are saved to the `output-dir` directory
+  * You will not need to handle determining the output directory input as the [`ever_given`](https://github.com/samplchallenges/SAMPL-containers/blob/main/tutorials/ever_givenUsage.md) wrapper handles this for you. Please ensure that the required output files are saved to the `output-dir` directory
 
 ## Output Requirements
 
@@ -41,7 +41,7 @@
 ## Program Logs
 * Any output to `stdout` or `stderr` will be logged with timestamps associated with each output. These logs will be made accessible to you.
 * Please print general logging info to `stdout` and error messages to `stderr` as is convention.
-* As stated in [OutputRequirements](https://github.com/samplchallenges/SAMPL-containers/blob/megosato-patch-1-1/tutorials/BuildYourOwnDockingContainer.md#output-requirements), the last two lines of `stdout` output must be your two `key value` pairs. 
+* As stated in [OutputRequirements](https://github.com/samplchallenges/SAMPL-containers/blob/main/tutorials/BuildYourOwnDockingContainer.md#output-requirements), the last two lines of `stdout` output must be your two `key value` pairs. 
 
 
 
@@ -105,7 +105,7 @@ def docking_main(receptor, smiles, hint, hint_molinfo, hint_radius, output_dir):
 ```
 
 ## Including your own Python Modules
-If you modularize your code and include your own python modules, you will need to follow the steps below. For an example with using extra python modules beyond just main.py, please see [SAMPL-containers/adv](https://github.com/samplchallenges/SAMPL-containers/blob/tutorial/tutorials/adv).
+If you modularize your code and include your own python modules, you will need to follow the steps below. For an example with using extra python modules beyond just main.py, please see [SAMPL-containers/docking/examples/adv-tutorial](https://github.com/samplchallenges/SAMPL-containers/tree/main/docking/examples/adv-tutorial).
 1. Write your own python module(s)
 2. Copy them into your Docking container using the `COPY` command in your Dockerfile
     * `COPY main.py setup.py <your_python_module>.py ./`
@@ -143,6 +143,6 @@ If you use different naming conventions than those used in the template files fo
 * Some common command line programs (such as AutoDock Vina) already have docker containers made by other people or organizations. It may be worth it to search for pre-made docker containers to inherit from or build off of. (see [AutoDock Vina Docker](https://hub.docker.com/r/taccsciapps/autodock-vina))
 * Some common command line programs may also have Python APIs (see [AutoDock Vina API](https://pypi.org/project/vina/)) 
 * If the above bullets do not work, you can install the command line program into your container by copying the files into the container and running the installation steps in the Dockerfile
-    * Please see [`SAMPL-league/examples/adv-base/Dockerfile`](https://github.com/samplchallenges/SAMPL-league/blob/84ec83f00a637f9c79b6d2e3a1a336ea91837b7a/examples/adv-base/Dockerfile#L14)
+    * Please see [`SAMPL-league/docking/examples/adv-base/Dockerfile`](https://github.com/samplchallenges/SAMPL-containers/blob/main/docking/examples/adv-tutorial/Dockerfile)
 * To run a command line program from within a Python module, consider using [`os.system()`](https://docs.python.org/3/library/os.html?highlight=os%20system#os.system) or similar from the Python3 library
-    * Please see [`SAMPL-league/examples/adv/autodock.py`](https://github.com/samplchallenges/SAMPL-league/blob/84ec83f00a637f9c79b6d2e3a1a336ea91837b7a/examples/adv/autodock.py#L166)
+    * Please see [`SAMPL-league/docking/examples/adv/autodock.py`](https://github.com/samplchallenges/SAMPL-containers/blob/main/docking/examples/adv-tutorial/autodock.py)
