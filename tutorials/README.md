@@ -81,12 +81,14 @@ A working version of the Autodock Vina container we will build in this tutorial 
 
 ### 1.1: Setup
 1. Open a terminal
-2. Clone the SAMPL-containers repository
+2. In a new virtual environment install the `ever-given` package
+    * command: `pip install ever-given`
+3. Clone the SAMPL-containers repository
     * command: `git clone https://github.com/samplchallenges/SAMPL-containers.git`
-3. Navigate to the "SAMPL-containers/tutorials" directory.
-4. Create a directory called "adv-tutorial-base" 
+4. Navigate to the "SAMPL-containers/tutorials" directory.
+5. Create a directory called "adv-tutorial-base" 
    * command: `mkdir adv-tutorial-base`
-5. Change directories to "adv-tutorial-base"
+6. Change directories to "adv-tutorial-base"
    * command: `cd adv-tutorial-base`
 
 
