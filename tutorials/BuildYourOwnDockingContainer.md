@@ -23,7 +23,7 @@
 ### Optional Inputs
 > The Optional Inputs will be most helpful to participants who are using proprietary licenses or files that cannot be uploaded to a public repository. It will also be helpful to participants who would like to explicilty separate their licenses from their container so their container cannot be run by just anyone. Please see the documentation on [License and Code Privacy](https://github.com/samplchallenges/SAMPL-containers/blob/main/tutorials/LicenseAndCodePrivacy.md) for more information.
 * The [app.samplchallenges.org](https://app.samplchallenges.org/) Submission Form provides a "Special Arguments" section that allows you to specify command line arguments and a corresponding file to be passed to your container at runtime.  
-* Any optitonal input arguments should be in the form of `--your_argument` with no capital letters and using underscores (`_`) rather than dashes (`-`) and expect a file that you will upload as the input value
+* Any optitonal input arguments should be in the form of `--your_argument` with no capital letters and using underscores (`_`) rather than dashes (`-`). The argument should expect a file that you will upload as the input value.
 * Your container will be run with the following inputs in the format:
   * `docker run container-name --receptor [file] --smiles [str] --hint [file] --hint_radius [float] --hint_molinfo [str] --output-dir [path] --your_argument [file_uploaded_by_you]`
 
@@ -71,6 +71,8 @@ import os.path
 @click.option("--hint_radius", required=True, type=float, help="box size of the box to dock into")
 
 @click.option("--output-dir", help="Output directory for receptor and docked_ligand files")
+
+# @click.option("--your_argument", type=click.Path(exists=True), help="Any special file arguments you")
 
 def docking_main(receptor, smiles, hint, hint_molinfo, hint_radius, output_dir):
         ''' docks the given smiles string into the receptor within the area specified by hint and hint-radius
