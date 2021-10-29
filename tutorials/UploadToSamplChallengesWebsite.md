@@ -43,11 +43,11 @@
 7. Wait for your submission to finish running, this may take a while. Please note, if your container fails on the Public Dataset, the container will not be run with the Private Dataset.
 
 ## Section 4: Finalizing your submission
-1. When you are happy with your submission, in the Submission Details section you will need to un-check "Draft mode" on your submission and check the "Ranked" box.
+1. When you are satisfied with your submission, in the Submission Details section you will need to un-check "Draft mode" on your submission and check the "Ranked" box.
 
 ## Section 5: After the Challenge has ended
 1. After the challenge has ended you may log in, and return to your submission details page.
-2. If you'd like to leave notes related to your submission or its performance, click "Update" and type your notes in the "Submission Notes" section. Only this section will be modifiable post-challenge.
+2. If you'd like to leave notes related to your submission or its performance, click "Update" and type your notes in the "Submission Notes" section. The "Submission Notes" is the only section that will be modifiable post-challenge.
 
 
 
