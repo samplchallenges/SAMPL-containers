@@ -43,6 +43,7 @@
    receptor {path_to_receptor_file}
    ```
 
+** Intentional No Prediction Output**: Output the following file and print the following to `stdout`
 * If you are intentionally avoiding a prediction for a compound, please replace `{path_to_docked_ligand_file}` and `{path_to_receptor_file}` with an empty file saved to `output_dir` called`no_prediction` (see example below)
    * path_to_no_prediction = `{output_dir}/no_prediction`
    ```
