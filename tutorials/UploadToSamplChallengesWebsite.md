@@ -30,7 +30,7 @@
       * **Label**: osatom/docking
       * **Tag**: 0.1revised
 9. In the Special Arguments section, enter any extra keyword arguments and upload any corresponding files that are necessary to run your container
-10. In the Submission Details section, enter the information about your submission, this section may be put in "draft mode" allowing incomplete fields to be saved and finished at a later time. If you are unsure of your submission, please un-check the "Ranked" box. 
+10. In the Submission Details section, enter the information about your submission, this section may be put in "draft mode" allowing incomplete fields to be saved and finished at a later time. If you are unsure of your submission details, please un-check the "Ranked" box. 
 12. Save your submission. You will be redirected to a page with a summary of your submission.
 
 ## Section 3: Run your submission.
