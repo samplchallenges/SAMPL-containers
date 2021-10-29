@@ -21,10 +21,11 @@
   * You will not need to handle determining the output directory input as the [`ever_given`](https://github.com/samplchallenges/SAMPL-containers/blob/main/tutorials/ever_givenUsage.md) wrapper handles this for you. Please ensure that the required output files are saved to the `output-dir` directory
 
 ### Optional Inputs
-* The [app.samplchallenges.org](https://app.samplchallenges.org/) Submission Form provides a "Special Arguments" section that allows you to specify command line arguments and a corresponding file to be passed to your container at runtime. 
-* Any optitonal input arguments should be in the form of `--your_argument` with no capital letters and using underscores (`_`) rather than dashes (`-`)
+> The Optional Inputs will be most helpful to participants who are using proprietary licenses or files that cannot be uploaded to a public repository. It will also be helpful to participants who would like to explicilty separate their licenses from their container so their container cannot be run by just anyone. Please see the documentation on [License and Code Privacy](https://github.com/samplchallenges/SAMPL-containers/blob/main/tutorials/LicenseAndCodePrivacy.md) for more information.
+* The [app.samplchallenges.org](https://app.samplchallenges.org/) Submission Form provides a "Special Arguments" section that allows you to specify command line arguments and a corresponding file to be passed to your container at runtime.  
+* Any optitonal input arguments should be in the form of `--your_argument` with no capital letters and using underscores (`_`) rather than dashes (`-`) and expect a file that you will upload as the input value
 * Your container will be run with the following inputs in the format:
-  * `docker run container-name --receptor [file] --smiles [str] --hint [file] --hint_radius [float] --hint_molinfo [str] --output-dir [path] --your_argument [file]`
+  * `docker run container-name --receptor [file] --smiles [str] --hint [file] --hint_radius [float] --hint_molinfo [str] --output-dir [path] --your_argument [file_uploaded_by_you]`
 
 ## Output Requirements
 
