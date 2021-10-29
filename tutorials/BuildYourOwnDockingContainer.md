@@ -44,7 +44,7 @@
    ```
 
 * If you are intentionally avoiding a prediction for a compound, please replace `{path_to_docked_ligand_file}` and `{path_to_receptor_file}` with an empty file saved to `output_dir` called`no_prediction` (see example below)
-   * path_to_receptor_file = `{output_dir}/no_prediction`
+   * path_to_no_prediction = `{output_dir}/no_prediction`
    ```
    docked_ligand {path_to_no_prediction}
    receptor {path_to_no_prediction}
