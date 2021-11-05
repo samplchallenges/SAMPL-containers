@@ -17,4 +17,4 @@ Whether the required output is a numerical value or a file, you will ALWAYS need
 ## Program Logs
 * Any output to `stdout` or `stderr` will be logged with timestamps associated with each output. These logs will be made accessible to you.
 * Please print general logging info to `stdout` and error messages to `stderr` as is convention.
-* As stated in "Printed Required Outputs", the last two lines of `stdout` output must be your two `key value` pairs. 
+* As stated in "Printed Required Outputs", the last two lines of `stdout` output must be your required `key value` pairs. 
