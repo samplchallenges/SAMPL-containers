@@ -12,7 +12,7 @@ Whether the required output is a numerical value or a file, you will ALWAYS need
          * Please see previous section "File Required Ouputs" for more details about `path_to_output_file`
 
 ## Intentional No Prediction Output: 
-* Protocols for intentional no prediction for an input will be determined for each specific challenge. Please 
+* Protocols for intentional no prediction for an input will be determined for each specific challenge. Please see the specific challenge for more details.
 
 ## Program Logs
 * Any output to `stdout` or `stderr` will be logged with timestamps associated with each output. These logs will be made accessible to you.
