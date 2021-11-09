@@ -1,11 +1,12 @@
 import copy
-import io
 import shlex
 import sys
-import threading
 from pathlib import Path
 
 import docker
+
+
+from . import log_processing
 
 GUEST_INPUT_DIR = Path("/mnt") / "inputs"
 GUEST_OUTPUT_DIR = Path("/mnt") / "outputs"
@@ -15,7 +16,7 @@ def _guest_input_path(filename):
     return GUEST_INPUT_DIR / Path(filename).name
 
 
-def _prepare_commandline(command, args_dict):
+def prepare_commandline(command, args_dict):
     return (
         command
         + " "
@@ -37,8 +38,7 @@ def _parse_output(host_path, raw_text, output_file_keys):
                 result[key] = _convert_guest_to_host_path(host_path, value)
             else:
                 result[key] = value
-        else:
-            raise ValueError(f"Cannot parse output {line}, needs KEY VALUE format")
+                
     return result
 
 
@@ -68,25 +68,6 @@ def _convert_file_kwargs(file_kwargs):
     return dirpaths, final_file_kwargs
 
 
-class PrintLogHandler:
-    def handle_stdout(self, log):
-        print("stdout", log)
-
-    def handle_stderr(self, log):
-        print("stderr", log)
-
-
-def _read_stdout(container, log_handler, output_buffer):
-    for log in container.logs(stdout=True, stderr=False, stream=True):
-        log_handler.handle_stdout(log)
-        output_buffer.write(log)
-
-
-def _read_stderr(container, log_handler):
-    for log in container.logs(stdout=False, stderr=True, stream=True):
-        log_handler.handle_stderr(log)
-
-
 def run(
     container_uri,
     command="",
@@ -108,40 +89,19 @@ def run(
     command is optional
     Iterate over key/values of results.
     """
-    if log_handler is None:
-        log_handler = PrintLogHandler()
-
-    if not (
-        hasattr(log_handler, "handle_stdout") and hasattr(log_handler, "handle_stderr")
-    ):
-        raise TypeError("log_handler must have handle_stdout and handle_stderr methods")
 
     input_dir_map, final_file_kwargs = _convert_file_kwargs(file_kwargs)
     final_kwargs = copy.deepcopy(kwargs)
     final_kwargs.update(final_file_kwargs)
 
-    final_command = _prepare_commandline(command, final_kwargs)
+    final_command = prepare_commandline(command, final_kwargs)
 
     running_container = run_container(
         container_uri, final_command, input_dir_map, output_dir=output_dir
     )
 
-    output_buffer = io.BytesIO()
-    out_thread = threading.Thread(
-        target=_read_stdout,
-        name="stdout",
-        args=(running_container, log_handler, output_buffer),
-    )
-    err_thread = threading.Thread(
-        target=_read_stderr, name="stderr", args=(running_container, log_handler)
-    )
-    err_thread.start()
-    out_thread.start()
+    result = log_processing.process_messages(running_container, log_handler)
 
-    # TODO: timeouts here?
-    err_thread.join()
-    out_thread.join()
-    result = output_buffer.getvalue()
     yield from _parse_output(output_dir, result, output_file_keys).items()
 
     running_container.reload()
