@@ -6,7 +6,8 @@ name = "pypi"
 [packages]
 ever-given = {editable = true, path = "."}
 
-[dev-packages]
-
 [requires]
 python_version = "3.8"
+
+[dev-packages]
+pytest = "*"
