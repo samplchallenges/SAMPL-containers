@@ -127,7 +127,7 @@ class Autodock():
 		outfile = open(out_pdb, "w")
 		with open(complex_pdb, "r") as complex_file:
 			for line in complex_file:
-				if (line.startswith("ATOM") or line.startswith("HETATM")) and line.split()[3] == lig_name:
+				if (line.startswith("ATOM") or line.startswith("HETATM")) and line[17:21].strip() == lig_name:
 					outfile.write(line)
 			outfile.write("END")
 		outfile.close()
