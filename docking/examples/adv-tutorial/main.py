@@ -35,7 +35,7 @@ def print_debug(debug: bool, msg:str):
 @click.option("--output-dir",help="Output directory for receptor and docked_ligand files")
 
 @click.option('--debug', is_flag=True,help="prints debug print statements when --debug flag is used")
-def main_function(receptor, smiles, hint, hint_molinfo, hint_radius, output_dir, debug):
+def main_function(receptor, smiles, hint, hint_molinfo, hint_radius, output_dir, debug) -> None:
 	''' docks the given smiles string into the receptor within the area specified by hint and hint-radius
             INPUTS:    receptor:     file    receptor PDB path to dock ligand into
                        smiles:       str     SMILES string of ligand to be docked, use quotes 
@@ -95,10 +95,22 @@ def main_function(receptor, smiles, hint, hint_molinfo, hint_radius, output_dir,
 
 	Autodock.pdbqt_to_pdb_static(receptorprep_pdbqt_path, receptor_pdb_path)
 
+	# clean up the temporary directory and intermediate files created 
 	shutil.rmtree(temp_dir)
 
+	# Your final ligand and receptor files should be SAVED to the output_dir (specified as a parameter). 
+	# Your main function should also PRINT out the 'key value' pairs 
+	#	* key: either the LIGAND_KEY 'docked_ligand' or the RECEPTOR_KEY 'receptor'. 
+	# 	* value: the absolute file path to the file on disk. The absolute file paths to your files should be specified
+	#	         as 'output_dir/your_file' where output_dir is the output_dir (specified as a parameter). Your final
+	# 		 output files MUST BE saved to the output_dir
+	# 		* receptor_pdb_path = os.path.join(output_dir,"rec-dock.pdb") 
+	# 		* highscore_pdb_path = os.path.join(output_dir,"best_dock.pdb")
 	print(f"{LIGAND_KEY} {highscore_pdb_path}")
 	print(f"{RECEPTOR_KEY} {receptor_pdb_path}")
+	
+	# Anything your container returns will be ignored. Please make sure that any outputs follow the format
+	# in the previous comment
 
 if __name__ == "__main__":
 	main_function()
