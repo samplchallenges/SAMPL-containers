@@ -88,18 +88,18 @@ def docking_main(receptor, smiles, hint, hint_molinfo, hint_radius, output_dir):
                        output_dir:      str     output director for receptor and docked_ligand\
 		       
             OUTPUTS:   prints           docked_ligand {path_to_docked_ligand_file}
-	    				                               where the path_to_docked_ligand_file = output_dir/docked_ligand_file
+	    				where the path_to_docked_ligand_file = output_dir/docked_ligand_file
                        prints           receptor {path_to_receptor_file}
-		       			                            where the path_to_receptor_file = os.path.join(output_dir, receptor_file_name)
+		       			where the path_to_receptor_file = os.path.join(output_dir, receptor_file_name)
                        writes file      docked ligand file as a .pdb .mol2 or .sdf this file must be saved on disk to the
-		       			                            path stored in the output_dir argument
+		       			path stored in the output_dir argument
                        writes file      receptor prepped and used by program in docking as .pdb this file must be saved 
-		       			                            on disk to the path stored in the output_dir argument
+		       			on disk to the path stored in the output_dir argument
 		       
 	           RETURNS:   None
-	    	                 Please note that anything your function returns will be ignored by our automated scoring 
-		                     All outputs (docked_ligand and receptor files) MUST BE saved on disk to the specified
-		                     output_dir AND the absolute path must be printed out as specified in "OUTPUTS"
+	    	              Please note that anything your function returns will be ignored by our automated scoring 
+		              All outputs (docked_ligand and receptor files) MUST BE saved on disk to the specified
+		              output_dir AND the absolute path must be printed out as specified in "OUTPUTS"
         '''
         
     
@@ -124,13 +124,13 @@ def docking_main(receptor, smiles, hint, hint_molinfo, hint_radius, output_dir):
         
         # Your final ligand and receptor files should be SAVED to the output_dir (specified as a parameter). 
         # Your main function should also PRINT out the 'key value' pairs 
-        #	       * key: either the 'docked_ligand' or 'receptor'. 
-        # 	      * value: the absolute file path to the file on disk. The absolute file paths to your files should be specified
-        #	                as 'output_dir/your_file' where output_dir is the output_dir (specified as a parameter). Your final
-        # 		              output files MUST BE saved to the output_dir, otherwise our automated scoring will not be able to 
-        #		               find your files
-        # 		                  * path_to_docked_ligand_file = os.path.join(output_dir,"rec-dock.pdb") 
-        # 		                  * path_to_receptor_file = os.path.join(output_dir,"best_dock.pdb")
+        #	 * key: either the 'docked_ligand' or 'receptor'. 
+        # 	 * value: the absolute file path to the file on disk. The absolute file paths to your files should be specified
+        #	          as 'output_dir/your_file' where output_dir is the output_dir (specified as a parameter). Your final
+        # 		  output files MUST BE saved to the output_dir, otherwise our automated scoring will not be able to 
+        #		  find your files
+        # 		       * path_to_docked_ligand_file = os.path.join(output_dir,"rec-dock.pdb") 
+        # 		       * path_to_receptor_file = os.path.join(output_dir,"best_dock.pdb")
         
         
         print(f"docked_ligand {path_to_docked_ligand_file}")
