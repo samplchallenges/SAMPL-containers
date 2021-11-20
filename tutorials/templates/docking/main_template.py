@@ -58,6 +58,10 @@ def docking_main(receptor: 'Path', smiles: str,  hint: 'Path', hint_molinfo: str
 	# YOUR CODE GOES HERE 
         
 	
+	# A note about intermediate files: 
+	# Please do not store your intermediate files in the output_dir path, you can use a temporary directory
+	# or as temporary files instead, or store them in a different directory within your container. 
+	
         
         # write out the docked ligand file to path_to_docked_ligand_file, your docked ligand file must be 
 	# saved to the path specified by the output_dir parameter 
