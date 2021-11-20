@@ -115,7 +115,7 @@ def docking_main(receptor, smiles, hint, hint_molinfo, hint_radius, output_dir):
         # YOUR DOCKING CODE GOES HERE
         
         # write out the docked ligand file to path_to_docked_ligand_file, your docked ligand file must be 
-	       # saved to the path specified by the output_dir parameter 
+	# saved to the path specified by the output_dir parameter 
 	
         # write out the receptor file to path_to_receptor_file, your receptor file must be 
         # saved to the path specified by the output_dir parameter         
