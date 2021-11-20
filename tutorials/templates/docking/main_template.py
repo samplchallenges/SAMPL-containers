@@ -1,6 +1,8 @@
+# For more information about how to build your Docking Container for SAMPL containerized challenges
+# Please see: https://github.com/samplchallenges/SAMPL-containers/blob/main/tutorials/BuildYourOwnDockingContainer.md
+
 import click
 import os.path
-
 
 # the following are decorators related to the MAIN FUNCTION (docking_main), these '@click.command()' and '@click.option()' decorators
 # MUST remain directly above your main function
