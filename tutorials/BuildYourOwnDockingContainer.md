@@ -96,10 +96,10 @@ def docking_main(receptor, smiles, hint, hint_molinfo, hint_radius, output_dir):
                        writes file      receptor prepped and used by program in docking as .pdb this file must be saved 
 		       			on disk to the path stored in the output_dir argument
 		       
-	           RETURNS:   None
-	    	              Please note that anything your function returns will be ignored by our automated scoring 
-		              All outputs (docked_ligand and receptor files) MUST BE saved on disk to the specified
-		              output_dir AND the absolute path must be printed out as specified in "OUTPUTS"
+	    RETURNS:   None
+	    	       Please note that anything your function returns will be ignored by our automated scoring 
+		       All outputs (docked_ligand and receptor files) MUST BE saved on disk to the specified
+		       output_dir AND the absolute path must be printed out as specified in "OUTPUTS"
         '''
         
     
