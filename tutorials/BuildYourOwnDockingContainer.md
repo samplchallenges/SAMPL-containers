@@ -57,6 +57,10 @@
 * As stated in [OutputRequirements](https://github.com/samplchallenges/SAMPL-containers/blob/main/tutorials/BuildYourOwnDockingContainer.md#output-requirements), the last two lines of `stdout` output must be your two `key value` pairs. 
 
 
+## A Note about Intermediate Files
+* Please do not use `output_dir` to store your intermediate files
+* You can store your intermediate files in a temporary directory or in any directory other than the `output_dir`, these files should die when your container finishes executing.
+
 
 ## Example Python Main Function Definition
 > Every docking container you build for SAMPL challenges should include a main file with a main function that looks similar to the code block below. The following docking main template meets all input and output requirements mentioned above. 
