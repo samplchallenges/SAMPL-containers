@@ -32,7 +32,7 @@
 **File Outputs**: Output the following files into the `output-dir`
 * **docked ligand file**: a `.mol2`, `.pdb` or `.sdf` of the docked ligand
   * path_to_docked_ligand_file = `{output_dir}/{docked_ligand_file}`
-* **receptor file**: a `.pdb` file of the receptor used or modified by your docking program, this is important for rmsd scoring purposes in case your complex changes frame of reference
+* **receptor file**: a `.pdb` file of the receptor used or modified by your docking program, this is important for rmsd scoring purposes in case your complex changes frame of reference during the docking program
   * path_to_receptor_file = `{output_dir}/{receptor_file}`
 
 
