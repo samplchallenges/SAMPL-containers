@@ -41,7 +41,7 @@ This terminology is unfortunately not something we can change.
 A working version of the Autodock Vina container we will build in this tutorial can be found at [Docker Hub under osatom/adv-tutorial](https://hub.docker.com/repository/docker/osatom/adv-tutorial). To play with this container, please use the following steps:
 1. Use the [`docker pull`](https://docs.docker.com/engine/reference/commandline/pull/) command to download the "adv-tutorial" Docker container: `docker pull osatom/adv-tutorial:latest`
 2. Change directories into the "SAMPL-containers/tutorials" directory: `cd SAMPL-containers/tutorials`
-3. Run the command: `python ever_given/run.py osatom/adv-tutorial:latest --file_receptor data/receptor.pdb --file_hint data/hint.pdb --hint_radius 6 --hint_molinfo "E4Y" --smiles "c1ccc(C(C)C)cc1CNCC(O)(O)[C@@H](NC(=O)[C@@H]2C)C[C@H](C)CCCCCCCCC(=O)N2C" --output_keys docked_ligand,receptor`
+3. Run the command: `evergiven osatom/adv-tutorial:latest --file-receptor data/receptor.pdb --file_-hint data/hint.pdb --hint-radius 6 --hint-molinfo "E4Y" --smiles "c1ccc(C(C)C)cc1CNCC(O)(O)[C@@H](NC(=O)[C@@H]2C)C[C@H](C)CCCCCCCCC(=O)N2C" --output-keys docked_ligand,receptor`
 4. The results will be stored in the directory "tutorials/evergiven_output"
 
 
@@ -82,7 +82,7 @@ A working version of the Autodock Vina container we will build in this tutorial 
 
 ### 1.1: Setup
 1. Open a terminal
-2. In a new virtual environment with python 3.7 install the `ever-given` package
+2. In a new virtual environment with python 3.7 install the `ever-given` package. Please ensure the version you have installed is v0.0.7 or later.
     * command: `pip install ever-given`
 3. Clone the SAMPL-containers repository
     * command: `git clone https://github.com/samplchallenges/SAMPL-containers.git`
@@ -465,13 +465,13 @@ In this section, we will use the wrapper `ever_given` to run the docking contain
 1. Change directories into "tutorials" one directory above:
    * command: `cd ..`
 2. Run the container. A successful run should look like the code block below.
-   * command: `python ever_given/run.py adv-tutorial --file_receptor data/receptor.pdb --file_hint data/hint.pdb --hint_radius 6 --hint_molinfo "E4Y" --smiles "c1ccc(C(C)C)cc1CNCC(O)(O)[C@@H](NC(=O)[C@@H]2C)C[C@H](C)CCCCCCCCC(=O)N2C" --output_keys docked_ligand,receptor`
+   * command: `evergiven adv-tutorial:latest --file-receptor data/receptor.pdb --file-hint data/hint.pdb --hint-radius 6 --hint-molinfo "E4Y" --smiles "c1ccc(C(C)C)cc1CNCC(O)(O)[C@@H](NC(=O)[C@@H]2C)C[C@H](C)CCCCCCCCC(=O)N2C" --output-keys docked_ligand,receptor`
    ```
-   (base) megosato@Admins-MacBook-Pro tutorials % python ever_given/run.py adv-tutorial --file_receptor data/receptor.pdb --file_hint data/hint.pdb --hint_radius 6 
-   --hint_molinfo "E4Y" --smiles "c1ccc(C(C)C)cc1CNCC(O)(O)[C@@H](NC(=O)[C@@H]2C)C[C@H](C)CCCCCCCCC(=O)N2C" --output_keys docked_ligand,receptor
+   (base) megosato@Admins-MacBook-Pro tutorials % evergiven adv-tutorial:latest --file-receptor data/receptor.pdb --file-hint data/hint.pdb --hint-radius 6 
+   --hint-molinfo "E4Y" --smiles "c1ccc(C(C)C)cc1CNCC(O)(O)[C@@H](NC(=O)[C@@H]2C)C[C@H](C)CCCCCCCCC(=O)N2C" --output-keys docked_ligand,receptor
    command? 
    file kwargs {'receptor': 'data/receptor.pdb', 'hint': 'data/hint.pdb'}
-   kwargs {'hint_radius': '6', 'hint_molinfo': 'E4Y', 'smiles': 'c1ccc(C(C)C)cc1CNCC(O)(O)[C@@H](NC(=O)[C@@H]2C)C[C@H](C)CCCCCCCCC(=O)N2C'}
+   kwargs {'hint-radius': '6', 'hint_-molinfo': 'E4Y', 'smiles': 'c1ccc(C(C)C)cc1CNCC(O)(O)[C@@H](NC(=O)[C@@H]2C)C[C@H](C)CCCCCCCCC(=O)N2C'}
    Putting output into evergiven_output
    evergiven_output docked_ligand /mnt/outputs/best_dock.pdb
    evergiven_output receptor /mnt/outputs/rec-dock.pdb
