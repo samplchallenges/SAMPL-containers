@@ -41,7 +41,7 @@ This terminology is unfortunately not something we can change.
 A working version of the Autodock Vina container we will build in this tutorial can be found at [Docker Hub under osatom/adv-tutorial](https://hub.docker.com/repository/docker/osatom/adv-tutorial). To play with this container, please use the following steps:
 1. Use the [`docker pull`](https://docs.docker.com/engine/reference/commandline/pull/) command to download the "adv-tutorial" Docker container: `docker pull osatom/adv-tutorial:latest`
 2. Change directories into the "SAMPL-containers/tutorials" directory: `cd SAMPL-containers/tutorials`
-3. Run the command: `evergiven osatom/adv-tutorial:latest --file-receptor data/receptor.pdb --file_-hint data/hint.pdb --hint-radius 6 --hint-molinfo "E4Y" --smiles "c1ccc(C(C)C)cc1CNCC(O)(O)[C@@H](NC(=O)[C@@H]2C)C[C@H](C)CCCCCCCCC(=O)N2C" --output-keys docked_ligand,receptor`
+3. Run the command: `python ever_given/run.py osatom/adv-tutorial:latest --file-receptor data/receptor.pdb --file-hint data/hint.pdb --hint_radius 6 --hint_molinfo "E4Y" --smiles "c1ccc(C(C)C)cc1CNCC(O)(O)[C@@H](NC(=O)[C@@H]2C)C[C@H](C)CCCCCCCCC(=O)N2C" --output-keys docked_ligand,receptor`
 4. The results will be stored in the directory "tutorials/evergiven_output"
 
 
@@ -206,7 +206,7 @@ A working version of the Autodock Vina container we will build in this tutorial 
    * command: `docker build -t adv-tutorial-base-test .`
 9. If your build from the previous step (step 8) completed without issue, please move on to the next step, otherwise some troubleshooting of the previous steps may be necessary. A successful build looks something like the code block below.
    ```
-   (base) megosato@Admins-MacBook-Pro adv-tutorial-base % docker build -t adv-tutorial-base-test .
+   (base) adv-tutorial-base % docker build -t adv-tutorial-base-test .
    [+] Building 2.0s (13/13) FINISHED                                                                                                         
     => [internal] load build definition from Dockerfile                                                                                  0.0s
     => => transferring dockerfile: 402B                                                                                                  0.0s
@@ -308,7 +308,7 @@ A working version of the Autodock Vina container we will build in this tutorial 
    * command: `docker build -t adv-tutorial-base .`
 2. Ensure your build was successful. A successful build will look something like the code block below.
    ```
-   (base) megosato@Admins-MacBook-Pro adv-tutorial-base % docker build -t adv-tutorial-base .
+   (base) adv-tutorial-base % docker build -t adv-tutorial-base .
    [+] Building 117.9s (11/11) FINISHED                                                                            
     => [internal] load build definition from Dockerfile                                                       0.0s
     => => transferring dockerfile: 37B                                                                        0.0s
@@ -437,7 +437,7 @@ A working version of the Autodock Vina container we will build in this tutorial 
 1. Build the container. A successful build should look similar to the code block below.
    * command: `docker build -t adv-tutorial .`
    ```
-   (base) megosato@Admins-MacBook-Pro adv-tutorial % docker build -t adv-tutorial .
+   (base) adv-tutorial % docker build -t adv-tutorial .
    [+] Building 1.6s (10/10) FINISHED                                                                                                         
     => [internal] load build definition from Dockerfile                                                                                  0.0s
     => => transferring dockerfile: 227B                                                                                                  0.0s
@@ -465,10 +465,10 @@ In this section, we will use the wrapper `ever_given` to run the docking contain
 1. Change directories into "tutorials" one directory above:
    * command: `cd ..`
 2. Run the container. A successful run should look like the code block below.
-   * command: `evergiven adv-tutorial:latest --file-receptor data/receptor.pdb --file-hint data/hint.pdb --hint-radius 6 --hint-molinfo "E4Y" --smiles "c1ccc(C(C)C)cc1CNCC(O)(O)[C@@H](NC(=O)[C@@H]2C)C[C@H](C)CCCCCCCCC(=O)N2C" --output-keys docked_ligand,receptor`
+   * command: `python ever_given/run.py adv-tutorial:latest --file-receptor data/receptor.pdb --file-hint data/hint.pdb --hint_radius 6 --hint_molinfo "E4Y" --smiles "c1ccc(C(C)C)cc1CNCC(O)(O)[C@@H](NC(=O)[C@@H]2C)C[C@H](C)CCCCCCCCC(=O)N2C" --output-keys docked_ligand,receptor`
    ```
-   (base) megosato@Admins-MacBook-Pro tutorials % evergiven adv-tutorial:latest --file-receptor data/receptor.pdb --file-hint data/hint.pdb --hint-radius 6 
-   --hint-molinfo "E4Y" --smiles "c1ccc(C(C)C)cc1CNCC(O)(O)[C@@H](NC(=O)[C@@H]2C)C[C@H](C)CCCCCCCCC(=O)N2C" --output-keys docked_ligand,receptor
+   (base) tutorials % python ever_given/run.py adv-tutorial:latest --file-receptor data/receptor.pdb --file-hint data/hint.pdb --hint_radius 6 
+   --hint_molinfo "E4Y" --smiles "c1ccc(C(C)C)cc1CNCC(O)(O)[C@@H](NC(=O)[C@@H]2C)C[C@H](C)CCCCCCCCC(=O)N2C" --output-keys docked_ligand,receptor
    command? 
    file kwargs {'receptor': 'data/receptor.pdb', 'hint': 'data/hint.pdb'}
    kwargs {'hint-radius': '6', 'hint_-molinfo': 'E4Y', 'smiles': 'c1ccc(C(C)C)cc1CNCC(O)(O)[C@@H](NC(=O)[C@@H]2C)C[C@H](C)CCCCCCCCC(=O)N2C'}
