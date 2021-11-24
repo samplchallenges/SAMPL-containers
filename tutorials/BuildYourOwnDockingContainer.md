@@ -15,7 +15,7 @@
   * Example: `--hint data/hint.pdb`
 * `--hint-radius`: numeric (float) Angstrom distance from the hint ligand (see above) to consider as the docking region
   * Example: `--hint-radius 6.0`
-* `--hint_molinfo`: resname of the hint ligand used in the hint `.pdb` file
+* `--hint-molinfo`: resname of the hint ligand used in the hint `.pdb` file
   * Example: `--hint-molinfo "E4Y"`
 * `--output-dir`: directory to save final docking files (docked ligand and receptor files)
   * You will not need to handle determining the output directory input as the [`ever_given`](https://github.com/samplchallenges/SAMPL-containers/blob/main/tutorials/ever_givenUsage.md) wrapper handles this for you. Please ensure that the required output files are saved to the directory path specified by the `output-dir` argument
