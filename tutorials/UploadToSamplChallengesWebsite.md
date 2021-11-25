@@ -29,7 +29,7 @@
       * **Registry**: ghcr.io
       * **Label**: osatom/docking
       * **Tag**: 0.1revised
-9. In the Special Arguments section, enter any extra keyword arguments and upload any corresponding files that are necessary to run your container
+9. In the Special Arguments section, enter any extra keyword arguments and upload any corresponding files that are necessary to run your container. For more information on license and code privacy, please see [LicenseAndCodePrivacy.md](https://github.com/samplchallenges/SAMPL-containers/blob/main/tutorials/LicenseAndCodePrivacy.md).
 10. In the Submission Details section, enter the information about your submission, this section may be put in "draft mode" allowing incomplete fields to be saved and finished at a later time. If you are unsure of your submission details, please un-check the "Ranked" box. 
 12. Save your submission. You will be redirected to a page with a summary of your submission.
 
