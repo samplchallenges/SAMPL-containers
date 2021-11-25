@@ -12,16 +12,13 @@ The Special Arguments allows you to add extra file arguments that will be passed
 
 ```
 import click
-import os.path
+# click is a command line input parsing package
 
 
-# the following are decorators related to the MAIN FUNCTION, these '@click.command()' and '@click.option()' decorators
-# MUST remain directly above your main function
 @click.command()
 
 @click.option("--required-arg1")
 @click.option("--required-arg2")
-
 @click.option("--output-dir",help="Output directory for receptor and docked_ligand files")
 
 @click.option("--your-argument", type=click.Path(exists=True), help="Any special file arguments you")
