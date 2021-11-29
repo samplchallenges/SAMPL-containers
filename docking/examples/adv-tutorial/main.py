@@ -29,8 +29,8 @@ def print_debug(debug: bool, msg:str):
 @click.option("--smiles",required=True,help="SMILES str of ligand to be docked. quote to prevent CLI errors \"CCC\"")
 
 @click.option("--hint",required=True,type=click.Path(exists=True),help="path of hint ligand complex for docking region hint")
-@click.option("--hint_molinfo",required=True,help="residue name of the ligand in the hint complex")
-@click.option("--hint_radius",required=True,type=float,help="box size of the box to dock into")
+@click.option("--hint-molinfo",required=True,help="residue name of the ligand in the hint complex")
+@click.option("--hint-radius",required=True,type=float,help="box size of the box to dock into")
 
 @click.option("--output-dir",help="Output directory for receptor and docked_ligand files")
 
