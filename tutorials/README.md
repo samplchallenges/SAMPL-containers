@@ -106,7 +106,7 @@ A working version of the Autodock Vina container we will build in this tutorial 
 2. Start the container. Upon running this command your command line prompt should change. This means you are now inside the container interacting with it's command line and contents. The change in command prompts should look similar to the code block below. 
    * command: `docker run -it --rm continuumio/miniconda3`
    ```
-   megosato@Admins-MacBook-Pro ~ % docker run -it --rm continuumio/miniconda3
+   (base) ~ % docker run -it --rm continuumio/miniconda3
    root@7f02be71557e:/# 
    ```
 3. Create a conda env called "advenv", if prompted "Proceed ([y]/n)?" type "y"
@@ -208,7 +208,7 @@ A working version of the Autodock Vina container we will build in this tutorial 
    * command: `docker build -t adv-tutorial-base-test .`
 9. If your build from the previous step (step 8) completed without issue, please move on to the next step, otherwise some troubleshooting of the previous steps may be necessary. A successful build looks something like the code block below.
    ```
-   (base) megosato@Admins-MacBook-Pro adv-tutorial-base % docker build -t adv-tutorial-base-test .
+   (base) adv-tutorial-base % docker build -t adv-tutorial-base-test .
    [+] Building 2.0s (13/13) FINISHED                                                                                                         
     => [internal] load build definition from Dockerfile                                                                                  0.0s
     => => transferring dockerfile: 402B                                                                                                  0.0s
@@ -310,7 +310,7 @@ A working version of the Autodock Vina container we will build in this tutorial 
    * command: `docker build -t adv-tutorial-base .`
 2. Ensure your build was successful. A successful build will look something like the code block below.
    ```
-   (base) megosato@Admins-MacBook-Pro adv-tutorial-base % docker build -t adv-tutorial-base .
+   (base) adv-tutorial-base % docker build -t adv-tutorial-base .
    [+] Building 117.9s (11/11) FINISHED                                                                            
     => [internal] load build definition from Dockerfile                                                       0.0s
     => => transferring dockerfile: 37B                                                                        0.0s
@@ -439,7 +439,7 @@ A working version of the Autodock Vina container we will build in this tutorial 
 1. Build the container. A successful build should look similar to the code block below.
    * command: `docker build -t adv-tutorial .`
    ```
-   (base) megosato@Admins-MacBook-Pro adv-tutorial % docker build -t adv-tutorial .
+   (base) adv-tutorial % docker build -t adv-tutorial .
    [+] Building 1.6s (10/10) FINISHED                                                                                                         
     => [internal] load build definition from Dockerfile                                                                                  0.0s
     => => transferring dockerfile: 227B                                                                                                  0.0s
