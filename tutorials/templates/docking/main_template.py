@@ -10,13 +10,13 @@ import os.path
 @click.option("--receptor", required=True, type=click.Path(exists=True), help="path of receptor PDB to dock the ligand into")
 @click.option("--smiles", required=True, help="smiles string of ligand to be docked")
 @click.option("--hint",required=True, type=click.Path(exists=True), help="path of hint ligand complex for docking region hint")
-@click.option("--hint_molinfo",required=True,help="residue name of the ligand in the hint complex")
-@click.option("--hint_radius",required=True,type=float,help="box size of the box to dock into")
+@click.option("--hint-molinfo",required=True,help="residue name of the ligand in the hint complex")
+@click.option("--hint-radius",required=True,type=float,help="box size of the box to dock into")
 
 @click.option("--output-dir",help="Output directory for receptor and docked_ligand files")
 
-# @click.option("--your_argument", type=click.Path(exists=True), help="Any special file arguments you would like to add")
-# for more information on special file arguments like "--your_argument", please see:
+# @click.option("--your-argument", type=click.Path(exists=True), help="Any special file arguments you would like to add")
+# for more information on special file arguments like "--your-argument", please see:
 # https://github.com/samplchallenges/SAMPL-containers/blob/main/tutorials/BuildYourOwnDockingContainer.md#optional-inputs
 
 def docking_main(receptor: 'Path', smiles: str,  hint: 'Path', hint_molinfo: str, hint_radius: float, output_dir: 'Path') -> None:
