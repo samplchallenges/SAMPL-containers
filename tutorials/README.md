@@ -469,15 +469,18 @@ In this section, we will use the wrapper `ever_given` to run the docking contain
 2. Run the container. A successful run should look like the code block below.
    * command: `evergiven adv-tutorial --file-receptor data/receptor.pdb --file-hint data/hint.pdb --hint-radius 6 --hint-molinfo "E4Y" --smiles "c1ccc(C(C)C)cc1CNCC(O)(O)[C@@H](NC(=O)[C@@H]2C)C[C@H](C)CCCCCCCCC(=O)N2C" --output-keys docked_ligand,receptor`
    ```
-   (base) megosato@Admins-MacBook-Pro tutorials % evergiven adv-tutorial --file-receptor data/receptor.pdb --file-hint data/hint.pdb --hint-radius 6 
-   --hint-molinfo "E4Y" --smiles "c1ccc(C(C)C)cc1CNCC(O)(O)[C@@H](NC(=O)[C@@H]2C)C[C@H](C)CCCCCCCCC(=O)N2C" --output-keys docked_ligand,receptor
-   command? 
-   file kwargs {'receptor': 'data/receptor.pdb', 'hint': 'data/hint.pdb'}
-   kwargs {'hint-radius': '6', 'hint-molinfo': 'E4Y', 'smiles': 'c1ccc(C(C)C)cc1CNCC(O)(O)[C@@H](NC(=O)[C@@H]2C)C[C@H](C)CCCCCCCCC(=O)N2C'}
-   Putting output into evergiven_output
-   evergiven_output docked_ligand /mnt/outputs/best_dock.pdb
-   evergiven_output receptor /mnt/outputs/rec-dock.pdb
-   Results: {'docked_ligand': 'evergiven_output/best_dock.pdb', 'receptor': 'evergiven_output/rec-dock.pdb'}
+    (base) megosato@Admins-MacBook-Pro tutorials % evergiven adv-tutorial --file-receptor data/receptor.pdb --file-hint data/hint.pdb --hint-radius 6 --hint-molinfo "E4Y" --smiles "c1ccc(C(C)C)cc1CNCC(O)(O)[C@@H](NC(=O)[C@@H]2C)C[C@H](C)CCCCCCCCC(=O)N2C" --output-keys docked_ligand,receptor
+    container adv-tutorial
+    command? 
+    file kwargs {'receptor': 'data/receptor.pdb', 'hint': 'data/hint.pdb'}
+    kwargs {'hint-radius': '6', 'hint-molinfo': 'E4Y', 'smiles': 'c1ccc(C(C)C)cc1CNCC(O)(O)[C@@H](NC(=O)[C@@H]2C)C[C@H](C)CCCCCCCCC(=O)N2C'}
+    Putting output into evergiven_output
+    stderr b'1 molecule converted\n'
+    stdout b'docked_ligand /mnt/outputs/best_dock.pdb\n'
+    stdout b'receptor /mnt/outputs/rec-dock.pdb\n'
+    evergiven_output docked_ligand /mnt/outputs/best_dock.pdb
+    evergiven_output receptor /mnt/outputs/rec-dock.pdb
+    Results: {'docked_ligand': 'evergiven_output/best_dock.pdb', 'receptor': 'evergiven_output/rec-dock.pdb'}
    ```
 3. Examine your container outputs in the directory "tutorials/evergiven_output"
 
