@@ -6,26 +6,26 @@
 
 ### Required Inputs
 * Your container will be run with all the following inputs in the format:
-  * `docker run container-name --receptor [file] --smiles [str] --hint [file] --hint_radius [float] --hint_molinfo [str] --output-dir [path]`
+  * `evergiven container-name --receptor [file] --smiles [str] --hint [file] --hint-radius [float] --hint-molinfo [str] --output-dir [path]`
 * `--receptor`: receptor `.pdb` file to dock the ligand into
   * Example: `--receptor data/receptor.pdb`
 * `--smiles`: quoted SMILES string representing the ligand to dock (i.e. "CCC")
   * Example: `--smiles "CCCCNc1cc(cc(n1)OC)C(=O)N[C@@H](Cc2ccccc2)[C@H](C[C@@H](C)C(=O)NCCCC)O"`
 * `--hint`: `.pdb` file with a hint ligand to denote the docking region
   * Example: `--hint data/hint.pdb`
-* `--hint_radius`: numeric (float) Angstrom distance from the hint ligand (see above) to consider as the docking region
-  * Example: `--hint_radius 6.0`
-* `--hint_molinfo`: resname of the hint ligand used in the hint `.pdb` file
-  * Example: `--hint_molinfo "E4Y"`
+* `--hint-radius`: numeric (float) Angstrom distance from the hint ligand (see above) to consider as the docking region
+  * Example: `--hint-radius 6.0`
+* `--hint-molinfo`: resname of the hint ligand used in the hint `.pdb` file
+  * Example: `--hint-molinfo "E4Y"`
 * `--output-dir`: directory to save final docking files (docked ligand and receptor files)
-  * You will not need to handle determining the output directory input as the [`ever_given`](https://github.com/samplchallenges/SAMPL-containers/blob/main/tutorials/ever_givenUsage.md) wrapper handles this for you. Please ensure that the required output files are saved to the `output-dir` directory
+  * You will not need to handle determining the output directory input as the [`ever_given`](https://github.com/samplchallenges/SAMPL-containers/blob/main/tutorials/ever_givenUsage.md) wrapper handles this for you. Please ensure that the required output files are saved to the directory path specified by the `output-dir` argument
 
 ### Optional Inputs
 > The Optional Inputs will be most helpful to participants who are using proprietary licenses or files that cannot be uploaded to a public repository. It will also be helpful to participants who would like to explicilty separate their licenses from their container so their container cannot be run by just anyone. Please see the documentation on [License and Code Privacy](https://github.com/samplchallenges/SAMPL-containers/blob/main/tutorials/LicenseAndCodePrivacy.md) for more information.
 * The [app.samplchallenges.org](https://app.samplchallenges.org/) Submission Form provides a "Special Arguments" section that allows you to specify command line arguments and a corresponding file to be passed to your container at runtime.  
-* Any optitonal input arguments should be in the form of `--your_argument` with no capital letters and using underscores (`_`) rather than dashes (`-`). The argument should expect a file that you will upload as the input value.
+* Any optitonal input arguments should be in the form of `--your-argument` with no capital letters. The argument should expect a file that you will upload as the input value.
 * Your container will be run with the following inputs in the format:
-  * `docker run container-name --receptor [file] --smiles [str] --hint [file] --hint_radius [float] --hint_molinfo [str] --output-dir [path] --your_argument [file_uploaded_by_you]`
+  * `evergiven container-name --receptor [file_path] --smiles [str] --hint [file_path] --hint-radius [float] --hint-molinfo [str] --output-dir [path] --your-argument [file_uploaded_by_you]`
 
 ## Output Requirements
 
@@ -37,14 +37,14 @@
 
 
 **Printed Outputs**: Print the following to to `stdout`
-* The LAST lines your container should output are below in the format `key value` where the keys are `docked_ligand`/`receptor` and the values are file paths. The key and value should be separated by a single space. You may print other outputs throughout your program, but these two lines must be the LAST lines printed by your program.
+* The LAST lines your container should output to `stdout` are below in the format `key value` where the keys are `docked_ligand` & `receptor` and the values are file paths. The key and value should be separated by a single space. You may print other outputs to `stdout` throughout your program, but these two lines must be the LAST lines printed by your program.
    ```
    docked_ligand {path_to_docked_ligand_file}
    receptor {path_to_receptor_file}
    ```
 
 **Intentional No Prediction Output**: Output the following file and print the following to `stdout`
-* If you are intentionally avoiding a prediction for a compound, please replace `{path_to_docked_ligand_file}` and `{path_to_receptor_file}` with an empty file saved to `output_dir` called`no_prediction` (see example below)
+* If you are intentionally avoiding a prediction for a compound, please replace `{path_to_docked_ligand_file}` and `{path_to_receptor_file}` with a file saved to `output_dir` called `no_prediction` (see example below). If your output files are called `no_prediction`, any contents of the file will be ignored. 
    * path_to_no_prediction = `{output_dir}/no_prediction`
    ```
    docked_ligand {path_to_no_prediction}
@@ -61,7 +61,6 @@
 * Please do not use `output_dir` to store your intermediate files
 * You can store your intermediate files in a temporary directory or in any directory other than the `output_dir`, these files should die when your container finishes executing.
 
-
 ## Example Python Main Function Definition
 > Every docking container you build for SAMPL challenges should include a main file with a main function that looks similar to the code block below. The following docking main template meets all input and output requirements mentioned above. 
 ```
@@ -73,14 +72,12 @@ import os.path
 @click.option("--smiles", required=True, help="string with SMILES of ligand to be docked")
 
 @click.option("--hint", required=True, type=click.Path(exists=True), help="path of hint ligand complex for docking region hint")
-@click.option("--hint_molinfo", required=True, help="residue name of the ligand in the hint complex")
-@click.option("--hint_radius", required=True, type=float, help="box size of the box to dock into")
+@click.option("--hint-molinfo", required=True, help="residue name of the ligand in the hint complex")
+@click.option("--hint-radius", required=True, type=float, help="box size of the box to dock into")
 
 @click.option("--output-dir", help="Output directory for receptor and docked_ligand files")
 
-# @click.option("--your_argument", type=click.Path(exists=True), help="Any special file arguments you")
-# for more information on special file arguments like "--your_argument", please see:
-# https://github.com/samplchallenges/SAMPL-containers/blob/main/tutorials/BuildYourOwnDockingContainer.md#optional-inputs
+# @click.option("--your-argument", type=click.Path(exists=True), help="Any special file arguments you")
 
 def docking_main(receptor, smiles, hint, hint_molinfo, hint_radius, output_dir):
         ''' docks the given smiles string into the receptor within the area specified by hint and hint-radius
