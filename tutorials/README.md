@@ -39,7 +39,7 @@ This terminology is unfortunately not something we can change.
 
 ### Pre-Built Autodock Vina Container
 A working version of the Autodock Vina container we will build in this tutorial can be found at [Docker Hub under osatom/adv-tutorial](https://hub.docker.com/repository/docker/osatom/adv-tutorial). To play with this container, please use the following steps:
-1. In a new virtual environment with python 3.7 install the `ever-given` package
+1. In a new virtual environment with python 3.7 install the `ever-given` package. Ensure the package version is `v0.0.8` or later
     * command: `pip install ever-given`
 2. Use the [`docker pull`](https://docs.docker.com/engine/reference/commandline/pull/) command to download the "adv-tutorial" Docker container: `docker pull osatom/adv-tutorial:latest`
 3. Change directories into the "SAMPL-containers/tutorials" directory: `cd SAMPL-containers/tutorials`
@@ -84,7 +84,7 @@ A working version of the Autodock Vina container we will build in this tutorial 
 
 ### 1.1: Setup
 1. Open a terminal
-2. If you have not already, in a new virtual environment with python 3.7 install the `ever-given` package
+2. If you have not already, in a new virtual environment with python 3.7 install the `ever-given` package. Ensure the version ins `v0.0.8` or later. 
     * command: `pip install ever-given`
 3. Clone the SAMPL-containers repository
     * command: `git clone https://github.com/samplchallenges/SAMPL-containers.git`
