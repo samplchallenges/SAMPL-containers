@@ -490,7 +490,7 @@ In this section, we will use the wrapper `ever_given` to run the docking contain
     ModuleNotFoundError: No module named 'docker'
     ```
 
-## Section 4: Troublshooting
+## Section 4: Troubleshooting
 * If you have issues with your base or docking containers and need to make modifications you will need to re-build the containers.
     * If the base container has an issue that requires modification, you will need to use `docker build` to rebuild the base and docking container.
     * If the docking container has an issue that requires modification, you will need to use `docker build` to rebuild just the docking container
