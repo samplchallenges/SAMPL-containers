@@ -480,6 +480,15 @@ In this section, we will use the wrapper `ever_given` to run the docking contain
    Results: {'docked_ligand': 'evergiven_output/best_dock.pdb', 'receptor': 'evergiven_output/rec-dock.pdb'}
    ```
 3. Examine your container outputs in the directory "tutorials/evergiven_output"
+
+
+## Section 4: Troubleshooting
+* If you have issues with your base or docking containers and need to make modifications you will need to re-build the containers.
+    * If the base container has an issue that requires modification, you will need to use `docker build` to rebuild the base and docking container.
+    * If the docking container has an issue that requires modification, you will need to use `docker build` to rebuild just the docking container
+* If you get an error similar to `Error response from daemon: Bad response from Docker engine` when using a Docker command, make sure your Docker daemon is running by starting Docker Desktop. 
+* If you get an error stating `six` or `docker` packages are not installed, please ensure you installed the `ever-given` package into your virtual environment as described in [Section 1.1](https://github.com/samplchallenges/SAMPL-containers/tree/main/tutorials#11-setup)
+* If you get an error stating `'sh: /opt/app/dependencies/mgl/bin/python: not found` please ensure you modified the `mgl/install.sh` file in [Section 1.4 - steps 14-17](https://github.com/samplchallenges/SAMPL-containers/tree/main/tutorials#14-download-and-prepare-the-command-line-programs-autodock-vina-and-mgl-tools-executables-for-use-in-the-docking-container) 
 * Note: If you receive an error similar to the one below, please ensure [Docker SDK](https://pypi.org/project/docker/) is installed. 
     ```
     Traceback (most recent call last):
@@ -489,14 +498,6 @@ In this section, we will use the wrapper `ever_given` to run the docking contain
       import docker
     ModuleNotFoundError: No module named 'docker'
     ```
-
-## Section 4: Troubleshooting
-* If you have issues with your base or docking containers and need to make modifications you will need to re-build the containers.
-    * If the base container has an issue that requires modification, you will need to use `docker build` to rebuild the base and docking container.
-    * If the docking container has an issue that requires modification, you will need to use `docker build` to rebuild just the docking container
-* If you get an error similar to `Error response from daemon: Bad response from Docker engine` when using a Docker command, make sure your Docker daemon is running by starting Docker Desktop. 
-* If you get an error stating `six` or `docker` packages are not installed, please ensure you installed the `ever-given` package into your virtual environment as described in [Section 1.1](https://github.com/samplchallenges/SAMPL-containers/tree/main/tutorials#11-setup)
-* If you get an error stating `'sh: /opt/app/dependencies/mgl/bin/python: not found` please ensure you modified the `mgl/install.sh` file in [Section 1.4 - steps 14-17](https://github.com/samplchallenges/SAMPL-containers/tree/main/tutorials#14-download-and-prepare-the-command-line-programs-autodock-vina-and-mgl-tools-executables-for-use-in-the-docking-container) 
 
 ## Section 5: Building Your Own Docking Container
 * For more detailed information about docking container requirements and how to modify this tutorial to suit your needs, please see [BuildYourOwnDockingContainer.md](https://github.com/samplchallenges/SAMPL-containers/blob/main/tutorials/BuildYourOwnDockingContainer.md)
