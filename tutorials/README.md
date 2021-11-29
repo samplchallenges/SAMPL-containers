@@ -256,7 +256,7 @@ A working version of the Autodock Vina container we will build in this tutorial 
    ├── dependencies
    └── environment.yml
    ```
-2. Download Autodock Tools linux x86 "autodock_vina_1_1_2_linux_x86.tgz" from https://vina.scripps.edu/downloads/
+2. Download Autodock Tools linux x86 "autodock_vina_1_1_2_linux_x86.tgz" from [here](https://drive.google.com/drive/folders/1l75rfi5w58VA3M6wYCnNrIyTbe_cD2OY?usp=sharing)
 3. Move "autodock_vina_1_1_2_linux_x86.tgz" into "adv-tutorial-base"
    * command: `mv {path_to_download}/autodock_vina_1_1_2_linux_x86.tgz .`
 5. Untar "autodock_vina_1_1_2_linux_x86.tgz"
@@ -267,7 +267,7 @@ A working version of the Autodock Vina container we will build in this tutorial 
    * command: `mv autodock_vina_1_1_2_linux_x86 adv`
 8. Move "adv" directory to inside "dependencies" directory
    * command: `mv adv dependencies`
-9. Download MGL Tools linux x86 `mgltools_x86_64Linux2_1.5.6.tar.gz` not `1.5.7` from https://ccsb.scripps.edu/mgltools/downloads/ (found at the bottom half of the page)
+9. Download MGL Tools linux x86 `mgltools_x86_64Linux2_1.5.6.tar.gz` not `1.5.7` from [here](https://drive.google.com/drive/folders/1l75rfi5w58VA3M6wYCnNrIyTbe_cD2OY?usp=sharing)
 10. Move "mgltools_x86_64Linux2_1.5.6.tar.gz" into "adv-tutorial-base"
       * command: `mv {path_to_download}/mgltools_x86_64Linux2_1.5.6.tar.gz .`
 11. Untar "mgltools_x86_64Linux2_1.5.6.tar.gz"
