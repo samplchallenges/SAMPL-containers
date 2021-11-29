@@ -2,6 +2,10 @@
 
 `ever_given` is a simple wrapper to run a docker container. It abstracts away [volume mounting](https://docs.docker.com/storage/volumes/) allowing files used or made by the container to persist beyond the container's runtime when necessary with little intervention on your part.
 
+## Installing `ever_given`
+* `ever_given` is pip installable
+   * `pip install ever-given`
+
 ## Running a container with `ever_given`
 * To run a container with `ever_given` use: `evergiven {container_name}:{version/tag} {file-kwargs} {kwargs} --output-keys {keys}`
     * `{file-kwargs}` are keyword option-value pairs where the value is a file path the container will need access to. Any keyword that expects a file path should get `--file-` prepended to it. 

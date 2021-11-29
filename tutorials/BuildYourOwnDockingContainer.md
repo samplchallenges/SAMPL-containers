@@ -32,7 +32,7 @@
 **File Outputs**: Output the following files into the `output-dir`
 * **docked ligand file**: a `.mol2`, `.pdb` or `.sdf` of the docked ligand
   * path_to_docked_ligand_file = `{output_dir}/{docked_ligand_file}`
-* **receptor file**: a `.pdb` file of the receptor used or modified by your docking program, this is important for rmsd scoring purposes in case your complex changes frame of reference
+* **receptor file**: a `.pdb` file of the receptor used or modified by your docking program, this is important for rmsd scoring purposes in case your complex changes frame of reference during the docking program
   * path_to_receptor_file = `{output_dir}/{receptor_file}`
 
 
@@ -57,6 +57,10 @@
 * As stated in [OutputRequirements](https://github.com/samplchallenges/SAMPL-containers/blob/main/tutorials/BuildYourOwnDockingContainer.md#output-requirements), the last two lines of `stdout` output must be your two `key value` pairs. 
 
 
+## A Note about Intermediate Files
+* Please do not use `output_dir` to store your intermediate files
+* You can store your intermediate files in a temporary directory or in any directory other than the `output_dir`, these files should die when your container finishes executing.
+
 ## Example Python Main Function Definition
 > Every docking container you build for SAMPL challenges should include a main file with a main function that looks similar to the code block below. The following docking main template meets all input and output requirements mentioned above. 
 ```
@@ -65,7 +69,7 @@ import os.path
 
 @click.command()
 @click.option("--receptor", required=True, type=click.Path(exists=True), help="path of receptor PDB to dock the ligand into")
-@click.option("--smiles", required=True, help="file with SMILES strings of ligands to be docked")
+@click.option("--smiles", required=True, help="string with SMILES of ligand to be docked")
 
 @click.option("--hint", required=True, type=click.Path(exists=True), help="path of hint ligand complex for docking region hint")
 @click.option("--hint-molinfo", required=True, help="residue name of the ligand in the hint complex")
@@ -82,11 +86,21 @@ def docking_main(receptor, smiles, hint, hint_molinfo, hint_radius, output_dir):
                        hint:            file    hint PDB contains a receptor ligand complex to show binding site region
                        hint_molinfo:    str     resname of the ligand used in the hint PDB
                        hint_radius:     float   radius around the hint ligand to consider in docking
-                       output_dir:      str     output director for receptor and docked_ligand
+                       output_dir:      str     output director for receptor and docked_ligand\
+		       
             OUTPUTS:   prints           docked_ligand {path_to_docked_ligand_file}
+	    				where the path_to_docked_ligand_file = output_dir/docked_ligand_file
                        prints           receptor {path_to_receptor_file}
-                       writes file(s)   docked ligand file as a .pdb .mol2 or .sdf
-                       writes file(s)   receptor prepped and used by program in docking as .pdb
+		       			where the path_to_receptor_file = os.path.join(output_dir, receptor_file_name)
+                       writes file      docked ligand file as a .pdb .mol2 or .sdf this file must be saved on disk to the
+		       			path stored in the output_dir argument
+                       writes file      receptor prepped and used by program in docking as .pdb this file must be saved 
+		       			on disk to the path stored in the output_dir argument
+		       
+	    RETURNS:   None
+	    	       Please note that anything your function returns will be ignored by our automated scoring 
+		       All outputs (docked_ligand and receptor files) MUST BE saved on disk to the specified
+		       output_dir AND the absolute path must be printed out as specified in "OUTPUTS"
         '''
         
     
@@ -97,25 +111,36 @@ def docking_main(receptor, smiles, hint, hint_molinfo, hint_radius, output_dir):
         receptor_file_name = ""
         path_to_docked_ligand_file = os.path.join(output_dir, docked_ligand_file_name)
         path_to_receptor_file = os.path.join(output_dir, receptor_file_name)
-        
-        
+       
         
         # YOUR DOCKING CODE GOES HERE
         
+        # write out the docked ligand file to path_to_docked_ligand_file, your docked ligand file must be 
+	# saved to the path specified by the output_dir parameter 
+	
+        # write out the receptor file to path_to_receptor_file, your receptor file must be 
+        # saved to the path specified by the output_dir parameter         
         
-        # write out the docked ligand file to path_to_docked_ligand_file
-        print("logging: writing docked ligand")
-        
-        # write out the receptor file to path_to_receptor_file
-        print("logging: writing prepared receptor file")
         
         
-        # print out the key value pairs 
-        #    * where the keys are docked_ligand and receptor
-        #    * where the values are the file paths of the docked_ligand and receptor
+        # Your final ligand and receptor files should be SAVED to the output_dir (specified as a parameter). 
+        # Your main function should also PRINT out the 'key value' pairs 
+        #	 * key: either the 'docked_ligand' or 'receptor'. 
+        # 	 * value: the absolute file path to the file on disk. The absolute file paths to your files should be specified
+        #	          as 'output_dir/your_file' where output_dir is the output_dir (specified as a parameter). Your final
+        # 		  output files MUST BE saved to the output_dir, otherwise our automated scoring will not be able to 
+        #		  find your files
+        # 		       * path_to_docked_ligand_file = os.path.join(output_dir,"rec-dock.pdb") 
+        # 		       * path_to_receptor_file = os.path.join(output_dir,"best_dock.pdb")
+        
         
         print(f"docked_ligand {path_to_docked_ligand_file}")
         print(f"receptor {path_to_receptor_file}")
+        
+        
+        # A NOTE ABOUT RETURN STATEMENTS
+        # Anything your container returns will be ignored. Please make sure that any outputs follow the 'key value'
+        # format mentioned in the previous comment
 ```
 
 ## Including your own Python Modules
