@@ -23,7 +23,7 @@
 ### Optional Inputs
 > The Optional Inputs will be most helpful to participants who are using proprietary licenses or files that cannot be uploaded to a public repository. It will also be helpful to participants who would like to explicilty separate their licenses from their container so their container cannot be run by just anyone. Please see the documentation on [License and Code Privacy](https://github.com/samplchallenges/SAMPL-containers/blob/main/tutorials/LicenseAndCodePrivacy.md) for more information.
 * The [app.samplchallenges.org](https://app.samplchallenges.org/) Submission Form provides a "Special Arguments" section that allows you to specify command line arguments and a corresponding file to be passed to your container at runtime.  
-* Any optitonal input arguments should be in the form of `--your-argument` with no capital letters. The argument should expect a file that you will upload as the input value.
+* Any optional input arguments should be in the form of `--your-argument` with no capital letters. The argument should expect a file that you will upload as the input value.
 * Your container will be run with the following inputs in the format:
   * `evergiven container-name:tag --receptor [file_path] --smiles [str] --hint [file_path] --hint-radius [float] --hint-molinfo [str] --output-dir [path] --your-argument [file_uploaded_by_you]`
 
