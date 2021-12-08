@@ -61,6 +61,7 @@
 * Please do not use `output_dir` to store your intermediate files
 * You can store your intermediate files in a temporary directory or in any directory other than the `output_dir`, these files should die when your container finishes executing.
 
+
 ## Example Python Main Function Definition
 > Every docking container you build for SAMPL challenges should include a main file with a main function that looks similar to the code block below. The following docking main template meets all input and output requirements mentioned above. 
 ```
@@ -176,6 +177,23 @@ If you use different naming conventions than those used in the template files fo
    * `COPY {your_py_main} ./`
 5. Add your `entry_point` from step 3 in your Dockerfile
    * `ENTRYPOINT ['{your_entrypoint_name}']`
+
+
+## Tips for modifying the docking tutorial to filt your needs
+> In some cases, the [miniconda3 docker image](https://hub.docker.com/r/continuumio/miniconda3) specified in the [tutorial `Dockerfile`](https://github.com/samplchallenges/SAMPL-containers/tree/main/tutorials#13-install-conda-environment-from-section-12-into-your-container) will not be compatible with the programs you your docking container will require. When this is the case, please try the following: 
+* Go to [dockerhub](https://hub.docker.com/) and use the search bar to search for a container that meets your needs. 
+	* For example if I needed a container with a `gcc` compiler I would do something similar to the following image
+		
+	* Once you have the name of the image you will use as your base, let's call it `image-to-use`, change the first line of the Dockerfile (beginning with `FROM`) to `FROM image-to-use`
+* If you still need `conda` for virtual environment management, we recommend installing `miniconda` by adding the installation steps into the `Dockerfile` an example is in the code block below:
+	```
+	RUN wget \
+	    https://repo.anaconda.com/miniconda/Miniconda3-latest-Linux-x86_64.sh \
+	    && mkdir /root/.conda \
+	    && bash Miniconda3-latest-Linux-x86_64.sh -b \
+	    && rm -f Miniconda3-latest-Linux-x86_64.sh
+	```
+* Any additional steps to install your required programs should also be added to your `Dockerfile` for more information, please see [Section 1.4](https://github.com/samplchallenges/SAMPL-containers/tree/main/tutorials#14-download-and-prepare-the-command-line-programs-autodock-vina-and-mgl-tools-executables-for-use-in-the-docking-container) and [Section 1.5](https://github.com/samplchallenges/SAMPL-containers/tree/main/tutorials#15-install-autodock-vina-and-mgl-tools-into-your-container) of the tutorial. 
 
 
 ## Tips for integrating command line programs
