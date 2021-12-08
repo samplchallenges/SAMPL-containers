@@ -184,7 +184,7 @@ If you use different naming conventions than those used in the template files fo
 * Go to [dockerhub](https://hub.docker.com/) and use the search bar to search for a container that meets your needs. 
 	* For example, if I needed a container with a `gcc` compiler I would do something similar to the following:
 		![searchbar](https://github.com/samplchallenges/SAMPL-containers/blob/main/tutorials/images/dockerhub_search.png)
-* Once you have the name of the image you will use as your base, let's call it `image-to-use`, change the first line of the Dockerfile (beginning with `FROM`) to `FROM image-to-use`
+* Once you have the name of the image you will use as your base, let's call it `image-to-use`, change the [first line of the Dockerfile](https://github.com/samplchallenges/SAMPL-containers/blob/3ddb358e64aa542c230da0af686d2fa3186108a9/tutorials/templates/docking/Dockerfile#L1) (beginning with `FROM`) to `FROM image-to-use`
 * If you still need `conda` for virtual environment management, we recommend installing `miniconda` by adding the installation steps into the `Dockerfile` an example is in the code block below:
 	```
 	RUN wget \
