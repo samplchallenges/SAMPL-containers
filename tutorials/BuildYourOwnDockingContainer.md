@@ -6,7 +6,7 @@
 
 ### Required Inputs
 * Your container will be run with all the following inputs in the format:
-  * `evergiven container-name --receptor [file] --smiles [str] --hint [file] --hint-radius [float] --hint-molinfo [str] --output-dir [path]`
+  * `evergiven container-name:tag --receptor [file] --smiles [str] --hint [file] --hint-radius [float] --hint-molinfo [str] --output-dir [path]`
 * `--receptor`: receptor `.pdb` file to dock the ligand into
   * Example: `--receptor data/receptor.pdb`
 * `--smiles`: quoted SMILES string representing the ligand to dock (i.e. "CCC")
@@ -25,7 +25,7 @@
 * The [app.samplchallenges.org](https://app.samplchallenges.org/) Submission Form provides a "Special Arguments" section that allows you to specify command line arguments and a corresponding file to be passed to your container at runtime.  
 * Any optitonal input arguments should be in the form of `--your-argument` with no capital letters. The argument should expect a file that you will upload as the input value.
 * Your container will be run with the following inputs in the format:
-  * `evergiven container-name --receptor [file_path] --smiles [str] --hint [file_path] --hint-radius [float] --hint-molinfo [str] --output-dir [path] --your-argument [file_uploaded_by_you]`
+  * `evergiven container-name:tag --receptor [file_path] --smiles [str] --hint [file_path] --hint-radius [float] --hint-molinfo [str] --output-dir [path] --your-argument [file_uploaded_by_you]`
 
 ## Output Requirements
 
