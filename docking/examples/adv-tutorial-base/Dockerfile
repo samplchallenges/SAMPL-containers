@@ -9,7 +9,7 @@ COPY . ./
 
 RUN conda env update -f environment.yml && \
     conda clean --all --yes      
-# install the packages in environment.yml into containers
+# install the packages in environment.yml into container
 
 ENV PATH="/root/.local/bin:$PATH"      
 # set the path
