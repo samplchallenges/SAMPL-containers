@@ -42,8 +42,8 @@
 10. Open `environment.yml` for editing and paste in the output from step 6.
 11. Change the first line of the file from `name: env_name` to `name: base`
 12. Delete the last line of the file: `prefix: /opt/conda/envs/advenv`
-   * The edits to `environment.yml` should now look like the figure below:
-   ![yaml](https://github.com/samplchallenges/SAMPL-containers/blob/main/tutorials/images/conda_env_yml.png)
+    * The edits to `environment.yml` should now look like the figure below:
+      ![yaml](https://github.com/samplchallenges/SAMPL-containers/blob/main/tutorials/images/conda_env_yml.png)
 14. Save and close `environment.yml`
 
 
