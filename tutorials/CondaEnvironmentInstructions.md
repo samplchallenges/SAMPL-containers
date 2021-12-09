@@ -2,7 +2,7 @@
 
 
 
-## Creating a Conda Environment Inside a Container
+## Creating a Conda Environment Inside a Container using a `miniconda` Base Image 
 1. Start running a miniconda container
    * command: `docker run -it --rm continuumio/miniconda3`
 2. Create a conda environment
@@ -47,5 +47,5 @@
 14. Save and close `environment.yml`
 
 
-
+## Creating a Conda Environment using Other Base Images (besides `miniconda` image)
 
