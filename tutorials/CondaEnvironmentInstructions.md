@@ -103,7 +103,7 @@ WHAT IS A BASE IMAGE
 
 
 
-## Creating a Conda Environment using Other Base Images (besides `miniconda` image)
+## Section 2: Creating a Conda Environment using Other Base Images (besides `miniconda` image)
 > In some cases, the `continuumio/miniconda` environment may not be compatible with the programs required by your docking protocol. In this case, you may need to use a different base image when building your container. Please see _______ to learn more about using other base images.
 1. Go to [dockerhub](https://hub.docker.com/) and use the search bar to search for a container that meets your needs. Please save the name of the image you will use as your base, we will use it in later steps. 
 	* For example, if I needed a container with a `gcc` compiler I would search for `gcc`, choose an image and locate the image name:
