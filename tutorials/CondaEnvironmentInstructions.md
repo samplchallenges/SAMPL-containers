@@ -125,7 +125,7 @@ In this document, we will show you two different ways to incorporate `miniconda`
 	#  copy all the files and directories into the container
 
 	```
-4. To install miniconda into your container at build time, add the following to your `Dockerfile`:
+4. To install miniconda into your container at build time, add the following to the end of your `Dockerfile`:
 	```
 	RUN wget \
 	    https://repo.anaconda.com/miniconda/Miniconda3-latest-Linux-x86_64.sh \
