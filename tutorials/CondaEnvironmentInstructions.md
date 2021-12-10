@@ -139,7 +139,7 @@ WHAT IS A BASE IMAGE
 	    conda clean --all --yes      
 	# install the packages in environment.yml into containers
 	```
-7. Finally, test your container using the steps in [Section 1, Part 3]
+7. Finally, test your container conda environment using the steps in [Section 1, Part 3]
 
 
 * Any additional steps to install your required programs should also be added to your `Dockerfile` for more information, please see [Section 1.4](https://github.com/samplchallenges/SAMPL-containers/tree/main/tutorials#14-download-and-prepare-the-command-line-programs-autodock-vina-and-mgl-tools-executables-for-use-in-the-docking-container) and [Section 1.5](https://github.com/samplchallenges/SAMPL-containers/tree/main/tutorials#15-install-autodock-vina-and-mgl-tools-into-your-container) of the tutorial. 
