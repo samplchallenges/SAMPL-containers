@@ -4,6 +4,7 @@ WHAT IS A BASE IMAGE
 
 ## Section 1: Creating a Conda Environment Inside a Container using a `miniconda` Base Image
 ### Part 1: Create your conda environment
+> For this section, please ensure you have the Docker Desktop app and the Docker SDK installed. Please also ensure your Docker Desktop app is started up otherwise you will get a docker daemon error.
 1. Start running a miniconda container
    * command: `docker run -it --rm continuumio/miniconda3`
 2. Create a conda environment
