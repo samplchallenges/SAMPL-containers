@@ -1,8 +1,11 @@
 # Conda Environment Instructions
-WHAT IS A BASE IMAGE
+In this document, we will explain how to create a conda environment inside your container. 
 
+Containers are built/compiled using a set of instructions specified by a file called a [`Dockerfile`](https://docs.docker.com/engine/reference/builder/#:~:text=to%20Docker%20Hub.-,BuildKit,-%F0%9F%94%97). This instruction set can be shortened, by starting from a "parent image". If you specify a Parent image in your `Dockerfile`, your container will inherit everything setup and installed in the parent image. 
 
-## Section 1: Creating a Conda Environment Inside a Container using a `miniconda` Base Image
+In this tutorial we will show you two different ways to incorporate `miniconda` inside your container. The first section will inherit from a `miniconda` parent image, meaning `miniconda` is already installed in this image. As a result, we can use any `conda` commands without any additional steps. The second section will describe what to do when the `miniconda` parent image is incompatible with your programs/workflow. 
+
+## Section 1: Creating a Conda Environment Inside a Container using a `miniconda` Parent Image
 ### Part 1: Create your conda environment
 > For this section, please ensure you have the Docker Desktop app and the Docker SDK installed. Please also ensure your Docker Desktop app is started up otherwise you will get a docker daemon error.
 1. Start running a miniconda container
@@ -104,7 +107,7 @@ WHAT IS A BASE IMAGE
 
 
 
-## Section 2: Creating a Conda Environment using Other Base Images (besides `miniconda` image)
+## Section 2: Creating a Conda Environment using Other Parent Images (besides `miniconda` image)
 > In some cases, the `continuumio/miniconda` environment may not be compatible with the programs required by your docking protocol. In this case, you may need to use a different base image when building your container. Please see _______ to learn more about using other base images.
 1. Go to [dockerhub](https://hub.docker.com/) and use the search bar to search for a container that meets your needs. Please save the name of the image you will use as your base, we will use it in later steps. 
 	* For example, if I needed a container with a `gcc` compiler I would search for `gcc`, choose an image and locate the image name:
