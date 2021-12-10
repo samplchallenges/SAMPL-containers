@@ -127,7 +127,8 @@ As a note, for SAMPL challenges you should always install your required python p
 	#  copy all the files and directories into the container
 
 	```
-4. To install miniconda into your container at build time, add the following to the end of your `Dockerfile`:
+4. To install miniconda into your container at build time, we have found the following to the end of your `Dockerfile`:
+	* Please note that we have found the following command sequence to be the most successful for installing miniconda into a container. However, this may not work for all parent images; some troubleshooting may be required if this is the case. 
 	```
 	RUN wget \
 	    https://repo.anaconda.com/miniconda/Miniconda3-latest-Linux-x86_64.sh \
