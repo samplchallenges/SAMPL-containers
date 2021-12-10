@@ -112,13 +112,13 @@ WHAT IS A BASE IMAGE
 	* Please ensure that you replace `image-to-use` on the `FROM` line with your chosen base image from step 1. 
 	```
 	FROM image-to-use
-    	# tells the container to inherit from your chose container image
+	# tells the container to inherit from your chose container image
 
-    	WORKDIR /opt/app/   
-    	# set the work directory
+	WORKDIR /opt/app/   
+	# set the work directory
 
-    	COPY . ./    
-    	#  copy all the files and directories into the containe
+	COPY . ./    
+	#  copy all the files and directories into the container
 
 	```
 4. To install miniconda into your container use the steps here:
