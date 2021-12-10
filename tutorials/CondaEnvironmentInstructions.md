@@ -1,9 +1,9 @@
 # Conda Environment Instructions
 In this document, we will explain how to create a conda environment inside your container. 
 
-Containers are built/compiled using a set of instructions specified by a file called a [`Dockerfile`](https://docs.docker.com/engine/reference/builder/#:~:text=to%20Docker%20Hub.-,BuildKit,-%F0%9F%94%97). This instruction set can be shortened, by starting from a "parent image". If you specify a Parent image in your `Dockerfile`, your container will inherit everything setup and installed in the parent image. 
+Containers are built/compiled using a set of instructions specified by a file called a [`Dockerfile`](https://docs.docker.com/engine/reference/builder/#:~:text=to%20Docker%20Hub.-,BuildKit,-%F0%9F%94%97). This instruction set can be shortened by starting from a "parent image". If you specify a parent image in your `Dockerfile`, your container will inherit everything setup and installed inside the parent image. 
 
-In this tutorial we will show you two different ways to incorporate `miniconda` inside your container. The first section will inherit from a `miniconda` parent image, meaning `miniconda` is already installed in this image. As a result, we can use any `conda` commands without any additional steps. The second section will describe what to do when the `miniconda` parent image is incompatible with your programs/workflow. 
+In this document, we will show you two different ways to incorporate `miniconda` inside your container. The first section will inherit from a `miniconda` parent image, meaning `miniconda` is already installed in this image. As a result, we can use any `conda` commands without any additional steps. The second section will describe what to do when the `miniconda` parent image is incompatible with your programs/workflow. 
 
 ## Section 1: Creating a Conda Environment Inside a Container using a `miniconda` Parent Image
 ### Part 1: Create your conda environment
@@ -144,7 +144,4 @@ In this tutorial we will show you two different ways to incorporate `miniconda` 
 	# install the packages in environment.yml into containers
 	```
 7. Finally, test your container conda environment using the steps in [Section 1, Part 3]
-
-
-* Any additional steps to install your required programs should also be added to your `Dockerfile` for more information, please see [Section 1.4](https://github.com/samplchallenges/SAMPL-containers/tree/main/tutorials#14-download-and-prepare-the-command-line-programs-autodock-vina-and-mgl-tools-executables-for-use-in-the-docking-container) and [Section 1.5](https://github.com/samplchallenges/SAMPL-containers/tree/main/tutorials#15-install-autodock-vina-and-mgl-tools-into-your-container) of the tutorial. 
 
