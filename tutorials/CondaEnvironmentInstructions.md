@@ -1,4 +1,6 @@
 # Conda Environment Instructions
+WHAT IS A BASE IMAGE
+
 
 ## Creating a Conda Environment Inside a Container using a `miniconda` Base Image
 ### Section 1: Create your conda environment
@@ -103,11 +105,23 @@
 
 ## Creating a Conda Environment using Other Base Images (besides `miniconda` image)
 > In some cases, the `continuumio/miniconda` environment may not be compatible with the programs required by your docking protocol. In this case, you may need to use a different base image when building your container. Please see _______ to learn more about using other base images.
-1. Go to [dockerhub](https://hub.docker.com/) and use the search bar to search for a container that meets your needs. 
+1. Go to [dockerhub](https://hub.docker.com/) and use the search bar to search for a container that meets your needs. Please save the name of the image you will use as your base, we will use it in later steps. 
 	* For example, if I needed a container with a `gcc` compiler I would search for `gcc`, choose an image and locate the image name:
 		![searchbar](https://github.com/samplchallenges/SAMPL-containers/blob/main/tutorials/images/dockerhub_search.png)
-2. Once you have the name of the image you will use as your base, let's call it `image-to-use`, change the [first line of your Dockerfile](https://github.com/samplchallenges/SAMPL-containers/blob/3ddb358e64aa542c230da0af686d2fa3186108a9/tutorials/templates/docking/Dockerfile#L1) (beginning with `FROM`) to `FROM image-to-use`
-3. To install miniconda into your container use the steps here:
+2. Once you have the name of the image you will use as your base, let's call it `image-to-use`, create a [Dockerfile](https://github.com/samplchallenges/SAMPL-containers/blob/3ddb358e64aa542c230da0af686d2fa3186108a9/tutorials/templates/docking/Dockerfile#L1) (if you have not already) and add the following: 
+	* Please ensure that you replace `image-to-use` on the `FROM` line with your chosen base image from step 1. 
+	```
+	FROM image-to-use
+    	# tells the container to inherit from your chose container image
+
+    	WORKDIR /opt/app/   
+    	# set the work directory
+
+    	COPY . ./    
+    	#  copy all the files and directories into the containe
+
+	```
+4. To install miniconda into your container use the steps here:
 	```
 	RUN wget \
 	    https://repo.anaconda.com/miniconda/Miniconda3-latest-Linux-x86_64.sh \
