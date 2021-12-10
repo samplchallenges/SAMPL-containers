@@ -136,7 +136,7 @@ WHAT IS A BASE IMAGE
 	* Please **DO NOT** change this as using a conda environment other than `base` may prevent your program from properly accepting our command line input arguments.
 	```
 	RUN conda env update -f environment.yml && \
-		conda clean --all --yes      
+	    conda clean --all --yes      
 	# install the packages in environment.yml into containers
 	```
 7. Finally, test your container using the steps in [Section 1, Part 3]
