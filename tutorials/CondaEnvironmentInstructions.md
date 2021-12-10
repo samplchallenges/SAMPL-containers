@@ -5,6 +5,8 @@ Containers are built/compiled using a set of instructions specified by a file ca
 
 In this document, we will show you two different ways to incorporate `miniconda` inside your container. The first section will inherit from a `miniconda` parent image, meaning `miniconda` is already installed in this image. As a result, we can use any `conda` commands without any additional steps. The second section will describe what to do when the `miniconda` parent image is incompatible with your programs/workflow. 
 
+As a note, for SAMPL challenges you should always install your required python packages into the `base` environment. Please **DO NOT** create a separate virtual environment as this will cause command line parsing issues for our SMILES inputs 
+
 ## Section 1: Creating a Conda Environment Inside a Container using a `miniconda` Parent Image
 ### Part 1: Create your conda environment
 > For this section, please ensure you have the Docker Desktop app and the Docker SDK installed. Please also ensure your Docker Desktop app is started up otherwise you will get a docker daemon error.
