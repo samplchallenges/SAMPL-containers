@@ -96,7 +96,7 @@ WHAT IS A BASE IMAGE
 6. Once you are confident all the packages have been properly installed, quit the python interpreter
     ```
     >>> quit()
-    root@7807d633195f:/opt/app# python
+    root@7807d633195f:/opt/app# 
     ```
 7. Exit the container. Upon running this command, you will exit the interactive version of the container and should return to your normal command prompt.
     * command: `exit`
