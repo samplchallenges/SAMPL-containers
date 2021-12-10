@@ -2,8 +2,8 @@
 WHAT IS A BASE IMAGE
 
 
-## Creating a Conda Environment Inside a Container using a `miniconda` Base Image
-### Section 1: Create your conda environment
+## Section 1: Creating a Conda Environment Inside a Container using a `miniconda` Base Image
+### Part 1: Create your conda environment
 1. Start running a miniconda container
    * command: `docker run -it --rm continuumio/miniconda3`
 2. Create a conda environment
@@ -47,7 +47,7 @@ WHAT IS A BASE IMAGE
       ![yaml](https://github.com/samplchallenges/SAMPL-containers/blob/main/tutorials/images/conda_env_yml.png)
 14. Save and close `environment.yml`
 
-### Section 2: Add the Build steps to install your environment
+### Part 2: Add the Build steps to install your environment
 1. In the directory housing your container `environment.yml`, code, etc., create a file called `Dockerfile` (if you haven't already), and add the following lines to your `Dockerfile`. 
     * Please note we are using `conda env update` rather than `conda create` so your `base` environment is updated. 
     * Please **DO NOT** change this as using a conda environment other than `base` may prevent your program from properly accepting our command line input arguments.
@@ -68,7 +68,7 @@ WHAT IS A BASE IMAGE
 2. Save and close `Dockerfile` 
 3. Build your your container
 
-### Section 3: Test your container environment
+### Part 3: Test your container environment
 > For this section, please ensure you have the [Docker Desktop](https://www.docker.com/products/docker-desktop) app and the [Docker SDK](https://pypi.org/project/docker/) installed. Please also ensure your Docker Desktop app is started up otherwise you will get a docker daemon error. 
 1. In the directory housing your container `environment.yml`, `Dockerfile`, etc. build your container. Please ensure that if you have added an `ENTRYPOINT` line to your `Dockerfile` you comment out the `ENTRYPOINT` line (comments begin with `#` similar to Python). 
     * command: `docker build -t container-name:tag .`
@@ -129,5 +129,18 @@ WHAT IS A BASE IMAGE
 	    && bash Miniconda3-latest-Linux-x86_64.sh -b \
 	    && rm -f Miniconda3-latest-Linux-x86_64.sh
 	```
+
+5. Once you have done the above steps, please follow the steps in [Section 1, Part 1] to finish create your `environment.yml` file. 
+6. Upon creating the `environment.yml` file, add the following to the end of your `Dockerfile`
+	* Please note we are using `conda env update` rather than `conda create` so your `base` environment is updated. 
+	* Please **DO NOT** change this as using a conda environment other than `base` may prevent your program from properly accepting our command line input arguments.
+	```
+	RUN conda env update -f environment.yml && \
+	conda clean --all --yes      
+	# install the packages in environment.yml into containers
+	```
+7. Finally, test your container using the steps in [Section 1, Part 3]
+
+
 * Any additional steps to install your required programs should also be added to your `Dockerfile` for more information, please see [Section 1.4](https://github.com/samplchallenges/SAMPL-containers/tree/main/tutorials#14-download-and-prepare-the-command-line-programs-autodock-vina-and-mgl-tools-executables-for-use-in-the-docking-container) and [Section 1.5](https://github.com/samplchallenges/SAMPL-containers/tree/main/tutorials#15-install-autodock-vina-and-mgl-tools-into-your-container) of the tutorial. 
 
