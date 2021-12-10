@@ -46,7 +46,7 @@
 14. Save and close `environment.yml`
 
 ### Section 2: Add the Build steps to install your environment
-1. In the directory housing your container `environment.yml`, code, etc., create a file called `Dockerfile`, and add the following lines to your `Dockerfile`. 
+1. In the directory housing your container `environment.yml`, code, etc., create a file called `Dockerfile` (if you haven't already), and add the following lines to your `Dockerfile`. 
     * Please note we are using `conda env update` rather than `conda create` so your `base` environment is updated. 
     * Please **DO NOT** change this as using a conda environment other than `base` may prevent your program from properly accepting our command line input arguments.
     ```
