@@ -137,7 +137,7 @@ As a note, for SAMPL challenges you should always install your required python p
 	    && rm -f Miniconda3-latest-Linux-x86_64.sh
 	```
 
-5. Once you have done the above steps, please follow the steps in [Section 1, Part 1] to finish create your `environment.yml` file. 
+5. Once you have done the above steps, please follow the steps in [Section 1, Part 1](https://github.com/samplchallenges/SAMPL-containers/blob/main/tutorials/CondaEnvironmentInstructions.md#part-1-create-your-conda-environment) to finish create your `environment.yml` file. 
 6. Upon creating the `environment.yml` file, add the following to the end of your `Dockerfile`
 	* Please note we are using `conda env update` rather than `conda create` so your `base` environment is updated. 
 	* Please **DO NOT** change this as using a conda environment other than `base` may prevent your program from properly accepting our command line input arguments.
@@ -146,5 +146,5 @@ As a note, for SAMPL challenges you should always install your required python p
 	    conda clean --all --yes      
 	# install the packages in environment.yml into containers
 	```
-7. Finally, test your container conda environment using the steps in [Section 1, Part 3]
+7. Finally, test your container conda environment using the steps in [Section 1, Part 3](https://github.com/samplchallenges/SAMPL-containers/blob/main/tutorials/CondaEnvironmentInstructions.md#part-3-test-your-container-environment)
 
