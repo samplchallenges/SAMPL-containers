@@ -196,7 +196,7 @@ In some cases, miniconda3 may not be compatible with your programs inside your c
 	```
 	ENTRYPOINT ['python3.6', 'main.py']
 	```
-11. At the bottom of your the file containing your containers main function, you will need to add the following lines, replacing `main_function()` with your main function. You do not need to pass any arguments to the `main_function` as these will be handled by `click`.
+11. At the bottom of your the file containing your container's main function, you will need to add the following lines, replacing `main_function()` with your main function. You do not need to pass any arguments to the `main_function` as these will be handled by `click`.
 	```
 	if __name__ == "__main__":
 		main_function()
