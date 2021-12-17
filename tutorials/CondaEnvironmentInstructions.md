@@ -203,6 +203,7 @@ In some cases, miniconda3 may not be compatible with your programs inside your c
 	```
 12.  Build your container to ensure there are no build issues.
 	* command: `docker build -t <container-name>:<tag> .`
+	
 13. If your container builds correctly, run your container with the `--help` flag. The output should look similar to the following code block
 	* command: `docker run -it --rm <container-mane>:<tag> --help`
 	```
