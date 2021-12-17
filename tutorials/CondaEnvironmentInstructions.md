@@ -148,3 +148,78 @@ As a note, for SAMPL challenges you should always install your required python p
 	```
 7. Finally, test your container conda environment using the steps in [Section 1, Part 3](https://github.com/samplchallenges/SAMPL-containers/blob/main/tutorials/CondaEnvironmentInstructions.md#part-3-test-your-container-environment)
 
+
+
+## Section 3: What to do when Conda Environments are not Compatible
+In some cases, miniconda3 may not be compatible with your programs inside your container or may be a source of licensing issues. If this is the case for you, this section details a work around we have found that only uses Python3 and `pip`.
+1. Using the instructions in Section 2, step 1 and 2, you will need to find a container that fits your needs and has a `gcc` compiler, and then create a `Dockerfile`
+2. In your `Dockerfile` from step 1, add the steps to install python. The following installs Python v3.6.0, but feel free adapt the following for a different Python version:
+	```
+	RUN apt-get update -y
+	RUN apt-get install -y sudo build-essential
+	
+	RUN wget https://www.python.org/ftp/python/3.6.0/Python-3.6.0.tgz && \
+		tar xvf Python-3.6.0.tgz && \
+		cd Python-3.6.0 && \
+		./configure && \
+		make -j 8 && \
+		sudo make altinstall && \
+		cd /opt/app/ && \
+		rm -rf Python-3.6.0 && \
+		rm Python-3.6.0.tgz
+		# install python 3.6 for debian 8
+		
+	ENV LC_ALL C.UTF-8
+	ENV LANG C.UTF-8
+	# set environment variables required to use pip
+	```
+3. Add all the `pip` installable packages you require to the `install_requires` list in the [`setup.py`](https://github.com/samplchallenges/SAMPL-containers/blob/main/tutorials/templates/docking/setup.py) file. 
+4. Add the following to the end of your Dockerfile
+	```
+	RUN pip3.6 install .
+	# pip install any extra python packages you will need
+	```
+5. Build your container to ensure there are no build issues
+	* command: `docker build -t <container-name>:<tag> .`
+6. If step 5 is successful, add the `ENTRYPOINT` for your program to your `Dockerfile`. In the line below, replace the `"entrypoint-from-setup.py"` with the entrypoint you set up in the `entry_points` string in the [`setup.py`](https://github.com/samplchallenges/SAMPL-containers/blob/main/tutorials/templates/docking/setup.py) file. After this step, you should be good to finish developing your container
+	```
+	ENTRYPOINT ["entrypoint-from-setup.py"]
+	```
+7. If step 5 was unsuccessful, please continue with the following steps.
+8. Remove the `RUN pip3.6 install .` line from your `Dockerfile`
+9. Add the following line in place of `RUN pip3.6 install .`. Please add any other `pip` installable packages you need to the following line as well. 
+	```
+	RUN pip3.6 install click
+	```
+10. Archive or remove the `setup.py` file from your container directory as it is no longer needed for this step. 
+11. Add the `ENTRYPOINT` build instruction below to your `Dockerfile`, you will need to replace `main.py` with the name of the file containing your containers main function. 
+	```
+	ENTRYPOINT ['python3.6', 'main.py']
+	```
+11. At the bottom of your the file containing your containers main function, you will need to add the following lines, replacing `main_function()` with your main function. You do not need to pass any arguments to the `main_function` as these will be handled by `click`.
+	```
+	if __name__ == "__main__":
+		main_function()
+	```
+12.  Build your container to ensure there are no build issues.
+	* command: `docker build -t <container-name>:<tag> .`
+13. If your container builds correctly, run your container with the `--help` flag. The output should look similar to the following code block
+	* command: `docker run -it --rm <container-mane>:<tag> --help`
+	```
+	(base) megosato@Admins-MacBook-Pro tutorial % docker run -it --rm osatom/adv-tutorial --help
+	Usage: main.py [OPTIONS]
+
+	Options:
+	  --receptor PATH      path of receptor PDB to dock the ligand into
+			       [required]
+	  --smiles TEXT        SMILES str of ligand to be docked. quote to prevent CLI
+			       errors "CCC"  [required]
+	  --hint PATH          path of hint ligand complex for docking region hint
+			       [required]
+	  --hint-molinfo TEXT  residue name of the ligand in the hint complex
+			       [required]
+	  --hint-radius FLOAT  box size of the box to dock into  [required]
+	  --output-dir TEXT    Output directory for receptor and docked_ligand files
+	  --debug              prints debug print statements when --debug flag is used
+	  --help               Show this message and exit.
+	 ```
