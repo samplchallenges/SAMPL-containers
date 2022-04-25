@@ -1,9 +1,17 @@
 # Introduction to SAMPL Containerized Methods
 
 ## Purpose:
-In [SAMPL4](https://link.springer.com/article/10.1007%2Fs10822-013-9702-2), we learned that human knowledge can be a key factor influencing the success of a computational drug discovery method. To work around this finding, we are creating an automated arm of SAMPL challenges to run methods head-to-head without human intervention. To accomplish this, we will use containerized [Docker](https://www.docker.com/resources/what-container) methods.
+In [SAMPL4](https://link.springer.com/article/10.1007%2Fs10822-013-9702-2), we learned that human knowledge can be a key factor influencing the success of a computational drug discovery method. To work around this finding, we are creating an automated arm of SAMPL challenges to run methods head-to-head without human intervention. To accomplish this, we will use containerized methods. The container engines--programs to build containers--we will use are [Docker](https://www.docker.com/resources/what-container) and [Singularity](https://sylabs.io/guides/3.5/user-guide/introduction.html). 
 
 The following tutorial is meant to teach the basics of building a simple container to predict docking poses. Here, we use both Python code and command-line programs (specifically, Autodock Vina and MGL Tools).
+
+
+## An Important Disclaimer
+This main tutorial uses the [Docker](https://www.docker.com/resources/what-container) container engine to build containers. 
+
+If you are primarily developing your container on a High Performace Computing (HPC) Cluster, you will more than likely need to use a Singularity container engine. Most HPC clusters will not have the Docker program installed. Please see [this tutorial]() on how to build a container using Singularity.
+
+If you have the ability to use either Docker or Singularity as your container engine, please use Docker. The accepted best practice for containers is to build and store them as Docker containers. 
 
 ## Background and Prerequisites
 
