@@ -56,4 +56,4 @@ If you have the ability to use either [Docker](https://www.docker.com/resources/
 > 
 > When building your own Docker container, this is where you would create your own conda environment with the packages you will need.
 1. Start the container. Upon running this command your command line prompt should change. This means you are now inside the container interacting with it's command line and contents. The change in command prompts should look similar to the code block below.
-    * command: `singularity shell continuumio/miniconda3`
+    * command: `singularity shell docker://continuumio/miniconda3`
