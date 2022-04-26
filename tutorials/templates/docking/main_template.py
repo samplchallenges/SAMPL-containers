@@ -1,19 +1,11 @@
 # For more information about how to build your Docking Container for SAMPL containerized challenges
 # Please see: https://github.com/samplchallenges/SAMPL-containers/blob/main/tutorials/BuildYourOwnDockingContainer.md
 
-import click
+import argparse
 import os.path
 
 # the following are decorators related to the MAIN FUNCTION (docking_main), these '@click.command()' and '@click.option()' decorators
 # MUST remain directly above your main function
-@click.command()
-@click.option("--receptor", required=True, type=click.Path(exists=True), help="path of receptor PDB to dock the ligand into")
-@click.option("--smiles", required=True, help="smiles string of ligand to be docked")
-@click.option("--hint",required=True, type=click.Path(exists=True), help="path of hint ligand complex for docking region hint")
-@click.option("--hint-molinfo",required=True,help="residue name of the ligand in the hint complex")
-@click.option("--hint-radius",required=True,type=float,help="box size of the box to dock into")
-
-@click.option("--output-dir",help="Output directory for receptor and docked_ligand files")
 
 # @click.option("--your-argument", type=click.Path(exists=True), help="Any special file arguments you would like to add")
 # for more information on special file arguments like "--your-argument", please see:
@@ -54,7 +46,6 @@ def docking_main(receptor: 'Path', smiles: str,  hint: 'Path', hint_molinfo: str
         path_to_receptor_file = os.path.join(output_dir, receptor_file_name)
         
 	
-	
 	# YOUR CODE GOES HERE 
         
 	
@@ -89,4 +80,14 @@ def docking_main(receptor: 'Path', smiles: str,  hint: 'Path', hint_molinfo: str
 
 
 if __name__ == "__main__":
-	docking_main()
+	parser = argparse.ArgumentParser(description='Run AutoDock Vina Docking container')
+	parser.add_argument("--receptor",required=True,help="path of receptor PDB to dock the ligand into")
+	parser.add_argument("--smiles",required=True,help="SMILES str of ligand to be docked. Use quotes to prevent CLI errors \"CCC\"")
+	parser.add_argument("--hint",required=True,help="path of hint ligand complex for docking region hint")
+	parser.add_argument("--hint-molinfo",required=True,help="residue name of the ligand in the hint complex")
+	parser.add_argument("--hint-radius",required=True,type=float,help="box size of the box to dock into")
+	parser.add_argument("--output-dir",help="Output directory for receptor and docked_ligand files")
+	
+	args = parser.parse_args()	
+	
+	docking_main (args.receptor, args.smiles, args.hint, args.hint_molinfo, args.hint_radius, args.output_dir)
