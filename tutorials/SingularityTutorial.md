@@ -339,7 +339,7 @@ A working version of the Autodock Vina container we will build in this tutorial 
 2. Copy the AutoDock main file from "SAMPL-containers/docking/examples/adv-tutorial/main.py" to "adv-tut-singularity"
      * command: `cp ../../docking/examples/adv-tutorial/autodock.py .`
 
-### 2.4: Write a buildfile with instructions to build your container
+### 2.3: Write a buildfile with instructions to build your container
 1. Create and open a file called "buildfile-prod"
 2. Copy and paste the following into `buildfile-prod`
      ``` bash
@@ -356,3 +356,16 @@ A working version of the Autodock Vina container we will build in this tutorial 
      # execute main.py file at runtime using the arguments passed to the container via command line
      exec python /opt/app/main.py $@
      ```
+3. Build the container image
+     * command: `singularity build --fakeroot adv-tut.sif buildfile-prod`
+
+### 2.4: Build the docking container
+1. Build the container image
+     * command: `singularity build --fakeroot adv-tut.sif buildfile-prod`
+
+
+## Section 3: Test/Run your container
+In this section, we will use the wrapper ever_given to run the docking container. ever_given mimics the infrastructure we will use to run your container on the SAMPL-league website, making it a great way to test that you container will run properly ahead of uploading to the SAMPL challenges website. ever_given also abstracts away volume mounting to link your local directory with a directory inside the container, making it easier to quickly test your container. For more information on how to use ever_given please see ever_givenUsage.md.
+
+1. Change directories into "tutorials" one directory above:
+     * command: `cd ..`
