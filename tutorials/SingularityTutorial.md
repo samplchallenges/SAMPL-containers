@@ -369,3 +369,62 @@ In this section, we will use the wrapper ever_given to run the docking container
 
 1. Change directories into "tutorials" one directory above:
      * command: `cd ..`
+2. Run the container. A successful run should look like the code block below.
+     * command:
+          ```
+          evergiven adv-tut-singularity/adv-tut.sif \
+            --container-engine singularity --container-type singularity_local \
+            --file-receptor data/receptor.pdb \
+            --file-hint data/hint.pdb --hint-radius 6 --hint-molinfo "E4Y" \
+            --smiles "c1ccc(C(C)C)cc1CNCC(O)(O)[C@@H](NC(=O)[C@@H]2C)C[C@H](C)CCCCCCCCC(=O)N2C" \
+            --output-keys docked_ligand,receptor
+         ```
+    ```
+     evergiven adv-tut-singularity/adv-tut.sif --container-engine singularity --container-type singularity_local --smiles "c1cc(C(C)C)cc(c12)[C@H](CC(O2)(C)C)NC[C@@H](O)[C@@H](NC(=O)[C@@H]3C)C[C@H](C)CCCCCCCCC(=O)N3C"  --hint-radius 6 --hint-molinfo E4Y --file-hint data/hint.pdb --file-receptor data/receptor.pdb --output-keys docked_ligand,receptor
+     container: adv-tut-singularity/adv-tut.sif
+     container type: singularity_local
+     container engine: singularity
+     command?: 
+     file kwargs: {'hint': data/hint.pdb', 'receptor': 'data/receptor.pdb'}
+     kwargs: {'smiles': 'c1cc(C(C)C)cc(c12)[C@H](CC(O2)(C)C)NC[C@@H](O)[C@@H](NC(=O)[C@@H]3C)C[C@H](C)CCCCCCCCC(=O)N3C', 'hint-radius': '6', 'hint-molinfo': 'E4Y'}
+     Putting output into: evergiven_output
+     1 molecule converted
+     adding gasteiger charges to peptide
+     #################################################################
+     # If you used AutoDock Vina in your work, please cite:          #
+     #                                                               #
+     # O. Trott, A. J. Olson,                                        #
+     # AutoDock Vina: improving the speed and accuracy of docking    #
+     # with a new scoring function, efficient optimization and       #
+     # multithreading, Journal of Computational Chemistry 31 (2010)  #
+     # 455-461                                                       #
+     #                                                               #
+     # DOI 10.1002/jcc.21334                                         #
+     #                                                               #
+     # Please see http://vina.scripps.edu for more information.      #
+     #################################################################
+
+     Reading input ... done.
+     Setting up the scoring function ... done.
+     Analyzing the binding site ... done.
+     Using random seed: 1064360024
+     Performing search ... 
+     0%   10   20   30   40   50   60   70   80   90   100%
+     |----|----|----|----|----|----|----|----|----|----|
+     ***************************************************
+     done.
+     Refining results ... done.
+
+     mode |   affinity | dist from best mode
+          | (kcal/mol) | rmsd l.b.| rmsd u.b.
+     -----+------------+----------+----------
+        1         -8.8      0.000      0.000
+     Writing output ... done.
+     /opt/app/dependencies/mgl/bin/python /opt/app/dependencies/mgl/MGLToolsPckgs/AutoDockTools/Utilities24/prepare_receptor4.py
+     docked_ligand /mnt/outputs/best_dock.pdb
+     receptor /mnt/outputs/rec-dock.pdb
+     Killing running container
+     After killing running container, status is 0
+     Container status is 0
+     Results: {'adding': 'gasteiger charges to peptide', '#': 'Please see http://vina.scripps.edu for more information.      #', 'Reading': 'input ... done.', 'Setting': 'up the scoring function ... done.', 'Analyzing': 'the binding site ... done.', 'Using': 'random seed: 1064360024', 'Performing': 'search ...', '0%': '10   20   30   40   50   60   70   80   90   100%', 'Refining': 'results ... done.', 'mode': '|   affinity | dist from best mode', '|': '(kcal/mol) | rmsd l.b.| rmsd u.b.', '1': '-8.8      0.000      0.000', 'Writing': 'output ... done.', '/opt/app/dependencies/mgl/bin/python': '/opt/app/dependencies/mgl/MGLToolsPckgs/AutoDockTools/Utilities24/prepare_receptor4.py', 'docked_ligand': 'evergiven_output/best_dock.pdb', 'receptor': 'evergiven_output/rec-dock.pdb'}
+     ```
