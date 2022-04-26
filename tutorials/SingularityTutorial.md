@@ -124,26 +124,76 @@ A working version of the Autodock Vina container we will build in this tutorial 
      file extensions and are case independent.
      If no input or output file is given stdin or stdout are used instead.
      ```
- 10. Exit the container shell. Upon running this command, you will exit the interactive version of the container and should return to your normal command prompt.
-     command: `exit`
+10. Exit the container shell. Upon running this command, you will exit the interactive version of the container and should return to your normal command prompt.
+     * command: `exit`
 
 1.3: Install conda environment (from Section 1.2) into your container
 > We will begin creating a `buildfile` to create a container with the virtual environment from the previous section. The only difference in the steps is this time we will update the base environment using `conda update` rather than create a new environment using `conda create`. In the previous step, we could not install into the base environment due to root permissions. 
 
 1. Create and open a file called "buildfile"
-2. Copy the following lines into `buildfile`. The following commands contain the instructions to install the conda environment when your container is built
+2. Copy the following lines from the codeblock into `buildfile`. The following commands contain the instructions to install the conda environment when your container is built
      ```bash
      # Start building off of the docker container continuumio/miniconda3
      Bootstrap: docker
      From: continuumio/miniconda3
 
+     %files
+
      %post
-     
-     # create virutual environment
+     # Install python 3.7 and package dependencies into the conda base environment
      conda update conda && \
          conda install python=3.7 && \
          conda install -c conda-forge mdtraj rdkit && \
          conda install -c openbabel openbabel && \
          conda clean --all --yes
+     
+     %runscript
      ```
+     * The `Bootstrap` and `From` lines determine which container to use as a foundation for our container. 
+     * The `%files` section states which files to copy into the container ahead of running installation steps. Right now we do not require any files. 
+     * The `%post` section is for any installation steps that should occur during the build ahead of runtime. 
+     * The `%runscript` section is for any steps that should be executed by the container at runtime.
+3. Save `buildfile` and exit your text editor
+4. Build your container
+     * command: `singularity build --fakeroot adv-tut-base.sif buildfile`
+5. Confirm your build succeded by running the container in interactive mode. Upon running this command your command line prompt should change.
+     * command: `singularity shell adv-tut-base.sif`
+     ```
+     vagrant@ubuntu-bionic:~/evergiven_output$ singularity shell adv-tut-base.sif
+     INFO:    Using cached SIF image
+     Singularity> 
+     ```
+6. Start up the Python interpreter and ensure your version is `3.7.*`. The Python version is 3.7.13 in the code block below.
+     ```
+     Singularity> python
+     Python 3.7.13 (default, Mar 29 2022, 02:18:16) 
+     [GCC 7.5.0] :: Anaconda, Inc. on linux
+     Type "help", "copyright", "credits" or "license" for more information.
+     >>>
+     ```
+7. In the Python interpreter, import rdkit and mdtraj to ensure there are no errors.
+     ```
+     >>> import rdkit
+     >>> import mdtraj
+     ```
+8. Quit the Python interpeter
+     ```
+     >>> quit()
+     ```
+9. Run openbabel with the help flag to ensure openbabel has installed properly. If properly installed the output should look similar to the code block below
+     ```
+     Singularity> obabel -H
+     Open Babel converts chemical structures from one file format to another
+
+     Usage: 
+     obabel[-i<input-type>] <infilename> [-o<output-type>] -O<outfilename> [Options]
+     The extension of a file decides the format, unless it is overridden
+      by -i or -o options, e.g. -icml, or -o smi
+     See below for available format-types, which are the same as the 
+     file extensions and are case independent.
+     If no input or output file is given stdin or stdout are used instead.
+     ```
+10. Exit the container shell. Upon running this command, you will exit the interactive version of the container and should return to your normal command prompt.
+     * command: `exit`
+
   
