@@ -428,3 +428,11 @@ In this section, we will use the wrapper ever_given to run the docking container
      Container status is 0
      Results: {'adding': 'gasteiger charges to peptide', '#': 'Please see http://vina.scripps.edu for more information.      #', 'Reading': 'input ... done.', 'Setting': 'up the scoring function ... done.', 'Analyzing': 'the binding site ... done.', 'Using': 'random seed: 1064360024', 'Performing': 'search ...', '0%': '10   20   30   40   50   60   70   80   90   100%', 'Refining': 'results ... done.', 'mode': '|   affinity | dist from best mode', '|': '(kcal/mol) | rmsd l.b.| rmsd u.b.', '1': '-8.8      0.000      0.000', 'Writing': 'output ... done.', '/opt/app/dependencies/mgl/bin/python': '/opt/app/dependencies/mgl/MGLToolsPckgs/AutoDockTools/Utilities24/prepare_receptor4.py', 'docked_ligand': 'evergiven_output/best_dock.pdb', 'receptor': 'evergiven_output/rec-dock.pdb'}
      ```
+
+## Section 4: Troubleshooting
+
+
+## Section 5: Building Your Own Docking Container
+
+
+## Section 6: Other Important Information
