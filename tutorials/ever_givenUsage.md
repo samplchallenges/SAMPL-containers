@@ -1,6 +1,6 @@
 # `ever_given` Usage Notes
 
-`ever_given` is a simple wrapper to run docker or signularity containers. It abstracts away [volume mounting](https://docs.docker.com/storage/volumes/) allowing files used or made by the container to persist beyond the container's runtime when necessary with little intervention on your part.
+`ever_given` is a simple wrapper to run docker or singularity containers. It abstracts away [volume mounting](https://docs.docker.com/storage/volumes/) allowing files used or made by the container to persist beyond the container's runtime when necessary with little intervention on your part.
 
 ## Installing `ever_given`
 * `ever_given` is pip installable
