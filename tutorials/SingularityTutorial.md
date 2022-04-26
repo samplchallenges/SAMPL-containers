@@ -127,11 +127,11 @@ A working version of the Autodock Vina container we will build in this tutorial 
 10. Exit the container shell. Upon running this command, you will exit the interactive version of the container and should return to your normal command prompt.
      * command: `exit`
 
-1.3: Install conda environment (from Section 1.2) into your container
+### 1.3: Install conda environment (from Section 1.2) into your container
 > We will begin creating a `buildfile` to create a container with the virtual environment from the previous section. The only difference in the steps is this time we will update the base environment using `conda update` rather than create a new environment using `conda create`. In the previous step, we could not install into the base environment due to root permissions. 
 
-1. Create and open a file called "buildfile"
-2. Copy the following lines from the codeblock into `buildfile`. The following commands contain the instructions to install the conda environment when your container is built
+1. Create and open a file called "buildfile-base"
+2. Copy the following lines from the codeblock into `buildfile-base`. The following commands contain the instructions to install the conda environment when your container is built
      ```bash
      # Start building off of the docker container continuumio/miniconda3
      Bootstrap: docker
@@ -195,5 +195,120 @@ A working version of the Autodock Vina container we will build in this tutorial 
      ```
 10. Exit the container shell. Upon running this command, you will exit the interactive version of the container and should return to your normal command prompt.
      * command: `exit`
+11. Remove the `adv-tut-base.sif` as we no longer need it.
+     * command: `rm adv-tut-base.sif`
 
-  
+### 1.4: Download the command line programs Autodock Vina and MGL Tools executables for use in the docking container
+> In 1.4, we will incorporate the command line tools Autodock Vina and MGL Tools into our base container. Please do not change which installers you download based on your native operating system (OS) because the OS used inside our singularity container, Linux x86, may differ from your native OS.
+> 
+> When building your own container, this is where you would add in any command line program files.
+
+1. Download Autodock Tools linux x86 "autodock_vina_1_1_2_linux_x86.tgz" from [here](https://drive.google.com/file/d/14X2V61L7RKuc35xcqm3zfE0XOhKWFmcE/view?usp=sharing)
+2. Move "autodock_vina_1_1_2_linux_x86.tgz" into "adv-tut-singularity-base"
+     * command: `mv {path_to_download}/autodock_vina_1_1_2_linux_x86.tgz .`
+3. Download MGL Tools linux x86 mgltools_x86_64Linux2_1.5.6.tar.gz from [here](https://drive.google.com/file/d/1wxSqjpPwV75gPDU_Ai5Rj3q0Pzx_-3Ju/view?usp=sharing)
+     * command: `mv {path_to_download}/mgltools_x86_64Linux2_1.5.6.tar .`
+
+### 1.5: Install Autodock Vina and MGL Tools into your container
+> In 1.5, we will add in the installation commands for Autodock Vina and MGL Tools to the buildfile.
+>
+> When building your own container, this is where you would add in any command line program installation steps.
+
+1. Open your `buildfile-base`
+2. Under the `%file` section, add the steps to copy `autodock_vina_1_1_2_linux_x86.tgz` and `mgltools_x86_64Linux2_1.5.6.tar` into the container. The `%file` section of the `buildfile-base` should look like the codeblock below:
+     ``` bash 
+     %file
+     autodock_vina_1_1_2_linux_x86.tgz /opt/app/dependencies/
+     mgltools_x86_64Linux2_1.5.6.tar /opt/app/dependencies/
+     ```
+3. In the `%post` section of `buildfile-base`, append the steps to install Autodock Vina and MGL Tools after the conda environment installation. 
+     ``` bash
+     # install AutoDock Vina
+     cd /opt/app/dependencies
+     tar -xf autodock_vina_1_1_2_linux_x86.tgz
+     mv autodock_vina_1_1_2_linux_x86 adv
+     rm autodock_vina_1_1_2_linux_x86.tgz
+     
+     # install MGL Tools
+     tar -xf mgltools_x86_64Linux2_1.5.6.tar
+     mv mgltools_x86_64Linux2_1.5.6 mgl
+     rm mgltools_x86_64Linux2_1.5.6.tar 
+     cd /opt/app/dependencies/mgl/
+     ./install.sh
+     ```
+4. Your `buildfile-base` should now look like the following: 
+     ``` bash
+     # Start building off of the docker container continuumio/miniconda3
+     Bootstrap: docker
+     From: continuumio/miniconda3
+
+     %files
+     autodock_vina_1_1_2_linux_x86.tgz /opt/app/dependencies/
+     mgltools_x86_64Linux2_1.5.6.tar /opt/app/dependencies/
+
+     %post
+     # Install python 3.7 and package dependencies into the conda base environment
+     conda update conda && \
+         conda install python=3.7 && \
+         conda install -c conda-forge mdtraj && \
+         conda install -c conda-forge rdkit && \
+         conda install -c openbabel openbabel && \
+         conda clean --all --yes
+     # install AutoDock Vina
+     cd /opt/app/dependencies
+     tar -xf autodock_vina_1_1_2_linux_x86.tgz
+     mv autodock_vina_1_1_2_linux_x86 adv
+     rm autodock_vina_1_1_2_linux_x86.tgz
+     # install MGL Tools
+     tar -xf mgltools_x86_64Linux2_1.5.6.tar
+     mv mgltools_x86_64Linux2_1.5.6 mgl
+     rm mgltools_x86_64Linux2_1.5.6.tar 
+     cd /opt/app/dependencies/mgl/
+     ./install.sh
+     
+     %runscript
+     ```
+     * Please note we will leave the `%runscript` section empty because this container will only set up the environment and dependencies required for our docking program
+5. Build the base container
+     * command: `singularity build --fakeroot adv-tut-base.sif buildfile-base`
+6. Confirm your build succeded by running the container in interactive mode. Upon running this command your command line prompt should change.
+     * command: `singularity shell adv-tut-base.sif`
+7. Run `vina --help` to ensure the vina program was set up properly. The output should look something like the codeblock below
+     * command: `/opt/app/dependencies/adv/bin/vina --help`
+     ```
+     Singularity> /opt/app/dependencies/adv/bin/vina --help
+
+     Input:
+       --receptor arg        rigid part of the receptor (PDBQT)
+       --flex arg            flexible side chains, if any (PDBQT)
+       --ligand arg          ligand (PDBQT)
+
+     Search space (required):
+       --center_x arg        X coordinate of the center
+       --center_y arg        Y coordinate of the center
+       --center_z arg        Z coordinate of the center
+       --size_x arg          size in the X dimension (Angstroms)
+       --size_y arg          size in the Y dimension (Angstroms)
+       --size_z arg          size in the Z dimension (Angstroms)
+     ...
+     ```
+8. For simplicity of the next command, create an alias for python2
+     * command: `alias python2=/opt/app/dependencies/mgl/bin/python`
+9. Run `prepare_ligand4.py --help` to ensure MGLTools was installed properly. The output should look something like the codeblock below
+     * command: `python2 /opt/app/dependencies/mgl/MGLToolsPckgs/AutoDockTools/Utilities24/prepare_ligand4.py --help`
+     ```
+     Singularity> python2 /opt/app/dependencies/mgl/MGLToolsPckgs/AutoDockTools/Utilities24/prepare_ligand4.py --help
+     prepare_ligand4.py: option --help not recognized
+     Usage: prepare_ligand4.py -l filename
+
+         Description of command...
+              -l     ligand_filename (.pdb or .mol2 or .pdbq format)
+         Optional parameters:
+             [-v]    verbose output
+             [-o pdbqt_filename] (default output filename is ligand_filename_stem + .pdbqt)
+             [-d]    dictionary to write types list and number of active torsions 
+             [-A]    type(s) of repairs to make:
+                bonds_hydrogens, bonds, hydrogens (default is to do no repairs)
+             ...
+      ```
+      
