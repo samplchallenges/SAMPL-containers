@@ -26,7 +26,7 @@ If you have the ability to use either [Docker](https://www.docker.com/resources/
 
 ### Pre-Built Autodock Vina Singularity Container
 A working version of the Autodock Vina container we will build in this tutorial with the Singularity engine is available in our google drive as the file [adv-tutorial.sif](https://drive.google.com/file/d/1yEKSLU6AKZzECUiTRpOoFVk6u-Bn44aY/view?usp=sharing). 
-1. In a new virtual environment with python 3.8 install the ever-given package. Ensure the package version is the latest version by checking on [PyPi](https://pypi.org/project/ever-given/)
+1. In a new virtual environment with python 3.8 install the ever-given package. Ensure the package version is the latest version by checking on [ever-given's PyPi](https://pypi.org/project/ever-given/)
       * command: `pip install ever-given`
 2. If you haven't already, clone this repository
       * command: `git clone https://github.com/samplchallenges/SAMPL-containers.git`
@@ -61,16 +61,16 @@ A working version of the Autodock Vina container we will build in this tutorial 
 ## Section 1: Build the Autodock Vina base container
 ### 1.1: Setup
 1. Open a terminal
-2. If you have not already, in a new virtual environment with python 3.7 install the ever-given package. Please ensure the version you have installed the latest version listed on [ever-given's PyPi](https://pypi.org/project/ever-given/).
+2. If you have not already, in a new virtual environment with python 3.8 install the ever-given package. Please ensure the version you have installed the latest version listed on [ever-given's PyPi](https://pypi.org/project/ever-given/).
     * command: `pip install ever-given`
-3. Clone the SAMPL-containers repository
+3. If you have not already, clone the SAMPL-containers repository
     * command: `git clone https://github.com/samplchallenges/SAMPL-containers.git`
 4. Navigate to the "SAMPL-containers/tutorials" directory.
     * command: `cd SAMPL-containers/tutorials`
-5. Create a directory called "adv-tutorial-base"
-    * command: `mkdir adv-tutorial-base`
+5. Create a directory called "adv-tut-singularity-base"
+    * command: `mkdir adv-tut-singularity-base`
 6. Change directories to "adv-tutorial-base"
-    * command: `cd adv-tutorial-base`
+    * command: `cd adv-tut-singularity-base`
 
 ### 1.2: Run a pre-made Docker container and create a conda environment
 > In 1.2, we will run the pre-made miniconda container, continuumio/miniconda3, which contains a pre-installed version of miniconda, in interactive mode. This will allow us to interact with the container's command line and directory contents. We will also be able to dynamically create the conda environment we need on the command line inside the container. Even if you have a conda environment installed locally, you will need to complete this step. The container is isolated from your local environment, so it will not have access to your local conda environment.
@@ -78,5 +78,72 @@ A working version of the Autodock Vina container we will build in this tutorial 
 > Because our container will build off of the miniconda container using it as a base, any environment we create while interatively using the miniconda container should install into our container (which uses miniconda as a base) without additional issues. Building a conda environment outside the miniconda container often results in multiple rounds of trial and error and incompatible packages. We've found the following steps to be the fastest procedure. For more detailed/generalized instructions please see CondaEnvInstructions.pdf.
 > 
 > When building your own Docker container, this is where you would create your own conda environment with the packages you will need.
+
 1. Start the container. Upon running this command your command line prompt should change. This means you are now inside the container interacting with it's command line and contents. The change in command prompts should look similar to the code block below.
     * command: `singularity shell docker://continuumio/miniconda3`
+    ```
+    vagrant@ubuntu-bionic:~/evergiven_output$ singularity shell docker://continuumio/miniconda3
+    INFO:    Using cached SIF image
+    Singularity> 
+    ```
+2. Create a python 3.7 environmentd
+     * command: `conda create -n py37 python=3.7`
+3. Activate the environment
+     * command: `source activate py37`
+4. Install mdtraj and rdkit into the base environment
+     * command: `conda install -c conda-forge mdtraj rdkit`
+5. Install openbabel 
+     * command: `conda install -c openbabel openbabel`
+6. Start up the Python interpreter and ensure your version is `3.7.*`. The Python version is 3.7.13 in the code block below.
+     ```
+     Singularity> python
+     Python 3.7.13 (default, Mar 29 2022, 02:18:16) 
+     [GCC 7.5.0] :: Anaconda, Inc. on linux
+     Type "help", "copyright", "credits" or "license" for more information.
+     >>>
+     ```
+7. In the Python interpreter, import rdkit and mdtraj to ensure there are no errors.
+     ```
+     >>> import rdkit
+     >>> import mdtraj
+     ```
+8. Quit the Python interpeter
+     ```
+     >>> quit()
+     ```
+9. Run openbabel with the help flag to ensure openbabel has installed properly. If properly installed the output should look similar to the code block below
+     ```
+     Singularity> obabel -H
+     Open Babel converts chemical structures from one file format to another
+
+     Usage: 
+     obabel[-i<input-type>] <infilename> [-o<output-type>] -O<outfilename> [Options]
+     The extension of a file decides the format, unless it is overridden
+      by -i or -o options, e.g. -icml, or -o smi
+     See below for available format-types, which are the same as the 
+     file extensions and are case independent.
+     If no input or output file is given stdin or stdout are used instead.
+     ```
+ 10. Exit the container shell. Upon running this command, you will exit the interactive version of the container and should return to your normal command prompt.
+     command: `exit`
+
+1.3: Install conda environment (from Section 1.2) into your container
+> We will begin creating a `buildfile` to create a container with the virtual environment from the previous section. The only difference in the steps is this time we will update the base environment using `conda update` rather than create a new environment using `conda create`. In the previous step, we could not install into the base environment due to root permissions. 
+
+1. Create and open a file called "buildfile"
+2. Copy the following lines into `buildfile`. The following commands contain the instructions to install the conda environment when your container is built
+     ```bash
+     # Start building off of the docker container continuumio/miniconda3
+     Bootstrap: docker
+     From: continuumio/miniconda3
+
+     %post
+     
+     # create virutual environment
+     conda update conda && \
+         conda install python=3.7 && \
+         conda install -c conda-forge mdtraj rdkit && \
+         conda install -c openbabel openbabel && \
+         conda clean --all --yes
+     ```
+  
