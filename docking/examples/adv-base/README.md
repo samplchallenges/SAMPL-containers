@@ -18,7 +18,7 @@ Details how to setup and build Autodock Vina Base docker container for Autodock 
 14. `vi mgl/install.sh`
 15. Change line 6 `TarDir=` to `TarDir="/opt/app/dependencies/mgl/"`
 16. Change line 7 `export MGL_ROOT=""` to `export MGL_ROOT="/opt/app/dependencies/mgl/"`
-17. Save install.sh
+17. Save `install.sh`
 
 # Build
 1. `cd adv-base/`
