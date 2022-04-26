@@ -16,7 +16,7 @@ If you have the ability to use either [Docker](https://www.docker.com/resources/
 
 ### Software Requirements
 * Linux operating system or Linux Virtual Machine
-* [Singularity] https://sylabs.io/guides/3.0/user-guide/installation.html
+* [Singularity](https://sylabs.io/guides/3.0/user-guide/installation.html)
 * git command line tool
 
 
@@ -25,7 +25,28 @@ If you have the ability to use either [Docker](https://www.docker.com/resources/
 ### Brief Singularity Background
 
 ### Pre-Built Autodock Vina Singularity Container
-
+A working version of the Autodock Vina container we will build in this tutorial with the Singularity engine is available in our google drive as the file [adv-tutorial.sif](https://drive.google.com/file/d/1yEKSLU6AKZzECUiTRpOoFVk6u-Bn44aY/view?usp=sharing). 
+1. In a new virtual environment with python 3.8 install the ever-given package. Ensure the package version is the latest version by checking on [PyPi](https://pypi.org/project/ever-given/)
+      * command: `pip install ever-given`
+2. If you haven't already, clone this repository
+      * command: `git clone https://github.com/samplchallenges/SAMPL-containers.git`
+4. Download the [adv-tutorial.sif](https://drive.google.com/file/d/1yEKSLU6AKZzECUiTRpOoFVk6u-Bn44aY/view?usp=sharing) using the link provided. 
+5. Change directories into the "SAMPL-containers/tutorials" directory
+      * command: `cd SAMPL-containers/tutorials`
+6. Run the container
+      * command: 
+         ```
+         evergiven {path_to_file}/adv-tutorial.sif \
+            --container-engine singularity --container-type singularity_local \
+            --file-receptor data/receptor.pdb \
+            --file-hint data/hint.pdb --hint-radius 6 --hint-molinfo "E4Y" \
+            --smiles "c1ccc(C(C)C)cc1CNCC(O)(O)[C@@H](NC(=O)[C@@H]2C)C[C@H](C)CCCCCCCCC(=O)N2C" \
+            --output-keys docked_ligand,receptor
+         ```
+7. The results files will be stored in the directory `tutorials/evergiven_output`
+      * Expected files:
+            * prepped receptor file: `rec-dock.pdb`
+            * docked ligand file: `best_dock.pdb`
 
 # Tutorial: Build an AutoDock Vina Containerized Method using the Singularity Container Engine
 > This tutorial is separated into six parts: (1) the virtual environment and dependency container build, (2) the docking container build, (3) docking using the Docker container, (4) trouble shooting, (5) building your own docking container, and (6) miscellaneous important information.
