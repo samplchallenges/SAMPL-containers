@@ -82,7 +82,7 @@ A working version of the Autodock Vina container we will build in this tutorial 
 1. Start the container. Upon running this command your command line prompt should change. This means you are now inside the container interacting with it's command line and contents. The change in command prompts should look similar to the code block below.
     * command: `singularity shell docker://continuumio/miniconda3`
     ```
-    vagrant@ubuntu-bionic:~/evergiven_output$ singularity shell docker://continuumio/miniconda3
+    vagrant@ubuntu-bionic:adv-tut-singularity-base$ singularity shell docker://continuumio/miniconda3
     INFO:    Using cached SIF image
     Singularity> 
     ```
@@ -159,7 +159,7 @@ A working version of the Autodock Vina container we will build in this tutorial 
 5. Confirm your build succeded by running the container in interactive mode. Upon running this command your command line prompt should change.
      * command: `singularity shell adv-tut-base.sif`
      ```
-     vagrant@ubuntu-bionic:~/evergiven_output$ singularity shell adv-tut-base.sif
+     vagrant@ubuntu-bionic:adv-tut-singularity-base$ singularity shell adv-tut-base.sif
      INFO:    Using cached SIF image
      Singularity> 
      ```
