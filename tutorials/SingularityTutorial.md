@@ -430,9 +430,19 @@ In this section, we will use the wrapper ever_given to run the docking container
      ```
 
 ## Section 4: Troubleshooting
-
+* If you have issues with your base or docking containers and need to make modifications you will need to re-build the containers.
+     * If the base container has an issue that requires modification, you will need to use `singularity build` to rebuild the base and docking container.
+     * If the docking container has an issue that requires modification, you will need to use `singularity build` to rebuild just the docking container.
+* If you run into memory errors with conda (specifically during the base container build) try cleaning your singularity cache
+     * commands:
+          * `singularity cache clean --dry-run` will list out everything that will be cleaned by the command without deleting anything. 
+          * If the output from the `--dry-run` is what you expect, run:  `singularity cache clean` 
 
 ## Section 5: Building Your Own Docking Container
-
+* For an example template of a docking container directory, please see SAMPL-containers/tutorial/templates/docking
+* For more detailed information about LogD container requirements and how to modify this tutorial to suit your needs BuildYourOwnLogDContainer.md
+* For more information on how to build your own conda environment inside a container, please see CondaEnvInstructions.pdf
 
 ## Section 6: Other Important Information
+* For more detailed tutorials on how to use Singularity please see the following resources:
+     * 
