@@ -19,11 +19,7 @@ PYTHON_PATH = "/opt/app/dependencies/mgl/bin/python"
 UTILITIES_PATH = "/opt/app/dependencies/mgl/MGLToolsPckgs/AutoDockTools/Utilities24"
 VINA_PATH = "/opt/app/dependencies/adv/bin/vina"
 
-def print_debug(debug: bool, msg:str):
-	print(f"{msg}\n" if debug else "", end="")
-	sys.stdout.flush()
-
-def main_function(receptor, smiles, hint, hint_molinfo, hint_radius, output_dir, debug):
+def main_function(receptor, smiles, hint, hint_molinfo, hint_radius, output_dir):
 	''' docks the given smiles string into the receptor within the area specified by hint and hint-radius
             INPUTS:    receptor:     file    receptor PDB path to dock ligand into
                        smiles:       str     SMILES string of ligand to be docked, use quotes 
@@ -31,7 +27,6 @@ def main_function(receptor, smiles, hint, hint_molinfo, hint_radius, output_dir,
                        hint_molinfo: str     resname of the ligand used in the hint PDB
                        hint_radius:  float   radius around the hint ligand to consider in docking
                        output_dir:   str     output director for receptor and docked_ligand
-                       debug:        bool    bool used for degbug print statemetns
 	'''
 
 	# check to ensure the inputs are valid
@@ -64,8 +59,6 @@ def main_function(receptor, smiles, hint, hint_molinfo, hint_radius, output_dir,
 	# prepare receptor for docking
 	adv.prep_receptor(receptorprep_pdbqt_path)
 	assert(os.path.exists(receptorprep_pdbqt_path))
-	#assert(os.path.exists(receptorprep_pdbqt_path))
-
 
 	# convert SMILES str to 3D molecule and prep for docking
 	Autodock.charge_ligand(smiles, ligchg_sdf_path)
@@ -96,7 +89,6 @@ if __name__ == "__main__":
 	parser.add_argument("--hint-molinfo",required=True,help="residue name of the ligand in the hint complex")
 	parser.add_argument("--hint-radius",required=True,type=float,help="box size of the box to dock into")
 	parser.add_argument("--output-dir",help="Output directory for receptor and docked_ligand files")
-	parser.add_argument('--debug', action='store_true', help="prints debug print statements when --debug flag is used")
 	args = parser.parse_args()
 
 	main_function(args.receptor, args.smiles, args.hint, args.hint_molinfo, args.hint_radius, args.output_dir, args.debug)
