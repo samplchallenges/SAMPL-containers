@@ -380,7 +380,7 @@ In this section, we will use the wrapper ever_given to run the docking container
             --output-keys docked_ligand,receptor
          ```
     ```
-     evergiven adv-tut-singularity/adv-tut.sif --container-engine singularity --container-type singularity_local --smiles "c1cc(C(C)C)cc(c12)[C@H](CC(O2)(C)C)NC[C@@H](O)[C@@H](NC(=O)[C@@H]3C)C[C@H](C)CCCCCCCCC(=O)N3C"  --hint-radius 6 --hint-molinfo E4Y --file-hint data/hint.pdb --file-receptor data/receptor.pdb --output-keys docked_ligand,receptor
+     (py38) vagrant@ubuntu-bionic:~$ evergiven adv-tut-singularity/adv-tut.sif --container-engine singularity --container-type singularity_local --smiles "c1cc(C(C)C)cc(c12)[C@H](CC(O2)(C)C)NC[C@@H](O)[C@@H](NC(=O)[C@@H]3C)C[C@H](C)CCCCCCCCC(=O)N3C"  --hint-radius 6 --hint-molinfo E4Y --file-hint data/hint.pdb --file-receptor data/receptor.pdb --output-keys docked_ligand,receptor
      container: adv-tut-singularity/adv-tut.sif
      container type: singularity_local
      container engine: singularity
