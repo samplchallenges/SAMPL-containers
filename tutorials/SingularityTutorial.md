@@ -269,11 +269,13 @@ A working version of the Autodock Vina container we will build in this tutorial 
      %runscript
      ```
      * Please note we will leave the `%runscript` section empty because this container will only set up the environment and dependencies required for our docking program
-5. Build the base container
+
+### 1.6: Build the base container
+1. Build the base container
      * command: `singularity build --fakeroot adv-tut-base.sif buildfile-base`
-6. Confirm your build succeded by running the container in interactive mode. Upon running this command your command line prompt should change.
+2. Confirm your build succeded by running the container in interactive mode. Upon running this command your command line prompt should change.
      * command: `singularity shell adv-tut-base.sif`
-7. Run `vina --help` to ensure the vina program was set up properly. The output should look something like the codeblock below
+3. Run `vina --help` to ensure the vina program was set up properly. The output should look something like the codeblock below
      * command: `/opt/app/dependencies/adv/bin/vina --help`
      ```
      Singularity> /opt/app/dependencies/adv/bin/vina --help
@@ -292,9 +294,9 @@ A working version of the Autodock Vina container we will build in this tutorial 
        --size_z arg          size in the Z dimension (Angstroms)
      ...
      ```
-8. For simplicity of the next command, create an alias for python2
+4. For simplicity of the next command, create an alias for python2
      * command: `alias python2=/opt/app/dependencies/mgl/bin/python`
-9. Run `prepare_ligand4.py --help` to ensure MGLTools was installed properly. The output should look something like the codeblock below
+5. Run `prepare_ligand4.py --help` to ensure MGLTools was installed properly. The output should look something like the codeblock below
      * command: `python2 /opt/app/dependencies/mgl/MGLToolsPckgs/AutoDockTools/Utilities24/prepare_ligand4.py --help`
      ```
      Singularity> python2 /opt/app/dependencies/mgl/MGLToolsPckgs/AutoDockTools/Utilities24/prepare_ligand4.py --help
@@ -311,4 +313,46 @@ A working version of the Autodock Vina container we will build in this tutorial 
                 bonds_hydrogens, bonds, hydrogens (default is to do no repairs)
              ...
       ```
-      
+6. Exit the interactive container shell
+     * command: `exit`
+
+## Section 2: Build the container with Autodock Vina Docking methods
+> Previously, we built the `adv-tut-base.sif` container image which contains all the environment and software installations necessary to run AutoDock Vina from a Python script. Please see Tutorial: Build an AutoDock Vina Containerized Method for a more detailed explanation as to why we are using 2 separate builds. In Section 2, we will inherit from the Section 1 base container to write and build our run-able docking code.
+
+
+### 2.1: Setup
+1. Navigate up a directory to "tutorials"
+     * command: `cd ..`
+2. Create a directory called "adv-tut-singularity" in the tutorials directory
+     * command: `mkdir adv-tut-singularity`
+3. Change directories to "adv-tutorial"
+     * command: `cd adv-tut-singularity`
+
+
+### 2.2: Add the docking code
+> In 2.2, we will incorporate the docking code into our container directory. For the sake of simplicity, we will be using pre-written docking code. Please see tutorials/BuildYourOwnDockingContainer.md for more information on the inputs and kwargs required of each main function.
+> 
+> When building your own container, this is where you would add in your methods.
+
+1. Copy the AutoDock class file from "SAMPL-containers/docking/examples/adv-tutorial/autodock.py" to "adv-tut-singularity"
+     * command: `cp ../../docking/examples/adv-tutorial/autodock.py .`
+2. Copy the AutoDock main file from "SAMPL-containers/docking/examples/adv-tutorial/main.py" to "adv-tut-singularity"
+     * command: `cp ../../docking/examples/adv-tutorial/autodock.py .`
+
+### 2.4: Write a buildfile with instructions to build your container
+1. Create and open a file called "buildfile-prod"
+2. Copy and paste the following into `buildfile-prod`
+     ``` bash
+     # Build off the adv-tut-base.sif we made in Section 1
+     Bootstrap: localimage
+     From: ../adv-tut-singularity-base/adv-tut-base.sif
+     
+     %files
+     # copy in necessary python files 
+     main.py /opt/app/main.py
+     autodock.py /opt/app/autodock.py
+
+     %runscript
+     # execute main.py file at runtime using the arguments passed to the container via command line
+     exec python /opt/app/main.py $@
+     ```
