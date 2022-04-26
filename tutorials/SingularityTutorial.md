@@ -45,8 +45,8 @@ A working version of the Autodock Vina container we will build in this tutorial 
          ```
 7. The results files will be stored in the directory `tutorials/evergiven_output`
       * Expected files:
-            * prepped receptor file: `rec-dock.pdb`
-            * docked ligand file: `best_dock.pdb`
+           * prepped receptor file: `rec-dock.pdb`
+           * docked ligand file: `best_dock.pdb`
 
 # Tutorial: Build an AutoDock Vina Containerized Method using the Singularity Container Engine
 > This tutorial is separated into six parts: (1) the virtual environment and dependency container build, (2) the docking container build, (3) docking using the Docker container, (4) trouble shooting, (5) building your own docking container, and (6) miscellaneous important information.
