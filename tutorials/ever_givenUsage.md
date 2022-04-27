@@ -18,7 +18,7 @@
     * `--container-type` is the container type of the image you are running. 
       * Currently supported: 
         * `'docker'`: container image built with docker engine
-        * `'singularity_local'`: sif file image (ending in `.sif` built with singularity engine
+        * `'singularity_local'`: sif file image (ending in `.sif`) built with singularity engine
     * `{file-kwargs}` are keyword option-value pairs where the value is a file path the container will need access to. Any keyword that expects a file path should get `--file-` prepended to it. 
     * `{kwargs}` are keyword option-value pairs where the value is anything other than a file path.
     * `--output-keys {keys}` are any output keys as a comma separated list from required the print output statements that contain file paths. `ever_given` automatically handles the file path mounting and unmounting, and will update the file path for us
