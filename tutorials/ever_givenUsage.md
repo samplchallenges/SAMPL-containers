@@ -25,6 +25,6 @@
     * `{kwargs}` are keyword option-value pairs where the value is anything other than a file path.
       * Example:
         * `--smiles 'CC(C)CC1=CC=C(C=C1)C(C)C(=O)O'`
-    * `--output-keys {keys}` are any output keys as a comma separated list from required the print output statements that contain file paths. `ever_given` automatically handles the file path mounting and unmounting, and will update the file path for us
+    * `--output-keys {comma_separated_keys}` are any output keys as a comma separated list from required the print output statements that contain file paths. `ever_given` automatically handles the file path mounting and unmounting, and will update the file path for us
       * Example:
         * `--output-keys file_output1,file_output2,file_output3`
