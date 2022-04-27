@@ -19,6 +19,12 @@
       * Currently supported: 
         * `'docker'`: container image built with docker engine
         * `'singularity_local'`: sif file image (ending in `.sif`) built with singularity engine
-    * `{file-kwargs}` are keyword option-value pairs where the value is a file path the container will need access to. Any keyword that expects a file path should get `--file-` prepended to it. 
+    * `{file-kwargs}` are keyword option-value pairs where the value is a file path the container will need access to. Any keyword that expects a file path should get `--file-` prepended to it. The `--file-` prepend is very important as it allows us 
+      * Example: 
+        * `--file-receptor '/path/to/receptor.pdb'`
     * `{kwargs}` are keyword option-value pairs where the value is anything other than a file path.
+      * Example:
+        * `--smiles 'CC(C)CC1=CC=C(C=C1)C(C)C(=O)O'`
     * `--output-keys {keys}` are any output keys as a comma separated list from required the print output statements that contain file paths. `ever_given` automatically handles the file path mounting and unmounting, and will update the file path for us
+      * Example:
+        * `--output-keys file_output1,file_output2,file_output3`
