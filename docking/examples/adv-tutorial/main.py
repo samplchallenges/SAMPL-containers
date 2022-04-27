@@ -5,9 +5,9 @@ import random
 import sys
 import tempfile
 import shutil
-import argparse
 
 # python packages
+import click
 from rdkit import Chem
 from rdkit.Chem import AllChem
 from autodock import Autodock
@@ -19,7 +19,23 @@ PYTHON_PATH = "/opt/app/dependencies/mgl/bin/python"
 UTILITIES_PATH = "/opt/app/dependencies/mgl/MGLToolsPckgs/AutoDockTools/Utilities24"
 VINA_PATH = "/opt/app/dependencies/adv/bin/vina"
 
-def main_function(receptor, smiles, hint, hint_molinfo, hint_radius, output_dir):
+def print_debug(debug: bool, msg:str):
+	print(f"{msg}\n" if debug else "", end="")
+	sys.stdout.flush()
+
+# set command line options
+@click.command()
+@click.option("--receptor",required=True,type=click.Path(exists=True),help="path of receptor PDB to dock the ligand into")
+@click.option("--smiles",required=True,help="SMILES str of ligand to be docked. quote to prevent CLI errors \"CCC\"")
+
+@click.option("--hint",required=True,type=click.Path(exists=True),help="path of hint ligand complex for docking region hint")
+@click.option("--hint-molinfo",required=True,help="residue name of the ligand in the hint complex")
+@click.option("--hint-radius",required=True,type=float,help="box size of the box to dock into")
+
+@click.option("--output-dir",help="Output directory for receptor and docked_ligand files")
+
+@click.option('--debug', is_flag=True,help="prints debug print statements when --debug flag is used")
+def main_function(receptor, smiles, hint, hint_molinfo, hint_radius, output_dir, debug) -> None:
 	''' docks the given smiles string into the receptor within the area specified by hint and hint-radius
             INPUTS:    receptor:     file    receptor PDB path to dock ligand into
                        smiles:       str     SMILES string of ligand to be docked, use quotes 
@@ -27,6 +43,7 @@ def main_function(receptor, smiles, hint, hint_molinfo, hint_radius, output_dir)
                        hint_molinfo: str     resname of the ligand used in the hint PDB
                        hint_radius:  float   radius around the hint ligand to consider in docking
                        output_dir:   str     output director for receptor and docked_ligand
+                       debug:        bool    bool used for degbug print statemetns
 	'''
 
 	# check to ensure the inputs are valid
@@ -59,6 +76,8 @@ def main_function(receptor, smiles, hint, hint_molinfo, hint_radius, output_dir)
 	# prepare receptor for docking
 	adv.prep_receptor(receptorprep_pdbqt_path)
 	assert(os.path.exists(receptorprep_pdbqt_path))
+	#assert(os.path.exists(receptorprep_pdbqt_path))
+
 
 	# convert SMILES str to 3D molecule and prep for docking
 	Autodock.charge_ligand(smiles, ligchg_sdf_path)
@@ -76,19 +95,22 @@ def main_function(receptor, smiles, hint, hint_molinfo, hint_radius, output_dir)
 
 	Autodock.pdbqt_to_pdb_static(receptorprep_pdbqt_path, receptor_pdb_path)
 
+	# clean up the temporary directory and intermediate files created 
 	shutil.rmtree(temp_dir)
 
+	# Your final ligand and receptor files should be SAVED to the output_dir (specified as a parameter). 
+	# Your main function should also PRINT out the 'key value' pairs 
+	#	* key: either the LIGAND_KEY 'docked_ligand' or the RECEPTOR_KEY 'receptor'. 
+	# 	* value: the absolute file path to the file on disk. The absolute file paths to your files should be specified
+	#	         as 'output_dir/your_file' where output_dir is the output_dir (specified as a parameter). Your final
+	# 		 output files MUST BE saved to the output_dir
+	# 		* receptor_pdb_path = os.path.join(output_dir,"rec-dock.pdb") 
+	# 		* highscore_pdb_path = os.path.join(output_dir,"best_dock.pdb")
 	print(f"{LIGAND_KEY} {highscore_pdb_path}")
 	print(f"{RECEPTOR_KEY} {receptor_pdb_path}")
+	
+	# Anything your container returns will be ignored. Please make sure that any outputs follow the format
+	# in the previous comment
 
 if __name__ == "__main__":
-	parser = argparse.ArgumentParser(description='Run AutoDock Vina Docking container')
-	parser.add_argument("--receptor",required=True,help="path of receptor PDB to dock the ligand into")
-	parser.add_argument("--smiles",required=True,help="SMILES str of ligand to be docked. Use quotes to prevent CLI errors \"CCC\"")
-	parser.add_argument("--hint",required=True,help="path of hint ligand complex for docking region hint")
-	parser.add_argument("--hint-molinfo",required=True,help="residue name of the ligand in the hint complex")
-	parser.add_argument("--hint-radius",required=True,type=float,help="box size of the box to dock into")
-	parser.add_argument("--output-dir",help="Output directory for receptor and docked_ligand files")
-	args = parser.parse_args()
-
-	main_function(args.receptor, args.smiles, args.hint, args.hint_molinfo, args.hint_radius, args.output_dir, args.debug)
+	main_function()
