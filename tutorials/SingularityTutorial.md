@@ -417,7 +417,7 @@ A working version of the Autodock Vina container we will build in this tutorial 
      * command: `singularity build --fakeroot adv-tut.sif buildfile-prod`
 2. Run the container with the help option to ensure build succeeded. The output should look similar to the code block below.
      ```
-     (app) vagrant@ubuntu-bionic:~/container-click$ singularity run here-prod-click.sif --help
+     vagrant@ubuntu-bionic:adv-tut-singularity$ singularity run here-prod-click.sif --help
      Usage: run-autodock [OPTIONS]
 
        docks the given smiles string into the receptor within the area specified by
