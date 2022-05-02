@@ -522,3 +522,9 @@ In this section, we will use the wrapper ever_given to run the docking container
 ## Section 6: Other Important Information
 * For more detailed information on how to use Singularity please see the following resources:
      * More information on [Singularity Definition Files](https://sylabs.io/guides/3.5/user-guide/definition_files.html) (the equivalent of a [Dockerfile](https://docs.docker.com/get-started/02_our_app/#build-the-apps-container-image))
+     * [An Introduction to Singularity](https://www.youtube.com/watch?v=vEjLuX0ClN0) from San Diego Supercomputer Center
+
+## Acknowledgements
+* David L. Mobley
+* Mike Henry
+* Braxton Robbason
