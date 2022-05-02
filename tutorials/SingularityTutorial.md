@@ -22,6 +22,7 @@ If you have the ability to use either [Docker](https://www.docker.com/resources/
 ## Getting Started
 
 ### Brief Singularity Background
+* If you are familiar with Docker, but unfamiliar with Singularity, this [Singularity and Docker Comparison](https://sylabs.io/guides/3.5/user-guide/singularity_and_docker.html#) may be a good resource to get you started. 
 
 ### Pre-Built Autodock Vina Singularity Container
 A working version of the Autodock Vina container we will build in this tutorial with the Singularity engine is available in our google drive as the file [adv-tutorial.sif](https://drive.google.com/file/d/1yEKSLU6AKZzECUiTRpOoFVk6u-Bn44aY/view?usp=sharing). 
@@ -418,7 +419,7 @@ A working version of the Autodock Vina container we will build in this tutorial 
      * command: `singularity build --fakeroot adv-tut.sif buildfile-prod`
 2. Run the container with the help option to ensure build succeeded. The output should look similar to the code block below.
      ```
-     vagrant@ubuntu-bionic:adv-tut-singularity$ singularity run here-prod-click.sif --help
+     (py38) vagrant@ubuntu-bionic:adv-tut-singularity$ singularity run here-prod-click.sif --help
      Usage: run-autodock [OPTIONS]
 
        docks the given smiles string into the receptor within the area specified by
@@ -514,10 +515,10 @@ In this section, we will use the wrapper ever_given to run the docking container
           * If the output from the `--dry-run` is what you expect, run:  `singularity cache clean` 
 
 ## Section 5: Building Your Own Docking Container
-* For an example template of a docking container directory, please see [`SAMPL-containers/tutorial/templates/docking`](https://github.com/samplchallenges/SAMPL-containers/tree/main/tutorials/templates/dockin)
+* For an example template of a docking container directory, please see [`SAMPL-containers/tutorial/templates/docking`](https://github.com/samplchallenges/SAMPL-containers/tree/main/tutorials/templates/docking)
 * For more detailed information about LogD container requirements and how to modify this tutorial to suit your needs [BuildYourOwnLogDContainer.md](https://github.com/samplchallenges/SAMPL-containers/blob/main/tutorials/BuildYourOwnLogDContainer.md)
 * For more information on how to build your own conda environment inside a container, please see [CondaEnvInstructions.pdf](https://github.com/samplchallenges/SAMPL-containers/blob/main/tutorials/CondaEnvInstructions.pdf)
 
 ## Section 6: Other Important Information
-* For more detailed tutorials on how to use Singularity please see the following resources:
-     * 
+* For more detailed information on how to use Singularity please see the following resources:
+     * More information on [Singularity Definition Files](https://sylabs.io/guides/3.5/user-guide/definition_files.html) (the equivalent of a [Dockerfile](https://docs.docker.com/get-started/02_our_app/#build-the-apps-container-image))
