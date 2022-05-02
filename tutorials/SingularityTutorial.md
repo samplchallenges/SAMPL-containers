@@ -17,7 +17,6 @@ If you have the ability to use either [Docker](https://www.docker.com/resources/
 ### Software Requirements
 * Linux operating system or Linux Virtual Machine
 * [Singularity](https://sylabs.io/guides/3.0/user-guide/installation.html)
-* git command line tool
 
 
 ## Getting Started
