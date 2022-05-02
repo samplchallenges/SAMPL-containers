@@ -72,11 +72,13 @@ A working version of the Autodock Vina container we will build in this tutorial 
     * command: `cd adv-tut-singularity-base`
 
 ### 1.2: Run a pre-made Docker container and create a conda environment
-> In 1.2, we will run the pre-made miniconda container, continuumio/miniconda3, which contains a pre-installed version of miniconda, in interactive mode. This will allow us to interact with the container's command line and directory contents. We will also be able to dynamically create the conda environment we need on the command line inside the container. Even if you have a conda environment installed locally, you will need to complete this step. The container is isolated from your local environment, so it will not have access to your local conda environment.
+> In 1.2, we will run the pre-made miniconda docker container, continuumio/miniconda3, which contains a pre-installed version of miniconda, in interactive mode. This will allow us to interact with the container's command line and directory contents. We will also be able to dynamically create the conda environment we need on the command line inside the container. Even if you have a conda environment installed locally, you will need to complete this step. The container is isolated from your local environment, so it will not have access to your local conda environment.
 > 
 > Because our container will build off of the miniconda container using it as a base, any environment we create while interatively using the miniconda container should install into our container (which uses miniconda as a base) without additional issues. Building a conda environment outside the miniconda container often results in multiple rounds of trial and error and incompatible packages. We've found the following steps to be the fastest procedure. For more detailed/generalized instructions please see CondaEnvInstructions.pdf.
 > 
 > When building your own Docker container, this is where you would create your own conda environment with the packages you will need.
+> 
+> Note: We are able to run a Docker container with the singularity container engine without having Docker installed on our machine. Singularity will automatically convert Docker container images to Singularity container images (called SIFs).
 
 1. Start the container. Upon running this command your command line prompt should change. This means you are now inside the container interacting with it's command line and contents. The change in command prompts should look similar to the code block below.
     * command: `singularity shell docker://continuumio/miniconda3`
@@ -512,9 +514,9 @@ In this section, we will use the wrapper ever_given to run the docking container
           * If the output from the `--dry-run` is what you expect, run:  `singularity cache clean` 
 
 ## Section 5: Building Your Own Docking Container
-* For an example template of a docking container directory, please see SAMPL-containers/tutorial/templates/docking
-* For more detailed information about LogD container requirements and how to modify this tutorial to suit your needs BuildYourOwnLogDContainer.md
-* For more information on how to build your own conda environment inside a container, please see CondaEnvInstructions.pdf
+* For an example template of a docking container directory, please see [`SAMPL-containers/tutorial/templates/docking`](https://github.com/samplchallenges/SAMPL-containers/tree/main/tutorials/templates/dockin)
+* For more detailed information about LogD container requirements and how to modify this tutorial to suit your needs [BuildYourOwnLogDContainer.md](https://github.com/samplchallenges/SAMPL-containers/blob/main/tutorials/BuildYourOwnLogDContainer.md)
+* For more information on how to build your own conda environment inside a container, please see [CondaEnvInstructions.pdf](https://github.com/samplchallenges/SAMPL-containers/blob/main/tutorials/CondaEnvInstructions.pdf)
 
 ## Section 6: Other Important Information
 * For more detailed tutorials on how to use Singularity please see the following resources:
