@@ -16,13 +16,20 @@ If you have the ability to use either [Docker](https://www.docker.com/resources/
 
 ### Software Requirements
 * Linux operating system or Linux Virtual Machine
+     * If you have a Windows or Unix operating system and must use Singularity, you will need to use a virtual machine or develop on a remote linux cluster. Installation instructions for Windows and Unix can be found [here](https://sylabs.io/guides/3.0/user-guide/installation.html#install-on-windows-or-mac)
 * [Singularity](https://sylabs.io/guides/3.0/user-guide/installation.html)
 
 
 ## Getting Started
 
 ### Brief Singularity Background
+* Singularity containers isolate their internal software from the environment (i.e. someone's operating system or virtual environment) and ensure that the container software works consistently across platforms despite differences in development and staging.
+* A singularity sif file is the blueprint of a Singularity container that is not currently running. Singularity images contain the instructions to execute your code as a Singularity container.
 * If you are familiar with Docker, but unfamiliar with Singularity, this [Singularity and Docker Comparison](https://sylabs.io/guides/3.5/user-guide/singularity_and_docker.html#) may be a good resource to get you started. 
+* To use a Singularity image, we must first build the image with the `singularity build` command and the instructions outlined in the definition file. 
+* The instructions to prepare/build a Singularity image are contained in the definition file. Unlike Docker and the "Dockerfile" definition file, this file can be named anything, and will be passed to the `singularity build` command at build time.
+* To clear your image cache, you can use `singularity clean cache`. If you would like to do a dry run which will list out everything that will be cleaned without deleting anything, use `singularity clean cache --dryrun`
+* Singularity containers, unlike Docker containers, have the same user priviliges as the user that executed the container. Docker containers typically require root privileges. Singularity containers are typically used on HPC Clusters due to security reasons. 
 
 ### Pre-Built Autodock Vina Singularity Container
 A working version of the Autodock Vina container we will build in this tutorial with the Singularity engine is available in our google drive as the file [adv-tutorial.sif](https://drive.google.com/file/d/1yEKSLU6AKZzECUiTRpOoFVk6u-Bn44aY/view?usp=sharing). 
