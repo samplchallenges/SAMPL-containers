@@ -94,7 +94,9 @@ A working version of the Autodock Vina container we will build in this tutorial 
      * command: `conda install -c conda-forge mdtraj rdkit`
 5. Install openbabel 
      * command: `conda install -c openbabel openbabel`
-6. Start up the Python interpreter and ensure your version is `3.7.*`. The Python version is 3.7.13 in the code block below.
+6. Install Click
+     * command: `conda install click`
+7. Start up the Python interpreter and ensure your version is `3.7.*`. The Python version is 3.7.13 in the code block below.
      ```
      Singularity> python
      Python 3.7.13 (default, Mar 29 2022, 02:18:16) 
@@ -102,16 +104,17 @@ A working version of the Autodock Vina container we will build in this tutorial 
      Type "help", "copyright", "credits" or "license" for more information.
      >>>
      ```
-7. In the Python interpreter, import rdkit and mdtraj to ensure there are no errors.
+8. In the Python interpreter, import rdkit and mdtraj to ensure there are no errors.
      ```
      >>> import rdkit
      >>> import mdtraj
+     >>> import click
      ```
-8. Quit the Python interpeter
+9. Quit the Python interpeter
      ```
      >>> quit()
      ```
-9. Run openbabel with the help flag to ensure openbabel has installed properly. If properly installed the output should look similar to the code block below
+10. Run openbabel with the help flag to ensure openbabel has installed properly. If properly installed the output should look similar to the code block below
      ```
      Singularity> obabel -H
      Open Babel converts chemical structures from one file format to another
@@ -124,7 +127,7 @@ A working version of the Autodock Vina container we will build in this tutorial 
      file extensions and are case independent.
      If no input or output file is given stdin or stdout are used instead.
      ```
-10. Exit the container shell. Upon running this command, you will exit the interactive version of the container and should return to your normal command prompt.
+11. Exit the container shell. Upon running this command, you will exit the interactive version of the container and should return to your normal command prompt.
      * command: `exit`
 
 ### 1.3: Install conda environment (from Section 1.2) into your container
@@ -145,6 +148,7 @@ A working version of the Autodock Vina container we will build in this tutorial 
          conda install python=3.7 && \
          conda install -c conda-forge mdtraj rdkit && \
          conda install -c openbabel openbabel && \
+         conda install click && \
          conda clean --all --yes
      
      %runscript
@@ -175,6 +179,7 @@ A working version of the Autodock Vina container we will build in this tutorial 
      ```
      >>> import rdkit
      >>> import mdtraj
+     >>> import click
      ```
 8. Quit the Python interpeter
      ```
@@ -337,32 +342,101 @@ A working version of the Autodock Vina container we will build in this tutorial 
 1. Copy the AutoDock class file from "SAMPL-containers/docking/examples/adv-tutorial/autodock.py" to "adv-tut-singularity"
      * command: `cp ../../docking/examples/adv-tutorial/autodock.py .`
 2. Copy the AutoDock main file from "SAMPL-containers/docking/examples/adv-tutorial/main.py" to "adv-tut-singularity"
-     * command: `cp ../../docking/examples/adv-tutorial/autodock.py .`
+     * command: `cp ../../docking/examples/adv-tutorial/main.py .`
 
-### 2.3: Write a buildfile with instructions to build your container
+### 2.3: Create a setup.py file
+> In 2.3, we will customize a setup.py file to to match the Python modules we have written.
+1. Create and open a file called "setup.py"
+2. Copy and paste the following into setup.py
+    ```
+    from setuptools import setup
+
+    setup(
+        name='AutoDock-rdkit',
+        version='0.1',
+        py_modules=[
+            ,
+        ],
+        install_requires=[
+            ,
+        ],
+        entry_points='''
+            [console_scripts]
+        '''
+    )
+    ```
+2. Modify the "py_modules" list, by adding the two modules ([autodock.py](https://github.com/samplchallenges/SAMPL-containers/blob/main/docking/examples/adv-tutorial/autodock.py) and [main.py](https://github.com/samplchallenges/SAMPL-containers/blob/main/docking/examples/adv-tutorial/main.py)) with our docking code from the previous subsection ([2.2](https://github.com/samplchallenges/SAMPL-containers/blob/main/tutorials/README.md#22-add-the-docking-code)): "autodock" and "main". This is where you 
+    ```
+    py_modules=[
+        'autodock',
+        'main',
+    ]
+    ```
+3. Modify the "entry_points" section, by adding an [entry point](https://setuptools.readthedocs.io/en/latest/userguide/entry_point.html#console-scripts) in the format `{command-to-call-in-Dockerfile}={py_module_with_main}:{function_to_run}`. The Python module "main.py" contains the main function "main_function".
+    ```
+    entry_points='''
+        [console_scripts]
+        run-autodock=main:main_function
+    '''
+    ```
+4. Save and close setup.py
+
+### 2.4: Write a buildfile with instructions to build your container
 1. Create and open a file called "buildfile-prod"
 2. Copy and paste the following into `buildfile-prod`
      ``` bash
      # Build off the adv-tut-base.sif we made in Section 1
      Bootstrap: localimage
-     From: ../adv-tut-singularity-base/adv-tut-base.sif
+     From: 
      
      %files
      # copy in necessary python files 
-     main.py /opt/app/main.py
-     autodock.py /opt/app/autodock.py
+     
+     %post
+     # install the information in setup.py
+     cd /opt/app
+     pip install .
 
      %runscript
      # execute main.py file at runtime using the arguments passed to the container via command line
-     exec python /opt/app/main.py $@
+     exec 
      ```
-3. Build the container image
-     * command: `singularity build --fakeroot adv-tut.sif buildfile-prod`
+3. Next to "From:" add the path to the sif file from the base build from Section 1. This is where we specify that our container will inherit from the base we built in [Section 1]()
+     * `From: ../adv-tut-singularity-base/adv-tut-base.sif`
+4. Under "%files" add the names of all files necessary to run our docking program, including "setup.py", "autodock.py", and "main.py" into the container directory  "./" or "/opt/app". This is where you would specify the files you have wirtten for your docking program in place of "autodock.py" and "main.py"
+     ```
+     main.py /opt/app/main.py
+     autodock.py /opt/app/autodock.py
+     setup.py /opt/app/setup.py
+     ```
+5. Next to "exec", add the "entry_point" you declared in step 3 of the previous subsection ([2.3]()) inside the brackets, in quotations. We will follow the entry_point with `$@` so all the command line arguments entered are properly passed to the program execution. 
+     * `exec run-autodock $@`
 
-### 2.4: Build the docking container
+### 2.5: Build the docking container
 1. Build the container image
      * command: `singularity build --fakeroot adv-tut.sif buildfile-prod`
+2. Run the container with the help option to ensure build succeeded. The output should look similar to the code block below.
+     ```
+     (app) vagrant@ubuntu-bionic:~/container-click$ singularity run here-prod-click.sif --help
+     Usage: run-autodock [OPTIONS]
 
+       docks the given smiles string into the receptor within the area specified by
+       hint and hint-radius
+
+     Options:
+       --receptor PATH      path of receptor PDB to dock the ligand into
+                            [required]
+       --smiles TEXT        SMILES str of ligand to be docked. quote to prevent CLI
+                            errors "CCC"  [required]
+       --hint PATH          path of hint ligand complex for docking region hint
+                            [required]
+       --hint-molinfo TEXT  residue name of the ligand in the hint complex
+                            [required]
+       --hint-radius FLOAT  box size of the box to dock into  [required]
+       --output-dir TEXT    Output directory for receptor and docked_ligand files
+       --debug              prints debug print statements when --debug flag is used
+       --help               Show this message and exit.
+     ```
 
 ## Section 3: Test/Run your container
 In this section, we will use the wrapper ever_given to run the docking container. ever_given mimics the infrastructure we will use to run your container on the SAMPL-league website, making it a great way to test that you container will run properly ahead of uploading to the SAMPL challenges website. ever_given also abstracts away volume mounting to link your local directory with a directory inside the container, making it easier to quickly test your container. For more information on how to use ever_given please see ever_givenUsage.md.
