@@ -17,7 +17,7 @@ If you have the ability to use either [Docker](https://www.docker.com/resources/
 ### Software Requirements
 * Linux operating system or Linux Virtual Machine
      * If you have a Windows or Unix operating system and must use Singularity, you will need to use a virtual machine or develop on a remote linux cluster. Installation instructions for Windows and Unix can be found [here](https://sylabs.io/guides/3.0/user-guide/installation.html#install-on-windows-or-mac)
-* [Singularity 3.7.3](https://sylabs.io/guides/3.0/user-guide/installation.html)
+* [Singularity v3.7.3 or v3.7.2](https://sylabs.io/guides/3.0/user-guide/installation.html)
 
 
 ## Getting Started
