@@ -92,7 +92,7 @@ A working version of the Autodock Vina container we will build in this tutorial 
 
 ### 1.1: Setup
 1. Open a terminal
-2. If you have not already, in a new virtual environment with python 3.7 install the `ever-given` package. Please ensure the version you have installed is v0.0.7 or later.
+2. If you have not already, in a new virtual environment with python 3.7 install the `ever-given` package. Ensure the package version is the latest version by checking on [ever-given's PyPi]
     * command: `pip install ever-given`
 3. Clone the SAMPL-containers repository
     * command: `git clone https://github.com/samplchallenges/SAMPL-containers.git`
@@ -118,7 +118,7 @@ A working version of the Autodock Vina container we will build in this tutorial 
    root@7f02be71557e:/# 
    ```
 3. Create a conda env called "advenv", if prompted "Proceed ([y]/n)?" type "y"
-   * command: `conda create --name advenv python=3.6`
+   * command: `conda create --name advenv python=3.7`
 4. Activate advenv: 
    * command: `conda activate advenv`
 6. Install [rdkit](https://www.rdkit.org/), if prompted "Proceed ([y]/n)?" type "y"
@@ -126,8 +126,10 @@ A working version of the Autodock Vina container we will build in this tutorial 
 7. Install [mdtraj](https://mdtraj.org/1.9.4/installation.html), if prompted "Proceed ([y]/n)?" type "y"
    * command: `conda install -c conda-forge mdtraj`
 8. Install [openbabel](https://openbabel.org/docs/dev/Installation/install.html), if prompted "Proceed ([y]/n)?" type "y"
-   * comand: `conda install -c openbabel openbabel`
-9. Start up the Python interpreter and ensure your version is `3.6.*`. The Python version is 3.6.13 in the code block below.
+   * command: `conda install -c openbabel openbabel`
+9. Install [Click](https://pypi.org/project/click/), if prompted "Proceed ([y]/n)?" type "y"
+   * command: `conda install click`
+10. Start up the Python interpreter and ensure your version is `3.6.*`. The Python version is 3.6.13 in the code block below.
    * command: `python`
    ```
    root@7f02be71557e:/# python
@@ -136,15 +138,11 @@ A working version of the Autodock Vina container we will build in this tutorial 
    Type "help", "copyright", "credits" or "license" for more information.
    >>> 
    ```
-10. In the Python interpreter, import rdkit, ensure there are no errors.
+11. In the Python interpreter, import the python packages we installed through conda, ensure there are no errors.
       ```
       >>> import rdkit
-      >>>
-      ```
-11. In the Python interpreter, import mdtraj, ensure there are no errors.
-      ```
       >>> import mdtraj
-      >>>
+      >>> import click
       ```
 12. Quit the Python interpeter
       ```
@@ -164,36 +162,17 @@ A working version of the Autodock Vina container we will build in this tutorial 
       file extensions and are case independent.
       If no input or output file is given stdin or stdout are used instead.
       ```
-14. Export the environment. Upon running this command, an organized list of the packages installed into advenv will be printed out to your console. The output will look similar to the condensed output in code block below.
-      * command: `conda env export -n advenv`
-      ```
-      (advenv) root@7f02be71557e:/# conda env export -n advenv
-      name: advenv
-      channels:
-        - conda-forge
-        - defaults
-      dependencies:
-        - _libgcc_mutex=0.1=conda_forge
-        ...
-        - zstd=1.5.0=ha95c52a_0
-      prefix: /opt/conda/envs/advenv
-      ```
-15. Copy the output from the export command in step 14 to be pasted into a file in the next section.
-17. Exit the container. Upon running this command, you will exit the interactive version of the container and should return to your normal command prompt.
+14. Exit the container. Upon running this command, you will exit the interactive version of the container and should return to your normal command prompt.
       * command: `exit`
 
 
 ### 1.3: Install conda environment (from [Section 1.2](https://github.com/samplchallenges/SAMPL-containers/tree/main/tutorials#12-starting-a-pre-made-docker-container-and-creating-a-conda-environment)) into your container  
 
-> We will begin creating an environment.yml file that contains all the information about our conda environment packages, and a Dockerfile which contains the instructions required to build the base container. In 1.3, we will only add the necessary commands for installing the conda environment from Section 1.2 to the Dockerfile. We will then test to ensure the container build succeeds at creating the conda environment. 
+> We will begin creating our virtual conda environment using the steps we verified in [Section 1.2](https://github.com/samplchallenges/SAMPL-containers/tree/main/tutorials#12-starting-a-pre-made-docker-container-and-creating-a-conda-environment) and a Dockerfile which contains the instructions required to build the base container. In 1.3, we will only add the necessary commands for installing the conda environment from Section 1.2 to the Dockerfile. We will then test to ensure the container build succeeds at creating the conda environment. 
 > 
 > For more information on how to write a Dockerfile, please see the [official Docker documentation](https://docs.docker.com/get-started/02_our_app/#build-the-apps-container-image).
-1. Create and open a file called "environment.yml" and paste the output you previously copied at Section 1.2, Step 14
-2. Change the first line of the file `name: advenv` to `name: base`
-3. Delete the last line of the file: `prefix: /opt/conda/envs/advenv`
-4. Save the changes to environment.yml and close the file
-5. Create and open a file called "Dockerfile"
-6. Copy the following lines into Dockerfile. The following commands contain the instructions to install the conda environment when your container is built. 
+1. Create and open a file called "Dockerfile"
+2. Copy the following lines into Dockerfile. The following commands contain the instructions to install the conda environment when your container is built. We are installing the packages into the base conda environment.
    ```
    FROM continuumio/miniconda3:4.9.2-alpine  
    # tells the container to inherit from a miniconda container
@@ -204,14 +183,18 @@ A working version of the Autodock Vina container we will build in this tutorial 
    COPY . ./    
    #  copy all the files and directories into the container
 
-   RUN conda env update -f environment.yml && \
-       conda clean --all --yes      
-   # install the packages in environment.yml into containers
+   RUN conda update conda && \
+       conda install python=3.7 && \
+       conda install -c conda-forge mdtraj rdkit && \
+       conda install -c openbabel openbabel && \
+       conda install click && \
+       conda clean --all --yes
+       # install the packages in environment.yml into containers
 
    ENV PATH="/root/.local/bin:$PATH"      
    # set the path
    ```
-7. Save the changes to Dockerfile and close the file
+7. Save the changes to Dockerfile and close the file.
 8. Build your container into a Docker image to ensure there are no build issues, so far. 
    * command: `docker build -t adv-tutorial-base-test .`
 9. If your build from the previous step (step 8) completed without issue, please move on to the next step, otherwise some troubleshooting of the previous steps may be necessary. A successful build looks something like the code block below.
@@ -229,7 +212,7 @@ A working version of the Autodock Vina container we will build in this tutorial 
     => [1/7] FROM docker.io/continuumio/miniconda3:4.9.2-alpine@sha256:82bd96b0e95188e152d137f6c9834ea731bfc78e5c5f27b3c90f2be31e9e61d8  0.0s
     => CACHED [2/7] WORKDIR /opt/app/                                                                                                    0.0s
     => CACHED [3/7] COPY . ./                                                                                                            0.0s
-    => CACHED [4/7] RUN conda env update -f environment.yml &&     conda clean --all --yes                                               0.0s
+    => CACHED [4/7] RUN conda env update...                                                                                              0.0s
     => CACHED [5/7] RUN pip install .                                                                                                    0.0s
     => CACHED [6/7] RUN /opt/app/dependencies/mgl/install.sh                                                                             0.0s
     => CACHED [7/7] RUN /opt/app/dependencies/adv/bin/vina --help                                                                        0.0s
@@ -261,8 +244,7 @@ A working version of the Autodock Vina container we will build in this tutorial 
    ```
    adv-tutorial-base
    ├── Dockerfile
-   ├── dependencies
-   └── environment.yml
+   └── dependencies
    ```
 2. Download Autodock Tools linux x86 "autodock_vina_1_1_2_linux_x86.tgz" from [here](https://drive.google.com/drive/folders/1l75rfi5w58VA3M6wYCnNrIyTbe_cD2OY?usp=sharing)
 3. Move "autodock_vina_1_1_2_linux_x86.tgz" into "adv-tutorial-base"
@@ -330,7 +312,7 @@ A working version of the Autodock Vina container we will build in this tutorial 
     => => transferring context: 2.62kB                                                                        0.0s
     => CACHED [2/6] WORKDIR /opt/app/                                                                         0.0s
     => CACHED [3/6] COPY . ./                                                                                 0.0s
-    => [4/6] RUN conda env update -f environment.yml &&     conda clean --all --yes                         103.0s
+    => [4/6] RUN conda env update...                                                                        103.0s
     => [5/6] RUN /opt/app/dependencies/mgl/install.sh                                                         3.2s 
     => [6/6] RUN /opt/app/dependencies/adv/bin/vina --help                                                    0.2s 
     => exporting to image                                                                                    10.8s 
@@ -394,20 +376,14 @@ A working version of the Autodock Vina container we will build in this tutorial 
         'main',
     ]
     ```
-3. Modify the "install_requires" list, adding "Click" a pip installable package we did not add to the previous base build
-    ```
-    install_requires=[
-        'Click',
-    ]
-    ```
-4. Modify the "entry_points" section, by adding an [entry point](https://setuptools.readthedocs.io/en/latest/userguide/entry_point.html#console-scripts) in the format `{command-to-call-in-Dockerfile}={py_module_with_main}:{function_to_run}`. The Python module "main.py" contains the main function "main_function".
+3. Modify the "entry_points" section, by adding an [entry point](https://setuptools.readthedocs.io/en/latest/userguide/entry_point.html#console-scripts) in the format `{command-to-call-in-Dockerfile}={py_module_with_main}:{function_to_run}`. The Python module "main.py" contains the main function "main_function".
     ```
     entry_points='''
         [console_scripts]
         run-autodock=main:main_function
     '''
     ```
-5. Save and close setup.py
+4. Save and close setup.py
 
 ### 2.4: Write a Dockerfile with instructions to build your container
 
