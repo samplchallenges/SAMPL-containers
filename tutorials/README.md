@@ -3,7 +3,7 @@
 ## Purpose:
 In [SAMPL4](https://link.springer.com/article/10.1007%2Fs10822-013-9702-2), we learned that human knowledge can be a key factor influencing the success of a computational drug discovery method. To work around this finding, we are creating an automated arm of SAMPL challenges to run methods head-to-head without human intervention. To accomplish this, we will use containerized methods. The container engines--programs to build containers--we will use are [Docker](https://www.docker.com/resources/what-container) and [Singularity](https://sylabs.io/guides/3.5/user-guide/introduction.html). 
 
-The following tutorial is meant to teach the basics of building a simple container to predict docking poses. Here, we use both Python code and command-line programs (specifically, Autodock Vina and MGL Tools).
+The following tutorial is meant to teach the basics of building a simple container to predict docking poses. Here, we use the Docker container engine, Python code, and command-line programs (specifically, Autodock Vina and MGL Tools).
 
 
 ## An Important Disclaimer
@@ -11,7 +11,7 @@ This main tutorial uses the [Docker](https://www.docker.com/resources/what-conta
 
 If you are developing your container/methods on a High Performace Computing (HPC) Cluster, you will more than likely need to use the Singularity container engine. Most HPC clusters will not have the Docker program installed. Please see [this tutorial]() on how to build a container using Singularity.
 
-If you have the ability to use either Docker or Singularity as your container engine, please use Docker. The accepted best practice for containers is to build and store them as Docker containers. 
+If you have the ability to use either Docker or Singularity as your container engine, **please use Docker**. The accepted best practice for containers is to build and store them as Docker containers, then use you container engine of choice (either Docker or Singularity) to run them. 
 
 ## Background and Prerequisites
 
@@ -531,9 +531,10 @@ In this section, we will use the wrapper `ever_given` to run the docking contain
 * Eventually, upon building enough Docker images, you may begin to run out of memory. Please remember to regularly delete any Docker images you no longer need. (See [Brief Docker Usage Tips](https://github.com/samplchallenges/SAMPL-containers/blob/main/tutorials/README.md#brief-docker-background): last bullet point)
 * If you get an error similar to `Error response from daemon: Bad response from Docker engine` when using a Docker command, make sure your Docker daemon is running by starting Docker Desktop. 
 
-
+## Authors
+* Meghan Osato
+* David L. Mobley
 
 ## Acknowledgements
-* David L. Mobley
 * Mike Henry
 * Braxton Robbason
