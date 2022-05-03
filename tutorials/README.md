@@ -530,3 +530,10 @@ In this section, we will use the wrapper `ever_given` to run the docking contain
   * If you have sensitive information inside your containers, please ensure you are using a private repository.
 * Eventually, upon building enough Docker images, you may begin to run out of memory. Please remember to regularly delete any Docker images you no longer need. (See [Brief Docker Usage Tips](https://github.com/samplchallenges/SAMPL-containers/blob/main/tutorials/README.md#brief-docker-background): last bullet point)
 * If you get an error similar to `Error response from daemon: Bad response from Docker engine` when using a Docker command, make sure your Docker daemon is running by starting Docker Desktop. 
+
+
+
+## Acknowledgements
+* David L. Mobley
+* Mike Henry
+* Braxton Robbason
