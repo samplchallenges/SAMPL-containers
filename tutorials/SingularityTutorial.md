@@ -29,7 +29,7 @@ If you have the ability to use either [Docker](https://www.docker.com/resources/
 * To use a Singularity image, we must first build the image with the [`singularity build`](https://sylabs.io/guides/3.7/user-guide/cli/singularity_build.html) command and the instructions outlined in the definition file. 
 * The instructions to prepare/build a Singularity image are contained in the definition file. Unlike Docker and the "Dockerfile" definition file, this file can be named anything, and will be passed to the `singularity build` command at build time.
 * To clear your image cache, you can use [`singularity cache clean`](https://sylabs.io/guides/3.7/user-guide/cli/singularity_cache_clean.html). If you would like to do a dry run which will list out everything that will be cleaned without deleting anything, use `singularity clean cache --dry-run`
-* Singularity containers, unlike Docker containers, have the same user priviliges as the user that executed the container. Docker containers typically require root privileges. Singularity containers are typically used on HPC Clusters due to security reasons. 
+* Singularity containers, unlike Docker containers, have the same user privileges as the user that executed the container. Docker containers typically require root privileges. Singularity containers are typically used on HPC Clusters due to security reasons. 
 
 ### Pre-Built Autodock Vina Singularity Container
 A working version of the Autodock Vina container we will build in this tutorial with the Singularity engine is available in our google drive as the file [adv-tutorial.sif](https://drive.google.com/file/d/1yEKSLU6AKZzECUiTRpOoFVk6u-Bn44aY/view?usp=sharing). 
