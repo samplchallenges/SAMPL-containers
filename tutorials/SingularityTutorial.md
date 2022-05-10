@@ -186,9 +186,9 @@ A working version of the Autodock Vina container we will build in this tutorial 
      * The `%files` section states which files to copy into the container ahead of running installation steps. Right now we do not require any files.
      * The `%post` section is for any installation steps that should occur during the build ahead of runtime.
      * The `%runscript` section is for any steps that should be executed by the container at runtime.
-3. Save `buildfile` and exit your text editor
+3. Save `buildfile-base` and exit your text editor
 4. Build your container
-     * command: `singularity build --fakeroot adv-tut-base.sif buildfile`
+     * command: `singularity build --fakeroot adv-tut-base.sif buildfile-base`
 5. Confirm your build succeded by running the container in interactive mode. Upon running this command your command line prompt should change.
      * command: `singularity shell adv-tut-base.sif`
      ```
@@ -303,6 +303,7 @@ A working version of the Autodock Vina container we will build in this tutorial 
      %runscript
      ```
      * Please note we will leave the `%runscript` section empty because this container will only set up the environment and dependencies required for our docking program
+5. Save `buildfile-base` and exit your text editor
 
 ### 1.6: Build the base container
 1. Build the base container
