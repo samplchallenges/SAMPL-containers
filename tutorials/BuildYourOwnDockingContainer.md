@@ -176,7 +176,7 @@ If you use different naming conventions than those used in the template files fo
 		```
 		ENTRYPOINT ['{your_entrypoint_name}']
 		```
-  * Singularity:
+   * Singularity:
 		```
 		%runscript
 		exec {your_entrypoint_name} $@
