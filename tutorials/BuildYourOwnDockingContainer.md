@@ -161,10 +161,26 @@ If you use different naming conventions than those used in the template files fo
         {your_entrypoint_name}={your_py_main}:{your_main_function}
     '''
     ```
-4. Copy the file into your Docking container using the `COPY` command in your Dockerfile
-   * `COPY {your_py_main} ./`
-5. Add your `entry_point` from step 3 in your Dockerfile
-   * `ENTRYPOINT ['{your_entrypoint_name}']`
+4. Copy the file into your Docking container
+   * Docker: 
+   	```
+	COPY {your_py_main} ./
+	```
+   * Singularity:
+   	```
+	%files
+	{your_py_main} {destination_file_path}
+	```
+5. Add your `entry_point` from step 3 to your Dockerfile or buildfile
+   * Docker: 
+   	```
+	ENTRYPOINT ['{your_entrypoint_name}']
+	```
+  * Singularity:
+  	```
+	%runscript
+	exec {your_entrypoint_name} $@
+	```
 
 
 ## Tips for modifying the docking tutorial to fit your needs
