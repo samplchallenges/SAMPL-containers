@@ -2,7 +2,7 @@
 > This document details requirements and tips for writing a docking container for SAMPL-challenges. For Python template files that follow this guide, please see [SAMPL-containers/tutorials/templates/docking](https://github.com/samplchallenges/SAMPL-containers/tree/main/tutorials/templates/docking). For an example of a run-able docking main file, please see [SAMPL-containers/adv/main.py](https://github.com/samplchallenges/SAMPL-containers/blob/main/docking/examples/adv-tutorial/main.py). This guide is written under the assumption the reader has already gone through the [Docking Tutorial](https://github.com/samplchallenges/SAMPL-containers/blob/main/tutorials/README.md). 
 
 ## Input Requirements
-> Every container must be able to handle the following input arugments. These are the only inputs your container will be expected to handle. We recommend using `argparse` to handle command line argument parsing.
+> Every container must be able to handle the following input arugments. These are the only inputs your container will be expected to handle. We recommend using [`Click`](https://pypi.org/project/click/) or [`argparse`](https://docs.python.org/3/library/argparse.html) to handle command line argument parsing.
 
 ### Required Inputs
 * Your container will be run with all the following inputs:
