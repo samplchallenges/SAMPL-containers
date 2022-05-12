@@ -65,9 +65,16 @@
 ## Example Python Main Function Definition
 > Every docking container you build for SAMPL challenges should include a main file with a main function that looks similar to the code block below. The following docking main template meets all input and output requirements mentioned above. 
 ```
-import argparse
+import click
 import os.path
 
+@click.command()
+@click.option("--receptor",required=True,type=click.Path(exists=True),help="path of receptor PDB to dock the ligand into")
+@click.option("--smiles",required=True,help="SMILES str of ligand to be docked. quote to prevent CLI errors \"CCC\"")
+@click.option("--hint",required=True,type=click.Path(exists=True),help="path of hint ligand complex for docking region hint")
+@click.option("--hint-molinfo",required=True,help="residue name of the ligand in the hint complex")
+@click.option("--hint-radius",required=True,type=float,help="box size of the box to dock into")
+@click.option("--output-dir",help="Output directory for receptor and docked_ligand files")
 def docking_main(receptor, smiles, hint, hint_molinfo, hint_radius, output_dir):
         ''' docks the given smiles string into the receptor within the area specified by hint and hint-radius
             INPUTS:    receptor:        file    receptor PDB path to dock ligand into
