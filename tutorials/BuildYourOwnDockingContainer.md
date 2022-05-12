@@ -223,7 +223,9 @@ If you use different naming conventions than those used in the template files fo
 		    && bash Miniconda3-latest-Linux-x86_64.sh -b \
 		    && rm -f Miniconda3-latest-Linux-x86_64.sh
 		```
-* Any additional steps to install your required programs should also be added to your `Dockerfile` for more information, please see [Section 1.4](https://github.com/samplchallenges/SAMPL-containers/tree/main/tutorials#14-download-and-prepare-the-command-line-programs-autodock-vina-and-mgl-tools-executables-for-use-in-the-docking-container) and [Section 1.5](https://github.com/samplchallenges/SAMPL-containers/tree/main/tutorials#15-install-autodock-vina-and-mgl-tools-into-your-container) of the tutorial. 
+* Any additional steps to install your required programs should also be added to your `Dockerfile` for Singularity Definition File for more information, please see:
+	* Docker: [Section 1.4](https://github.com/samplchallenges/SAMPL-containers/tree/main/tutorials#14-download-and-prepare-the-command-line-programs-autodock-vina-and-mgl-tools-executables-for-use-in-the-docking-container) and [Section 1.5](https://github.com/samplchallenges/SAMPL-containers/tree/main/tutorials#15-install-autodock-vina-and-mgl-tools-into-your-container) of the tutorial. 
+	* Singularity: []() and []() of the tutorial
 
 
 ## Tips for integrating command line programs
