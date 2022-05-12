@@ -187,15 +187,35 @@ If you use different naming conventions than those used in the template files fo
 * Go to [dockerhub](https://hub.docker.com/) and use the search bar to search for a container that meets your needs. 
 	* For example, if I needed a container with a `gcc` compiler I would search for `gcc`, choose an image and locate the image name:
 		![searchbar](https://github.com/samplchallenges/SAMPL-containers/blob/main/tutorials/images/dockerhub_search.png)
-* Once you have the name of the image you will use as your base, let's call it `image-to-use`, change the [first line of the Dockerfile](https://github.com/samplchallenges/SAMPL-containers/blob/3ddb358e64aa542c230da0af686d2fa3186108a9/tutorials/templates/docking/Dockerfile#L1) (beginning with `FROM`) to `FROM image-to-use`
-* If you still need `conda` for virtual environment management, we recommend installing `miniconda` by adding the installation steps into the `Dockerfile` an example is in the code block below:
-	```
-	RUN wget \
-	    https://repo.anaconda.com/miniconda/Miniconda3-latest-Linux-x86_64.sh \
-	    && mkdir /root/.conda \
-	    && bash Miniconda3-latest-Linux-x86_64.sh -b \
-	    && rm -f Miniconda3-latest-Linux-x86_64.sh
-	```
+* Once you have the name of the image you will use as your base, let's call it `image-to-use`, change your Dockerfile or Singularity Definition File to build off of your `image-to-use`
+	* Docker:
+		```
+		FROM image-to-use
+		```
+	* Singularity:
+		```
+		Bootstrap: docker
+		From: image-to-use
+		```
+	
+* If you still need `conda` for virtual environment management, we recommend installing `miniconda` by adding the installation steps into the Dockerfile or Singularity Definition File. An example is in the code blocks below:
+	* Docker:
+		```
+		RUN wget \
+		    https://repo.anaconda.com/miniconda/Miniconda3-latest-Linux-x86_64.sh \
+		    && mkdir /root/.conda \
+		    && bash Miniconda3-latest-Linux-x86_64.sh -b \
+		    && rm -f Miniconda3-latest-Linux-x86_64.sh
+		```
+	* Singularity
+		```
+		%post
+		wget \
+		    https://repo.anaconda.com/miniconda/Miniconda3-latest-Linux-x86_64.sh \
+		    && mkdir /root/.conda \
+		    && bash Miniconda3-latest-Linux-x86_64.sh -b \
+		    && rm -f Miniconda3-latest-Linux-x86_64.sh
+		```
 * Any additional steps to install your required programs should also be added to your `Dockerfile` for more information, please see [Section 1.4](https://github.com/samplchallenges/SAMPL-containers/tree/main/tutorials#14-download-and-prepare-the-command-line-programs-autodock-vina-and-mgl-tools-executables-for-use-in-the-docking-container) and [Section 1.5](https://github.com/samplchallenges/SAMPL-containers/tree/main/tutorials#15-install-autodock-vina-and-mgl-tools-into-your-container) of the tutorial. 
 
 
