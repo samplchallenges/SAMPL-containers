@@ -5,7 +5,7 @@
 > Every container must be able to handle the following input arugments. These are the only inputs your container will be expected to handle. We recommend using `argparse` to handle command line argument parsing.
 
 ### Required Inputs
-* Your container will be run with all the following inputs in the format:
+* Your container will be run with all the following inputs:
   * `container-name:tag --receptor [file] --smiles [str] --hint [file] --hint-radius [float] --hint-molinfo [str] --output-dir [path]`
 * `--receptor`: receptor `.pdb` file to dock the ligand into
   * Example: `--receptor data/receptor.pdb`
