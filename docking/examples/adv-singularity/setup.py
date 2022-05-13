@@ -1,7 +1,7 @@
 from setuptools import setup
 
 setup(
-    name='AutoDock-rdkit',
+    name='AutoDock-singularity',
     version='0.1',
     py_modules=[
         'autodock',
