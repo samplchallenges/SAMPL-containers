@@ -1,7 +1,7 @@
 from setuptools import setup
 
 setup(
-    name='AutoDock-rdkit',
+    name='AutoDock-docker',
     version='0.1',
     py_modules=[
         'autodock',
