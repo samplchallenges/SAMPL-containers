@@ -1,0 +1,28 @@
+Bootstrap: docker
+From: continuumio/miniconda3
+
+%files
+autodock_vina_1_1_2_linux_x86.tgz /opt/app/dependencies/
+mgltools_x86_64Linux2_1.5.6.tar /opt/app/dependencies/
+
+%post
+# create virutual environment
+conda update conda && \
+    conda install python=3.7 && \
+    conda install -c conda-forge mdtraj && \
+    conda install -c conda-forge rdkit && \
+    conda install -c openbabel openbabel && \
+    conda install click && \
+    conda clean --all --yes
+# install AutoDock Vina
+cd /opt/app/dependencies
+tar -xf autodock_vina_1_1_2_linux_x86.tgz
+mv autodock_vina_1_1_2_linux_x86 adv
+rm autodock_vina_1_1_2_linux_x86.tgz
+# install MGL Tools
+tar -xf mgltools_x86_64Linux2_1.5.6.tar
+mv mgltools_x86_64Linux2_1.5.6 mgl
+rm mgltools_x86_64Linux2_1.5.6.tar 
+cd /opt/app/dependencies/mgl/
+./install.sh
+export PATH=/opt/app/dependencies/mgl/bin:$PATH
