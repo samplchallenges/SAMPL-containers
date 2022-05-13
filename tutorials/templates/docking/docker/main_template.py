@@ -1,11 +1,22 @@
 # For more information about how to build your Docking Container for SAMPL containerized challenges
 # Please see: https://github.com/samplchallenges/SAMPL-containers/blob/main/tutorials/BuildYourOwnDockingContainer.md
 
-import argparse
+import click
 import os.path
 
 # the following are decorators related to the MAIN FUNCTION (docking_main), these '@click.command()' and '@click.option()' decorators
 # MUST remain directly above your main function
+
+
+@click.command()
+@click.option("--receptor",required=True,type=click.Path(exists=True),help="path of receptor PDB to dock the ligand into")
+@click.option("--smiles",required=True,help="SMILES str of ligand to be docked. quote to prevent CLI errors \"CCC\"")
+
+@click.option("--hint",required=True,type=click.Path(exists=True),help="path of hint ligand complex for docking region hint")
+@click.option("--hint-molinfo",required=True,help="residue name of the ligand in the hint complex")
+@click.option("--hint-radius",required=True,type=float,help="box size of the box to dock into")
+
+@click.option("--output-dir",help="Output directory for receptor and docked_ligand files")
 
 # @click.option("--your-argument", type=click.Path(exists=True), help="Any special file arguments you would like to add")
 # for more information on special file arguments like "--your-argument", please see:
@@ -39,55 +50,42 @@ def docking_main(receptor: 'Path', smiles: str,  hint: 'Path', hint_molinfo: str
         docked_ligand_file_name = ""
         receptor_file_name = ".pdb"
 	
-	# please note that your docked_ligand and receptor output files must be saved to
-	# the path specified by output_dir otherwise the program will not be able to find your
-	# files
+    	# please note that your docked_ligand and receptor output files must be saved to
+	    # the path specified by output_dir otherwise the program will not be able to find your
+	    # files
         path_to_docked_ligand_file = os.path.join(output_dir, docked_ligand_file_name)
         path_to_receptor_file = os.path.join(output_dir, receptor_file_name)
         
 	
-	# YOUR CODE GOES HERE 
+    	# YOUR CODE GOES HERE 
         
 	
-	# A note about intermediate files: 
-	# Please do not store your intermediate files in the output_dir path, you can use a temporary directory
-	# or as temporary files instead, or store them in a different directory within your container. 
+	    # A note about intermediate files: 
+	    # Please do not store your intermediate files in the output_dir path, you can use a temporary directory
+	    # or as temporary files instead, or store them in a different directory within your container. 
 	
         
         # write out the docked ligand file to path_to_docked_ligand_file, your docked ligand file must be 
-	# saved to the path specified by the output_dir parameter 
+	    # saved to the path specified by the output_dir parameter 
 	
         # write out the receptor file to path_to_receptor_file, your receptor file must be 
-	# saved to the path specified by the output_dir parameter 
+	    # saved to the path specified by the output_dir parameter 
        
 
-	# Your final ligand and receptor files should be SAVED to the output_dir (specified as a parameter). 
-	# Your main function should also PRINT out the 'key value' pairs 
-	#	* key: either the 'docked_ligand' or 'receptor'. 
-	# 	* value: the absolute file path to the file on disk. The absolute file paths to your files should be specified
-	#	         as 'output_dir/your_file' where output_dir is the output_dir (specified as a parameter). Your final
-	# 		 output files MUST BE saved to the output_dir, otherwise our automated scoring will not be able to 
-	#		 find your files
-	# 		* path_to_docked_ligand_file = os.path.join(output_dir,"rec-dock.pdb") 
-	# 		* path_to_receptor_file = os.path.join(output_dir,"best_dock.pdb")
+	    # Your final ligand and receptor files should be SAVED to the output_dir (specified as a parameter). 
+	    # Your main function should also PRINT out the 'key value' pairs 
+	    #	* key: either the 'docked_ligand' or 'receptor'. 
+	    # 	* value: the absolute file path to the file on disk. The absolute file paths to your files should be specified
+	    #	         as 'output_dir/your_file' where output_dir is the output_dir (specified as a parameter). Your final
+	    # 		 output files MUST BE saved to the output_dir, otherwise our automated scoring will not be able to 
+	    #		 find your files
+	    #		* path_to_docked_ligand_file = os.path.join(output_dir,"rec-dock.pdb") 
+	    # 		* path_to_receptor_file = os.path.join(output_dir,"best_dock.pdb")
         
         print(f"docked_ligand {path_to_docked_ligand_file}")
         print(f"receptor {path_to_receptor_file}")
 	
-	# A NOTE ABOUT RETURN STATEMENTS
-	# Anything your container returns will be ignored. Please make sure that any outputs follow the 'key value'
-	# format mentioned in the previous comment
+	    # A NOTE ABOUT RETURN STATEMENTS
+	    # Anything your container returns will be ignored. Please make sure that any outputs follow the 'key value'
+	    # format mentioned in the previous comment
 
-
-if __name__ == "__main__":
-	parser = argparse.ArgumentParser(description='Run AutoDock Vina Docking container')
-	parser.add_argument("--receptor",required=True,help="path of receptor PDB to dock the ligand into")
-	parser.add_argument("--smiles",required=True,help="SMILES str of ligand to be docked. Use quotes to prevent CLI errors \"CCC\"")
-	parser.add_argument("--hint",required=True,help="path of hint ligand complex for docking region hint")
-	parser.add_argument("--hint-molinfo",required=True,help="residue name of the ligand in the hint complex")
-	parser.add_argument("--hint-radius",required=True,type=float,help="box size of the box to dock into")
-	parser.add_argument("--output-dir",help="Output directory for receptor and docked_ligand files")
-	
-	args = parser.parse_args()	
-	
-	docking_main (args.receptor, args.smiles, args.hint, args.hint_molinfo, args.hint_radius, args.output_dir)
