@@ -1,22 +1,23 @@
 # Introduction SAMPL Containerized Methods using the Singularity Container Engine
 
 ## Purpose
-The following tutorial is meant to teach the basics of building a simple container to predict docking poses using the [Singularity](https://sylabs.io/guides/3.5/user-guide/introduction.html#:~:text=Why%20use%20containers%3F%C2%B6). Here, we use both Python code and command-line programs (specifically, Autodock Vina and MGL Tools).
+The following tutorial is meant to teach the basics of building a simple container to predict docking poses using the [Singularity](https://sylabs.io/guides/3.5/user-guide/introduction.html#:~:text=Why%20use%20containers%3F%C2%B6) container engine. Here, we use both Python code and command-line programs (specifically, [Autodock Vina](https://vina.scripps.edu/) and [MGL Tools](https://ccsb.scripps.edu/mgltools/)).
 
 ## An Important Disclaimer
-If you are developing your container/methods on a High Performace Computing (HPC) Cluster, you will more than likely need to use the Singularity container engine. Most HPC clusters will not have the Docker program installed. Please see this tutorial on how to build a container using Singularity.
+If you are developing your container/methods on a High Performance Computing (HPC) Cluster, you will more than likely need to use the Singularity container engine. Most HPC clusters will not have the Docker program installed. Please see this tutorial on how to build a container using Singularity.
 
-If you have the ability to use either [Docker](https://www.docker.com/resources/what-container/) or Singularity as your container engine, please use Docker. The accepted best practice for containers is to build and store your containers as Docker images. A tutorial to build a Docker containerized method can be found [here](https://github.com/samplchallenges/SAMPL-containers/blob/main/tutorials/README.md)
+If you have the ability to use either [Docker](https://www.docker.com/resources/what-container/) or Singularity as your container engine, please use Docker. The accepted best practice for containers is to build and store your containers as Docker images. A tutorial to build a Docker containerized method can be found [here](https://github.com/samplchallenges/SAMPL-containers/blob/main/tutorials/README.md).
 
 ## Background and Prerequisites
 
 ### Expected Background Knowledge
-* Basic knowledge of [Python3](https://www.python.org/download/releases/3.0/)
+* Basic knowledge of [Python 3](https://www.python.org/download/releases/3.0/)
 * Basic knowledge of [Linux/UNIX command line](https://ubuntu.com/tutorials/command-line-for-beginners#1-overview)
 
 ### Software Requirements
 * Linux operating system or Linux Virtual Machine
      * If you have a Windows or Unix operating system and must use Singularity, you will need to use a virtual machine or develop on a remote linux cluster. Installation instructions for Windows and Unix can be found [here](https://sylabs.io/guides/3.0/user-guide/installation.html#install-on-windows-or-mac)
+* [Python 3.8](https://www.python.org/downloads/release/python-3813/)
 * [Singularity v3.7.3 or v3.7.2](https://sylabs.io/guides/3.0/user-guide/installation.html)
 
 
@@ -24,23 +25,24 @@ If you have the ability to use either [Docker](https://www.docker.com/resources/
 
 ### Brief Singularity Background
 * Singularity containers isolate their internal software from the environment (i.e. someone's operating system or virtual environment) and ensure that the container software works consistently across platforms despite differences in development and staging.
-* A singularity sif file is the blueprint of a Singularity container that is not currently running. Singularity images contain the instructions to execute your code as a Singularity container.
+* A singularity `.sif` file is the blueprint of a Singularity container that is not currently running. Singularity images contain the instructions to execute your code as a Singularity container.
 * If you are familiar with Docker, but unfamiliar with Singularity, this [Singularity and Docker Comparison](https://sylabs.io/guides/3.5/user-guide/singularity_and_docker.html#) may be a good resource to get you started.
 * To use a Singularity image, we must first build the image with the [`singularity build`](https://sylabs.io/guides/3.7/user-guide/cli/singularity_build.html) command and the instructions outlined in the definition file.
 * The instructions to prepare/build a Singularity image are contained in the definition file. Unlike Docker and the "Dockerfile" definition file, this file can be named anything, and will be passed to the `singularity build` command at build time.
 * To clear your image cache, you can use [`singularity cache clean`](https://sylabs.io/guides/3.7/user-guide/cli/singularity_cache_clean.html). If you would like to do a dry run which will list out everything that will be cleaned without deleting anything, use `singularity clean cache --dry-run`
 * Singularity containers, unlike Docker containers, have the same user privileges as the user that executed the container. Docker containers typically require root privileges. Singularity containers are typically used on HPC Clusters due to security reasons.
+* [Best practices](https://sylabs.io/guides/3.7/user-guide/singularity_and_docker.html#best-practices) for Docker vs. Singularity containers
 
 ### Pre-Built Autodock Vina Singularity Container
-A working version of the Autodock Vina container we will build in this tutorial with the Singularity engine is available in our google drive as the file [adv-tutorial.sif](https://drive.google.com/file/d/1yEKSLU6AKZzECUiTRpOoFVk6u-Bn44aY/view?usp=sharing).
-1. In a new virtual environment with python 3.8 install the ever-given package. Ensure the package version is the latest version by checking on [ever-given's PyPi](https://pypi.org/project/ever-given/)
+A working version of the Autodock Vina container we will build in this tutorial with the Singularity engine is available in our google drive as the file [`adv-tutorial.sif`](https://drive.google.com/file/d/1yEKSLU6AKZzECUiTRpOoFVk6u-Bn44aY/view?usp=sharing).
+1. In a new virtual environment with python 3.8 install the ever-given package. Ensure the package version is the latest version by checking on [ever-given's PyPi page](https://pypi.org/project/ever-given/)
       * command: `pip install ever-given`
 2. If you haven't already, clone this repository
       * command: `git clone https://github.com/samplchallenges/SAMPL-containers.git`
-4. Download the [adv-tutorial.sif](https://drive.google.com/file/d/1yEKSLU6AKZzECUiTRpOoFVk6u-Bn44aY/view?usp=sharing) using the link provided.
-5. Change directories into the "SAMPL-containers/tutorials" directory
+3. Download the [`adv-tutorial.sif`](https://drive.google.com/file/d/1yEKSLU6AKZzECUiTRpOoFVk6u-Bn44aY/view?usp=sharing) file using the link provided.
+4. Change directories into the "SAMPL-containers/tutorials" directory
       * command: `cd SAMPL-containers/tutorials`
-6. Run the container
+5. Run the container
       * command:
          ```
          evergiven {path_to_file}/adv-tutorial.sif \
@@ -50,17 +52,17 @@ A working version of the Autodock Vina container we will build in this tutorial 
             --smiles "c1ccc(C(C)C)cc1CNCC(O)(O)[C@@H](NC(=O)[C@@H]2C)C[C@H](C)CCCCCCCCC(=O)N2C" \
             --output-keys docked_ligand,receptor
          ```
-7. The results files will be stored in the directory `tutorials/evergiven_output`
+6. The results files will be stored in the directory `tutorials/evergiven_output`
       * Expected files:
            * prepped receptor file: `rec-dock.pdb`
            * docked ligand file: `best_dock.pdb`
 
 # Tutorial: Build an AutoDock Vina Containerized Method using the Singularity Container Engine
-> This tutorial is separated into six parts: (1) the virtual environment and dependency container build, (2) the docking container build, (3) docking using the Docker container, (4) trouble shooting, (5) building your own docking container, and (6) miscellaneous important information.
+> This tutorial is separated into six parts: (1) the virtual environment and dependency container build, (2) the docking container build, (3) docking using the Singularity container, (4) trouble shooting, (5) building your own docking container, and (6) miscellaneous important information.
 >
-> We have separated the base virtual environment build (conda environment and command-line programs) from the implementation build (docking) to illustrate container inheritance and to improve the time required to build the container. In Section 1, we will build an adv-tutorial-base container that includes all the environment and software installations necessary to run AutoDock Vina from a Python script. In Section 2, we will inherit the environment from the Section 1 adv-tutorial-base container to write and build our run-able docking code in the adv-tutorial container.
+> We have separated the base virtual environment build (conda environment and command-line programs) from the implementation build (docking program) to illustrate container inheritance and to improve the time required to build the container throughout the development process. In Section 1, we will build an adv-tut-singularity-base container that includes all the environment and software installations necessary to run AutoDock Vina from a Python script. In Section 2, we will inherit the environment from the Section 1 adv-tut-singularity-base container to write and build our run-able docking code in the adv-tut-singularity container.
 >
-> This inheritance scheme is also a good practice to improve the time required to build the docking container. When you are writing your docking container, most of the time, you will only make changes to the new docking code you have written and thus only need to re-build the new docking code, rather than re-build the new code AND the environment/software installations. By separating the docking container build from the environment container build, we can build just the docking container each time we change the docking code, improving build time. For example, building only new code (adv-tutorial) typically takes under 5 seconds, but building new code plus environment and software installations (adv-tutorial plus adv-tutorial-base) takes upwards of 115 seconds. This can be likened to independently compiling parts of a program to improve compile time as a whole later.
+> This inheritance scheme is also a good practice to improve the time required to build the docking container. When you are writing your docking container, most of the time, you will only make changes to the new docking code you have written and thus only need to re-build the new docking code, rather than re-build the new code AND the environment/software installations. By separating the docking container build from the environment container build, we can build just the docking container each time we change the docking code, improving build time. For example, building only new code (adv-tut-singularity) typically takes under 5 seconds, but building new code plus environment and software installations (adv-tut-singularity plus adv-tut-singularity-base) takes upwards of 115 seconds. This can be likened to independently compiling parts of a program to improve compile time as a whole later.
 
 
 ## Outline
@@ -75,7 +77,7 @@ A working version of the Autodock Vina container we will build in this tutorial 
     * [2.1: Setup]()
     * [2.2: Add the docking code]()
     * [2.3: Create a setup.py file]()
-    * [2.4: Write a buildfile with instructions to build your container]()
+    * [2.4: Write a definition_file with instructions to build your container]()
     * [2.5: Build the docking container]()
 * [Section 3: Test/Run your container]()
 * [Section 4: Troubleshooting]()
@@ -87,8 +89,8 @@ A working version of the Autodock Vina container we will build in this tutorial 
 
 ## Section 1: Build the Autodock Vina base container
 ### 1.1: Setup
-1. Open a terminal
-2. If you have not already, in a new virtual environment with python 3.8 install the ever-given package. Please ensure the version you have installed the latest version listed on [ever-given's PyPi](https://pypi.org/project/ever-given/).
+1. Open a terminal window
+2. If you have not already, in a new virtual environment with Python 3.8 install the ever-given package. Please ensure the version you have installed the latest version listed on [ever-given's PyPi](https://pypi.org/project/ever-given/).
     * command: `pip install ever-given`
 3. If you have not already, clone the SAMPL-containers repository
     * command: `git clone https://github.com/samplchallenges/SAMPL-containers.git`
@@ -100,9 +102,9 @@ A working version of the Autodock Vina container we will build in this tutorial 
     * command: `cd adv-tut-singularity-base`
 
 ### 1.2: Run a pre-made Docker container and create a conda environment
-> In 1.2, we will run the pre-made miniconda Docker container, continuumio/miniconda3, which contains a pre-installed version of miniconda, in interactive mode using [`singularity shell`](https://sylabs.io/guides/3.7/user-guide/cli/singularity_shell.html). This will allow us to interact with the container's command line and directory contents. We will also be able to dynamically create the conda environment we need on the command line inside the container. Even if you have a conda environment installed locally, you will need to complete this step. The container is isolated from your local environment, so it will not have access to your local conda environment.
+> In 1.2, we will run the pre-made miniconda Docker container, continuumio/miniconda3, which contains a pre-installed version of miniconda, in interactive mode using [`singularity shell`](https://sylabs.io/guides/3.7/user-guide/cli/singularity_shell.html). This will allow us to interact with the container's command line and file contents. We will also be able to dynamically create the conda environment we need on the command line inside the container. Even if you have a conda environment installed locally, you will need to complete this step. The container is isolated from your local environment, so it will not have access to your local conda environment.
 >
-> Because our container will build off of the miniconda container using it as a base, any environment we create while interatively using the miniconda container should install into our container (which uses miniconda as a base) without additional issues. Building a conda environment outside the miniconda container often results in multiple rounds of trial and error and incompatible packages. We've found the following steps to be the fastest procedure. For more detailed/generalized instructions please see CondaEnvInstructions.pdf.
+> Because our container will build off of the miniconda container using it as a base, any environment we create while interatively using the miniconda container should install into our container (which uses miniconda as a base) without additional issues. Building a conda environment outside the miniconda container often results in multiple rounds of trial and error and incompatible packages. We've found the following steps to be the fastest procedure. For more detailed/generalized instructions please see [`tutorials/CondaEnvInstructions.md`](https://github.com/samplchallenges/SAMPL-containers/blob/main/tutorials/CondaEnvironmentInstructions.md).
 >
 > When building your own singularity container, this is where you would create your own conda environment with the packages you will need.
 >
@@ -160,10 +162,10 @@ A working version of the Autodock Vina container we will build in this tutorial 
      * command: `exit`
 
 ### 1.3: Install conda environment (from Section 1.2) into your container
-> We will begin creating a `buildfile` to create a container with the virtual environment from the previous section. The only difference in the steps is this time we will update the base environment using `conda update` rather than create a new environment using `conda create`. In the previous step, we could not install into the base environment due to root permissions.
+> We will begin creating a `definition_file` to create a container with the virtual environment from the previous section. The only difference in the steps is this time we will update the base environment using `conda update` rather than create a new environment using `conda create`. In the previous step, we could not install into the base environment due to root permissions.
 
-1. Create and open a file called "buildfile-base"
-2. Copy the following lines from the codeblock into `buildfile-base`. The following commands contain the instructions to install the conda environment when your container is built
+1. Create and open a file called "definition_file-base"
+2. Copy the following lines from the codeblock into `definition_file-base`. The following commands contain the instructions to install the conda environment when your container is built
      ```bash
      # Start building off of the docker container continuumio/miniconda3
      Bootstrap: docker
@@ -186,9 +188,9 @@ A working version of the Autodock Vina container we will build in this tutorial 
      * The `%files` section states which files to copy into the container ahead of running installation steps. Right now we do not require any files.
      * The `%post` section is for any installation steps that should occur during the build ahead of runtime.
      * The `%runscript` section is for any steps that should be executed by the container at runtime.
-3. Save `buildfile-base` and exit your text editor
+3. Save `definition_file-base` and exit your text editor
 4. Build your container
-     * command: `singularity build --fakeroot adv-tut-base.sif buildfile-base`
+     * command: `singularity build --fakeroot adv-tut-base.sif definition_file-base`
 5. Confirm your build succeded by running the container in interactive mode. Upon running this command your command line prompt should change.
      * command: `singularity shell adv-tut-base.sif`
      ```
@@ -244,18 +246,18 @@ A working version of the Autodock Vina container we will build in this tutorial 
      * command: `mv {path_to_download}/mgltools_x86_64Linux2_1.5.6.tar .`
 
 ### 1.5: Install Autodock Vina and MGL Tools into your container
-> In 1.5, we will add in the installation commands for Autodock Vina and MGL Tools to the buildfile.
+> In 1.5, we will add in the installation commands for Autodock Vina and MGL Tools to the definition_file.
 >
 > When building your own container, this is where you would add in any command line program installation steps.
 
-1. Open your `buildfile-base`
-2. Under the `%file` section, add the steps to copy `autodock_vina_1_1_2_linux_x86.tgz` and `mgltools_x86_64Linux2_1.5.6.tar` into the container. The `%file` section of the `buildfile-base` should look like the codeblock below:
+1. Open your `definition_file-base`
+2. Under the `%file` section, add the steps to copy `autodock_vina_1_1_2_linux_x86.tgz` and `mgltools_x86_64Linux2_1.5.6.tar` into the container. The `%file` section of the `definition_file-base` should look like the codeblock below:
      ``` bash
      %file
      autodock_vina_1_1_2_linux_x86.tgz /opt/app/dependencies/
      mgltools_x86_64Linux2_1.5.6.tar /opt/app/dependencies/
      ```
-3. In the `%post` section of `buildfile-base`, append the steps to install Autodock Vina and MGL Tools after the conda environment installation.
+3. In the `%post` section of `definition_file-base`, append the steps to install Autodock Vina and MGL Tools after the conda environment installation.
      ``` bash
      # install AutoDock Vina
      cd /opt/app/dependencies
@@ -270,7 +272,7 @@ A working version of the Autodock Vina container we will build in this tutorial 
      cd /opt/app/dependencies/mgl/
      ./install.sh
      ```
-4. Your `buildfile-base` should now look like the following:
+4. Your `definition_file-base` should now look like the following:
      ``` bash
      # Start building off of the docker container continuumio/miniconda3
      Bootstrap: docker
@@ -303,12 +305,12 @@ A working version of the Autodock Vina container we will build in this tutorial 
      %runscript
      ```
      * Please note we will leave the `%runscript` section empty because this container will only set up the environment and dependencies required for our docking program
-5. Save `buildfile-base` and exit your text editor
+5. Save `definition_file-base` and exit your text editor
 
 ### 1.6: Build the base container
 1. Build the base container
-     * command: `singularity build --fakeroot adv-tut-base.sif buildfile-base`
-2. Confirm your build succeded by running the container in interactive mode. Upon running this command your command line prompt should change.
+     * command: `singularity build --fakeroot adv-tut-base.sif definition_file-base`
+2. Confirm your build succeded by running the container in interactive mode. Upon running this command your command line prompt should change
      * command: `singularity shell adv-tut-base.sif`
 3. Run `vina --help` to ensure the vina program was set up properly. The output should look something like the codeblock below
      * command: `/opt/app/dependencies/adv/bin/vina --help`
@@ -365,7 +367,7 @@ A working version of the Autodock Vina container we will build in this tutorial 
 
 
 ### 2.2: Add the docking code
-> In 2.2, we will incorporate the docking code into our container directory. For the sake of simplicity, we will be using pre-written docking code. Please see tutorials/BuildYourOwnDockingContainer.md for more information on the inputs and kwargs required of each main function.
+> In 2.2, we will incorporate the docking code into our container directory. For the sake of simplicity, we will be using pre-written docking code. Please see `tutorials/BuildYourOwnDockingContainer.md` for more information on the inputs and kwargs required of each main function.
 >
 > When building your own container, this is where you would add in your methods.
 
@@ -382,7 +384,7 @@ A working version of the Autodock Vina container we will build in this tutorial 
     from setuptools import setup
 
     setup(
-        name='AutoDock-rdkit',
+        name='AutoDock-singularity',
         version='0.1',
         py_modules=[
             ,
@@ -411,9 +413,9 @@ A working version of the Autodock Vina container we will build in this tutorial 
     ```
 4. Save and close setup.py
 
-### 2.4: Write a buildfile with instructions to build your container
-1. Create and open a file called "buildfile-prod"
-2. Copy and paste the following into `buildfile-prod`
+### 2.4: Write a definition_file with instructions to build your container
+1. Create and open a file called "definition_file-prod"
+2. Copy and paste the following into `definition_file-prod`
      ``` bash
      # Build off the adv-tut-base.sif we made in Section 1
      Bootstrap: localimage
@@ -428,24 +430,35 @@ A working version of the Autodock Vina container we will build in this tutorial 
      pip install .
 
      %runscript
-     # execute main.py file at runtime using the arguments passed to the container via command line
+     # execute main.py file at runtime using the arguments passed to
+     # the container via command line
      exec
      ```
 3. Next to "From:" add the path to the sif file from the base build from Section 1. This is where we specify that our container will inherit from the base we built in [Section 1]()
-     * `From: ../adv-tut-singularity-base/adv-tut-base.sif`
+     ```
+     Bootstrap: localimage
+     From: ../adv-tut-singularity-base/adv-tut-base.sif
+     ```
 4. Under "%files" add the names of all files necessary to run our docking program, including "setup.py", "autodock.py", and "main.py" into the container directory  "./" or "/opt/app". This is where you would specify the files you have wirtten for your docking program in place of "autodock.py" and "main.py"
      ```
+     %files
      main.py /opt/app/main.py
      autodock.py /opt/app/autodock.py
      setup.py /opt/app/setup.py
      ```
 5. Next to "exec", add the "entry_point" you declared in step 3 of the previous subsection ([2.3]()) inside the brackets, in quotations. We will follow the entry_point with `$@` so all the command line arguments entered are properly passed to the program execution.
-     * `exec run-autodock $@`
+     ```
+     %runscript
+     # execute main.py file at runtime using the arguments passed to
+     # the container via command line
+     exec run-autodock $@
+     ```
 
 ### 2.5: Build the docking container
 1. Build the container image
-     * command: `singularity build --fakeroot adv-tut.sif buildfile-prod`
+     * command: `singularity build --fakeroot adv-tut.sif definition_file-prod`
 2. Run the container with the help option to ensure build succeeded. The output should look similar to the code block below.
+     * command: `singularity run here-prod-click.sif --help`
      ```
      (py38) vagrant@ubuntu-bionic:adv-tut-singularity$ singularity run here-prod-click.sif --help
      Usage: run-autodock [OPTIONS]
