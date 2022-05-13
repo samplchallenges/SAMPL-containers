@@ -31,14 +31,14 @@ def docking_main(receptor: 'Path', smiles: str,  hint: 'Path', hint_molinfo: str
                        hint_radius:     float   radius around the hint ligand to consider in docking
                        output_dir:      str     output director for receptor and docked_ligand\
 
-            OUTPUTS:   prints           docked_ligand {path_to_docked_ligand_file}
-        				where the path_to_docked_ligand_file = output_dir/docked_ligand_file
-                       prints           receptor {path_to_receptor_file}
-               			where the path_to_receptor_file = os.path.join(output_dir, receptor_file_name)
-                       writes file      docked ligand file as a .pdb .mol2 or .sdf this file must be saved on disk to the
-               			path stored in the output_dir argument
-                       writes file      receptor prepped and used by program in docking as .pdb this file must be saved
-               			on disk to the path stored in the output_dir argument
+            OUTPUTS:   prints       docked_ligand {path_to_docked_ligand_file}
+        				            where the path_to_docked_ligand_file = output_dir/docked_ligand_file
+                       prints       receptor {path_to_receptor_file}
+               			            where the path_to_receptor_file = os.path.join(output_dir, receptor_file_name)
+                       writes file  docked ligand file as a .pdb .mol2 or .sdf this file must be saved on disk to the
+               			            path stored in the output_dir argument
+                       writes file  receptor prepped and used by program in docking as .pdb this file must be saved
+               			            on disk to the path stored in the output_dir argument
 
             RETURNS:   None
         	           Please note that anything your function returns will be ignored by our automated scoring
