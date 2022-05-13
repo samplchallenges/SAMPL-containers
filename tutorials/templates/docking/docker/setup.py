@@ -7,7 +7,6 @@ setup(
         'main_template',
     ],
     install_requires=[
-        'Click',
     ],
     entry_points='''
         [console_scripts]
