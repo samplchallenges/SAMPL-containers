@@ -555,8 +555,7 @@ In this section, we will use the wrapper ever_given to run the docking container
           * If the output from the `--dry-run` is what you expect, run:  `singularity cache clean`
 
 ## Section 5: Building your own docking container
-* For an example template of a docking container directory, please see [`SAMPL-containers/tutorial/templates/docking`](https://github.com/samplchallenges/SAMPL-containers/tree/main/tutorials/templates/docking)
-* For more detailed information about LogD container requirements and how to modify this tutorial to suit your needs [BuildYourOwnLogDContainer.md](https://github.com/samplchallenges/SAMPL-containers/blob/main/tutorials/BuildYourOwnLogDContainer.md)
+* For an example template of a docking container directory, please see [`SAMPL-containers/tutorial/templates/docking`](https://github.com/samplchallenges/SAMPL-containers/tree/main/tutorials/templates/docking/)
 * For more information on how to build your own conda environment inside a container, please see [CondaEnvInstructions.pdf](https://github.com/samplchallenges/SAMPL-containers/blob/main/tutorials/CondaEnvInstructions.pdf)
 
 ## Section 6: Other Important Information
