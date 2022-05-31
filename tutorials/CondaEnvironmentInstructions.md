@@ -7,8 +7,6 @@ In this document, we will show you two different ways to incorporate `miniconda`
 
 As a note, for SAMPL challenges you should always install your required python packages into the `base` environment. Please **DO NOT** create a separate conda virtual environment as this will cause command line parsing issues for our SMILES inputs.
 
-called a [`Dockerfile`](https://docs.docker.com/engine/reference/builder/#:~:text=to%20Docker%20Hub.-,BuildKit,-%F0%9F%94%97)
-
 # Docker Engine Conda Environment Creation
 ## Section 1: Creating a Conda Environment Inside a Container using a `miniconda` Parent Image
 ### Part 1: Create your conda environment
