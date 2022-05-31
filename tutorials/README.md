@@ -464,10 +464,10 @@ In this section, we will use the wrapper `ever_given` to run the docking contain
     Putting output into evergiven_output
     stderr b'1 molecule converted\n'
     stdout b'docked_ligand /mnt/outputs/best_dock.pdb\n'
-    stdout b'receptor /mnt/outputs/rec-dock.pdb\n'
-    evergiven_output docked_ligand /mnt/outputs/best_dock.pdb
+    stdout b'receptor /mnt/outputs/dock_rec.pdb\n'
+    evergiven_output docked_ligand /mnt/outputs/dock_best_pose.pdb
     evergiven_output receptor /mnt/outputs/rec-dock.pdb
-    Results: {'docked_ligand': 'evergiven_output/best_dock.pdb', 'receptor': 'evergiven_output/rec-dock.pdb'}
+    Results: {'docked_ligand': 'evergiven_output/dock_best_pose.pdb', 'receptor': 'evergiven_output/dock_rec.pdb'}
    ```
 3. Examine your container outputs in the directory "tutorials/evergiven_output"
 

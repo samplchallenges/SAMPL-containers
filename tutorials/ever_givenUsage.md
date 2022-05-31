@@ -11,20 +11,20 @@
     ```
     evergiven {container_name}:{version/tag} --container-engine {engine} --container-type {type} {file-kwargs} {kwargs} --output-keys {keys}
     ```
-    * `--container-engine` is the container engine to use. 
-      * Currently supported: 
+    * `--container-engine` is the container engine to use.
+      * Currently supported:
         * `'docker'`: docker engine can only run docker container images
         * `'singularity'`: singularity engine can run singularity or docker container images
-    * `--container-type` is the container type of the image you are running. 
-      * Currently supported: 
+    * `--container-type` is the container type of the image you are running.
+      * Currently supported:
         * `'docker'`: container image built with docker engine
         * `'singularity_local'`: sif file image (ending in `.sif`) built with singularity engine
-    * `{file-kwargs}` are keyword option-value pairs where the value is a file path the container will need access to. Any keyword that expects a file path should get `--file-` prepended to it. The `--file-` prepend is very important as it allows us 
-      * Example: 
+    * `{file-kwargs}` are keyword option-value pairs where the value is a file path the container will need access to. Any keyword that expects a file path should get `--file-` prepended to it. The `--file-` prepend is very important as it allows us
+      * Example:
         * `--file-receptor '/path/to/receptor.pdb'`
     * `{kwargs}` are keyword option-value pairs where the value is anything other than a file path.
       * Example:
         * `--smiles 'CC(C)CC1=CC=C(C=C1)C(C)C(=O)O'`
-    * `--output-keys {comma_separated_keys}` are any output keys as a comma separated list from required the print output statements that contain file paths. `ever_given` automatically handles the file path mounting and unmounting, and will update the file path for us
+    * `--output-keys {comma_separated_keys}` are any output keys as a comma separated list from the required print output statements that represent file paths. `ever_given` automatically handles the file path mounting and unmounting
       * Example:
-        * `--output-keys file_output1,file_output2,file_output3`
+        * `--output-keys file_output_key1,file_output_key2,file_output_key3`

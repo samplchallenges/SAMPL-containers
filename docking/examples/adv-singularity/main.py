@@ -40,7 +40,7 @@ def print_debug(debug: bool, msg:str):
 def main_function(receptor, smiles, hint, hint_molinfo, hint_radius, output_dir, debug):
 	''' docks the given smiles string into the receptor within the area specified by hint and hint-radius
             INPUTS:    receptor:     file    receptor PDB path to dock ligand into
-                       smiles:       str     SMILES string of ligand to be docked, use quotes 
+                       smiles:       str     SMILES string of ligand to be docked, use quotes
                        hint:         file    hint PDB contains a receptor ligand complex to show binding site region
                        hint_molinfo: str     resname of the ligand used in the hint PDB
                        hint_radius:  float   radius around the hint ligand to consider in docking
@@ -64,11 +64,11 @@ def main_function(receptor, smiles, hint, hint_molinfo, hint_radius, output_dir,
 
 	receptor_path = receptor
 	receptorprep_pdbqt_path = os.path.join(temp_dir, "rec-prep.pdbqt")
-	receptor_pdb_path = os.path.join(output_dir,"rec-dock.pdb") 
+	receptor_pdb_path = os.path.join(output_dir,"dock_rec.pdb")
 
-	ligdock_pdbqt_path = os.path.join(temp_dir, "lig_dock.pdbqt")
-	highscore_pdbqt_path = os.path.join(temp_dir, "best_dock.pdbqt")
-	highscore_pdb_path = os.path.join(output_dir,"best_dock.pdb")
+	ligdock_pdbqt_path = os.path.join(temp_dir, "lig-dock.pdbqt")
+	highscore_pdbqt_path = os.path.join(temp_dir, "best-dock.pdbqt")
+	highscore_pdb_path = os.path.join(output_dir,"dock_best_pose.pdb")
 
 	score_path = os.path.join(temp_dir, "score.txt")
 

@@ -4,9 +4,9 @@
 The following tutorial is meant to teach the basics of building a simple container to predict docking poses using the [Singularity](https://sylabs.io/guides/3.5/user-guide/introduction.html#:~:text=Why%20use%20containers%3F%C2%B6) container engine. Here, we use both Python code and command-line programs (specifically, [Autodock Vina](https://vina.scripps.edu/) and [MGL Tools](https://ccsb.scripps.edu/mgltools/)).
 
 ## An Important Disclaimer
-If you are developing your container/methods on a High Performance Computing (HPC) Cluster, you will more than likely need to use the Singularity container engine. Most HPC clusters will not have the Docker program installed. Please see this tutorial on how to build a container using Singularity.
+If you are developing your container/methods on a High Performance Computing (HPC) Cluster, you will more than likely need to use the Singularity container engine. Most HPC clusters will not have the Docker](https://www.docker.com/resources/what-container/) container engine installed. Please see this tutorial on how to build a container using Singularity.
 
-If you have the ability to use either [Docker](https://www.docker.com/resources/what-container/) or Singularity as your container engine, please use Docker. The accepted best practice for containers is to build and store your containers as Docker images. A tutorial to build a Docker containerized method can be found [here](https://github.com/samplchallenges/SAMPL-containers/blob/main/tutorials/README.md).
+If you have the ability to use either Docker or Singularity as your container engine, please use Docker. The accepted best practice for containers is to build and store your containers as Docker images. A tutorial to build a Docker containerized method can be found [here](https://github.com/samplchallenges/SAMPL-containers/blob/main/tutorials/README.md).
 
 ## Background and Prerequisites
 
@@ -18,6 +18,7 @@ If you have the ability to use either [Docker](https://www.docker.com/resources/
 * Linux operating system or Linux Virtual Machine
      * If you have a Windows or Unix operating system and must use Singularity, you will need to use a virtual machine or develop on a remote linux cluster. Installation instructions for Windows and Unix can be found [here](https://sylabs.io/guides/3.0/user-guide/installation.html#install-on-windows-or-mac)
 * [Python 3.8](https://www.python.org/downloads/release/python-3813/)
+* [`ever-given` PyPi Module](https://pypi.org/project/ever-given/)
 * [Singularity v3.7.3 or v3.7.2](https://sylabs.io/guides/3.0/user-guide/installation.html)
 
 
@@ -54,8 +55,8 @@ A working version of the Autodock Vina container we will build in this tutorial 
          ```
 6. The results files will be stored in the directory `tutorials/evergiven_output`
       * Expected files:
-           * prepped receptor file: `rec-dock.pdb`
-           * docked ligand file: `best_dock.pdb`
+           * prepped receptor file: `dock_rec.pdb`
+           * docked ligand file: `dock_best_pose.pdb`
 
 # Tutorial: Build an AutoDock Vina Containerized Method using the Singularity Container Engine
 > This tutorial is separated into six parts: (1) the virtual environment and dependency container build, (2) the docking container build, (3) docking using the Singularity container, (4) trouble shooting, (5) building your own docking container, and (6) miscellaneous important information.
@@ -251,7 +252,7 @@ A working version of the Autodock Vina container we will build in this tutorial 
 > When building your own container, this is where you would add in any command line program installation steps.
 
 1. Open your `definition_file-base`
-2. Under the `%file` section, add the steps to copy `autodock_vina_1_1_2_linux_x86.tgz` and `mgltools_x86_64Linux2_1.5.6.tar` into the container. The `%file` section of the `definition_file-base` should look like the codeblock below:
+2. Under the `%files` section, add the steps to copy `autodock_vina_1_1_2_linux_x86.tgz` and `mgltools_x86_64Linux2_1.5.6.tar` into the container. The `%files` section of the `definition_file-base` should look like the codeblock below:
      ``` bash
      %file
      autodock_vina_1_1_2_linux_x86.tgz /opt/app/dependencies/
@@ -439,7 +440,7 @@ A working version of the Autodock Vina container we will build in this tutorial 
      Bootstrap: localimage
      From: ../adv-tut-singularity-base/adv-tut-base.sif
      ```
-4. Under "%files" add the names of all files necessary to run our docking program, including "setup.py", "autodock.py", and "main.py" into the container directory  "./" or "/opt/app". This is where you would specify the files you have wirtten for your docking program in place of "autodock.py" and "main.py"
+4. Under "%files" section add the names of all files necessary to run our docking program, including "setup.py", "autodock.py", and "main.py" into the container directory  "./" or "/opt/app". This is where you would specify the files you have wirtten for your docking program in place of "autodock.py" and "main.py"
      ```
      %files
      main.py /opt/app/main.py
@@ -458,7 +459,7 @@ A working version of the Autodock Vina container we will build in this tutorial 
 1. Build the container image
      * command: `singularity build --fakeroot adv-tut.sif definition_file-prod`
 2. Run the container with the help option to ensure build succeeded. The output should look similar to the code block below.
-     * command: `singularity run here-prod-click.sif --help`
+     * command: `singularity run  adv-tut.sif --help`
      ```
      (py38) vagrant@ubuntu-bionic:adv-tut-singularity$ singularity run here-prod-click.sif --help
      Usage: run-autodock [OPTIONS]
@@ -482,7 +483,7 @@ A working version of the Autodock Vina container we will build in this tutorial 
      ```
 
 ## Section 3: Test/Run your container
-In this section, we will use the wrapper ever_given to run the docking container. ever_given mimics the infrastructure we will use to run your container on the SAMPL-league website, making it a great way to test that you container will run properly ahead of uploading to the SAMPL challenges website. ever_given also abstracts away volume mounting to link your local directory with a directory inside the container, making it easier to quickly test your container. For more information on how to use ever_given please see ever_givenUsage.md.
+In this section, we will use the wrapper [`ever_given`](https://pypi.org/project/ever-given/) to run the docking container. `ever_given` mimics the infrastructure we will use to run your container on the SAMPL-league website, making it a great way to test that you container will run properly ahead of uploading to the SAMPL challenges website. `ever_given` also abstracts away volume mounting to link your local directory with a directory inside the container, making it easier to quickly test your container. For more information on how to use `ever_given` please see [`ever_givenUsage.md`](https://github.com/samplchallenges/SAMPL-containers/blob/main/tutorials/SingularityTutorial.md).
 
 1. Change directories into "tutorials" one directory above:
      * command: `cd ..`
@@ -537,17 +538,17 @@ In this section, we will use the wrapper ever_given to run the docking container
         1         -8.8      0.000      0.000
      Writing output ... done.
      /opt/app/dependencies/mgl/bin/python /opt/app/dependencies/mgl/MGLToolsPckgs/AutoDockTools/Utilities24/prepare_receptor4.py
-     docked_ligand /mnt/outputs/best_dock.pdb
-     receptor /mnt/outputs/rec-dock.pdb
+     docked_ligand /mnt/outputs/dock_best_pose.pdb
+     receptor /mnt/outputs/dock_rec.pdb
      Killing running container
      After killing running container, status is 0
      Container status is 0
-     Results: {'adding': 'gasteiger charges to peptide', '#': 'Please see http://vina.scripps.edu for more information.      #', 'Reading': 'input ... done.', 'Setting': 'up the scoring function ... done.', 'Analyzing': 'the binding site ... done.', 'Using': 'random seed: 1064360024', 'Performing': 'search ...', '0%': '10   20   30   40   50   60   70   80   90   100%', 'Refining': 'results ... done.', 'mode': '|   affinity | dist from best mode', '|': '(kcal/mol) | rmsd l.b.| rmsd u.b.', '1': '-8.8      0.000      0.000', 'Writing': 'output ... done.', '/opt/app/dependencies/mgl/bin/python': '/opt/app/dependencies/mgl/MGLToolsPckgs/AutoDockTools/Utilities24/prepare_receptor4.py', 'docked_ligand': 'evergiven_output/best_dock.pdb', 'receptor': 'evergiven_output/rec-dock.pdb'}
+     Results: {'adding': 'gasteiger charges to peptide', '#': 'Please see http://vina.scripps.edu for more information.      #', 'Reading': 'input ... done.', 'Setting': 'up the scoring function ... done.', 'Analyzing': 'the binding site ... done.', 'Using': 'random seed: 1064360024', 'Performing': 'search ...', '0%': '10   20   30   40   50   60   70   80   90   100%', 'Refining': 'results ... done.', 'mode': '|   affinity | dist from best mode', '|': '(kcal/mol) | rmsd l.b.| rmsd u.b.', '1': '-8.8      0.000      0.000', 'Writing': 'output ... done.', '/opt/app/dependencies/mgl/bin/python': '/opt/app/dependencies/mgl/MGLToolsPckgs/AutoDockTools/Utilities24/prepare_receptor4.py', 'docked_ligand': 'evergiven_output/dock_best_pose.pdb', 'receptor': 'evergiven_output/dock_rec.pdb'}
      ```
 
 ## Section 4: Troubleshooting
 * If you have issues with your base or docking containers and need to make modifications you will need to re-build the containers.
-     * If the base container has an issue that requires modification, you will need to use `singularity build` to rebuild the base and docking container.
+     * If the base container has an issue that requires modification, you will need to use `singularity build` to rebuild the base container and docking container.
      * If the docking container has an issue that requires modification, you will need to use `singularity build` to rebuild just the docking container.
 * If you run into memory errors with conda (specifically during the base container build) try cleaning your singularity cache
      * commands:
