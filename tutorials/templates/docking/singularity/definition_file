@@ -1,0 +1,16 @@
+Bootstrap: 
+From: 
+# specify the container you will build off of
+
+%files
+# files to copy to the container in the format:
+#     file /path/to/save/in/container
+
+%post
+# any installation steps
+
+%runscript
+# execution of the program in the format 
+#      exec [entry_point_from_setuppy] $@
+exec
+

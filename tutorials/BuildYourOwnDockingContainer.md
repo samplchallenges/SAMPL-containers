@@ -2,11 +2,11 @@
 > This document details requirements and tips for writing a docking container for SAMPL-challenges. For Python template files that follow this guide, please see [SAMPL-containers/tutorials/templates/docking](https://github.com/samplchallenges/SAMPL-containers/tree/main/tutorials/templates/docking). For an example of a run-able docking main file, please see [SAMPL-containers/adv/main.py](https://github.com/samplchallenges/SAMPL-containers/blob/main/docking/examples/adv-tutorial/main.py). This guide is written under the assumption the reader has already gone through the [Docking Tutorial](https://github.com/samplchallenges/SAMPL-containers/blob/main/tutorials/README.md). 
 
 ## Input Requirements
-> Every container must be able to handle the following input flags. These are the only flags your container will be expected to handle. We typically use [`click`](https://click.palletsprojects.com/en/8.0.x/) to handle command line argument parsing, but feel free to use your preferred parser. 
+> Every container must be able to handle the following input arugments. These are the only inputs your container will be expected to handle. We recommend using [`Click`](https://pypi.org/project/click/) or [`argparse`](https://docs.python.org/3/library/argparse.html) to handle command line argument parsing.
 
 ### Required Inputs
-* Your container will be run with all the following inputs in the format:
-  * `evergiven container-name:tag --receptor [file] --smiles [str] --hint [file] --hint-radius [float] --hint-molinfo [str] --output-dir [path]`
+* Your container will be run with all the following inputs:
+  * `container-name:tag --receptor [file] --smiles [str] --hint [file] --hint-radius [float] --hint-molinfo [str] --output-dir [path]`
 * `--receptor`: receptor `.pdb` file to dock the ligand into
   * Example: `--receptor data/receptor.pdb`
 * `--smiles`: quoted SMILES string representing the ligand to dock (i.e. "CCC")
@@ -25,7 +25,7 @@
 * The [app.samplchallenges.org](https://app.samplchallenges.org/) Submission Form provides a "Special Arguments" section that allows you to specify command line arguments and a corresponding file to be passed to your container at runtime.  
 * Any optional input arguments should be in the form of `--your-argument` with no capital letters. The argument should expect a file that you will upload as the input value.
 * Your container will be run with the following inputs in the format:
-  * `evergiven container-name:tag --receptor [file_path] --smiles [str] --hint [file_path] --hint-radius [float] --hint-molinfo [str] --output-dir [path] --your-argument [file_uploaded_by_you]`
+  * `container-name:tag --receptor [file_path] --smiles [str] --hint [file_path] --hint-radius [float] --hint-molinfo [str] --output-dir [path] --your-argument [file_uploaded_by_you]`
 
 ## Output Requirements
 
@@ -69,17 +69,12 @@ import click
 import os.path
 
 @click.command()
-@click.option("--receptor", required=True, type=click.Path(exists=True), help="path of receptor PDB to dock the ligand into")
-@click.option("--smiles", required=True, help="string with SMILES of ligand to be docked")
-
-@click.option("--hint", required=True, type=click.Path(exists=True), help="path of hint ligand complex for docking region hint")
-@click.option("--hint-molinfo", required=True, help="residue name of the ligand in the hint complex")
-@click.option("--hint-radius", required=True, type=float, help="box size of the box to dock into")
-
-@click.option("--output-dir", help="Output directory for receptor and docked_ligand files")
-
-# @click.option("--your-argument", type=click.Path(exists=True), help="Any special file arguments you")
-
+@click.option("--receptor",required=True,type=click.Path(exists=True),help="path of receptor PDB to dock the ligand into")
+@click.option("--smiles",required=True,help="SMILES str of ligand to be docked. quote to prevent CLI errors \"CCC\"")
+@click.option("--hint",required=True,type=click.Path(exists=True),help="path of hint ligand complex for docking region hint")
+@click.option("--hint-molinfo",required=True,help="residue name of the ligand in the hint complex")
+@click.option("--hint-radius",required=True,type=float,help="box size of the box to dock into")
+@click.option("--output-dir",help="Output directory for receptor and docked_ligand files")
 def docking_main(receptor, smiles, hint, hint_molinfo, hint_radius, output_dir):
         ''' docks the given smiles string into the receptor within the area specified by hint and hint-radius
             INPUTS:    receptor:        file    receptor PDB path to dock ligand into
@@ -147,8 +142,17 @@ def docking_main(receptor, smiles, hint, hint_molinfo, hint_radius, output_dir):
 ## Including your own Python Modules
 If you modularize your code and include your own python modules, you will need to follow the steps below. For an example with using extra python modules beyond just main.py, please see [SAMPL-containers/docking/examples/adv-tutorial](https://github.com/samplchallenges/SAMPL-containers/tree/main/docking/examples/adv-tutorial).
 1. Write your own python module(s)
-2. Copy them into your Docking container using the `COPY` command in your Dockerfile
-    * `COPY main.py setup.py <your_python_module>.py ./`
+2. Copy them into your Docking container using the `COPY` command in your Dockerfile or Singularity Definition File
+    * Dockerfile:
+    	```
+	COPY main.py setup.py {your_python_module} ./
+	```
+    * Singularity Definition File:
+    	```
+	%files
+	main.py {destination}
+	setup.py {destination}
+	{your_python_module} {destination}
 3. Include your docking modules in the `py_modules` section of `setup.py`
     ```
     py_modules=[
@@ -173,33 +177,71 @@ If you use different naming conventions than those used in the template files fo
         {your_entrypoint_name}={your_py_main}:{your_main_function}
     '''
     ```
-4. Copy the file into your Docking container using the `COPY` command in your Dockerfile
-   * `COPY {your_py_main} ./`
-5. Add your `entry_point` from step 3 in your Dockerfile
-   * `ENTRYPOINT ['{your_entrypoint_name}']`
-
+4. Copy the file into your Docking container
+   * Docker: 
+		```
+		COPY {your_py_main} ./
+		```
+   * Singularity:
+		```
+		%files
+		{your_py_main} {destination_file_path}
+		```
+5. Add your `entry_point` from step 3 to your Dockerfile or buildfile
+   * Docker: 
+		```
+		ENTRYPOINT ['{your_entrypoint_name}']
+		```
+   * Singularity:
+		```
+		%runscript
+		exec {your_entrypoint_name} $@
+		```
 
 ## Tips for modifying the docking tutorial to fit your needs
 > In some cases, the [miniconda3 docker image](https://hub.docker.com/r/continuumio/miniconda3) specified in the [tutorial `Dockerfile`](https://github.com/samplchallenges/SAMPL-containers/tree/main/tutorials#13-install-conda-environment-from-section-12-into-your-container) will not be compatible with the programs you your docking container will require. When this is the case, please try the following: 
 * Go to [dockerhub](https://hub.docker.com/) and use the search bar to search for a container that meets your needs. 
 	* For example, if I needed a container with a `gcc` compiler I would search for `gcc`, choose an image and locate the image name:
 		![searchbar](https://github.com/samplchallenges/SAMPL-containers/blob/main/tutorials/images/dockerhub_search.png)
-* Once you have the name of the image you will use as your base, let's call it `image-to-use`, change the [first line of the Dockerfile](https://github.com/samplchallenges/SAMPL-containers/blob/3ddb358e64aa542c230da0af686d2fa3186108a9/tutorials/templates/docking/Dockerfile#L1) (beginning with `FROM`) to `FROM image-to-use`
-* If you still need `conda` for virtual environment management, we recommend installing `miniconda` by adding the installation steps into the `Dockerfile` an example is in the code block below:
-	```
-	RUN wget \
-	    https://repo.anaconda.com/miniconda/Miniconda3-latest-Linux-x86_64.sh \
-	    && mkdir /root/.conda \
-	    && bash Miniconda3-latest-Linux-x86_64.sh -b \
-	    && rm -f Miniconda3-latest-Linux-x86_64.sh
-	```
-* Any additional steps to install your required programs should also be added to your `Dockerfile` for more information, please see [Section 1.4](https://github.com/samplchallenges/SAMPL-containers/tree/main/tutorials#14-download-and-prepare-the-command-line-programs-autodock-vina-and-mgl-tools-executables-for-use-in-the-docking-container) and [Section 1.5](https://github.com/samplchallenges/SAMPL-containers/tree/main/tutorials#15-install-autodock-vina-and-mgl-tools-into-your-container) of the tutorial. 
+* Once you have the name of the image you will use as your base, let's call it `image-to-use`, change your Dockerfile or Singularity Definition File to build off of your `image-to-use`
+	* Docker:
+		```
+		FROM image-to-use
+		```
+	* Singularity:
+		```
+		Bootstrap: docker
+		From: image-to-use
+		```
+	
+* If you still need `conda` for virtual environment management, we recommend installing `miniconda` by adding the installation steps into the Dockerfile or Singularity Definition File. An example is in the code blocks below:
+	* Docker:
+		```
+		RUN wget \
+		    https://repo.anaconda.com/miniconda/Miniconda3-latest-Linux-x86_64.sh \
+		    && mkdir /root/.conda \
+		    && bash Miniconda3-latest-Linux-x86_64.sh -b \
+		    && rm -f Miniconda3-latest-Linux-x86_64.sh
+		```
+	* Singularity
+		```
+		%post
+		wget \
+		    https://repo.anaconda.com/miniconda/Miniconda3-latest-Linux-x86_64.sh \
+		    && mkdir /root/.conda \
+		    && bash Miniconda3-latest-Linux-x86_64.sh -b \
+		    && rm -f Miniconda3-latest-Linux-x86_64.sh
+		```
+* Any additional steps to install your required programs should also be added to your `Dockerfile` for Singularity Definition File for more information, please see:
+	* Docker: [Section 1.4](https://github.com/samplchallenges/SAMPL-containers/tree/main/tutorials#14-download-and-prepare-the-command-line-programs-autodock-vina-and-mgl-tools-executables-for-use-in-the-docking-container) and [Section 1.5](https://github.com/samplchallenges/SAMPL-containers/tree/main/tutorials#15-install-autodock-vina-and-mgl-tools-into-your-container) of the tutorial. 
+	* Singularity: []() and []() of the tutorial
 
 
 ## Tips for integrating command line programs
 * Some common command line programs (such as AutoDock Vina) already have docker containers made by other people or organizations. It may be worth it to search for pre-made docker containers to inherit from or build off of. (see [AutoDock Vina Docker](https://hub.docker.com/r/taccsciapps/autodock-vina))
 * Some common command line programs may also have Python APIs (see [AutoDock Vina API](https://pypi.org/project/vina/)) 
-* If the above bullets do not work, you can install the command line program into your container by copying the files into the container and running the installation steps in the Dockerfile
-    * Please see [`SAMPL-league/docking/examples/adv-base/Dockerfile`](https://github.com/samplchallenges/SAMPL-containers/blob/main/docking/examples/adv-tutorial/Dockerfile)
-* To run a command line program from within a Python module, consider using [`os.system()`](https://docs.python.org/3/library/os.html?highlight=os%20system#os.system) or similar from the Python3 library
+* If the above bullets do not work, you can install the command line program into your container by copying the files into the container and running the installation steps in the Dockerfile or Singularity Definition File
+    * Docker: [`SAMPL-league/docking/examples/adv-base/Dockerfile`](https://github.com/samplchallenges/SAMPL-containers/blob/main/docking/examples/adv-tutorial/Dockerfile)
+    * Singularity: []()
+* To run a command line program from within a Python module, consider using the [`subprocess`](https://docs.python.org/3/library/subprocess.html) library or [`os.system()`](https://docs.python.org/3/library/os.html?highlight=os%20system#os.system) or similar from the Python3 library
     * Please see [`SAMPL-league/docking/examples/adv/autodock.py`](https://github.com/samplchallenges/SAMPL-containers/blob/main/docking/examples/adv-tutorial/autodock.py)
