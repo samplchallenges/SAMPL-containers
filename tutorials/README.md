@@ -11,7 +11,7 @@ This main tutorial uses the [Docker](https://www.docker.com/resources/what-conta
 
 If you are developing your container/methods on a High Performace Computing (HPC) Cluster, you will more than likely need to use the Singularity container engine. Most HPC clusters will not have the Docker program installed. Please see [this tutorial]() on how to build a container using Singularity.
 
-If you have the ability to use either Docker or Singularity as your container engine, **please use Docker**. The accepted best practice for containers is to build and store them as Docker containers, then use you container engine of choice (either Docker or Singularity) to run them.
+If you have the ability to use either Docker or Singularity as your container engine, **please use Docker**. The accepted best practice for containers is to build and store them as Docker containers, then use your container engine of choice (either Docker or Singularity) to run them.
 
 ## Background and Prerequisites
 
