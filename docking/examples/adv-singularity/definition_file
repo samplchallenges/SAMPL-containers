@@ -1,0 +1,14 @@
+Bootstrap: localimage
+From: adv_singularity_base.sif
+
+%files
+main.py /opt/app/main.py
+autodock.py /opt/app/autodock.py
+setup.py /opt/app/setup.py
+
+%post
+cd /opt/app
+pip install .
+
+%runscript
+exec run-autodock $@
