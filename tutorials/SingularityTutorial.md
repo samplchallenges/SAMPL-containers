@@ -67,23 +67,23 @@ A working version of the Autodock Vina container we will build in this tutorial 
 
 
 ## Outline
-* [Section 1: Build the Autodock Vina base container]()
-    * [1.1: Setup]()
-    * [1.2: Run a pre-made Docker container and create a conda environment]()
-    * [1.3: Install conda environment (from Section 1.2) into your container]()
-    * [1.4: Download the command line programs Autodock Vina and MGL Tools executables for use in the docking container]()
-    * [1.5: Install Autodock Vina and MGL Tools into your container]()
-    * [1.6: Build the base container]()
-* [Section 2: Build the container with Autodock Vina Docking methods]()
-    * [2.1: Setup]()
-    * [2.2: Add the docking code]()
-    * [2.3: Create a setup.py file]()
-    * [2.4: Write a definition_file with instructions to build your container]()
-    * [2.5: Build the docking container]()
-* [Section 3: Test/Run your container]()
-* [Section 4: Troubleshooting]()
-* [Section 5: Building your own docking container]()
-* [Section 6: Other Important Information]()
+* [Section 1: Build the Autodock Vina base container](https://github.com/samplchallenges/SAMPL-containers/blob/main/tutorials/SingularityTutorial.md#section-1-build-the-autodock-vina-base-container)
+    * [1.1: Setup](https://github.com/samplchallenges/SAMPL-containers/blob/main/tutorials/SingularityTutorial.md#11-setup)
+    * [1.2: Run a pre-made Docker container and create a conda environment](https://github.com/samplchallenges/SAMPL-containers/blob/main/tutorials/SingularityTutorial.md#12-run-a-pre-made-docker-container-and-create-a-conda-environment)
+    * [1.3: Install conda environment (from Section 1.2) into your container](https://github.com/samplchallenges/SAMPL-containers/blob/main/tutorials/SingularityTutorial.md#13-install-conda-environment-from-section-12-into-your-container)
+    * [1.4: Download the command line programs Autodock Vina and MGL Tools executables for use in the docking container](https://github.com/samplchallenges/SAMPL-containers/blob/main/tutorials/SingularityTutorial.md#14-download-the-command-line-programs-autodock-vina-and-mgl-tools-executables-for-use-in-the-docking-container)
+    * [1.5: Install Autodock Vina and MGL Tools into your container](https://github.com/samplchallenges/SAMPL-containers/blob/main/tutorials/SingularityTutorial.md#15-install-autodock-vina-and-mgl-tools-into-your-container)
+    * [1.6: Build the base container](https://github.com/samplchallenges/SAMPL-containers/blob/main/tutorials/SingularityTutorial.md#16-build-the-base-container)
+* [Section 2: Build the container with Autodock Vina Docking methods](https://github.com/samplchallenges/SAMPL-containers/blob/main/tutorials/SingularityTutorial.md#section-2-build-the-container-with-autodock-vina-docking-methods)
+    * [2.1: Setup](https://github.com/samplchallenges/SAMPL-containers/blob/main/tutorials/SingularityTutorial.md#21-setup)
+    * [2.2: Add the docking code](https://github.com/samplchallenges/SAMPL-containers/blob/main/tutorials/SingularityTutorial.md#22-add-the-docking-code)
+    * [2.3: Create a setup.py file](https://github.com/samplchallenges/SAMPL-containers/blob/main/tutorials/SingularityTutorial.md#23-create-a-setuppy-file)
+    * [2.4: Write a definition_file with instructions to build your container](https://github.com/samplchallenges/SAMPL-containers/blob/main/tutorials/SingularityTutorial.md#24-write-a-definition_file-with-instructions-to-build-your-container)
+    * [2.5: Build the docking container](https://github.com/samplchallenges/SAMPL-containers/blob/main/tutorials/SingularityTutorial.md#25-build-the-docking-container)
+* [Section 3: Test/Run your container](https://github.com/samplchallenges/SAMPL-containers/blob/main/tutorials/SingularityTutorial.md#section-3-testrun-your-container)
+* [Section 4: Troubleshooting](https://github.com/samplchallenges/SAMPL-containers/blob/main/tutorials/SingularityTutorial.md#section-4-troubleshooting)
+* [Section 5: Building your own docking container](https://github.com/samplchallenges/SAMPL-containers/blob/main/tutorials/SingularityTutorial.md#section-5-building-your-own-docking-container)
+* [Section 6: Other Important Information](https://github.com/samplchallenges/SAMPL-containers/blob/main/tutorials/SingularityTutorial.md#section-6-other-important-information)
 
 
 
@@ -557,7 +557,7 @@ In this section, we will use the wrapper [`ever_given`](https://pypi.org/project
 
 ## Section 5: Building your own docking container
 * For an example template of a docking container directory, please see [`SAMPL-containers/tutorial/templates/docking`](https://github.com/samplchallenges/SAMPL-containers/tree/main/tutorials/templates/docking/)
-* For more information on how to build your own conda environment inside a container, please see [CondaEnvInstructions.pdf](https://github.com/samplchallenges/SAMPL-containers/blob/main/tutorials/CondaEnvInstructions.pdf)
+* For more information on how to build your own conda environment inside a container, please see [CondaEnvironmentInstructions.md](https://github.com/samplchallenges/SAMPL-containers/blob/main/tutorials/CondaEnvironmentInstructions.md)
 
 ## Section 6: Other Important Information
 * For more detailed information on how to use Singularity please see the following resources:
