@@ -67,7 +67,7 @@ Your container will be run with all the following inputs:
 	```
 
 **Intentional No Prediction Output**
-* Intentional no predictions will not be permitted in this challenge. If you are unable to make a prediciton, please still output a score and whether the compound binds (0 or 1). Based on the makeup of this library, we recommend predicting the compound does not bind.
+* Intentional no predictions will not be permitted in this challenge. If you are unable to make a prediciton, please still output a score and whether the compound binds or not (1 or 0 respectively). Based on the makeup of this library, we recommend predicting the compound does not bind (value = 0).
 
 
 
