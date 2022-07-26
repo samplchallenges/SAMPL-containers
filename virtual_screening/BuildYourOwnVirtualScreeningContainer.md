@@ -69,5 +69,28 @@ Your container will be run with all the following inputs:
 **Intentional No Prediction Output**
 * Intentional no predictions will not be permitted in this challenge. If you are unable to make a prediciton, please still output a score and a default prediction of whether the compound binds or not (1 or 0 respectively). Based on the makeup of this library, we recommend predicting the compound does not bind (value = 0) as a default.
 
+## Running Your Container
+If you haven't already, create a new virtual environment and install our package `ever-given` with `pip install ever-given`. The `ever-given` package mimics how we will run you container when uploaded to the website. For more information please see [`tutorials/ever_givenUsage.md`](https://github.com/samplchallenges/SAMPL-containers/blob/main/tutorials/ever_givenUsage.md)
 
+
+In your activated virtual environment, run the following:
+* Batched: 
+	```
+	evergiven {container_name:tag} --container_type {type} --container_engine {engine} --file-receptor {path_to_receptor} --smiles {path_to_smiles_csv} --c_x {float} --c_y {float} --c_z {float} --sz_x {float} --sz_y {float} --sz_z {float}
+	```
+	```
+	evergiven osatom/nanoluc-dock --container_type docker --container_engine docker --file-receptor {path_to_SAMPL-containers}/virtual_screening/data/5ibo.pdb --smiles {path_to_SAMPL-containers}/virtual_screening/data/smiles.csv --c_x 51.3155 --c_y 42.0975 --c_z 19.9691 --sz_x 40.307 --sz_y 38.3611 --sz_z 54.9179
+	```
+* Un-batched:
+	```
+	evergiven {container_name:tag} --container_type {type} --container_engine {engine} --file-receptor {path_to_receptor} --smiles {quoted_smiles_str} --c_x {float} --c_y {float} --c_z {float} --sz_x {float} --sz_y {float} --sz_z {float}
+	```
+	```
+	evergiven osatom/nanoluc-dock --container_type docker --container_engine docker --file-receptor {path_to_SAMPL-containers}/virtual_screening/data/5ibo.pdb --smiles "ClC1=CC\2=C(OC3=C(C=CC=C3)\N=C2N4CCNCC4)C=C1" --c_x 51.3155 --c_y 42.0975 --c_z 19.9691 --sz_x 40.307 --sz_y 38.3611 --sz_z 54.9179
+	```
+* Please note:
+	* `--container_type`: 
+		* `docker` if container was built using `docker build` 
+		* `singularity` if built container was built using `singularity build` or using a container sif file
+	* `--container_engine`: the engine you will use to run your container `docker` or `singularity`
 
