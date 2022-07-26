@@ -9,7 +9,7 @@ The container engines, programs to build and execute containers, we will use are
 ## An Important Disclaimer
 This main tutorial uses the [Docker](https://www.docker.com/resources/what-container) container engine to build containers.
 
-If you are developing your container/methods on a High Performace Computing (HPC) Cluster, you will more than likely need to use the Singularity container engine. Most HPC clusters will not have the Docker program installed. Please see [this tutorial]() on how to build a container using Singularity.
+If you are developing your container/methods on a High Performace Computing (HPC) Cluster, you will more than likely need to use the Singularity container engine. Most HPC clusters will not have the Docker program installed. Please see [this tutorial](https://github.com/samplchallenges/SAMPL-containers/blob/main/tutorials/SingularityTutorial.md) on how to build a container using Singularity.
 
 If you have the ability to use either Docker or Singularity as your container engine, **please use Docker**. The accepted best practice for containers is to build and store them as Docker containers, then use your container engine of choice (either Docker or Singularity) to run them.
 
@@ -490,8 +490,8 @@ In this section, we will use the wrapper `ever_given` to run the docking contain
     ```
 
 ## Section 5: Building Your Own Docking Container
-* For more detailed information about docking container requirements and how to modify this tutorial to suit your needs, please see [BuildYourOwnDockingContainer.md](https://github.com/samplchallenges/SAMPL-containers/blob/main/tutorials/BuildYourOwnDockingContainer.md)
-* For an example template of a docking container directory, please see [SAMPL-containers/tutorial/templates/docking](https://github.com/samplchallenges/SAMPL-containers/tree/main/tutorials/templates/docking)
+* For more detailed information about docking container requirements and how to modify this tutorial to suit your needs, please see [BuildYourOwnDockingContainer.md](https://github.com/samplchallenges/SAMPL-containers/blob/main/pose_prediction/BuildYourOwnDockingContainer.md)
+* For an example template of a docking container directory, please see [SAMPL-containers/tutorial/templates/docking](https://github.com/samplchallenges/SAMPL-containers/tree/main/pose_prediction/templates/)
 * For more information on how to build your own conda environment inside a container, please see [tutorials/CondaEnvironmentInstructions.md](https://github.com/samplchallenges/SAMPL-containers/blob/main/tutorials/CondaEnvironmentInstructions.md)
 
 
