@@ -129,11 +129,11 @@ A working version of the Autodock Vina container we will build in this tutorial 
    * command: `conda install -c openbabel openbabel`
 9. Install [Click](https://pypi.org/project/click/), if prompted "Proceed ([y]/n)?" type "y"
    * command: `conda install click`
-10. Start up the Python interpreter and ensure your version is `3.6.*`. The Python version is 3.6.13 in the code block below.
+10. Start up the Python interpreter and ensure your version is `3.7.*`. The Python version is 3.7.13 in the code block below.
    * command: `python`
    ```
    root@7f02be71557e:/# python
-   Python 3.6.13 |Anaconda, Inc.| (default, Jun  4 2021, 14:25:59)
+   Python 3.7.13 (default, Mar 29 2022, 02:18:16) 
    [GCC 7.5.0] on linux
    Type "help", "copyright", "credits" or "license" for more information.
    >>>
