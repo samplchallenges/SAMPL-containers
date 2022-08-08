@@ -29,9 +29,16 @@ This terminology is unfortunately not something we can change.
 
 ### Software Requirements
 * Linux or UNIX operating system
-* [Docker Desktop](https://www.docker.com/products/docker-desktop)
+* [Docker Desktop](https://www.docker.com/products/docker-desktop) 
+    * OR [Docker Desktop for Apple Silicon (M1 or M2 chip) ](https://docs.docker.com/desktop/mac/apple-silicon/)
 * [Docker SDK for Python](https://pypi.org/project/docker/)
 * [Python 3](https://www.python.org/downloads/)
+
+### A note about Apple Silicon (Macs with M1 or M2 chips)
+* Some containers or images may not be compatable with Apple silicon, as a result there are a few extra steps that must be done to complete this tutorial. For more information, please see: [Docker Desktop for Apple Silicon](https://docs.docker.com/desktop/mac/apple-silicon/)
+    1. Install rosetta from the command line: `softwareupdate --install-rosetta`
+    2. When running certain images, you may need to run intel docker images under emulation. You will need to add `--platform linux/amd64` to your `docker run` commands 
+        * Ex: `docker run -it --rm --platform linux/amd64 [container_name] [container_args]`
 
 ## Getting started
 
