@@ -201,10 +201,10 @@ A working version of the Autodock Vina container we will build in this tutorial 
    ENV PATH="/root/.local/bin:$PATH"      
    # set the path
    ```
-7. Save the changes to Dockerfile and close the file.
-8. Build your container into a Docker image to ensure there are no build issues, so far.
+3. Save the changes to Dockerfile and close the file.
+4. Build your container into a Docker image to ensure there are no build issues, so far.
    * command: `docker build -t adv-tutorial-base-test .`
-9. If your build from the previous step (step 8) completed without issue, please move on to the next step, otherwise some troubleshooting of the previous steps may be necessary. A successful build looks something like the code block below.
+5. If your build from the previous step (step 4) completed without issue, please move on to the next step, otherwise some troubleshooting of the previous steps may be necessary. A successful build looks something like the code block below.
    ```
    (base) adv-tutorial-base % docker build -t adv-tutorial-base-test .
    [+] Building 2.0s (13/13) FINISHED                                                                                                         
@@ -230,7 +230,7 @@ A working version of the Autodock Vina container we will build in this tutorial 
 
    Use 'docker scan' to run Snyk tests against images to find vulnerabilities and learn how to fix them
    ```
-10. Delete the Docker image previously built in part Step 8. Step 8 was just to ensure nothing had gone wrong in the build so far.
+6. Delete the Docker image previously built in part Step 4. Step 4 was just to ensure nothing had gone wrong in the build so far.
     * List the Docker images: `docker images`
       ```
       REPOSITORY                      TAG       IMAGE ID       CREATED          SIZE
@@ -256,29 +256,29 @@ A working version of the Autodock Vina container we will build in this tutorial 
 2. Download Autodock Tools linux x86 "autodock_vina_1_1_2_linux_x86.tgz" from [here](https://drive.google.com/drive/folders/1l75rfi5w58VA3M6wYCnNrIyTbe_cD2OY?usp=sharing)
 3. Move "autodock_vina_1_1_2_linux_x86.tgz" into "adv-tutorial-base"
    * command: `mv {path_to_download}/autodock_vina_1_1_2_linux_x86.tgz .`
-5. Untar "autodock_vina_1_1_2_linux_x86.tgz"
+4. Untar "autodock_vina_1_1_2_linux_x86.tgz"
    * command: `tar -xvf autodock_vina_1_1_2_linux_x86.tgz`
-6. Delete the .tgz file:
+5. Delete the .tgz file:
    * command: `rm autodock_vina_1_1_2_linux_x86.tgz`
-7. Rename "autodock_vina_1_1_2_linux_x86" to "adv"
+6. Rename "autodock_vina_1_1_2_linux_x86" to "adv"
    * command: `mv autodock_vina_1_1_2_linux_x86 adv`
-8. Move "adv" directory to inside "dependencies" directory
+7. Move "adv" directory to inside "dependencies" directory
    * command: `mv adv dependencies`
-9. Download MGL Tools linux x86 `mgltools_x86_64Linux2_1.5.6.tar.gz` not `1.5.7` from [here](https://drive.google.com/drive/folders/1l75rfi5w58VA3M6wYCnNrIyTbe_cD2OY?usp=sharing)
-10. Move "mgltools_x86_64Linux2_1.5.6.tar.gz" into "adv-tutorial-base"
-      * command: `mv {path_to_download}/mgltools_x86_64Linux2_1.5.6.tar .`
-11. Untar "mgltools_x86_64Linux2_1.5.6.tar.gz"
+8. Download MGL Tools linux x86 `mgltools_x86_64Linux2_1.5.6.tar.gz` not `1.5.7` from [here](https://drive.google.com/drive/folders/1l75rfi5w58VA3M6wYCnNrIyTbe_cD2OY?usp=sharing)
+9. Move "mgltools_x86_64Linux2_1.5.6.tar.gz" into "adv-tutorial-base"
+   * command: `mv {path_to_download}/mgltools_x86_64Linux2_1.5.6.tar .`
+10. Untar "mgltools_x86_64Linux2_1.5.6.tar.gz"
       * command `tar -xvf mgltools_x86_64Linux2_1.5.6.tar`
-12. Delete the .tgz file:
+11. Delete the .tgz file:
       * command: `rm mgltools_x86_64Linux2_1.5.6.tar`
-13. Rename "mgltools_x86_64Linux2_1.5.6" to "mgl"
+12. Rename "mgltools_x86_64Linux2_1.5.6" to "mgl"
       * command: `mv mgltools_x86_64Linux2_1.5.6 mgl`
-14. Move "mgl" directory to inside the "dependencies" directory
+13. Move "mgl" directory to inside the "dependencies" directory
       * command: `mv mgl dependencies`
-15. Open "dependencies/mgl/install.sh"
-16. Change line 6 from `TarDir='pwd'` to `TarDir="/opt/app/dependencies/mgl/"`
-17. Change line 7 from `export MGL_ROOT=""` to `export MGL_ROOT="/opt/app/dependencies/mgl/"`
-18. Save and close "dependencies/mgl/install.sh"
+14. Open "dependencies/mgl/install.sh"
+15. Change line 6 from `TarDir='pwd'` to `TarDir="/opt/app/dependencies/mgl/"`
+16. Change line 7 from `export MGL_ROOT=""` to `export MGL_ROOT="/opt/app/dependencies/mgl/"`
+17. Save and close "dependencies/mgl/install.sh"
 
 
 ### 1.5: Install Autodock Vina and MGL Tools into your container
