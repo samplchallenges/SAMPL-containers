@@ -128,16 +128,16 @@ A working version of the Autodock Vina container we will build in this tutorial 
    * command: `conda create --name advenv python=3.7`
 4. Activate advenv:
    * command: `conda activate advenv`
-6. Install [rdkit](https://www.rdkit.org/), if prompted "Proceed ([y]/n)?" type "y"
+5. Install [rdkit](https://www.rdkit.org/), if prompted "Proceed ([y]/n)?" type "y"
    * command: `conda install -c conda-forge rdkit`
-7. Install [mdtraj](https://mdtraj.org/1.9.4/installation.html), if prompted "Proceed ([y]/n)?" type "y"
+6. Install [mdtraj](https://mdtraj.org/1.9.4/installation.html), if prompted "Proceed ([y]/n)?" type "y"
    * command: `conda install -c conda-forge mdtraj`
-8. Install [openbabel](https://openbabel.org/docs/dev/Installation/install.html), if prompted "Proceed ([y]/n)?" type "y"
+7. Install [openbabel](https://openbabel.org/docs/dev/Installation/install.html), if prompted "Proceed ([y]/n)?" type "y"
    * command: `conda install -c openbabel openbabel`
-9. Install [Click](https://pypi.org/project/click/), if prompted "Proceed ([y]/n)?" type "y"
+8. Install [Click](https://pypi.org/project/click/), if prompted "Proceed ([y]/n)?" type "y"
    * command: `conda install click`
-10. Start up the Python interpreter and ensure your version is `3.7.*`. The Python version is 3.7.13 in the code block below.
-   * command: `python`
+9. Start up the Python interpreter and ensure your version is `3.7.*`. The Python version is 3.7.13 in the code block below.
+     * command: `python`
    ```
    root@7f02be71557e:/# python
    Python 3.7.13 (default, Mar 29 2022, 02:18:16) 
@@ -145,17 +145,17 @@ A working version of the Autodock Vina container we will build in this tutorial 
    Type "help", "copyright", "credits" or "license" for more information.
    >>>
    ```
-11. In the Python interpreter, import the python packages we installed through conda, ensure there are no errors.
+10. In the Python interpreter, import the python packages we installed through conda, ensure there are no errors.
       ```
       >>> import rdkit
       >>> import mdtraj
       >>> import click
       ```
-12. Quit the Python interpeter
+11. Quit the Python interpeter
       ```
       >>> quit()
       ```
-13. Run openbabel with the help flag to ensure openbabel has installed properly. If properly installed the output should look similar to the code block below
+12. Run openbabel with the help flag to ensure openbabel has installed properly. If properly installed the output should look similar to the code block below
       * command: `obabel -H`
       ```
       /opt/app # obabel -H
@@ -169,7 +169,7 @@ A working version of the Autodock Vina container we will build in this tutorial 
       file extensions and are case independent.
       If no input or output file is given stdin or stdout are used instead.
       ```
-14. Exit the container. Upon running this command, you will exit the interactive version of the container and should return to your normal command prompt.
+13. Exit the container. Upon running this command, you will exit the interactive version of the container and should return to your normal command prompt.
       * command: `exit`
 
 
