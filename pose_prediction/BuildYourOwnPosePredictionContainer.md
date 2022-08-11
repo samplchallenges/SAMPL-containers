@@ -243,5 +243,5 @@ If you use different naming conventions than those used in the template files fo
 * If the above bullets do not work, you can install the command line program into your container by copying the files into the container and running the installation steps in the Dockerfile or Singularity Definition File
     * Docker: [`SAMPL-league/docking/examples/adv-base/Dockerfile`](https://github.com/samplchallenges/SAMPL-containers/blob/main/pose_prediction/examples/adv-docker/Dockerfile)
     * Singularity: []()
-* To run a command line program from within a Python module, consider using the [`subprocess`](https://docs.python.org/3/library/subprocess.html) library or [`os.system()`](https://docs.python.org/3/library/os.html?highlight=os%20system#os.system) or similar from the Python3 library
+* To run a command line program from within a Python module, consider using the [`subprocess`](https://docs.python.org/3/library/subprocess.html) library or similar from the Python3 library
     * Please see [`SAMPL-league/docking/examples/adv/autodock.py`](https://github.com/samplchallenges/SAMPL-containers/blob/main/pose_prediction/examples/adv-docker/autodock.py)
