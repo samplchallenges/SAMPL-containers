@@ -112,7 +112,7 @@ In your activated virtual environment, run the following:
 
 
 ## Including your own Python Modules
-If you modularize your code and include your own python modules, you will need to follow the steps below. For an example with using extra python modules beyond just main.py, please see [SAMPL-containers/virtual_screening/examples/adv-tutorial](https://github.com/samplchallenges/SAMPL-containers/tree/main/pose_prediction/examples/adv-docker).
+If you modularize your code and include your own python modules, you will need to follow the steps below. For an example with using extra python modules beyond just main.py, please see [SAMPL-containers/virtual_screening/examples/adv-screen-docker](https://github.com/samplchallenges/SAMPL-containers/tree/main/virtual_screening/examples/adv-screen-docker).
 1. Write your own python module(s)
 2. Copy them into your Docking container using the `COPY` command in your Dockerfile or Singularity Definition File
     * Dockerfile:
