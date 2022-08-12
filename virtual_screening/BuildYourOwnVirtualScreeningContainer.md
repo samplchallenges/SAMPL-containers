@@ -112,7 +112,7 @@ In your activated virtual environment, run the following:
 
 
 ## Including your own Python Modules
-If you modularize your code and include your own python modules, you will need to follow the steps below. For an example with using extra python modules beyond just main.py, please see [SAMPL-containers/pose_prediction/examples/adv-tutorial](https://github.com/samplchallenges/SAMPL-containers/tree/main/pose_prediction/examples/adv-docker).
+If you modularize your code and include your own python modules, you will need to follow the steps below. For an example with using extra python modules beyond just main.py, please see [SAMPL-containers/virtual_screening/examples/adv-tutorial](https://github.com/samplchallenges/SAMPL-containers/tree/main/pose_prediction/examples/adv-docker).
 1. Write your own python module(s)
 2. Copy them into your Docking container using the `COPY` command in your Dockerfile or Singularity Definition File
     * Dockerfile:
@@ -216,4 +216,4 @@ If you use different naming conventions than those used in the template files fo
     * Docker: [`SAMPL-league/docking/examples/adv-base/Dockerfile`](https://github.com/samplchallenges/SAMPL-containers/blob/main/pose_prediction/examples/adv-docker/Dockerfile)
     * Singularity: []()
 * To run a command line program from within a Python module, consider using the [`subprocess`](https://docs.python.org/3/library/subprocess.html) library or similar from the Python3 library
-    * Please see [`SAMPL-league/docking/examples/adv/autodock.py`](https://github.com/samplchallenges/SAMPL-containers/blob/main/pose_prediction/examples/adv-docker/autodock.py)
+    * Please see [`SAMPL-league/virtual_screening/examples/adv-screen-docker/autodock.py`](https://github.com/samplchallenges/SAMPL-containers/tree/main/virtual_screening/examples/adv-screen-docker)
