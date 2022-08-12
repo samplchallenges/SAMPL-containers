@@ -1,1 +1,1 @@
-readme.md
+This directory contains images used in the tutorials.
