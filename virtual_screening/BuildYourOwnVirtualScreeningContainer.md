@@ -116,15 +116,16 @@ If you modularize your code and include your own python modules, you will need t
 1. Write your own python module(s)
 2. Copy them into your Docking container using the `COPY` command in your Dockerfile or Singularity Definition File
     * Dockerfile:
-    	```
-	COPY main.py setup.py {your_python_module} ./
-	```
+		```
+		COPY main.py setup.py {your_python_module} ./
+		```
     * Singularity Definition File:
-    	```
-	%files
-	main.py {destination}
-	setup.py {destination}
-	{your_python_module} {destination}
+		```
+		%files
+		main.py {destination}
+		setup.py {destination}
+		{your_python_module} {destination}
+		```
 3. Include your docking modules in the `py_modules` section of `setup.py`
     ```
     py_modules=[
