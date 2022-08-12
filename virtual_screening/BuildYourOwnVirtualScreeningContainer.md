@@ -170,3 +170,50 @@ If you use different naming conventions than those used in the template files fo
 		%runscript
 		exec {your_entrypoint_name} $@
 		```
+		
+## Tips for modifying the docking tutorial to fit your needs
+> In some cases, the [miniconda3 docker image](https://hub.docker.com/r/continuumio/miniconda3) specified in the [tutorial `Dockerfile`](https://github.com/samplchallenges/SAMPL-containers/tree/main/tutorials#13-install-conda-environment-from-section-12-into-your-container) will not be compatible with the programs you your docking container will require. When this is the case, please try the following: 
+* Go to [dockerhub](https://hub.docker.com/) and use the search bar to search for a container that meets your needs. 
+	* For example, if I needed a container with a `gcc` compiler I would search for `gcc`, choose an image and locate the image name:
+		![searchbar](https://github.com/samplchallenges/SAMPL-containers/blob/main/tutorials/images/dockerhub_search.png)
+* Once you have the name of the image you will use as your base, let's call it `image-to-use`, change your Dockerfile or Singularity Definition File to build off of your `image-to-use`
+	* Docker:
+		```
+		FROM image-to-use
+		```
+	* Singularity:
+		```
+		Bootstrap: docker
+		From: image-to-use
+		```
+	
+* If you still need `conda` for virtual environment management, we recommend installing `miniconda` by adding the installation steps into the Dockerfile or Singularity Definition File. An example is in the code blocks below:
+	* Docker:
+		```
+		RUN wget \
+		    https://repo.anaconda.com/miniconda/Miniconda3-latest-Linux-x86_64.sh \
+		    && mkdir /root/.conda \
+		    && bash Miniconda3-latest-Linux-x86_64.sh -b \
+		    && rm -f Miniconda3-latest-Linux-x86_64.sh
+		```
+	* Singularity
+		```
+		%post
+		wget \
+		    https://repo.anaconda.com/miniconda/Miniconda3-latest-Linux-x86_64.sh \
+		    && mkdir /root/.conda \
+		    && bash Miniconda3-latest-Linux-x86_64.sh -b \
+		    && rm -f Miniconda3-latest-Linux-x86_64.sh
+		```
+* Any additional steps to install your required programs should also be added to your `Dockerfile` for Singularity Definition File for more information, please see:
+	* Docker: [Section 1.4](https://github.com/samplchallenges/SAMPL-containers/tree/main/tutorials#14-download-and-prepare-the-command-line-programs-autodock-vina-and-mgl-tools-executables-for-use-in-the-docking-container) and [Section 1.5](https://github.com/samplchallenges/SAMPL-containers/tree/main/tutorials#15-install-autodock-vina-and-mgl-tools-into-your-container) of the tutorial. 
+	* Singularity: []() and []() of the tutorial
+		
+## Tips for integrating command line programs
+* Some common command line programs (such as AutoDock Vina) already have docker containers made by other people or organizations. It may be worth it to search for pre-made docker containers to inherit from or build off of. (see [AutoDock Vina Docker](https://hub.docker.com/r/taccsciapps/autodock-vina))
+* Some common command line programs may also have Python APIs (see [AutoDock Vina API](https://pypi.org/project/vina/)) 
+* If the above bullets do not work, you can install the command line program into your container by copying the files into the container and running the installation steps in the Dockerfile or Singularity Definition File
+    * Docker: [`SAMPL-league/docking/examples/adv-base/Dockerfile`](https://github.com/samplchallenges/SAMPL-containers/blob/main/pose_prediction/examples/adv-docker/Dockerfile)
+    * Singularity: []()
+* To run a command line program from within a Python module, consider using the [`subprocess`](https://docs.python.org/3/library/subprocess.html) library or similar from the Python3 library
+    * Please see [`SAMPL-league/docking/examples/adv/autodock.py`](https://github.com/samplchallenges/SAMPL-containers/blob/main/pose_prediction/examples/adv-docker/autodock.py)
