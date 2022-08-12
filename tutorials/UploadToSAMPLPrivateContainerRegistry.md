@@ -52,9 +52,9 @@ These instructions assume that you have already built your container using `dock
   * If you used [Option 2: Setup Credentials]():
     * `aws ecr get-login-password --region us-east-2 --profile sampl_push | docker login --username AWS --password-stdin 103125031445.dkr.ecr.us-east-2.amazonaws.com`
 7. Push your container to the AWS push only repository
-  * `docker push 103125031445.dkr.ecr.us-east-2.amazonaws.com/sampl-league:[TAG]`
+    * `docker push 103125031445.dkr.ecr.us-east-2.amazonaws.com/sampl-league:[TAG]`
 8. If you are concerned you can try to pull your image to ensure others cannot download it
-  * `docker pull 103125031445.dkr.ecr.us-east-2.amazonaws.com/sampl-league:[TAG]`
+    * `docker pull 103125031445.dkr.ecr.us-east-2.amazonaws.com/sampl-league:[TAG]`
 
 ## Create a Submission on app.samplchallenges.org
 1. Select the challenge you are participating in.
