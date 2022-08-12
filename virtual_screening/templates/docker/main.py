@@ -178,6 +178,3 @@ def run_screening_batch(receptor, smiles, c_x, c_y, c_z, sz_x, sz_y, sz_z, outpu
 
     # Anything your container returns will be ignored. Please make sure that any outputs follow the format
     # in the previous comment
-
-if __name__ == "__main__":
-    main_function() 
