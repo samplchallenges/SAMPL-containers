@@ -96,3 +96,76 @@ In your activated virtual environment, run the following:
 		* `docker` if container was built using `docker build` 
 		* `singularity` if built container was built using `singularity build` or using a container sif file
 	* `--container_engine`: the engine you will use to run your container `docker` or `singularity`
+
+
+## Program Logs
+* Any output to `stdout` or `stderr` will be logged with timestamps associated with each output. These logs will be made accessible to you.
+* Please print general logging info to `stdout` and error messages to `stderr` as is convention.
+* As stated in [OutputRequirements](https://github.com/samplchallenges/SAMPL-containers/blob/main/tutorials/BuildYourOwnPosePredictionContainer.md#output-requirements), the last two lines of `stdout` output must be your two `key value` pairs. 
+* Please remember to [flush your print statements](https://www.geeksforgeeks.org/python-output-using-print-function/) so your output will be appear as it is executed
+
+
+## A Note about Intermediate Files
+* Please do not use `output_dir` to store your intermediate files
+* You can store your intermediate files in a temporary directory or in any directory other than the `output_dir`
+* Because we will be running your containers with batches of inputs, rather than 1 input at a time, it may be good to delete files you no longer need as you go to avoid storage/memory issues. 
+
+
+## Including your own Python Modules
+If you modularize your code and include your own python modules, you will need to follow the steps below. For an example with using extra python modules beyond just main.py, please see [SAMPL-containers/docking/examples/adv-tutorial](https://github.com/samplchallenges/SAMPL-containers/tree/main/pose_prediction/examples/adv-docker).
+1. Write your own python module(s)
+2. Copy them into your Docking container using the `COPY` command in your Dockerfile or Singularity Definition File
+    * Dockerfile:
+    	```
+	COPY main.py setup.py {your_python_module} ./
+	```
+    * Singularity Definition File:
+    	```
+	%files
+	main.py {destination}
+	setup.py {destination}
+	{your_python_module} {destination}
+3. Include your docking modules in the `py_modules` section of `setup.py`
+    ```
+    py_modules=[
+       'main',
+       '{your_python_module}',
+    ]
+    ```
+    
+## Including your main function as the ENTRYPOINT
+If you use different naming conventions than those used in the template files for your main py file and main function, you will need to follow the steps below.
+1. Write your own main py module and main function using your own naming conventions
+2. Include your docking main in the `py_modules` section of `setup.py` 
+	    ```
+	    py_modules=[
+	       '{your_py_main}',
+	    ]
+	    ```
+3. Alter the `entry_point` in `setup.py` to match you naming convention
+	    ```
+	    entry_points='''
+		[console_scripts]
+		{your_entrypoint_name}={your_py_main}:{your_main_function}
+	    '''
+	    ```
+4. Copy the file into your Docking container
+   * Docker: 
+		```
+		COPY {your_py_main} ./
+		```
+   * Singularity:
+		```
+		%files
+		{your_py_main} {destination_file_path}
+		```
+5. Add your `entry_point` from step 3 to your Dockerfile or buildfile
+   * Docker: 
+		```
+		ENTRYPOINT ['{your_entrypoint_name}']
+		```
+   * Singularity:
+		```
+		%runscript
+		exec {your_entrypoint_name} $@
+		```
