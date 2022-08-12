@@ -137,18 +137,18 @@ If you modularize your code and include your own python modules, you will need t
 If you use different naming conventions than those used in the template files for your main py file and main function, you will need to follow the steps below.
 1. Write your own main py module and main function using your own naming conventions
 2. Include your docking main in the `py_modules` section of `setup.py` 
-	    ```
-	    py_modules=[
-	       '{your_py_main}',
-	    ]
-	    ```
+    ```
+    py_modules=[
+       '{your_py_main}',
+    ]
+    ```
 3. Alter the `entry_point` in `setup.py` to match you naming convention
-	    ```
-	    entry_points='''
-		[console_scripts]
-		{your_entrypoint_name}={your_py_main}:{your_main_function}
-	    '''
-	    ```
+    ```
+    entry_points='''
+	[console_scripts]
+	{your_entrypoint_name}={your_py_main}:{your_main_function}
+    '''
+    ```
 4. Copy the file into your Docking container
    * Docker: 
 		```
