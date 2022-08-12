@@ -9,6 +9,8 @@ To run processes or command line programs from your container, we recommend usin
   * `subprocess.run(timeout=[seconds])` 
 3. Allows you to check the returncode of your finished process. If you have multiple steps in your workflow that require processes, this will allow you to check for errors earlier in your workflow
   * `subprocess.CompletedProcess.check_returncode()`
+
+
 **A note about `subprocess.run(shell=True)`:**
 * Oftentimes, the `shell=True` option for `subprocess.run()` is overused. 
 * The shell used when `shell=True` is determined by the `SHELL` environment variable, which means you are potentially invoking a *mystery* program.
