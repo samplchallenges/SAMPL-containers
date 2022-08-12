@@ -101,7 +101,7 @@ In your activated virtual environment, run the following:
 ## Program Logs
 * Any output to `stdout` or `stderr` will be logged with timestamps associated with each output. These logs will be made accessible to you.
 * Please print general logging info to `stdout` and error messages to `stderr` as is convention.
-* As stated in [OutputRequirements](https://github.com/samplchallenges/SAMPL-containers/blob/main/tutorials/BuildYourOwnPosePredictionContainer.md#output-requirements), the last two lines of `stdout` output must be your two `key value` pairs. 
+* As stated in [OutputRequirements](https://github.com/samplchallenges/SAMPL-containers/blob/main/virtual_screening/BuildYourOwnVirtualScreeningContainer.md#output-requirements), the last two lines of `stdout` output must be your two `key value` pairs. 
 * Please remember to [flush your print statements](https://www.geeksforgeeks.org/python-output-using-print-function/) so your output will be appear as it is executed
 
 
