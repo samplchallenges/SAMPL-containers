@@ -505,7 +505,8 @@ In this section, we will use the wrapper `ever_given` to run the docking contain
 * To upload your own container to docker.io create a [Docker Hub account](https://hub.docker.com/signup)
   * Please note that free Docker Hub accounts only receive 1 private repository.
   * If you have sensitive information inside your containers, please ensure you are using a private repository.
-* Eventually, upon building enough Docker images, you may begin to run out of memory. Please remember to regularly delete any Docker images you no longer need. (See [Brief Docker Usage Tips](https://github.com/samplchallenges/SAMPL-containers/blob/main/tutorials/README.md#brief-docker-background): last bullet point)
+  * When you are ready to submit your container, you will either need to make your container public (not recommended if you have sensitive information) or use our [push only repositiory](https://github.com/samplchallenges/SAMPL-containers/blob/main/tutorials/UploadToSAMPLPrivateContainerRegistry.md). 
+* Eventually, upon building enough Docker images, you may begin to run out of storage. Please remember to regularly delete any Docker images you no longer need. (See [Brief Docker Usage Tips](https://github.com/samplchallenges/SAMPL-containers/blob/main/tutorials/README.md#brief-docker-background): last bullet point)
 * If you get an error similar to `Error response from daemon: Bad response from Docker engine` when using a Docker command, make sure your Docker daemon is running by starting Docker Desktop.
 
 ## Authors
