@@ -214,6 +214,6 @@ If you use different naming conventions than those used in the template files fo
 * Some common command line programs may also have Python APIs (see [AutoDock Vina API](https://pypi.org/project/vina/)) 
 * If the above bullets do not work, you can install the command line program into your container by copying the files into the container and running the installation steps in the Dockerfile or Singularity Definition File
     * Docker: [`SAMPL-league/virtual_screening/examples/adv-base-docker/Dockerfile`](https://github.com/samplchallenges/SAMPL-containers/tree/main/virtual_screening/examples/adv-base-docker/Dockerfile)
-    * Singularity: []()
+    * Singularity: WIP
 * To run a command line program from within a Python module, consider using the [`subprocess`](https://docs.python.org/3/library/subprocess.html) library or similar from the Python3 library
     * Please see [`SAMPL-league/virtual_screening/examples/adv-screen-docker/autodock.py`](https://github.com/samplchallenges/SAMPL-containers/tree/main/virtual_screening/examples/adv-screen-docker/autodock.py)
