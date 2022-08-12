@@ -113,10 +113,10 @@ def run_screening_batch(receptor, smiles, c_x, c_y, c_z, sz_x, sz_y, sz_z, outpu
               writes file  binders csv file with columns id, name, value where 
                            id is the molid, name is the molname, and value is 
                            the either 1 (BINDER) if the molecule is a binder or
-                         0 (NON_BINDER) if the molecule is a non-binder
+                           0 (NON_BINDER) if the molecule is a non-binder
           RETURNS:
-            None     you are welcome to have your function return something, but
-                     it will not be used for scoring or record keeping purposes
+              None     you are welcome to have your function return something, but
+                       it will not be used for scoring or record keeping purposes
 
     '''
     temp_dir = tempfile.mkdtemp()
