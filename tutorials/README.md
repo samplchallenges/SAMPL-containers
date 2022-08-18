@@ -369,10 +369,8 @@ A working version of the Autodock Vina container we will build in this tutorial 
         name='AutoDock-rdkit',
         version='0.1',
         py_modules=[
-            ,
         ],
         install_requires=[
-            ,
         ],
         entry_points='''
             [console_scripts]
@@ -461,9 +459,9 @@ In this section, we will use the wrapper `ever_given` to run the docking contain
 1. Change directories into "tutorials" one directory above:
    * command: `cd ..`
 2. Run the container. A successful run should look like the code block below.
-   * command: `evergiven adv-tutorial --file-receptor data/receptor.pdb --file-hint data/hint.pdb --hint-radius 6 --hint-molinfo "E4Y" --smiles "c1ccc(C(C)C)cc1CNCC(O)(O)[C@@H](NC(=O)[C@@H]2C)C[C@H](C)CCCCCCCCC(=O)N2C" --output-keys docked_ligand,receptor`
+   * command: `evergiven adv-tutorial --container-type docker --container-engine docker --file-receptor data/receptor.pdb --file-hint data/hint.pdb --hint-radius 6 --hint-molinfo "E4Y" --smiles "c1ccc(C(C)C)cc1CNCC(O)(O)[C@@H](NC(=O)[C@@H]2C)C[C@H](C)CCCCCCCCC(=O)N2C" --output-keys docked_ligand,receptor`
    ```
-    (base) megosato@Admins-MacBook-Pro tutorials % evergiven adv-tutorial --file-receptor data/receptor.pdb --file-hint data/hint.pdb --hint-radius 6 --hint-molinfo "E4Y" --smiles "c1ccc(C(C)C)cc1CNCC(O)(O)[C@@H](NC(=O)[C@@H]2C)C[C@H](C)CCCCCCCCC(=O)N2C" --output-keys docked_ligand,receptor
+    (base) megosato@Admins-MacBook-Pro tutorials % evergiven adv-tutorial --container-type docker --container-engine docker --file-receptor data/receptor.pdb --file-hint data/hint.pdb --hint-radius 6 --hint-molinfo "E4Y" --smiles "c1ccc(C(C)C)cc1CNCC(O)(O)[C@@H](NC(=O)[C@@H]2C)C[C@H](C)CCCCCCCCC(=O)N2C" --output-keys docked_ligand,receptor
     container adv-tutorial
     command?
     file kwargs {'receptor': 'data/receptor.pdb', 'hint': 'data/hint.pdb'}
