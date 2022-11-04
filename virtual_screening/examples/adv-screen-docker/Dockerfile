@@ -1,4 +1,4 @@
-FROM osatom/adv-base-docker
+FROM osatom/adv-base
 
 WORKDIR /opt/app/
 # set the work directory
