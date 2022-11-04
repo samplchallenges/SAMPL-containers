@@ -1,4 +1,5 @@
 import json
+import csv
 import os.path
 import random
 import statistics
@@ -16,7 +17,7 @@ def classify_prediction(answerkey, prediction):
         return Classification.TRUE_POSITIVE
     elif answerkey == 1 and prediction == 0:
         return Classification.FALSE_NEGATIVE
-    elif answerkey == 0 and prediction == 1
+    elif answerkey == 0 and prediction == 1:
         return Classification.FALSE_POSITIVE
     else: #answerkey == 0 and prediction == 0
         return Classification.TRUE_NEGATIVE
@@ -110,12 +111,17 @@ if __name__ == "__main__":
     parser.add_argument('--compound_binds_prediction')
     parser.add_argument('--compound_binds_answerkey')
     parser.add_argument('--scores')
+    parser.add_argument('--output-dir')
     
 
     args = parser.parse_args()
 
     if args.command == 'score-evaluation':
-        score_evaluation(args.docking_score_prediction, args.docking_score_answerkey,
+        score_batch(args.docking_score_prediction, args.docking_score_answerkey,
+                     args.compound_binds_prediction, args.compound_binds_answerkey)
+
+    elif args.command == 'score-batch':
+        score_batch(args.output_dir, args.docking_score_prediction, args.docking_score_answerkey,
                      args.compound_binds_prediction, args.compound_binds_answerkey)
 
     elif args.command == 'score-submissionrun':

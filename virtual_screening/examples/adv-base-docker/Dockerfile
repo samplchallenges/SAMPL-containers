@@ -4,12 +4,14 @@ WORKDIR /opt/app/
 
 COPY . ./
 
-RUN conda update conda && \
-    conda install python=3.7 && \
-    conda install -c conda-forge mdtraj && \
-    conda install -c conda-forge rdkit && \
-    conda install -c openbabel openbabel && \
-    conda clean --all --yes
+RUN update-ca-certificates
+
+RUN conda update conda --all && \
+    conda install python=3.8
+#    conda install -c conda-forge mdtraj && \
+#    conda install -c conda-forge rdkit && \
+#    conda install -c openbabel openbabel && \
+#    conda clean --all --yes
 
 ENV PATH="/root/.local/bin:$PATH"
 

@@ -86,41 +86,45 @@ def docking_no_batch(receptor, smiles, dock_box, output_dir, debug) -> None:
 	highscore_pdbqt_path = os.path.join(temp_dir, "best-dock.pdbqt")
 	highscore_pdb_path = os.path.join(output_dir,"dock_best_pose.pdb")
 
+	score = 0
+	binds = -1
 
-	score_path = os.path.join(temp_dir, "score.txt")
+	try:
 
-	# create Autodock calculator object
-	adv = Autodock(PYTHON_PATH, UTILITIES_PATH, VINA_PATH, receptor_path, dock_box=dock_box)
+		# create Autodock calculator object
+		adv = Autodock(PYTHON_PATH, UTILITIES_PATH, VINA_PATH, receptor_path, dock_box=dock_box)
 
-	# prepare receptor for docking
-	adv.prep_receptor(receptorprep_pdbqt_path)
-	assert(os.path.exists(receptorprep_pdbqt_path))
-	#assert(os.path.exists(receptorprep_pdbqt_path))
+		# prepare receptor for docking
+		adv.prep_receptor(receptorprep_pdbqt_path)
+		assert(os.path.exists(receptorprep_pdbqt_path))
+		#assert(os.path.exists(receptorprep_pdbqt_path))
 
 
-	# convert SMILES str to 3D molecule and prep for docking
-	Autodock.charge_ligand(smiles, ligchg_sdf_path)
-	assert(os.path.exists(ligchg_sdf_path))
+		# convert SMILES str to 3D molecule and prep for docking
+		Autodock.charge_ligand(smiles, ligchg_sdf_path)
+		assert(os.path.exists(ligchg_sdf_path))
 
-	Autodock.sdf_to_pdbqt(ligchg_sdf_path, ligchg_pdbqt_path)
-	assert(os.path.exists(ligchg_pdbqt_path))
-	adv.prep_ligand(ligchg_pdbqt_path, ligprep_pdbqt_path)
+		Autodock.sdf_to_pdbqt(ligchg_sdf_path, ligchg_pdbqt_path)
+		assert(os.path.exists(ligchg_pdbqt_path))
+		adv.prep_ligand(ligchg_pdbqt_path, ligprep_pdbqt_path)
 
-	# dock the ligand
-	num_modes = 1
-	exhaustiveness = None
-	flex = None
-	score = adv.dock(ligprep_pdbqt_path, ligdock_pdbqt_path, highscore_pdbqt_path, highscore_pdb_path, exhaustiveness, num_modes, flex)
+		# dock the ligand
+		num_modes = 1
+		exhaustiveness = None
+		flex = None
+		score = adv.dock(ligprep_pdbqt_path, ligdock_pdbqt_path, highscore_pdbqt_path, highscore_pdb_path, exhaustiveness, num_modes, flex)
 
-	Autodock.pdbqt_to_pdb_static(receptorprep_pdbqt_path, receptor_pdb_path)
+		Autodock.pdbqt_to_pdb_static(receptorprep_pdbqt_path, receptor_pdb_path)
 
-	# clean up the temporary directory and intermediate files created
-	shutil.rmtree(temp_dir)
+		# clean up the temporary directory and intermediate files created
+		shutil.rmtree(temp_dir)
 
-	binds = 1 if score < -5 else 0
-
-	print(f"{SCORE_KEY} {score}")
-	print(f"{BINDS_KEY} {binds}")
+		binds = 1 if score < -5 else 0
+	except Exception as e:
+		print(f"Error occured during docking: {e}")
+	finally: 
+		print(f"{SCORE_KEY} {score}")
+		print(f"{BINDS_KEY} {binds}")
 
 	# Anything your container returns will be ignored. Please make sure that any outputs follow the format
 	# in the previous comment
@@ -167,28 +171,36 @@ def docking_batch(receptor, smiles, dock_box, output_dir, debug):
 	with open(smiles, "r") as smiles_fp:
 		smiles_reader = csv.DictReader(smiles_fp)
 		for row in smiles_reader:
-			print(f"dock start: {time.time()}")
-			molid = int(row['id'])
-			name = row['name']
-			smiles = row['value']
+			score = 0
+			binds = -1
+			try:
+				print(f"dock start: {time.time()}")
+				molid = int(row['id'])
+				name = row['name']
+				smiles = row['value']
 
-			Autodock.charge_ligand(smiles, ligchg_sdf_path)
-			assert(os.path.exists(ligchg_sdf_path))
-			
-			Autodock.sdf_to_pdbqt(ligchg_sdf_path, ligchg_pdbqt_path)
-			assert(os.path.exists(ligchg_pdbqt_path))
-			adv.prep_ligand(ligchg_pdbqt_path, ligprep_pdbqt_path)
+				print(f"smiles: {smiles}")
 
-			num_modes = 1
-			exhaustiveness = None
-			flex = None
-			score = adv.dock(ligprep_pdbqt_path, ligdock_pdbqt_path, highscore_pdbqt_path, highscore_pdb_path, exhaustiveness, num_modes, flex)
-			print(f"dock end: {time.time()}")
+				Autodock.charge_ligand(smiles, ligchg_sdf_path)
+				assert(os.path.exists(ligchg_sdf_path))
+				
+				Autodock.sdf_to_pdbqt(ligchg_sdf_path, ligchg_pdbqt_path)
+				assert(os.path.exists(ligchg_pdbqt_path))
+				adv.prep_ligand(ligchg_pdbqt_path, ligprep_pdbqt_path)
 
-			print(f"score: {score}")
-			binds = 1 if score < SCORE_CUTOFF else 0
-			scores_writer.writerow([molid, name, score])
-			binds_writer.writerow([molid, name, binds])
+				num_modes = 1
+				exhaustiveness = None
+				flex = None
+				score = adv.dock(ligprep_pdbqt_path, ligdock_pdbqt_path, highscore_pdbqt_path, highscore_pdb_path, exhaustiveness, num_modes, flex)
+				print(f"dock end: {time.time()}")
+
+				print(f"score: {score}")
+				binds = 1 if score < SCORE_CUTOFF else 0
+			except Exception as e:
+				print(f"Error occurred during docking: {e}")
+			finally:
+				scores_writer.writerow([molid, name, score])
+				binds_writer.writerow([molid, name, binds])
 
 
 	shutil.rmtree(temp_dir)
