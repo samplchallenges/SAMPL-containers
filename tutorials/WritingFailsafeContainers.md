@@ -24,6 +24,7 @@ To run processes or command line programs from your container, we recommend usin
 If you know / suspect your program will raise errors, it is best to use [`try` and `except` and `finally`](https://docs.python.org/3/tutorial/errors.html#handling-exceptions) blocks to allow your program to fail on inputs gracefully.
 * For example, if I used `subprocess.run(['run','long','program'], timeout=60*10)` I would expect a `subprocess.TimeoutExpired` Exception if my program surpassed 10 minutes (or 60 * 10 seconds)
    * To handle this I would write the following code:
+      
       ```
       try:
           subprocess.run(['run','long','program'], timeout=60*10)
@@ -32,7 +33,8 @@ If you know / suspect your program will raise errors, it is best to use [`try` a
           # output null or default result
       ```
 * Because we would like our containers to fail gracefully and "catch all" failures I would do something like the following:
-      ```
+     
+     ```
       # create a default result to output in case of failure
       result = -1 
       
