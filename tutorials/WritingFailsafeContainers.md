@@ -21,7 +21,7 @@ To run processes or command line programs from your container, we recommend usin
 * An informative discussion of how `shell=True` works can be found [here](https://discuss.dizzycoding.com/actual-meaning-of-shelltrue-in-subprocess/)
 
 ## Error catching:
-If you know / suspect your program will raise errors, it is best to use [`try` and `except`](https://docs.python.org/3/tutorial/errors.html#handling-exceptions) blocks to allow your program to fail on inputs gracefully.
+If you know / suspect your program will raise errors, it is best to use [`try` and `except` and `finally`](https://docs.python.org/3/tutorial/errors.html#handling-exceptions) blocks to allow your program to fail on inputs gracefully.
 * For example, if I used `subprocess.run(['run','long','program'], timeout=60*10)` I would expect a `subprocess.TimeoutExpired` Exception if my program surpassed 10 minutes (or 60 * 10 seconds)
    * To handle this I would write the following code:
       ```
@@ -31,4 +31,22 @@ If you know / suspect your program will raise errors, it is best to use [`try` a
           print('TimeoutExpired: max program run time surpassed')
           # output null or default result
       ```
+* Because we would like our containers to fail gracefully and "catch all" failures I would do something like the following:
+      ```
+      # create a default result to output in case of failure
+      result = -1 
+      
+      try:
+          # try the following code:
+          # program code goes here
+          # use your program code to determine your result 
+          result = 10000
+      except Exception as e:
+          print(f"ERROR: {e}")
+      finally:
+          # export out the result whether default or calculated
+          # whether as a print statement (for un-batched) or as a text file (for batched)
+      ```
+      * A more in depth example can be found [here](https://github.com/samplchallenges/SAMPL-containers/blob/main/virtual_screening/examples/adv-screen-docker/main.py)
+
 * For a nice tutorial on `try` and `except` blocks, see [geeksforgeeks](https://www.geeksforgeeks.org/python-try-except/)
