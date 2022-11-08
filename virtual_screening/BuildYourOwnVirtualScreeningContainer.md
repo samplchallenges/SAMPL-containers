@@ -66,11 +66,12 @@ Your container will be run with all the following inputs:
 * **Un-batched**: print out each key with the value
 	```
 	docking_score {float_docking_score}
-	compound_binds {1_if_ligand_binds_0_if_nonbinder}
+	compound_binds {1_if_ligand_binds_0_if_nonbinder_-1_if_failure}
 	```
 
 **Intentional No Prediction Output**
-* Intentional no predictions will not be permitted in this challenge. If you are unable to make a prediciton, please still output a score and a default prediction of whether the compound binds or not (1 or 0 respectively). Based on the makeup of this library, we recommend predicting the compound does not bind (value = 0) as a default.
+* If you cannot make a prediction, such as due to failure please output `-1`
+* Please note except for book keeping purposes, we will treat `-1` for `compound_binds` as `0` meaning the compound "non binder"
 
 ## Running Your Container
 If you haven't already, create a new virtual environment and install our package `ever-given` with `pip install ever-given`. The `ever-given` package mimics how we will run you container when uploaded to the website. For more information please see [`tutorials/ever_givenUsage.md`](https://github.com/samplchallenges/SAMPL-containers/blob/main/tutorials/ever_givenUsage.md)
@@ -209,6 +210,29 @@ If you use different naming conventions than those used in the template files fo
 	* Docker: [Section 1.4](https://github.com/samplchallenges/SAMPL-containers/tree/main/tutorials#14-download-and-prepare-the-command-line-programs-autodock-vina-and-mgl-tools-executables-for-use-in-the-docking-container) and [Section 1.5](https://github.com/samplchallenges/SAMPL-containers/tree/main/tutorials#15-install-autodock-vina-and-mgl-tools-into-your-container) of the tutorial. 
 	* Singularity: []() and []() of the tutorial
 		
+## Fail Safe Containers
+* Your container should be fail safe, i.e. if it is passed an input such as a bad smiles string, it should fail "gracefully" and still output a value for `docking_score` and `compound_binds` for that specific input.	
+	* Ex: Input ID 0 with name SAMPL0-001: `c1ccccc` is an aromatic ring smiles string that is not closed. Any smiles parser would FAIL on this input. My program will output the following
+		* **Un-batched**: My program would print the following
+			```
+			compound_binds -1
+			docking_score 0.0
+			```
+		* **Batched**: My program would add the following to my `compound_binds.csv` and `docking_scores.csv` files
+			compound_binds.csv
+			```
+			id,name,value
+			0,SAMPL9-001,-1
+			```
+			
+			docking_scores.csv
+			```
+			id,name,value
+			0,SAMPL9-001,0.0
+			```
+* To build a fail safe container, some tips can be found [here](https://github.com/samplchallenges/SAMPL-containers/blob/main/tutorials/WritingFailsafeContainers.md)
+
+
 ## Tips for integrating command line programs
 * Some common command line programs (such as AutoDock Vina) already have docker containers made by other people or organizations. It may be worth it to search for pre-made docker containers to inherit from or build off of. (see [AutoDock Vina Docker](https://hub.docker.com/r/taccsciapps/autodock-vina))
 * Some common command line programs may also have Python APIs (see [AutoDock Vina API](https://pypi.org/project/vina/)) 
