@@ -495,8 +495,7 @@ In this section, we will use the wrapper `ever_given` to run the docking contain
     ```
 
 ## Section 5: Building Your Own Docking Container
-* For more detailed information about docking container requirements and how to modify this tutorial to suit your needs, please see [BuildYourOwnDockingContainer.md](https://github.com/samplchallenges/SAMPL-containers/blob/main/pose_prediction/BuildYourOwnDockingContainer.md)
-* For an example template of a docking container directory, please see [SAMPL-containers/tutorial/templates/docking](https://github.com/samplchallenges/SAMPL-containers/tree/main/pose_prediction/templates/)
+* For more detailed information about docking container requirements and how to modify this tutorial to suit your needs, please see [BuildYourOwnDockingContainer.md](https://github.com/samplchallenges/SAMPL-containers/blob/main/pose_prediction/BuildYourOwnPosePredictionContainer.md)
 * For more information on how to build your own conda environment inside a container, please see [tutorials/CondaEnvironmentInstructions.md](https://github.com/samplchallenges/SAMPL-containers/blob/main/tutorials/CondaEnvironmentInstructions.md)
 
 
