@@ -1,4 +1,4 @@
-# Building Your Own Virtual Screening Container
+# Building A Virtual Screening Container
 > This document details requirements and tips for writing a docking container for SAMPL-challenges. For Python template files that follow this guide, please see [SAMPL-containers/virtual_screening/templates/docker](https://github.com/samplchallenges/SAMPL-containers/tree/main/virtual_screening/templates/docker). For an example of a run-able virtual screening main file, please see [SAMPL-containers/virtual_screening/examples/adv-screen-docker/main.py](https://github.com/samplchallenges/SAMPL-containers/blob/main/virtual_screening/examples/adv-screen-docker/main.py). This guide is written under the assumption the reader has already gone through the [Docking Tutorial](https://github.com/samplchallenges/SAMPL-containers/blob/main/tutorials/README.md). 
 > 
 > 
